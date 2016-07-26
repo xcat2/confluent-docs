@@ -1,11 +1,8 @@
 ---
 layout: page
-title: Confluent Developer Documentation
+title: Confluent API Documentation
 permalink: /documentation/developer/api.html
 ---
-
-Confluent API documentation
-============================
 
 Confluent models functionality in a hierarchical structure.  It is a RESTful or
 filesystem like structure, depending on how you want to think of it.  With
@@ -58,6 +55,7 @@ that fits the RESTful models
 This resource allows query and setting of the power state.  Reading this value
 provides the current state, and writing {'state': [newstate]} will request a
 state change.  The recognized states are:
+
 * boot - Request system to take appropriate action to immediately start booting.
          If a system is on, this is effectively 'reset'.  If a system is off, it
          has the same effect as 'on'
@@ -135,6 +133,7 @@ excludes accounts provided by a central authentication provider, such as LDAP.
 It is indexed by an arbitrary index value that might not correlate to user names.
 For IPMI systems, it represents the 'user slot' of the user account.  Each account
 provides the following fields:
+
 * username - The username associated with this account names
 * privilege_level - The level of access afforded the account:
   * user - Ability to read most sensor data
@@ -158,6 +157,7 @@ Manage the list of destinations that the management controller will *directly*
 send alerts to.  Alert information may be in turn propogated by
 the respective destination to more destinations and formats.  Each item contains
 the following fields:
+
 * ip - The ip address to transmit to
 * retries - If acknowledge is enabled, the number of attempts to perform before
             giving up
@@ -175,6 +175,7 @@ the following fields:
 IP configuration data for the management controller.  Note that changing this
 value without coordinating changes in the associated hardwaremanagement.manager
 attribute may cause disruption.  The fields available:
+
 * ipv4_address - The ipv4 address and netmask length in CIDR notation.  this
                  should provide the current value regardless of whether it is
                  DHCP or static, but should not be PUT if the ipv4_configuration
@@ -206,6 +207,7 @@ feature provided at additional cost.
 Check and modify boot device override for next boot.  Frequently used for an
 OS deployment or diagnostic boot to prepare for an exceptional boot case where
 the default OS boot is not desired, but only for one boot.  Parameters are:
+
 * bootmode - Allows requesting the firmware personality.  Recognized values are
   * bios - Force a BIOS style boot in the style that x86 systems have
            historically booted from their initial release
@@ -238,20 +240,22 @@ well as a 'sensors' list of relevant readings to explain the reason for the
 health assessment.  The content of the sensors is identical to the items in
 '/sensors'
 
-## / nodes/[nodename]/inventory/hardware/[category]/
+## /nodes/[nodename]/inventory/hardware/[category]/
 
 A list of devices that are possible and whether they are present and associated
 data.  The inventory field is a list of objects with the following fields:
-* information - A set of more free form key-value structured information about
+
+* information - A set of free form key-value structured information about
                 the inventory item.  Though free-form, similar devices should
                 resemble each other to the extent feasible.
 * name - A human friendly name describing the item
 * present - A true/false value indicated whether the specified device actually
             is populated in this specific node.
 
-## / nodes/[nodename]/inventory/firmware/[category]/
+## /nodes/[nodename]/inventory/firmware/[category]/
 
 Items containing firmware, and the current version information.  May contain:
+
 * date - The date that the firmware was created by the vendor
 * version - The version designation as indicated by the vendor
 * build - A freeform build identification string vendors may use to more
@@ -268,11 +272,13 @@ information that confluent needs to function (e.g. address of management
 controllers), helpful metadata about a node (node location, admin notes), or
 cached data for performance enhancement or post-mortem (last health state,
 serial numbers, et al).
+
 * all - Provide all possible attributes as well as current values
 * current - Provides only those attributes that have been given values.
 
 When doing UPDATE, all and current will behave identically.  The fields are
 defined in the [attributes] document.  Each attribute has:
+
 * value - The current value of the attribute, after any potential expressions and
           inheritance have been performed.
 * inheritedfrom - Present and set if the current value is derived from a group
@@ -283,6 +289,7 @@ defined in the [attributes] document.  Each attribute has:
 
 An enumeration of events and timestamps that have happened to the indicated node.
 Each event has:
+
 * component - A textual description of a physical or logical entity related to
               the event.
 * component_type - A description of what sort of entity the component is

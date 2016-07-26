@@ -3,3 +3,8 @@ email: hpchelp@lenovo.com
 description: >
   Lenovo HPC resources, news, and documentation
 baseurl: /web
+markdown: kramdown
+
+kramdown:
+        input: GFM
+        hard_wrap: false
