@@ -238,7 +238,7 @@ well as a 'sensors' list of relevant readings to explain the reason for the
 health assessment.  The content of the sensors is identical to the items in
 '/sensors'
 
-## / nodes/[nodename]/inventory/hardware/[category]/
+## /nodes/[nodename]/inventory/hardware/[category]/
 
 A list of devices that are possible and whether they are present and associated
 data.  The inventory field is a list of objects with the following fields:
@@ -249,7 +249,7 @@ data.  The inventory field is a list of objects with the following fields:
 * present - A true/false value indicated whether the specified device actually
             is populated in this specific node.
 
-## / nodes/[nodename]/inventory/firmware/[category]/
+## /nodes/[nodename]/inventory/firmware/[category]/
 
 Items containing firmware, and the current version information.  May contain:
 * date - The date that the firmware was created by the vendor
