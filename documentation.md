@@ -4,4 +4,5 @@ title: Documentation
 permalink: /documentation/
 ---
 
-This will be the entry to documentation material.
+Developer documentation:
+[API reference]({{ site.baseurl }}/documentation/developer/api.html)
