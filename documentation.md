@@ -9,7 +9,7 @@ General concepts:
 
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
 * [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
-* [Attribute expressions]({{ site.basurl }})/documentation/attributeexpressions.html)
+* [Attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
 
 
 For developers:
