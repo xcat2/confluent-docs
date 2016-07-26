@@ -15,10 +15,8 @@
 
       <div class="trigger">
         {% for my_page in site.pages %}
-          {% if my_page.title %}
-            {% unless my_page.exclude %}
+          {% if my_page.title and my_page.toplevel %}
             <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-            {% endunless %}
           {% endif %}
         {% endfor %}
       </div>
