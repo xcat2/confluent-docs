@@ -25,6 +25,28 @@ to create a local account:
 With the above example, using 'apiuser' and 'apibrowser' in the user/password
 prompt will provide access.
 
+## /discovery/
+
+The discovery collection gathers functionality related to detecting and scanning
+for new systems.
+
+## /discovery/detected/
+
+A collection of systems that have been detected (through scan or otherwise) but
+not yet a node or related to a node.
+
+## /discovery/log
+
+A log of discovery related activity including things being detected and things
+promoting to being a managed node.
+
+## /discovery/scan
+
+A resource to request an active scan.  Generally confluent will scan on startup
+and then passively listen for changes.  This resource can be used to explicitly
+request a scan be performed.  Results from such a scan will appear in the detected/
+collection.
+
 ## /noderange/
 
 The noderange top level structure appears empty.  However, if the client
