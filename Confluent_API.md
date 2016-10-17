@@ -23,8 +23,32 @@ to create a local account:
     # confetty create /users/apiuser password=apipassword
 
 With the above example, using 'apiuser' and 'apibrowser' in the user/password
-prompt will provide access.
+prompt will provide access when accessing the management server by http://servername:14005/.
 
+## Using python to access the API
+All of the confluent command lines are implemented in python.  They serve
+as a good reference to review accessing the API.  For example, reviewing
+the source code of 'nodepower' can be very informative.  In general, a
+python developer will want to start by importing the client library:
+
+	import confluent.client as client
+
+Next, you'll want to create a client session:
+
+	session = client.Command()
+
+By default, this will reach out to the local instance.  If you want to reach
+out to a remote server, you may pass that asa a string to the `Command()` call,
+as in `Command('172.20.0.1')`.
+
+
+For many common interactions, there is a convenience method on the session
+object called 'simple_noderange_command()'. To accomodate more complex
+scenarios and map more directly to the underlying REST structure, the
+functions `create()`, `read()`, `update()`, and `delete()` are provided.
+See the client.py python API documentaion for more details.
+
+<!--
 ## /discovery/
 
 The discovery collection gathers functionality related to detecting and scanning
@@ -46,6 +70,8 @@ A resource to request an active scan.  Generally confluent will scan on startup
 and then passively listen for changes.  This resource can be used to explicitly
 request a scan be performed.  Results from such a scan will appear in the detected/
 collection.
+
+-->
 
 ## /noderange/
 

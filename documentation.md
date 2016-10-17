@@ -12,6 +12,11 @@ General concepts:
 * [Attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
 
 
+Power and Cooling Monitoring:
+
+* [Power Histogram]({{ site.baseurl }}/documentation/energyhistogram.html)
+* [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
+
 For developers:
 
 * [API reference]({{ site.baseurl }}/documentation/developer/api.html)
