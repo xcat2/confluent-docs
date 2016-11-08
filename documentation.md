@@ -5,6 +5,10 @@ permalink: /documentation/
 toplevel: yes
 ---
 
+Getting started:
+
+* [Installing confluent]({{ site.baseurl }}/documentation/installconfluent.html)
+
 General concepts:
 
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
