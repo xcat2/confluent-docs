@@ -12,7 +12,7 @@ such as those found under ToolsCenter, as well as xCAT and confluent.
 Adding Repository for Red Hat Enterprise Linux 7
 ============================
 {% highlight bash %}
-rpm -Uvh https://hpc.lenovo.com/yum/lenovo-yum-1-1.x86_64.rpm
+rpm -Uvh https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-yum-1-1.x86_64.rpm
 {% endhighlight %}
 Adding Repository for SuSE Linux Enterprise 12
 ============================
