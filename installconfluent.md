@@ -22,12 +22,12 @@ Enabling the Web UI
 First, if you have SELinux enforcing, you need to allow httpd to make network
 connections:
 
-	setsebool httpd_can_network_connect=on
+	setsebool -P httpd_can_network_connect=on
 
 Note that a default install also will have firewall restrictions preventing
 https use.  You may remedy this by doing the following:
 
-	firewall-cmd --zone=public --add-service=https
+	firewall-cmd --zone=public --add-service=https --permanent
 
 In terms of confluent itself, it is by default set up without any user access.  To create a user than may be used from the web interface:
 
