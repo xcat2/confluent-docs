@@ -1,4 +1,5 @@
 all:
+	./makeattribdoc
 	jekyll b
 
 testupload:

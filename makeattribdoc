@@ -1,0 +1,9 @@
+#!/usr/bin/python
+import confluent.config.attributes as attr
+import shutil
+
+shutil.copyfile('_special/nodeattribtmpl.md', 'docs/attribs.md')
+outf = open('docs/attribs.md', 'a')
+for field in sorted(attr.node):
+    outf.write('\n#### {0}\n\n{1}\n'.format(field, attr.node[field]['description']))
+
