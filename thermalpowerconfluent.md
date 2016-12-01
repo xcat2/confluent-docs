@@ -2,7 +2,6 @@
 layout: page
 title: Power and Cooling Monitoring with Confluent
 permalink: /documentation/thermalpowerconfluent.html
-exclude: true
 ---
 
 Confluent provides access to various power and cooling data on the monitored hardware.

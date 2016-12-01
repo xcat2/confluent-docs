@@ -2,7 +2,6 @@
 layout: page
 title: Confluent API Documentation
 permalink: /documentation/developer/api.html
-exclude: true
 ---
 
 Confluent models functionality in a hierarchical structure.  It is a RESTful or

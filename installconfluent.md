@@ -2,7 +2,6 @@
 layout: page
 title: Confluent Installation
 permalink: /documentation/installconfluent.html
-exclude: true
 ---
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:

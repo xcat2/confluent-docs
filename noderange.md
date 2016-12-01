@@ -2,7 +2,6 @@
 layout: page
 title: Noderange syntax
 permalink: /documentation/noderange.html
-exclude: true
 ---
 
 Confluent implements a powerful language to indicate a target

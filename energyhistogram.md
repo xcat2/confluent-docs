@@ -2,7 +2,6 @@
 layout: page
 title: Energy histogram
 permalink: /documentation/energyhistogram.html
-exclude: true
 ---
 
 Lenovo servers capture power level over time and provide
