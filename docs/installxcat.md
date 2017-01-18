@@ -10,11 +10,11 @@ After adding the correct repository as indicated in the [download page]({{ site.
 	
 It is possible to require additional packages when installing xCAT. 
 For RHEL, connect to the RedHat Subscription Manager and download the following packages: 
-    - net-snmp-perl
-	- perl-Net-Telnet
-	- perl-Crypt-CBC
-	- perl-Digest
-	- perl-Digest-MD5
+* net-snmp-perl
+* perl-Net-Telnet
+* perl-Crypt-CBC
+* perl-Digest
+* perl-Digest-MD5
 
 	rpm -ivh packagenames
 
