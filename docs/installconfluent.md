@@ -7,6 +7,9 @@ permalink: /documentation/installconfluent.html
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:
 
 	yum install lenovo-confluent
+	
+If you are missing the GPG key, run the following comand. 
+    rpm --import https://hpc.lenovo.com/gpgkey.asc
 
 At which point go ahead and enable it and start it.
 

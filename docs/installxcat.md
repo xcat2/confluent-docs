@@ -9,7 +9,13 @@ After adding the correct repository as indicated in the [download page]({{ site.
 	yum install xCAT
 ```
 It is possible to require additional packages when installing xCAT. 
-For RHEL, connect to the RedHat Subscription Manager and download the following packages: 
+For RHEL, connect to the RedHat Subscription Manager and connect to the optional channel 
+```sh
+    subscription-manager repos --enable=rhel-7-server-optional-rpms #
+```
+or 
+
+Download the following packages and install them with rpm: 
 * net-snmp-perl
 * perl-Net-Telnet
 * perl-Crypt-CBC
