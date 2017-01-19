@@ -1,6 +1,6 @@
 ---
 layout: page
-title: xCAT Installation
+title: xCAT Installation for RHEL
 permalink: /documentation/installxcat.html
 ---
 
@@ -11,11 +11,9 @@ After adding the correct repository as indicated in the [download page]({{ site.
 It is possible to require additional packages when installing xCAT. 
 For RHEL, connect to the RedHat Subscription Manager and connect to the optional channel 
 ```sh
-    subscription-manager repos --enable=rhel-7-server-optional-rpms #
+    subscription-manager repos --enable=rhel-7-server-optional-rpms
 ```
-or 
-
-Download the following packages and install them with rpm: 
+If you are not able to connect to the optional repository,download the following packages and install them with rpm: 
 * net-snmp-perl
 * perl-Net-Telnet
 * perl-Crypt-CBC
