@@ -4,15 +4,16 @@ title: xCAT Installation for RHEL
 permalink: /documentation/installxcat_rhel.html
 ---
 
-# xCAT Installation for RHEL
+#xCAT Installation for RHEL
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install xCAT by running:
 ```sh
 	yum install xCAT
 ```
 If you are missing the GPG key, run the following comand. 
+```sh
     rpm --import https://hpc.lenovo.com/gpgkey.asc
-	
+```	
 To verify that you have installed xCAT
 ```sh
     service xcatd status
@@ -21,7 +22,7 @@ At this point, log out and log back in to have xCAT commands functional.
 
 To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 
-## **Issues:**
+## *Issues:*
 
 It is possible to require additional packages when installing xCAT. 
 For RHEL, connect to the RedHat Subscription Manager and connect to the optional channel 
