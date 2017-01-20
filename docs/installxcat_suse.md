@@ -22,7 +22,10 @@ To verify that you have installed xCAT
 ```sh
     service xcatd status
 ```
-At this point, log out and log back in to have xCAT commands functional.
+At this point, run the script below for xCAT commands functional
+```sh 
+    . /etc/profile.d/xcat.sh
+```
 
 To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installxcat_suse.html)
 

@@ -21,8 +21,10 @@ At which point go ahead and enable it and start it.
 	chkconfig confluent on
 	service confluent start
 ```
-At this point, log out and log back in to have the confluent commands functional.
-
+At this point, run the script below for confluent commands functional
+```sh 
+    . /etc/profile.d/confluent_env.sh
+```
 #Enabling the Web UI
 ====================
 

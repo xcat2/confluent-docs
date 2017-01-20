@@ -7,7 +7,7 @@ permalink: /documentation/installconfluent_suse.html
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:
 ```sh 
-	zypper lenovo-confluent
+	zypper install lenovo-confluent
 ```	
 If you are missing the GPG key, run the following comand. 
 ```sh 
