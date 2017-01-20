@@ -22,7 +22,10 @@ At this point, run the script below for xCAT commands functional
 ```sh 
     . /etc/profile.d/xcat.sh
 ```
-To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installxcat_rhel.html)
+
+For more information on installing xCAT, go to http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html
+
+To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 
 ## *Issues:*
 

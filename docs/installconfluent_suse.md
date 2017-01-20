@@ -16,7 +16,7 @@ If you are missing the GPG key, run the following comand.
 If you already installed lenovo confluent and want to update , you can run: 
 ```sh 
     zypper up lenovo-confluent
-	
+```	
 At which point go ahead and enable it and start it.
 ```sh 
 	chkconfig confluent on
