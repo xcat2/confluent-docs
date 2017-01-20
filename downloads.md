@@ -17,5 +17,5 @@ yum install https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-yum-1-1.x86_64.r
 Adding Repository for SuSE Linux Enterprise 12
 ============================
 {% highlight bash %}
-zypper as -t yum https://hpc.lenovo.com/yum/latest/sles12/x86_64/ lenovo-hpc
+zypper install http://hpc.lenovo.com/yum/latest/sles12/x86_64/lenovo-hpc-zypper-1-1.x86_64.rpm
 {% endhighlight %}
