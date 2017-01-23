@@ -38,7 +38,7 @@ Edit mySSL.conf
 #Update SSLCertificateFile and SSLCertificateKeyFile lines to point to server
 SSLCertificateFile /etc/apache2/ssl.crt/server.crt
 SSLCertificateKeyFile /etc/apache2/ssl.key/server.key
-
+```
 Enable Apache with SSL
 ```sh 
 a2enflag SSL
