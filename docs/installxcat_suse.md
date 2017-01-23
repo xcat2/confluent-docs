@@ -18,7 +18,7 @@ source /etc/profile.d/xcat.sh
 ```
 For more information on installing xCAT, go to [link](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Install Guide")
 
-To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_suse.html)
+To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_suse.html "Install Confluent")
 
 
 

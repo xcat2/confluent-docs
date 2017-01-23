@@ -19,7 +19,7 @@ source /etc/profile.d/xcat.sh
 
 For more information on installing xCAT, go to [link](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Install Guide")
 
-To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
+To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html "Install Confluent")
 
 ## *Issues:*
 
@@ -28,7 +28,7 @@ For RHEL, connect to the RedHat Subscription Manager and connect to the optional
 ```sh
 subscription-manager repos --enable=rhel-7-server-optional-rpms
 ```
-If you are NOT able to connect to the optional repository,download the following packages and install them with rpm: 
+If you are NOT able to connect to the optional repository, download the following packages and install them with rpm: 
 * net-snmp-perl
 * perl-Net-Telnet
 * perl-Crypt-CBC
