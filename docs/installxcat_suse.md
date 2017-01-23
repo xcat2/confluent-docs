@@ -8,15 +8,15 @@ permalink: /documentation/installxcat_suse.html
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install xCAT by running:
 ```sh
-	zypper install xCAT
+zypper install xCAT
 ```
 To verify that you have installed xCAT
 ```sh
-    service xcatd status
+service xcatd status
 ```
-At this point, run the script below for xCAT commandline functionality or logout and log back in. 
+At this point, source the script below for xCAT commandline functionality or logout and log back in. 
 ```sh 
-    source /etc/profile.d/xcat.sh
+source /etc/profile.d/xcat.sh
 ```
 For more information on installing xCAT, go to http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html
 
