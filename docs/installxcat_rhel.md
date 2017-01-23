@@ -17,7 +17,7 @@ At this point, source the script below for xCAT commandline functionality or log
 source /etc/profile.d/xcat.sh
 ```
 
-For more information on installing xCAT, go to http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html
+For more information on installing xCAT, go to [link](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Installation")
 
 To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 
