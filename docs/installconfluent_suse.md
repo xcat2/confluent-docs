@@ -29,7 +29,7 @@ For quick start generating dummy ssl certificate:
 # Run gensslcert -n somename if you do not have a domain set
 gensslcert
 ```	
-For Enabling SSL on Apache 	
+Create SSL conf on Apache 	
 ```sh 
 cd /etc/apache2/conf.d/
 cp vhost-ssl.template mySSL.conf 
@@ -40,7 +40,7 @@ Edit mySSL.conf
 SSLCertificateFile /etc/apache2/ssl.crt/server.crt
 SSLCertificateKeyFile /etc/apache2/ssl.key/server.key
 ```
-Enable Apache with SSL
+Enable SSL on Apache
 ```sh 
 a2enflag SSL
 service apache2 restart
