@@ -21,7 +21,7 @@ source /etc/profile.d/confluent_env.sh
 # Enabling the Web UI
 
 Enable Secure WebServer with SSL : 
-For more information see https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html. 
+For more information see [https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html](https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html). 
 
 For quick start generating dummy ssl cert: 
 ```sh 
