@@ -13,7 +13,7 @@ At which point go ahead and enable it and start it.
 chkconfig confluent on
 service confluent start
 ```
-At this point, source the script below for confluent commandline functionality or logout and log back in. 
+At this point, source the script below for confluent command line functionality or logout and log back in. 
 ```sh 
 source /etc/profile.d/confluent_env.sh
 ```

@@ -13,14 +13,14 @@ At which point go ahead and enable it and start it.
 chkconfig confluent on
 service confluent start
 ```
-At this point, source the script below for confluent commandline functionality or logout and log back in. 
+At this point, source the script below for confluent command line functionality or logout and log back in. 
 ```sh 
 source /etc/profile.d/confluent_env.sh
 ```
 
-# Enabling the Web UI
+## Enabling the Web UI
 
-## Enable Secure WebServer with SSL
+### Enable Secure WebServer with SSL
 
 For more information see [https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html](https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html). 
 
@@ -43,7 +43,7 @@ SSLCertificateKeyFile /etc/apache2/ssl.key/server.key
 Enable Apache with SSL
 ```sh 
 a2enflag SSL
-service apache2 start
+service apache2 restart
 ```
 
 In terms of confluent itself, it is by default set up without any user access.  To create a user than may be used from the web interface:

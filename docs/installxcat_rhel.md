@@ -12,7 +12,7 @@ To verify that you have installed xCAT
 ```sh
 service xcatd status
 ```
-At this point, source the script below for xCAT commandline functionality or logout and log back in. 
+At this point, source the script below for xCAT command line functionality or logout and log back in. 
 ```sh 
 source /etc/profile.d/xcat.sh
 ```
@@ -23,7 +23,7 @@ To continue to install confluent go to [install confluent]({{ site.baseurl }}/do
 
 ## *Issues:*
 
-It is possible to require additional packages when installing xCAT. 
+Additional packages may be required when installing xCAT. 
 For RHEL, connect to the RedHat Subscription Manager and connect to the optional channel 
 ```sh
 subscription-manager repos --enable=rhel-7-server-optional-rpms
@@ -34,9 +34,4 @@ If you are NOT able to connect to the optional repository, download the followin
 * perl-Crypt-CBC
 * perl-Digest
 * perl-Digest-MD5
-
-```sh
-rpm -ivh packagenames
-```
-
 
