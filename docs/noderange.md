@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Noderange syntax
+title: Noderange Syntax
 permalink: /documentation/noderange.html
 ---
 
