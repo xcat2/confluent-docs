@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Confluent Installation
+title: Confluent Installation for Red Hat Enterprise Linux 7
 permalink: /documentation/installconfluent_rhel.html
 ---
 

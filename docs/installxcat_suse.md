@@ -1,10 +1,8 @@
 ---
 layout: page
-title: xCAT Installation for SUSE
+title: xCAT Installation for SUSE Linux Enterprise Server 12
 permalink: /documentation/installxcat_suse.html
 ---
-
-#xCAT Installation for SUSE
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install xCAT by running:
 ```sh
