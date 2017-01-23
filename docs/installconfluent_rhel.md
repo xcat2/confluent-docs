@@ -8,10 +8,6 @@ After adding the correct repository as indicated in the [download page]({{ site.
 ```sh
 yum install lenovo-confluent
 ```	
-If you already installed lenovo confluent and want to update , you can run: 
-```sh    
-yum update lenovo-confluent
-```	
 At which point go ahead and enable it and start it.
 ```sh
 chkconfig confluent on
@@ -19,10 +15,10 @@ service confluent start
 ```
 At this point, source the script below for confluent commandline functionality or logout and log back in. 
 ```sh 
-    source /etc/profile.d/confluent_env.sh
+source /etc/profile.d/confluent_env.sh
 ```
-#Enabling the Web UI
-====================
+
+# Enabling the Web UI
 
 First, if you have SELinux enforcing, you need to allow httpd to make network
 connections:

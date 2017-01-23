@@ -8,10 +8,6 @@ After adding the correct repository as indicated in the [download page]({{ site.
 ```sh 
 zypper install lenovo-confluent
 ```	
-If you already installed lenovo confluent and want to update , you can run: 
-```sh 
-    zypper up lenovo-confluent
-```	
 At which point go ahead and enable it and start it.
 ```sh 
 chkconfig confluent on
@@ -21,8 +17,8 @@ At this point, source the script below for confluent commandline functionality o
 ```sh 
 source /etc/profile.d/confluent_env.sh
 ```
-#Enabling the Web UI
-====================
+
+# Enabling the Web UI
 
 Enable Secure WebServer with SSL : 
 For more information see https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html. 
