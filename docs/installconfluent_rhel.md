@@ -8,10 +8,6 @@ After adding the correct repository as indicated in the [download page]({{ site.
 ```sh
 	yum install lenovo-confluent
 ```	
-If you are missing the GPG key, run the following comand. 
-```sh    
-	rpm --import https://hpc.lenovo.com/gpgkey.asc
-```
 If you already installed lenovo confluent and want to update , you can run: 
 ```sh    
 	yum update lenovo-confluent
@@ -21,9 +17,9 @@ At which point go ahead and enable it and start it.
 	chkconfig confluent on
 	service confluent start
 ```
-At this point, run the script below for confluent commands functional
+At this point, run the script below for confluent commandline functionality or logout and log back in. 
 ```sh 
-    . /etc/profile.d/confluent_env.sh
+    source /etc/profile.d/confluent_env.sh
 ```
 #Enabling the Web UI
 ====================

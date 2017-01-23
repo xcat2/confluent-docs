@@ -10,21 +10,13 @@ After adding the correct repository as indicated in the [download page]({{ site.
 ```sh
 	zypper install xCAT
 ```
-If you are missing the GPG key, run the following comand. 
-```sh 
-    rpm --import https://hpc.lenovo.com/gpgkey.asc
-```	
-If you already installed lenovo confluent and want to update , you can run: 
-```sh    
-	yum update lenovo-confluent
-```		
 To verify that you have installed xCAT
 ```sh
     service xcatd status
 ```
-At this point, run the script below for xCAT commands functional
+At this point, run the script below for xCAT commandline functionality or logout and log back in. 
 ```sh 
-    . /etc/profile.d/xcat.sh
+    source /etc/profile.d/xcat.sh
 ```
 For more information on installing xCAT, go to http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html
 
