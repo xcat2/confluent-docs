@@ -1,4 +1,9 @@
 #!/usr/bin/python
+path = os.path.dirname(os.path.realpath(__file__))
+path = os.path.realpath(os.path.join(path, '..', 'confluent', 'confluent_server'))
+sys.path.append(path)
+
+
 import confluent.config.attributes as attr
 import shutil
 
