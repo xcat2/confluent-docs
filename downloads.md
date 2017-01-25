@@ -20,7 +20,7 @@ Adding Repository for SuSE Linux Enterprise 12
     
 If you cannot reach the repo, you can download the tarballs and install the repositories locally on your system. 
 
-The files are located at https://hpc.lenovo.com/downloads/:
+The files are located at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo.com/downloads/ "https://hpc.lenovo.com/downloads/" ):
 
     #download package from web 
     wget xcat-<xcat version>.lenovo1_confluent-<confluent client/server version>_lenovo-confluent-<confluent web ui version>-<osver>.tar.bz2
