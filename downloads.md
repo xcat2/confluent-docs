@@ -19,21 +19,23 @@ Adding Repository for SuSE Linux Enterprise 12
     
 Adding Local Repository
 ============================    
-If you cannot reach the repository, you can download and install the repositories locally on your system. 
+If you cannot reach the repository from your target system, you can download the package from a system that can reach [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo.com/downloads/ "https://hpc.lenovo.com/downloads/" ) and then transfer and install the repositories locally on your target system. 
 
 The files are located at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo.com/downloads/ "https://hpc.lenovo.com/downloads/" ):
 
-    #download the package for your specific OS version
+    #On a system that can reach [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo.com/downloads/ "https://hpc.lenovo.com/downloads/" )
+    #Download the package for your specific OS version
     #ex: For RHEL , xcat-2.13.0.lenovo1_confluent-1.4.0_lenovo-confluent-0.3-el7.tar.bz2
     wget xcat-<xcat version>.lenovo1_confluent-<confluent client/server version>_lenovo-confluent-<confluent web ui version>-<osver>.tar.bz2
     
-    #create folder for the local repository
+    #On your local system 
+    #Create folder for the local repository
     mkdir /mnt/local_repo
     
-    #extract the repository 
+    #Extract the repository 
     tar -xjvf <name of package> -C /mnt/local_repo
     
-    #create lenovo-hpc.repo to point to the local repository
+    #Create lenovo-hpc.repo to point to the local repository
     cd /mnt/local_repo/lenovo-hpc-<osver>/
     ./mklocalrepo.sh
     
