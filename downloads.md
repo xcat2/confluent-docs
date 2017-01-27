@@ -26,7 +26,7 @@ The files are located at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo
     #On a system that can reach https://hpc.lenovo.com/downloads/
     #Download the package for your specific OS version
     #ex: For RHEL , xcat-2.13.0.lenovo1_confluent-1.4.0_lenovo-confluent-0.3-el7.tar.bz2
-    wget xcat-<xcat version>.lenovo1_confluent-<confluent client/server version>_lenovo-confluent-<confluent web ui version>-<osver>.tar.bz2
+    wget https://hpc.lenovo.com/downloads/latest/xcat-<xcat version>.lenovo1_confluent-<confluent client/server version>_lenovo-confluent-<confluent web ui version>-<osver>.tar.bz2
     
     #On your local system 
     #Create folder for the local repository
