@@ -32,6 +32,4 @@ If you are NOT able to connect to the optional repository, download the followin
 * net-snmp-perl
 * perl-Net-Telnet
 * perl-Crypt-CBC
-* perl-Digest
-* perl-Digest-MD5
 
