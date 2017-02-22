@@ -12,6 +12,14 @@ such as those found under ToolsCenter, as well as xCAT and confluent.
 Adding Repository for Red Hat Enterprise Linux 7
 ============================
     yum install https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+    
+On a new Minimal Install without Red Hat Subscription Manager configured. You will need additional packages from the install media. 
+Follow instuctions to add the install media as a repository on [https://access.redhat.com/solutions/1355683](https://access.redhat.com/solutions/1355683 "https://access.redhat.com/solutions/1355683"). 
+Complete adding the Lenovo HPC repository by running the following commands.  
+    
+    yum install wget
+    wget https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+    rpm -ivh lenovo-hpc-yum-1-1.x86_64.rpm
 
 Adding Repository for SuSE Linux Enterprise 12
 ============================
@@ -38,4 +46,6 @@ The files are located at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo
     #Create lenovo-hpc.repo to point to the local repository
     cd /mnt/local_repo/lenovo-hpc-<osver>/
     ./mklocalrepo.sh
+    
+    
     
