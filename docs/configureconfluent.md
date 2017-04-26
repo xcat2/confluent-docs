@@ -18,19 +18,16 @@ documentation.
 
 To get started, it is suggested to use the `everything` group to set universal attributes.
 Usually a cluster uses the same username/password across the IMMs.  In such a case, it is
-suggested to set this on the `everything` group:
+suggested to set this data as attributes on the `everything` group:
 
 	confetty set /nodegroups/everything/attributes/current secret.hardwaremanagementuser=immusername secret.hardwaremanagementpassword=immpassword console.method=ipmi
 
-From there, adding a specific node involves:
+From there, adding a specific node using values from everything combined with node unique data would involve the following:
 
 	confetty create /nodes/n3 hardwaremanagement.manager=n3-imm
 
 Note that a complete list of attributes that may be set can be found  in [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
 
-
-With that, the confluent commands and web gui will function with any node defined as above.  The rest of this document provides more information, but
-it is not strictly required to read further.
 
 Another common task is to create a custom group, with particular meaning to a specific environment.  For example:
 
@@ -41,7 +38,8 @@ These groups, like the `everything` group can hold any attribute, and may also u
 
 	confetty create /nodes/n1 groups=rack1,compute
 
-At which point, `n1` has location and IMM address configured just by virtue of the nodes it was assigned to.
+At which point, `n1` has location and IMM address configured just by virtue of the nodes it was assigned to.  Note that membership in
+the `everything` group is automatic, even if not listed in the groups for a node to be in, it will nevertheless land in that group.
 
 
 

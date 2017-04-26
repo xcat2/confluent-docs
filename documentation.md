@@ -8,10 +8,12 @@ toplevel: yes
 Getting started for Red Hat Enterprise Linux 7:
 * [Installing xCAT ]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 * [Installing confluent ]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
+* [Configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html)
 
 Getting started for SUSE Linux Enterprise Server 12:
 * [Installing xCAT ]({{ site.baseurl }}/documentation/installxcat_suse.html)
 * [Installing confluent ]({{ site.baseurl }}/documentation/installconfluent_suse.html)
+* [Configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html)
 
 General concepts:
 
