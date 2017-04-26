@@ -12,8 +12,8 @@ standalone.
 
 In confluent, configuration is organized as attributes on nodes.  The 
 attributes may be directly configured on a node or inherited from a group.
-Values may be a straightforward string or an expression as documeted in 
-the [atribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
+Values may be a straightforward string or an expression as documented in 
+the [attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
 documentation.
 
 To get started, it is suggested to use the `everything` group to set universal attributes.
