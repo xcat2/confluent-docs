@@ -22,7 +22,7 @@ suggested to set this data as attributes on the `everything` group:
 
 	confetty set /nodegroups/everything/attributes/current secret.hardwaremanagementuser=immusername secret.hardwaremanagementpassword=immpassword console.method=ipmi
 
-From there, adding a specific node using values from everything combined with node unique data would involve the following:
+From there, adding a specific node using values from the group `everything` combined with node specific attributes could involve the following:
 
 	confetty create /nodes/n3 hardwaremanagement.manager=n3-imm
 
