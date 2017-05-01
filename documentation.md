@@ -15,8 +15,9 @@ Getting started for SUSE Linux Enterprise Server 12:
 * [Installing confluent ]({{ site.baseurl }}/documentation/installconfluent_suse.html)
 * [Configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html)
 
-General concepts:
+General documentation:
 
+* [Man pages]({{ site.baseurl }}/documentation/man/)
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
 * [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
 * [Attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
