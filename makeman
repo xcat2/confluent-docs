@@ -9,6 +9,9 @@ permalink: /documentation/man/
 ---
 
 EOF
+cd ../confluent/confluent_client/doc/man/
+./buildindex.sh
+cd -
 for page in ../confluent/confluent_client/doc/man/*.ronn; do
     cmdname=$(basename $page)
     cmdname=${cmdname%.ronn}
