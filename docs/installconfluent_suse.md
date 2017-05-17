@@ -51,6 +51,10 @@ In terms of confluent itself, it is by default set up without any user access.  
 
 This will create a user named 'demouser' that will be able to use the password 'password'
 
+After these steps, the GUI should be available at:
+
+    https://[server]/lenovo-confluent/
+
 # Getting ready to use confluent
  
 Proceed to [configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html) for information on
