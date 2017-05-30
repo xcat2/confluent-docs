@@ -114,7 +114,7 @@ case, the desired node that correlates to that mac address is r2.  We use `set` 
 
 Is the same as:
 
-    / -> set /discovery/by-model/5463AC1/by-serial/06DPMDF/by-mac/40-f2-e9-b9-10-1d node=r2
+    / -> set /discovery/by-mac/40-f2-e9-b9-10-1d node=r2
     assigned: r2
 
 This will kick off the process to automatically configure r2.  The node may take a moment to configure, but it should soon be possible to verify that the node discovered:
