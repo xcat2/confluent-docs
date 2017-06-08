@@ -164,7 +164,7 @@ First we set the enclosure attributes on the nodes:
 We then make sure the enclosure manager is a node and configure the location of
 it's switch port:
 
-    nodeattrib enc1 net.switch=8 net.switch=r8e1
+    nodeattrib enc1 net.switchport=8 net.switch=r8e1
     
 By default, confluent will assume it can use SNMPv1/v2c, community string `public`
 to communicate with the switch.  To use a different SNMP community string:
