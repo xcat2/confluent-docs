@@ -21,15 +21,3 @@ For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-
 
 To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html "Install Confluent")
 
-## *Issues:*
-
-Additional packages may be required when installing xCAT. 
-For RHEL, connect to the RedHat Subscription Manager and connect to the optional channel 
-
-    subscription-manager repos --enable=rhel-7-server-optional-rpms
-
-If you are NOT able to connect to the optional repository, download the following packages and install them with rpm: 
-* net-snmp-perl
-* perl-Net-Telnet
-* perl-Crypt-CBC
-

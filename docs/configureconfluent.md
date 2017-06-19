@@ -41,5 +41,5 @@ These groups, like the `everything` group can hold any attribute, and may also u
 At which point, `n1` has location and IMM address configured just by virtue of the nodes it was assigned to.  Note that membership in
 the `everything` group is automatic, even if not listed in the groups for a node to be in, it will nevertheless land in that group.
 
-
+For information on using confluent to aid in autoconfiguration and mac address collection (whether automatic or manual), see [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html).
 
