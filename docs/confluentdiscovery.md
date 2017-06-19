@@ -10,8 +10,8 @@ automate the deployment of configuration of Integrated Management Module
 and xClarity Controller devices without knowing the addresses ahead of time.
 
 For optimal results, the confluent server should be on the same network as
-the management ports.  Additionally, it is more robust if IPv6 is not disabled,
-though no IPv6 addresses need to be configured. Also, the general default
+the management ports.  Additionally, it is more robust if IPv6 is enabled,
+though no IPv6 addresses need to be configured (it can use the fe80:: addresseses that appear by default on network interfaces). Also, the general default
 configuration for Lenovo servers is to only have the dedicated management port
 enabled.  As such, a server without the management port wired is likely to not
 complete the discovery process.
