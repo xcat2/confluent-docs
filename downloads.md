@@ -36,7 +36,7 @@ The files are located at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo
     mkdir /mnt/local_repo
     
     #Extract the repository 
-    tar -xjvf <name of package> -C /mnt/local_repo
+    tar -xf <name of package> -C /mnt/local_repo
     
     #Create lenovo-hpc.repo to point to the local repository
     cd /mnt/local_repo/lenovo-hpc-<osver>/
