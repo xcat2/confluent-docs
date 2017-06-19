@@ -19,6 +19,7 @@ Getting started for SUSE Linux Enterprise Server 12:
 
 General documentation:
 
+* [Applying software updates to Red Hat Enterprise Linux 7]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Man pages]({{ site.baseurl }}/documentation/man/)
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
 * [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)

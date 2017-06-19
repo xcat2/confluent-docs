@@ -42,5 +42,8 @@ The files are located at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo
     cd /mnt/local_repo/lenovo-hpc-<osver>/
     ./mklocalrepo.sh
     
-    
+Further information
+=======================
+See the [documentation]({{ site.baseurl }}/documentation) for information on how to install and configure software provided in these repositories.
+
     

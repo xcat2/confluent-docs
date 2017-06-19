@@ -45,7 +45,7 @@ Enable SSL on Apache
     a2enflag SSL
     service apache2 restart
 
-In terms of confluent itself, it is by default set up without any user access.  To create a user than may be used from the web interface:
+In terms of confluent itself, it is by default set up without any user access.  To create a user that may be used from the web interface:
 
     confetty create /users/demouser password=password
 
