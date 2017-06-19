@@ -6,8 +6,7 @@ toplevel: yes
 ---
 
 Lenovo provides yum repositories of relevant software for managing HPC as well
-as scale out Linux installations in general.  This includes Lenovo utilities
-such as those found under ToolsCenter, as well as xCAT and confluent.
+as scale out Linux installations in general.  This includes xCAT and confluent.
 
 Adding Repository for Red Hat Enterprise Linux 7
 ============================
