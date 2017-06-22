@@ -31,7 +31,7 @@ For quick start generating dummy ssl certificate:
 
 Create SSL conf on Apache 	
 
-    cd /etc/apache2/conf.d/
+    cd /etc/apache2/vhosts.d/
     cp vhost-ssl.template mySSL.conf 
 
 Edit mySSL.conf 
