@@ -8,6 +8,10 @@ After adding the correct repository as indicated in the [download page]({{ site.
 
     zypper install xCAT
 
+It is strongly recommended to also install lenovo-onecli:
+
+    zypper install lenovo-onecli
+
 To verify that you have installed xCAT
 
     service xcatd status

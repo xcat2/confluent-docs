@@ -8,6 +8,10 @@ After adding the correct repository as indicated in the [download page]({{ site.
 
     yum install xCAT
 
+It is strongly recommended to also install lenovo-onecli:
+
+    yum install lenovo-onecli
+
 To verify that you have installed xCAT
 
     service xcatd status
@@ -15,7 +19,6 @@ To verify that you have installed xCAT
 At this point, source the script below for xCAT command line functionality or logout and log back in. 
 
     source /etc/profile.d/xcat.sh
-
 
 For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Install Guide")
 
