@@ -154,7 +154,7 @@ one node:
 
 ### Defining required attributes on the nodes, enclosure managers, and switches
 
-In this example, we have 4 ThinkSystem SD530 servers in an enclosure.  That enclosure 
+In this example, we have [4 ThinkSystem SD530 servers in a D2 enclosure](http://www3.lenovo.com/us/en/data-center/servers/high-density/Lenovo-ThinkSystem-SD530/p/77XX7DSSD53).  That enclosure 
 has a management port plugged into a switch called `r8e1` on port 8.
 
 First we set the enclosure attributes on the nodes:
@@ -174,6 +174,11 @@ to communicate with the switch.  To use a different SNMP community string:
 Or for SNMPv3:
 
     confetty create /nodes/r8e1 secret.hardwaremanagementuser=snmpv3user secret.hardwaremanagementpassword=snmpv3password
+
+In the event of a rackmount system, such as the [Thinksystem SD650](http://www3.lenovo.com/us/en/data-center/servers/racks/Lenovo-ThinkSystem-SR650/p/77XX7SRSR65),
+simply assign net attributes directly to the node:
+
+    nodeattrib n1-n20 net.switchport={n1} net.switch=r8e1
 
 
 ### Resetting automatic discovery process for nodes
