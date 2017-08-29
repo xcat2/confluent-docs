@@ -12,6 +12,14 @@ It is strongly recommended to also install lenovo-onecli:
 
     zypper install lenovo-onecli
 
+The default assures ability to use a local SQLite database.  If you want to use PostgreSQL you will also need:
+
+    zypper install perl-DBD-Pg
+
+If you wish to use MySQL instead, then:
+
+    zypper install perl-DBD-MySQL
+
 To verify that you have installed xCAT
 
     service xcatd status

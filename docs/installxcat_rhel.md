@@ -12,6 +12,14 @@ It is strongly recommended to also install lenovo-onecli:
 
     yum install lenovo-onecli
 
+The default assures ability to use a local SQLite database.  If you want to use PostgreSQL you will also need:
+
+    yum install perl-DBD-Pg
+
+If you wish to use MySQL instead, then:
+
+    yum install perl-DBD-MySQL
+
 To verify that you have installed xCAT
 
     service xcatd status
