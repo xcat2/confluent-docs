@@ -31,6 +31,10 @@ Power and Cooling Monitoring:
 * [Power Histogram]({{ site.baseurl }}/documentation/energyhistogram.html)
 * [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
 
+Advanced topics:
+
+* [Remote confluent access (for xCAT rcons with service nodes)]({{ site.baseurl }}/documentation/remoteconfluent.html)
+
 For developers:
 
 * [API reference]({{ site.baseurl }}/documentation/developer/api.html)

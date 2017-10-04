@@ -1,5 +1,6 @@
 all:
 	./makeattribdoc
+	./makeman
 	jekyll b
 
 testupload:
