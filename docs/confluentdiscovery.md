@@ -24,6 +24,10 @@ password `Passw0rd12`:
 
     confetty create /noderange/n1-n42 hardwaremanagement.manager=10.2.3.{n1} secret.hardwaremanagementuser=admin secret.hardwaremanagementpassword=Passw0rd12
 
+If the hardwaremanagement.manager value is not provided, it will attempt to instead collect fe80:: ip addresses.  As a consequence,
+if using xCAT and makeconfluentcfg rather than configuring confluent directly, ensure that `ipmi.bmc` is set on nodes in xCAT if you
+want to force IPv4 configuration down.
+
 With the node definition complete, discovery can now be approached in one of two ways, [automatic](#automatic-discovery)
 or [manual](#manual-discovery).  The automatic approach is good for environments that have a well defined map
 of servers or server enclosures to ethernet switch ports, and the manual approach
