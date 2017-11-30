@@ -9,6 +9,7 @@ Getting started for Red Hat Enterprise Linux 7:
 * [Installing xCAT ]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 * [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 * [Configuring confluent]({{ site.baseurl }}/documentation/configconfluent.html)
+* [Configuring confluent from xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
 
 Getting started for SUSE Linux Enterprise Server 12:
