@@ -14,6 +14,10 @@ using powershell:
 	$env:XCCUSER='username'
 	$env:XCCPASS='password'
 
+Additionally, when using powershell, be mindful that it will transform
+arguments with `,` in them, so you may need to quote arguments in that
+environment.
+
 Here are some example usage scenarios:
 ```
 # ./storagecfg -x 172.30.254.251 show
