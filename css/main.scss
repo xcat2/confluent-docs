@@ -59,3 +59,25 @@ dd {
         margin-left: 1em;
         margin-bottom: 1.5em;
 }
+
+$terminal-window-height: 30px;
+$border-color: black;
+$base-color: grey;
+$border-radius: 0;
+
+
+//.language-xcat {
+//
+//  &::before {
+//    content: "xCAT command # ";
+//    position: absolute;
+//  }
+//}
+
+//.language-confluent {
+//  &::before {
+//    content: "confluent command # ";
+//    position: absolute;
+//  }
+//}
+

@@ -6,7 +6,7 @@ toplevel: yes
 ---
 
 Getting started for Red Hat Enterprise Linux 7:
-* [Installing xCAT ]({{ site.baseurl }}/documentation/installxcat_rhel.html)
+* [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 * [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 * [Configuring confluent]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Configuring confluent from xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
@@ -25,6 +25,7 @@ General documentation:
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
 * [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
 * [Attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
+* [Specifying connected switch ports for nodes]({{site.baseurl}}/documentation/switchportattribs.html)
 
 
 Power and Cooling Monitoring:
