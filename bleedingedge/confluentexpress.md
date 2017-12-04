@@ -18,7 +18,7 @@ to disconnect from VPNs while using this software.
 Upon the software running and a link established between the laptop and the
 dedicated management port of the server or chassis, a screen like the following
 should be visible:
-[Express Welcome]({{site.baseurl}}/assets/0welcomescreen.png)
+![Express Welcome]({{site.baseurl}}/assets/0welcomescreen.png)
 
 The links on the left side may now be used to access the individual device
 web interfaces without knowing the IP addresses in advance.  You may use this
@@ -28,5 +28,5 @@ Alternatively, you may enter a username and password on the right to bring up al
 details available on mouseover.  Additionally, you will be able to open the text console to access the UEFI setup menu, regardless of whether you have a remote
 video license.
 
-[Windows Executable]({{site.baseurl}}/assets/confluent-0.50.zip)
+[Windows Executable]({{site.baseurl}}/assets/confluentexpress-0.50.zip)
 
