@@ -8,7 +8,7 @@ First add the Lenovo HPC yum repository appropriate to your environment accordin
 
     yum --disablerepo=* --enablerepo=lenovo-hpc update
 
-Additionally, as of this writing there is a [bug](https://bugzilla.redhat.com/show_bug.cgi?id=1459947) in their python-cryptography package that requires a workaround:
+Additionally, as of this writing there is a [bug](https://bugzilla.redhat.com/show_bug.cgi?id=1459947) in their python-cryptography package that requires the following workaround:
 
     yum install python-setuptools
 
