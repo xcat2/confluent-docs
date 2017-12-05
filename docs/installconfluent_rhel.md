@@ -4,11 +4,19 @@ title: Confluent Installation for Red Hat Enterprise Linux 7
 permalink: /documentation/installconfluent_rhel.html
 ---
 
-After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:
+First add the Lenovo HPC yum repository appropriate to your environment according to the procedure on the  [download page]({{ site.baseurl }}/downloads/).  It is suggested to then make sure there are no updates in the repository for your existing software:
+
+    yum --disablerepo=* --enablerepo=lenovo-hpc update
+
+Additionally, as of this writing there is a [bug](https://bugzilla.redhat.com/show_bug.cgi?id=1459947) in their python-cryptography package that requires a workaround:
+
+    yum install python-setuptools
+
+At this point, the package may be installed:
 
     yum install lenovo-confluent
 
-At which point go ahead and enable it and start it.
+Next, enable it and start the confluent service:
 
     chkconfig confluent on
     service confluent start
@@ -19,7 +27,7 @@ At this point, source the script below for confluent command line functionality 
 
 # Enabling the Web UI
 
-First, if you have SELinux enforcing, you need to allow httpd to make network
+If you have SELinux enforcing, you need to allow httpd to make network
 connections:
 
     setsebool -P httpd_can_network_connect=on
@@ -33,7 +41,7 @@ In terms of confluent itself, it is by default set up without any user access.  
 
     confetty create /users/demouser password=password
 
-This will create a user named 'demouser' that will be able to use the password 'password'
+This will create a user named 'demouser' that will be able to use the password 'password'.
 
 After these steps, the GUI should be available at:
 
@@ -41,5 +49,5 @@ After these steps, the GUI should be available at:
 
 # Getting ready to use confluent
  
-Proceed to [configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html) for information on
+Proceed to [configuring confluent]({{ site.baseurl }}/documentation/configconfluent.html) for information on
 adding groups and nodes.
