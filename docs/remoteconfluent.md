@@ -26,10 +26,12 @@ be provided via environment variables:
 
     CONFLUENT_USER=demouser
     CONFLUENT_PASSPHRASE="password"
+    export CONFLUENT_USER CONFLUENT_PASSPHRASE
 
 Additionally, while rcons automatically connects to the relevant confluent server, other confluent commands
 currently do not get automatically routed.  If you want to run a confluent command such as nodepower explicitly
 against another host, this can be done by setting the CONFLUENT_HOST variable:
 
     CONFLUENT_HOST=10.1.0.1
+    export CONFLUENT_HOST
 
