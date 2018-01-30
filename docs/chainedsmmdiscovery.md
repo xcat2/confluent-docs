@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Discovery with chained ThinkSystem D2 enclosures
-parmalink: /documentaction/chainedsmmdiscovery.html
+permalink: /documentation/chainedsmmdiscovery.html
 ---
 
 The ThinkSystem D2 enclosure (which houses SD530 servers) has a variant of System Management Module (SMM) that supports chaining
@@ -13,8 +13,8 @@ At the time of this writing, the procedure for physical location based auto disc
 
 * Do *not* set any switch attributes for any SMM (verify by running `nodeattrib <noderange> net` and seeing they are all empty).
 * Ensure that all the nodes have correct enclosure.manager/enclosure.bay attribute (`nodeattrib <noderange> enclosure`)
-* All the nodes must have either `permissive,pxe` or `open` as the `discovery.policy` attribute (`nodeattrib <noderange> discovery.policy=permissive,pxe) to enable
-  PXE discovery.  `permissive,pxe` is the recommended setting for a balance of automatic behavior versus security.
+* All the nodes must have either `permissive,pxe` or `open` as the `discovery.policy` attribute (`nodeattrib <noderange> discovery.policy=permissive,pxe`) to enable
+  PXE discovery.  The recommended discovery policy is `permissive,pxe` for a balance of automatic behavior versus security.
 * Provide net.*.switch/net.*.switchport values for the ethernet ports that will PXE boot of the SD530 servers
 * Induce the servers to PXE boot (generally by turning them on).  The PXE attempt need not be able to succeed, but confluent must be on the same VLAN (regardless of IP configuration).
 
