@@ -71,7 +71,7 @@ it recognizes the relationship between a pxe-client and the managing xcc.
 #### Assigning from a spreadsheet (.csv) based on serial numbers
 
 One common scenario is having a spreadsheet of desired configuration together with the serial number.  To do this, create a csv file with
-a header describing the avalibale data followed by records to import.  For example:
+a header describing the available data followed by records to import.  For example:
 
 ```
 node,serial,bmc,bmcuser,bmcpass
