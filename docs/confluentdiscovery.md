@@ -168,7 +168,7 @@ during initial deployment, but change to `manual` after systems are up:
     nodegroupattrib everything discovery.policy=manual
 
 If you have a system that needs to be replaced, you can use manual discovery as
-documented in the next section or temporarily override the policy for just the
+documented in the previous section or temporarily override the policy for just the
 one node:
 
     nodeattrib n3 discovery.policy=open
