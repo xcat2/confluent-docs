@@ -155,10 +155,12 @@ of their choosing as trusted to be that node.
 * `permissive` will allow automatic discovery only if the proposed node identity does not already have a known certificate (in the nodes `pubkeys.tls_hardwaremanager` attribute), allowing new nodes to
 fill out defined nodes not yet bound to an actual node.  Note that nodes that
 are defined, but not yet discovered are a risk to the same scenario as described in `open`
+* `pxe` allows free replacement of PXE related data (mac addresses and UUID), but will not allow free replacement of secure data.  This can be a standalone policy or combined with permissive by using the value `permissive,pxe`.  This allows relaxing the policy to `open`, but only for PXE data, which cannot have meaningful protections to
+automate.  In this mode, ethernet mac addresses will be collected to a `net.<n>.hwaddr` field if the corresponding `net.<n>.bootable` is true.
 
-The policy can be defined on a per node basis or by group.  Here we will select `permissive` across the board:
+The policy can be defined on a per node basis or by group.  Here we will select `permissive,pxe` across the board, and enable PXE collection to a field called `net.pxe.hwaddr`:
 
-    nodegroupattrib everything discovery.policy=permissive
+    nodegroupattrib everything discovery.policy=permissive,pxe net.pxe.bootable=true
 
 The policy can be changed on the fly, if for example you want `open` or `permissive`
 during initial deployment, but change to `manual` after systems are up:
