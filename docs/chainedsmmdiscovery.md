@@ -15,7 +15,7 @@ At the time of this writing, the procedure for physical location based auto disc
 * Ensure that all the nodes have correct enclosure.manager/enclosure.bay attribute (`nodeattrib <noderange> enclosure`)
 * All the nodes must have either `permissive,pxe` or `open` as the `discovery.policy` attribute (`nodeattrib <noderange> discovery.policy=permissive,pxe`) to enable
   PXE discovery.  The recommended discovery policy is `permissive,pxe` for a balance of automatic behavior versus security.
-* Provide net.*.switch/net.*.switchport values for the ethernet ports that will PXE boot of the SD530 servers
+* Provide net.\*.switch/net.\*.switchport values for the ethernet ports that will PXE boot of the SD530 servers
 * Induce the servers to PXE boot (generally by turning them on).  The PXE attempt need not be able to succeed, but confluent must be on the same VLAN (regardless of IP configuration).
 
 The procedure will then automaticly proceed as follows:
