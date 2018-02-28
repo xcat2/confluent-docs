@@ -5,11 +5,28 @@ permalink: /documentation/chainedsmmdiscovery.html
 ---
 
 The ThinkSystem D2 enclosure (which houses SD530 servers) has a variant of System Management Module (SMM) that supports chaining
-enclosures together.  For the usual discovery flow in confluent, it is not obvious how this should work.  In this topology, fully
-zero power discovery will not be possible until a firmware update in the first half of 2018 together with a confluent update at that
-time.
+enclosures together.  For the usual discovery flow in confluent, it is not obvious how this should work.  
 
-At the time of this writing, the procedure for physical location based auto discovery is as follows:
+There are two strategies.  The [first](#fully-out-of-band-discovery) is more resiliant and easier, but requires confluent 1.8.0 together with SMM firmware 1.04.
+
+The [other](#pxe-driven-discovery) works with older chained SMM firmware, but requires nodes to attempt PXE boot.
+
+# Fully out of band discovery
+
+* Confirm that you have confluent version 1.8.0, and that all SMMs will at
+  least have firmware 1.04
+* Set the `net.switch` and `net.switchport` attributes *only* on the SMM directly connected to a switch.
+* For other SMMs, set `enclosure.extends` attribute to a directly connected adjacent SMM.  For example, with
+  three SMMs, smm1 would have `net` attributes to describe connecting to switch, smm2 would have 
+  `enclosure.extends==smm1`, and smm3 would have `enclosure.extends==smm2`
+* It is *not* required to have `net` attributes defined for any of the nodes.
+* Discovery proceeds normally in accordance with the general documentiation of
+  discovery [here]({{site.baseurl}}/documentaction/confluentdisco.html)
+
+
+# PXE Driven Discovery
+If using older SMM firmware in a chain, or else wanting to drive discovery from the node network side
+rather than the SMM side, the method with PXE may be used.
 
 * Do *not* set any switch attributes for any SMM (verify by running `nodeattrib <noderange> net` and seeing they are all empty).
 * Ensure that all the nodes have correct enclosure.manager/enclosure.bay attribute (`nodeattrib <noderange> enclosure`)
