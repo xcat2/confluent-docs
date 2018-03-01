@@ -13,6 +13,7 @@ The [other](#pxe-driven-discovery) works with older chained SMM firmware, but re
 
 # Fully out of band discovery
 
+* The ethernet switch must have LLDP enabled
 * Confirm that you have confluent version 1.8.0, and that all SMMs will at
   least have firmware 1.04
 * Set the `net.switch` and `net.switchport` attributes *only* on the SMM directly connected to a switch.
