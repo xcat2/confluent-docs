@@ -5,21 +5,28 @@ permalink: /documentation/
 toplevel: yes
 ---
 
+Generally speaking, there are two suggested approaches:
+* Using xCAT and confluent together - When you are used to xCAT or want to use xCAT for OS deployment and/or service nodes.  For this situation, start with the xCAT documentation.
+* Using confluent standalone - If you do not have service nodes and do not have to deploy OSes, then skip xCAT and go straight to confluent documentation.
+
 Getting started for Red Hat Enterprise Linux 7:
 * [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_rhel.html)
+* [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
 * [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 * [Configuring confluent]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Applying software updates to Red Hat Enterprise Linux 7]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
 
 Getting started for SUSE Linux Enterprise Server 12:
-* [Installing xCAT ]({{ site.baseurl }}/documentation/installxcat_suse.html)
+* [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_suse.html)
+* [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
 * [Installing confluent ]({{ site.baseurl }}/documentation/installconfluent_suse.html)
 * [Configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
 
 General documentation:
 
+* [Discovery with chained ThinkSystem D2 enclosures]({{site.baseurl}}/documentations/chainedsmmdiscovery.html)
 * [Configuring confluent from xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Man pages]({{ site.baseurl }}/documentation/man/)
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
