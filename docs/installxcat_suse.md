@@ -28,6 +28,8 @@ At this point, source the script below for xCAT command line functionality or lo
 
     source /etc/profile.d/xcat.sh
 
+For some notes on configuring certain Lenovo equipment in xCAT, see [xCAT configuration notes]({{site.baseurl}}/documentation/xcatconfignotes.html "xCAT config notes")
+
 For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Install Guide")
 
 To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_suse.html "Install Confluent")
