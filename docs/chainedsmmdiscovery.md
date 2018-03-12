@@ -7,7 +7,7 @@ permalink: /documentation/chainedsmmdiscovery.html
 The ThinkSystem D2 enclosure (which houses SD530 servers) has a variant of System Management Module (SMM) that supports chaining
 enclosures together.  For the usual discovery flow in confluent, it is not obvious how this should work.  
 
-There are two strategies.  The [first](#fully-out-of-band-discovery) is more resiliant and easier, but requires confluent 1.8.0 together with SMM firmware 1.04.
+There are two strategies.  The [first](#fully-out-of-band-discovery) is more resilient and easier, but requires confluent 1.8.0 together with SMM firmware 1.04.
 
 The [other](#pxe-driven-discovery) works with older chained SMM firmware, but requires nodes to attempt PXE boot.
 
