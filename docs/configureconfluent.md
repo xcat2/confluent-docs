@@ -4,11 +4,14 @@ title: Configuring confluent
 permalink: /documentation/configconfluent.html
 ---
 
+## When used in conjunction with xCAT
+
 If you wish to use xCAT to create the confluent configuration, see
 [Configuring confluent from xCAT]({{site.baseurl}}/documentation/configconfluent_xcat.html)
-The remainder of this document is more applicable to users working with confluent
-standalone.
+The remainder of this document is mostly applicable to users working with confluent
+standalone directly rather than using xCAT to configure.
 
+## Using Confluent without xCAT
 
 In confluent, configuration is organized as attributes on nodes.  The 
 attributes may be directly configured on a node or inherited from a group.
