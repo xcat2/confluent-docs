@@ -19,7 +19,7 @@ Under the presented SONAR tab, select 'Quarantine' for High risk detection and c
 
 
 Under Suspicious Behavior Detection tab, change High risk detection to 'Prompt':
-![Suspicious Behavior Detection tab]({{site.baseurl}}/assets/susipcious.jpg)
+![Suspicious Behavior Detection tab]({{site.baseurl}}/assets/suspicious.jpg)
 
 
 When you run confluent express, you may see the executable flagged.  Ensure that the risk is SONAR.Heuristic.159, and if so
