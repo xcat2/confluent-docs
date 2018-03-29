@@ -26,7 +26,7 @@ Getting started for SUSE Linux Enterprise Server 12:
 
 General documentation:
 
-* [Discovery with chained ThinkSystem D2 enclosures]({{site.baseurl}}/documentations/chainedsmmdiscovery.html)
+* [Discovery with chained ThinkSystem D2 enclosures]({{site.baseurl}}/documentation/chainedsmmdiscovery.html)
 * [Configuring confluent from xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Man pages]({{ site.baseurl }}/documentation/man/)
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
