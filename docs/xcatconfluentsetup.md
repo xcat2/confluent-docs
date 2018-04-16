@@ -4,6 +4,10 @@ title: Confluent setup in existing xCAT configuration
 permalink: /documentation/configconfluent_xcat.html
 ---
 
+In order to opt into using confluent as your console service, set the site table value for consoleservice:
+
+	# chtab key=consoleservice site.value=confluent
+
 Current xCAT versions include a command called `makeconfluentcfg`.  This command can be used without arguments to try
 to define or update all node configuration in confluent based on xCAT configuration.
 
