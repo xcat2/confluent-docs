@@ -8,3 +8,7 @@ markdown: kramdown
 kramdown:
         input: GFM
         hard_wrap: false
+        syntax_highlighter: rouge
+        syntax_highlighter_opts:
+                default_lang: 'sh'
+

@@ -1,0 +1,30 @@
+#!/bin/bash
+cd `dirname $0`
+mkdir -p man
+cat << EOF > man/index.md
+---
+layout: page
+title: Confluent command man pages
+permalink: /documentation/man/
+---
+
+EOF
+cd ../confluent/confluent_client/doc/man/
+./buildindex.sh
+cd -
+for page in ../confluent/confluent_client/doc/man/*.ronn; do
+    cmdname=$(basename $page)
+    cmdname=${cmdname%.ronn}
+    echo "* [$cmdname]({{ site.baseurl }}/documentation/man/$cmdname.html)" >> man/index.md
+    cat << EOF > man/${cmdname%.ronn}.html
+---
+layout: page
+permalink: /documentation/man/$cmdname.html
+---
+EOF
+    ronn --pipe --html $page >> man/${cmdname%.ronn}.html 
+    ls man/${cmdname%.ronn}.html 
+done
+
+    
+
