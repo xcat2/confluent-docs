@@ -55,7 +55,7 @@ submitting the following JSON:
 Will auto-detect {n1} as an expression and assign it normally.  If wanting to set that value
 verbatim, it can either be escaped by doubling the {} or by explicitly declaring it as a value:
 
-	{ 'location.rack': '{{n1}}' }
+	{ 'location.rack': '{% raw %}{{n1}}{% endraw %}' }
 
 	{ 'location.rack': { 'value': '{n1}' } }
 
