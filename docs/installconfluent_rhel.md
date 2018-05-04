@@ -43,6 +43,11 @@ In terms of confluent itself, it is by default set up without any user access.  
 
 This will create a user named 'demouser' that will be able to use the password 'password'.
 
+If the web server is not already started, enable the web server:
+
+    chkconfig httpd on
+    service httpd start
+
 After these steps, the GUI should be available at:
 
     https://[server]/lenovo-confluent/

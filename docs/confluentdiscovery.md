@@ -188,11 +188,12 @@ it's switch port:
     nodeattrib enc1 net.switchport=8 net.switch=r8e1
     
 By default, confluent will assume it can use SNMPv1/v2c, community string `public`
-to communicate with the switch.  To use a different SNMP community string:
+to communicate with the switch.  To use a different SNMP community string, make
+sure the ethernet switch is defined as a node and set a value for secret.snmpcommunity:
 
     nodedefine r8e1 secret.snmpcommunity=otherpublic
 
-Or for SNMPv3:
+Or for SNMPv3, use secret.hardwaremanagementuser and hardwaremanagementpassword:
 
     nodedefine r8e1 secret.hardwaremanagementuser=snmpv3user secret.hardwaremanagementpassword=snmpv3password
 
