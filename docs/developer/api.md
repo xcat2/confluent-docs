@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Confluent API Documentation
+title: **Confluent API Documentation**
 permalink: /documentation/developer/api.html
 ---
 
@@ -14,7 +14,7 @@ It is suggested to browse the API using confetty (without arguments) or using
 a web browser pointed at http://[mgt]:4005/ (once remote HTTP usage has been
   enabled)
 
-## Enabling remote usage over HTTP
+## **Enabling remote usage over HTTP**
 By default, confluent API is only accessible locally over a unix domain socket.
 To enable a remote user for HTTP access, the quickest method is to use confetty
 to create a local account:
@@ -24,7 +24,7 @@ to create a local account:
 With the above example, using 'apiuser' and 'apipassword' in the user/password
 prompt will provide access when accessing the management server by http://servername:14005/.
 
-## Using python to access the API
+## **Using python to access the API**
 All of the confluent command lines are implemented in python.  They serve
 as a good reference to review accessing the API.  For example, reviewing
 the source code of 'nodepower' can be very informative.  In general, a
@@ -72,15 +72,15 @@ collection.
 
 -->
 
-## API Structure
+## **API Structure**
 
 The Confluent API structure is set up like a psuedo file system. Reading these paths
 will list the respective data. To update, the same path is given, along with the data to
 be used in the update, such as *{'state' : [newstate]}*. 
 
-### Accessing Nodes: /nodes/ and /noderange/
+### **Accessing Nodes: /nodes/ and /noderange/**
 
-#### /nodes/
+#### **/nodes/**
 
 The /nodes/ collection lists all defined nodes in confluent.  Every operation
 that can be done against a node is represented in the /nodes/ collection.
@@ -88,7 +88,7 @@ Functionality is further subdivided into categories under the top level
 /nodes/ location for a given node. The operations for a specific node are 
 accessed with **/nodes/[nodename]/**
 
-#### /noderange/[noderange]/
+#### **/noderange/[noderange]/**
 
 The /noderange/ top level structure appears empty.  However, if the client
 requests a subcollection, **[noderange]/**, it will try to auto-create a matching 
@@ -105,7 +105,7 @@ not allow operations on the individual nodes.
 **/noderange/[noderange]/** to execute the operations on multiple nodes.*
 
 
-### Querying or setting power state: /nodes/[nodename]/power/state
+### **Querying or setting power state: /nodes/[nodename]/power/state**
 
 This resource allows query and setting of the power state.  Reading this value
 provides the current state, and sending *{'state': [newstate]}* will request a
@@ -128,12 +128,12 @@ The recognized states are:
             console, or ignore such requests completely)
 
 
-### Reseat node: /nodes/[nodename]/power/reseat
+### **Reseat node: /nodes/[nodename]/power/reseat**
 
 Reseating is equivalent to unplugging the node and plugging it back in. Removes
 standby power and reapplies it.
 
-### Setting next boot device: /nodes/[nodename]/boot/nextdevice
+### **Setting next boot device: /nodes/[nodename]/boot/nextdevice**
 
 Check and modify boot device override for next boot.  Frequently used for an
 OS deployment or diagnostic boot to prepare for an exceptional boot case where
@@ -163,7 +163,7 @@ the default OS boot is not desired, but only for one boot.  Parameters are:
          virtual instance of a CD provided by remote media capability of a
          server.
 
-### Identifying a node: /nodes/[nodename]/identify
+### **Identifying a node: /nodes/[nodename]/identify**
 
 This controls the behavior of the server to provide a means of making its
 physical location known.  Generally, this is an LED that illuminates on request.
@@ -177,7 +177,7 @@ The recognized states are:
 * **on** - The LED will be illuminated (in some implementations, it will blink)
 * **off** -The LED will be deactivated
 
-### Monitoring hardware: /nodes/[nodename]/sensors/hardware/[category]/
+### **Monitoring hardware: /nodes/[nodename]/sensors/hardware/[category]/**
 
 This presents a collection of 'sensors' relevant to a node.  These are
 current point-in-time indications of both numeric values (e.g. wattage, fanspeed,
@@ -225,23 +225,23 @@ Each sensor may return the following fields:
 * **value** - A numeric value representing the current reading of the sensors.  It
           is null when the sensor is a non-numeric sensor.
 
-### Configuring a node: /nodes/[nodename]/configuration/
+### **Configuring a node: /nodes/[nodename]/configuration/**
 
 This is where one can view and manipulate various configurations active on
 the node.  This is distinguished from 'attributes' which are values stored
 about the node by confluent, but are not directly active on the system.  
 
-#### Managing system-defined configuration: /nodes/[nodename]/configuration/system/all
+#### **Managing system-defined configuration: /nodes/[nodename]/configuration/system/all**
 
 This is where one can read or edit system-defined configuration like BIOS or UEFI settings.  
 
-#### Resetting the management controller: /nodes/[nodename]/configuration/management_controller/reset
+#### **Resetting the management controller: /nodes/[nodename]/configuration/management_controller/reset**
 
 This can be used to request that the management controller for the node be reset.
 PUT {'state': 'reset'} in order to initiate a restart of the management
 controller
 
-#### Viewing user accounts on the management controller: /nodes/[nodename]/configuration/management_controller/users/
+#### **Viewing user accounts on the management controller: /nodes/[nodename]/configuration/management_controller/users/**
 
 This is a list of accounts considered local to the management controller.  This
 excludes accounts provided by a central authentication provider, such as LDAP.
@@ -257,7 +257,7 @@ provides the following fields:
                     including authentication data, ip addresses, alert destinations,
                     and so forth
 
-#### Configuring NTP: /nodes/[nodename]/configuration/management_controller/ntp/[argument]/
+#### **Configuring NTP: /nodes/[nodename]/configuration/management_controller/ntp/[argument]/**
 
 Configure and control the NTP functionality of supported management controllers.  
 For management controllers implementing NTP in a manner supported by confluent,
@@ -270,7 +270,7 @@ Note that in confluent, efforts are made to correct timestamps with detectable
 systematic errors, so local time on the management controller may not necessarily
 impact accuracy of data such as event log timestamps.
 
-#### Managing alert destinations: /nodes/[nodename]/configuration/management_controller/alerts/destinations/
+#### **Managing alert destinations: /nodes/[nodename]/configuration/management_controller/alerts/destinations/**
 
 Manage the list of destinations that the management controller will *directly*
 send alerts to.  Alert information may be in turn propogated by
@@ -289,16 +289,16 @@ the following fields:
                 can use to confirm receipt.  If uncertain, this should be false
                 unless otherwise indicated by the alert destination software.
 
-#### Viewing host name used by management controller: /nodes/[nodename]/configuration/management_controller/identifier
+#### **Viewing host name used by management controller: /nodes/[nodename]/configuration/management_controller/identifier**
 
 Returns the host name that the management controller uses for DHCP requests.
 
-#### Manage BMC domain name: /nodes/[nodename]/configuration/management_controller/domain_name/
+#### **Manage BMC domain name: /nodes/[nodename]/configuration/management_controller/domain_name/**
 
 Set/view the domain name of the BMC.
 
 
-#### Managing IP configuration: /nodes/[nodename]/configuration/management_controller/net_interfaces/management
+#### **Managing IP configuration: /nodes/[nodename]/configuration/management_controller/net_interfaces/management**
 
 IP configuration data for the management controller.  Note that changing this
 value without coordinating changes in the associated hardwaremanagement.manager
@@ -314,7 +314,7 @@ attribute may cause disruption.  The fields available:
                  PUT is only supported for this field if 'Static'
 * **hw_addr** - The ethernet mac address of the interface
 
-### Running a shell session: /nodes/[nodename]/shell/sessions/
+### **Running a shell session: /nodes/[nodename]/shell/sessions/**
 
 This is a non-RESTful resource, used to create a stateful ssh session suitable
 for use in a web browser.  See the source of consolewindow.js for an example of
@@ -322,7 +322,7 @@ how to interact.  RESTful style interaction allows listing currently active
 shell sessions, but the primary role of translating HTTP to SSH is not something
 that fits the RESTful models
 
-### Running a console session: /nodes/[nodename]/console/session
+### **Running a console session: /nodes/[nodename]/console/session**
 
 This is a non-RESTful interface.  It provides a mechanism for javascript
 code in a browser to present a terminal-in-a-browser proxying an HTTP based
@@ -332,13 +332,13 @@ active independent of having any clients connected, and multiple clients
 connecting always share a single view and input.  Upon open, a console session
 may stream older data from log to client to help recreate the console.
 
-### Viewing availability of licensed functionality: /nodes/[nodename]/console/license
+### **Viewing availability of licensed functionality: /nodes/[nodename]/console/license**
 
 Describes the availability of potentially licensed functionality pertaining
 to remote console; for example, remote graphics console is frequently a premium
 feature provided at additional cost.
 
-### Viewing and setting node attributes: /nodes/[nodename]/attributes/[group]/
+### **Viewing and setting node attributes: /nodes/[nodename]/attributes/[group]/**
 
 Lists attributes in confluent's datastore pertaining to nodes.  This may contain
 information that confluent needs to function (e.g. address of management
@@ -360,7 +360,7 @@ defined in the [attributes] document.  Each attribute has:
                   level attribute rather than directly set on the node.
 * **expression** - Present and set if the current value is calculated from an expression
 
-### Viewing hardware health: /nodes/[nodename]/health/hardware
+### **Viewing hardware health: /nodes/[nodename]/health/hardware**
 
 An overall assessment of the health of the hardware associated with a node.
 It provides a 'health' field summarizing the most severe detected state, as
@@ -368,7 +368,7 @@ well as a 'sensors' list of relevant readings to explain the reason for the
 health assessment.  The content of the sensors is identical to the items in
 '/sensors'
 
-### Viewing hardware information: /nodes/[nodename]/inventory/hardware/[category]/   
+### **Viewing hardware information: /nodes/[nodename]/inventory/hardware/[category]/**   
 
 A list of hardware devices that are possible, their presence, and associated data. 
 
@@ -386,7 +386,7 @@ The hardware inventory data is a list of objects with the following fields:
 * **present** - A true/false value indicated whether the specified device actually
             is populated in this specific node.
 
-### Viewing firmware information: /nodes/[nodename]/inventory/firmware/[category]/ 
+### **Viewing firmware information: /nodes/[nodename]/inventory/firmware/[category]/** 
 
 Items containing firmware, and the current version information. 
 
@@ -408,7 +408,7 @@ The firmware data may contain:
           with version
 
 
-### Viewing log of hardware events: /nodes/[nodename]/events/hardware/log
+### **Viewing log of hardware events: /nodes/[nodename]/events/hardware/log**
 
 An enumeration of events and timestamps that have happened to the indicated node.
 Each event has:
@@ -427,14 +427,14 @@ Each event has:
               in local time relative to the confluent server.
 
 
-### Decoding alert data: /nodes/[nodename]/events/hardware/decode
+### **Decoding alert data: /nodes/[nodename]/events/hardware/decode**
 
 This provides a facility for decoding and enriching alert data from a target.
 For example, an SNMP trap handler can use this to decode a PET alert from an   <!-- Document further. Also what does this mean -->
 IPMI source.  TODO: Document this further                  
 
 
-### Managing physical and virtual media: /nodes/[nodename]/media/[argument]
+### **Managing physical and virtual media: /nodes/[nodename]/media/[argument]**
 
 Manage physical and virtual media, such as a USB, CD, or iso image.
 
