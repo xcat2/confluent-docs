@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Confluent API Documentation
+title: **Confluent API Documentation**
 permalink: /documentation/developer/api.html
 ---
 
