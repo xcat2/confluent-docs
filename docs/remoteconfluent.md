@@ -14,11 +14,9 @@ same procedure as creating a user for the Web API:
     confetty create /users/demouser password=password
 
 Additionally, a TLS certificate must be provided, with the private key in /etc/confluent/privkey.pem and
-the certificate in /etc/confluent/srvcert.pem. One quick solution in an xCAT configuration is to use the xCAT
-key and certificate pair:
+the certificate in /etc/confluent/srvcert.pem.  You can generate such certificates using the collective command:
 
-    cp /etc/xcat/cert/server-key.pem /etc/confluent/privkey.pem
-    cp /etc/xcat/server-cert.pem /etc/confluent/srvcert.pem
+    collective gencert
 
 At this point, xCAT's rcons will take care of connecting to the correct server.  However, it will
 prompt for your confluent user and passphrase each time.  The user and password may alternatively
