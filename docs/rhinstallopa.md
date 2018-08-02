@@ -67,4 +67,22 @@ At this point, install can proceed as any normal install:
     # nodeset d6 osimage=centos7.4-x86_64-install-compute
     # nodeboot d6 net
 
+## Accessing without fabric
+
+If an issue occurs where the server is up, but the fabric is unreachable and login or scp is required,
+a backup path is available through the XCC:
+
+    # ssh -p 3389 $(nodelist d6 bmc|awk '{print $3}')
+    Last login: Wed May 10 00:09:47 2017 from 192.168.1.1
+    [root@d6 ~]# 
+
+All ssh capabilities are available, including scp:
+
+    # scp -P 3389 testfile $(nodelist d6 bmc|awk '{print $3}'):~
+    testfile                                        100%   16MB   2.7MB/s   00:06    
+
+As well as rsync:
+
+    # rsync -ave 'ssh -p 3389' testfile $(nodelist d6 bmc|awk '{print $3}'):/
+
 
