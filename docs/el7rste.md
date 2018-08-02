@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Using xCAT EL7 on Intel RSTe
+title: Using xCAT to install EL7.4 on Intel RSTe
 permalink: /documentation/el7rste.html
 ---
 

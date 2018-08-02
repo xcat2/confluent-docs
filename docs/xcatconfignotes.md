@@ -10,4 +10,4 @@ Generally speaking, a value of `1` will refer to the dedicated port on Lenovo eq
   * For SD650 systems, the shared on-board port is designated by `0 2`
   * If using an ML2 adapter, the shared port is `2 0`
 
-[Installing with RSTe support]({{site.baseurl}}/documentation/el7rste.html)
+[Installing EL 7.4 with RSTe support]({{site.baseurl}}/documentation/el7rste.html)
