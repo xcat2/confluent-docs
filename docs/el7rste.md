@@ -16,7 +16,7 @@ Then extract updates.img from the iso.  You could loop mount or use isoinfo to e
 
 Set bootparams.addkcmdline to pull in the given update:
 
-    $ nodegrpch rste bootparams.addkcmdline=" updates=http://xcatmgt.name/install/rste.img
+    $ nodegrpch rste bootparams.addkcmdline=" updates=http://<xcatmgt.name>/install/rste.img"
 
 From this point forward, any members of the rste group will pull in the RSTe software on install.
 
