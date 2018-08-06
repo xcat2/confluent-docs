@@ -20,5 +20,13 @@ Set bootparams.addkcmdline to pull in the given update:
 
 From this point forward, any members of the rste group will pull in the RSTe software on install.
 
+The disk to specify would be `/dev/md/Volume0_0`.  For example:
 
-
+    ignoredisk --only-use=/dev/md/Volume0_0
+    part /boot/efi --size 50 --ondisk /dev/md/Volume0_0 --fstype efi
+    part /boot --size 512 --fstype xfs --ondisk /dev/md/Volume0_0
+    part swap --recommended --ondisk /dev/md/Volume0_0
+    part pv.01 --size 1 --grow --ondisk /dev/md/Volume0_0
+    volgroup system pv.01
+    logvol / --vgname=system --name=root --size 1 --grow --fstype xfs
+    bootloader  --boot-drive=Volume0_0
