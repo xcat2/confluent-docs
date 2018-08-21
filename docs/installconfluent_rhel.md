@@ -36,10 +36,18 @@ Note that a default install also will have firewall restrictions preventing
 https use.  You may remedy this by doing the following:
 
     firewall-cmd --zone=public --add-service=https --permanent
+    firewall-cmd --zone=public --add-service=https
+
+However, the web forwarding feature will still be blocked by firewall.  If wanting to provide
+access to managed device web uis, at this time you must disable the firewall, e.g.:
+
+   systemctl stop firewalld
+   systemctl disable firewalld
 
 In terms of confluent itself, it is by default set up without any user access.  To create a user that may be used from the web interface:
 
     confetty create /users/demouser password=password
+
 
 This will create a user named 'demouser' that will be able to use the password 'password'.
 
@@ -51,6 +59,19 @@ If the web server is not already started, enable the web server:
 After these steps, the GUI should be available at:
 
     https://[server]/lenovo-confluent/
+
+
+# Preparing for discovery if firewall enabled
+
+If wanting to use the confluent discovery capabilities and you have a firewall enabled, here are example commands to allow discovery to work:
+
+    firewall-cmd --zone=public --add-source-port=427/udp --permanent
+    firewall-cmd --zone=public --add-port=427/udp --permanent
+    firewall-cmd --zone=public --add-service=dhcp --permanent
+    firewall-cmd --zone=public --add-source-port=427/udp
+    firewall-cmd --zone=public --add-port=427/udp
+    firewall-cmd --zone=public --add-service=dhcp
+
 
 # Getting ready to use confluent
  
