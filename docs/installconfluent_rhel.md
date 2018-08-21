@@ -39,10 +39,10 @@ https use.  You may remedy this by doing the following:
     firewall-cmd --zone=public --add-service=https
 
 However, the web forwarding feature will still be blocked by firewall.  If wanting to provide
-access to managed device web uis, at this time you must disable the firewall, e.g.:
+access to managed device web uis, at this time you must disable the firewall, for example:
 
-   systemctl stop firewalld
-   systemctl disable firewalld
+    systemctl stop firewalld
+    systemctl disable firewalld
 
 In terms of confluent itself, it is by default set up without any user access.  To create a user that may be used from the web interface:
 
