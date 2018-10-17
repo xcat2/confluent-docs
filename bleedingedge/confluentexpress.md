@@ -28,5 +28,5 @@ Alternatively, you may enter a username and password on the right to bring up al
 details available on mouseover.  Additionally, you will be able to open the text console to access the UEFI setup menu, regardless of whether you have a remote
 video license, as well as enable/disable the SMM in ThinkSystem D2 enclosures.
 
-[Windows Executable]({{site.baseurl}}/assets/confluentexpress-0.65.zip)
+[Windows Executable]({{site.baseurl}}/assets/confluentexpress-0.70.zip)
 
