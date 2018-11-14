@@ -63,14 +63,18 @@ After these steps, the GUI should be available at:
 
 # Preparing for discovery if firewall enabled
 
-If wanting to use the confluent discovery capabilities and you have a firewall enabled, here are example commands to allow discovery to work:
+If wanting to use the confluent discovery capabilities and you have a firewall enabled, here are example commands to allow discovery to work when managed by firewalld:
 
-    firewall-cmd --zone=public --add-source-port=427/udp --permanent
+    firewall-cmd --permanent --new-ipset=confluentv4 --type=hash:ip,port --option timeout=3
+    firewall-cmd --permanent --new-ipset=confluentv6 --type=hash:ip,port --option timeout=3 --family inet6
+    firewall-cmd --reload
+    firewall-cmd --permanent --direct --add-rule ipv6 filter OUTPUT 1 -p udp -m udp --dport 427 -j SET --add-set confluentv6 src,src --exist
+    firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -p udp -m udp --dport 427 -j SET --add-set confluentv4 src,src --exist
+    firewall-cmd --direct --add-rule ipv4 filter INPUT 1 -p udp -m set --match-set confluentv4 dst,dst -j ACCEPT
+    firewall-cmd --direct --add-rule ipv6 filter INPUT 1 -p udp -m set --match-set confluentv6 dst,dst -j ACCEPT
     firewall-cmd --zone=public --add-port=427/udp --permanent
     firewall-cmd --zone=public --add-service=dhcp --permanent
-    firewall-cmd --zone=public --add-source-port=427/udp
-    firewall-cmd --zone=public --add-port=427/udp
-    firewall-cmd --zone=public --add-service=dhcp
+    firewall-cmd --reload
 
 
 # Getting ready to use confluent
