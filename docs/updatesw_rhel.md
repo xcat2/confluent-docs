@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Applying software updates to Red Hat Enterprise Linux 7
+title: Applying software updates to EL7
 permalink: /documentation/updatesw_rhel.html
 ---
 
