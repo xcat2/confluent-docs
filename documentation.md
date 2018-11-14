@@ -17,6 +17,7 @@ Getting started for Red Hat Enterprise Linux 7:
 * [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Applying software updates to Red Hat Enterprise Linux 7]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
+* [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
 
 Getting started for SUSE Linux Enterprise Server 12:
 * [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_suse.html)
