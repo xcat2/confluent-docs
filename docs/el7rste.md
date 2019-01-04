@@ -1,10 +1,14 @@
 ---
 layout: page
-title: Using xCAT to install EL7.4 on Intel RSTe
+title: Using xCAT to install EL7 on Intel RSTe
 permalink: /documentation/el7rste.html
 ---
 
-In order to use RSTe with xCAT installs, first download the RSTe software from Lenovo [support site](https://datacentersupport.lenovo.com/us/en/products/SERVERS/THINKSYSTEM/SD530/7X21/downloads/DS504607)
+In order to use RSTe with xCAT installs
+
+# Adding support to 7.4 (not needed for 7.5 or newer)
+
+, first download the RSTe software from Lenovo [support site](https://datacentersupport.lenovo.com/us/en/products/SERVERS/THINKSYSTEM/SD530/7X21/downloads/DS504607)
 
 Then, extract the archive to get the install iso:
 
@@ -20,7 +24,9 @@ Set bootparams.addkcmdline to pull in the given update:
 
 From this point forward, any members of the rste group will pull in the RSTe software on install.
 
-The disk to specify would be `/dev/md/Volume0_0`.  For example:
+# Directing xCAT to install to the RSTe array
+
+The disk to specify would be `/dev/md/Volume0_0`.  To do this in xCAT, create a file called  /install/custom/el7rste.partitions containing the following:
 
     ignoredisk --only-use=/dev/md/Volume0_0
     part /boot/efi --size 50 --ondisk /dev/md/Volume0_0 --fstype efi
@@ -30,3 +36,9 @@ The disk to specify would be `/dev/md/Volume0_0`.  For example:
     volgroup system pv.01
     logvol / --vgname=system --name=root --size 1 --grow --fstype xfs
     bootloader  --boot-drive=Volume0_0
+
+Modify the osimage to use this file, for example:
+
+     chdef -t osimage centos7.5-x86_64-install-compute partitionfile=/install/custom/el7rste.partitions
+
+Future nodeset commands will target the RSTe volume.
