@@ -19,6 +19,7 @@ for page in ../confluent/confluent_client/doc/man/*.ronn; do
     cat << EOF > man/${cmdname%.ronn}.html
 ---
 layout: page
+title: Manual for $cmdname
 permalink: /documentation/man/$cmdname.html
 ---
 EOF
