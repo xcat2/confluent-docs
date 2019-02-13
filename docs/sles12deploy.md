@@ -5,7 +5,7 @@ permalink: /documentation/sles12deploy.html
 ---
 
 
-After performing copycds on disk 2 of the SLES 12 media, SuSE may experience problems interacting with the install source, such as:                                                             
+After performing copycds on disk 2 of the SLES 12 media, SUSE may experience problems interacting with the install source, such as:                                                             
 
 ```
 File '/media.2/media' not found on medium                       
