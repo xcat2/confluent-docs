@@ -26,6 +26,7 @@ Getting started for SUSE Linux Enterprise Server 12:
 * [Configuring confluent standalone]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
+* [OS Deployment Notes for SUSE Linux Enterprise Server 12]({{site.baseurl}}/documentation/sles12deploy.html)
 
 General documentation:
 
