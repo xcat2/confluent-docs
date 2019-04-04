@@ -16,9 +16,10 @@ function loadData() {
             this.add(item);
             }
         });
+    doSearch();
 }
 function doSearch(evt) {
-        evt.preventDefault();
+        if (evt) { evt.preventDefault(); }
         var searchtext = document.getElementById('search_box').value;
         var res;
         var display = document.getElementById('search_results');
@@ -46,8 +47,8 @@ function initSearch() {
     request.onload = loadData;
     request.open('get', 'search_data.json', true);
     request.send();
-    document.getElementById('site_search').addEventListener('submit', doSearch);;
     document.getElementById('search_box').addEventListener('input', doSearch);;
+    document.getElementById('search_box').focus();
 }
 document.addEventListener('DOMContentLoaded', initSearch);
 })();
