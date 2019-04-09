@@ -34,7 +34,7 @@ Create SSL conf on Apache
     cd /etc/apache2/vhosts.d/
     cp vhost-ssl.template mySSL.conf 
 
-Edit mySSL.conf, replacing server.crt and server.key with the files generated for your server explicitly.
+Edit mySSL.conf according to this example, replacing server.crt and server.key with the filenames specific to your server:
 
     #Update SSLCertificateFile and SSLCertificateKeyFile lines to point to server
     SSLCertificateFile /etc/apache2/ssl.crt/server.crt
