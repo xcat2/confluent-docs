@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Confluent Installation for SUSE Linux Enterprise 15
-permalink: /documentation/installconfluent_suse.html
+permalink: /documentation/installconfluent_suse15.html
 ---
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:
