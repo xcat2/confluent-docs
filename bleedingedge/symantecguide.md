@@ -12,13 +12,16 @@ but this is a more targeted guide to leave the protection in place, but avoid di
 First from Symantec's tray icon, select 'Open Symantec Endpoint Protection'.
 
 Then select options button next to Proactive Threat Protection
+
 ![SEP screen]({{site.baseurl}}/assets/proactive.jpg)
 
 Under the presented SONAR tab, select 'Quarantine' for High risk detection and check 'Prompt before terminating a process'
+
 ![SONAR tab]({{site.baseurl}}/assets/sonar.jpg)
 
 
 Under Suspicious Behavior Detection tab, change High risk detection to 'Prompt':
+
 ![Suspicious Behavior Detection tab]({{site.baseurl}}/assets/suspicious.jpg)
 
 

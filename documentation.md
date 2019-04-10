@@ -19,13 +19,14 @@ Getting started for EL7:
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
 * [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
 
-Getting started for SUSE Linux Enterprise Server 12:
+Getting started for SUSE Linux Enterprise:
 * [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_suse.html)
 * [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
-* [Installing confluent ]({{ site.baseurl }}/documentation/installconfluent_suse.html)
+* [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_suse.html)
 * [Configuring confluent standalone]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
+* [OS Deployment Notes for SUSE Linux Enterprise 15]({{site.baseurl}}/documentation/suse15deploy.html)
 * [OS Deployment Notes for SUSE Linux Enterprise Server 12]({{site.baseurl}}/documentation/sles12deploy.html)
 
 General documentation:
