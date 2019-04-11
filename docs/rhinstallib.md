@@ -1,25 +1,25 @@
 ---
 layout: page
-title: Installing EL7 over Infiniband
+title: Installing EL7 over InfiniBand
 permalink: /documentation/el7ibinstall.html
 ---
 
-This covers the process of EL7 deployment over an ethernet-free cluster using Infiniband.
+This covers the process of EL7 deployment on a cluster using only InfiniBand.
 
-## Preparing for Infiniband install
+## Preparing for InfiniBand install
 
 It is recommended to make groups to describe the required changes.  For example, this
 document will assume an 'ib' group.
 
 ### Setting static address mode
 
-Infiniband deployment is only supported in static mode.  Use the following command to have xCAT do static addressing:
+InfiniBand deployment is only supported in static mode.  Use the following command to have xCAT do static addressing:
 
    # chtab key=managedaddressmode site.value=static
 
 ### Net config fixup postscript
 
-Infiniband network configuration does not work as expected out of the box.  If not installing OFED, the following is an example of a
+InfiniBand network configuration does not work as expected out of the box.  If not installing OFED, the following is an example of a
 postscript that can be added to correct that behavior:
 
     # cat /install/postscripts/fixipoib
@@ -36,17 +36,17 @@ the postscript shown above:
 
 ### confluent configuration
 
-xCAT does not understand how to collect addresses for infiniband.  Instead, enable confluent collection of the
-infinband addresses:
+xCAT does not understand how to collect addresses for InfiniBand.  Instead, enable confluent collection of the
+InfinBand addresses:
 
     # nodegroupdefine ib net.ib.bootable=1 discovery.policy=permissive,pxe
 
-## Gathering Infiniband hardware addresses and putting into xCAT
+## Gathering InfiniBand hardware addresses and putting into xCAT
 
 When confluent is configured to do 'zero power' discovery, it can collect mac addresses for boot devices
-such as Infiniband without having to describe the fabric topology.  This document assumes familiarity with [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html) and that the management network discovery has been configured.
+such as InfiniBand without having to describe the fabric topology.  This document assumes familiarity with [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html) and that the management network discovery has been configured.
 
-Have the systems attempt to network boot over infiniband.  For example:
+Have the systems attempt to network boot over infiniBand.  For example:
 
     # nodeboot ib net
 
@@ -71,7 +71,7 @@ Alternatively, if you have xCAT nodes already defined, but only want to augment 
     # confluent2xcat ib -m mac.csv
     # tabrestore -a mac.csv
 
-Also, it is possible to use nodeinventory to collect the hardware addresses of the Infiniband adapters.  Note that Mellanox removes the middle two bytes (03:00) of their address during netboot, so remove it here:
+Also, it is possible to use nodeinventory to collect the hardware addresses of the InfiniBand adapters.  Note that Mellanox removes the middle two bytes (03:00) of their address during netboot, so remove it here:
 
     # nodeinventory d3 mac |grep Mellanox|sed -e s/50:6b:4b:03:00/50:6b:4b/
     d3: Mellanox ConnectX-5 2x100GbE / EDR IB QSFP28 VPI Adapter MAC Address 1: 50:6b:4b:09:2a:ac
