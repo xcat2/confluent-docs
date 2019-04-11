@@ -19,7 +19,7 @@ InfiniBand deployment is only supported in static mode.  Use the following comma
 
 ### Net config fixup postscript
 
-InfiniBand network configuration does not work as expected out of the box.  If not installing OFED, the following is an example of a
+InfiniBand network configuration does not work as expected out of the box.  If not installing Mellanox OFED, the following is an example of a
 postscript that can be added to correct that behavior:
 
     # cat /install/postscripts/fixipoib
