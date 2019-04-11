@@ -52,10 +52,12 @@ Have the systems attempt to network boot over infiniBand.  For example:
 
 After the system attempts PXE boot, the discovery mechanism should provide attributes suitable for feeding to xCAT.  To examine
 addresses seen by confluent and collected into the confluent attributes, the following commands are available:
-    # nodediscover list -t pxe-client
-     Node|      Model|   Serial|                                 UUID|       Mac Address|       Type| Current IP Addresses
-    -----|-----------|---------|-------------------------------------|------------------|-----------|---------------------
-      ib1| 7X2104Z000| DVJJ1022| 58962b3d-088b-11e7-b8b8-9e59e5cf61db| 50:6b:4b:09:2a:5c| pxe-client|                     
+```
+# nodediscover list -t pxe-client
+ Node|      Model|   Serial|                                 UUID|       Mac Address|       Type| Current IP Addresses
+-----|-----------|---------|-------------------------------------|------------------|-----------|---------------------
+  ib1| 7X2104Z000| DVJJ1022| 58962b3d-088b-11e7-b8b8-9e59e5cf61db| 50:6b:4b:09:2a:5c| pxe-client|                     
+```
 
     # nodeattrib ib net.ib.hwaddr
     ib1: net.ib.hwaddr: 50:6b:4b:09:2a:5c
