@@ -35,12 +35,6 @@ omnipath mac addresses:
 
     # nodegroupdefine opa net.opa.bootable=1 discovery.policy=permissive,pxe
 
-### Modifying the install image
-
-The EL install media is missing required hotplug firmware.  Here you can donate firmware present on your deployment server to the installer:  
-
-    # ls /usr/lib/firmware/hfi1_* | cpio -H newc -o | xz -9 -C crc32 >> /install/centos7.4/x86_64/images/pxeboot/initrd.img
-
 ## Gathering OPA hardware addresses and putting into xCAT
 
 When confluent is configured to do 'zero power' discovery, it can collect mac addresses for boot devices
@@ -50,39 +44,57 @@ Have the systems attempt to network boot over OPA.  For example:
 
     # nodeboot opa net
 
-After the system attempts PXE boot, the discovery mechanism should provide attributes suitable for feeding to xCAT:
+After the system attempts PXE boot, the discovery mechanism should provide attributes suitable for feeding to xCAT.  The following commands can help show this:
 
-    # nodeattrib d6 net.opa.hwaddr
-    d6: net.opa.hwaddr: 00:11:75:01:01:0d:cd:c7
+```
+# nodediscover list -t pxe-client -f node,serial,mac
+ Node|   Serial|                     Mac
+-----|---------|------------------------
+ opa1| J1001PNE| 00:11:75:01:01:0d:cd:c7
+ opa1| J1001PNE|       08:94:ef:50:23:60
 
-To actually populate xCAT, create a list of nodech commands to run:
 
-    # nodeattrib opa net.opa.hwaddr|awk '{print $1 "mac.mac=" $3}'|sed -e 's/^/nodech /' -e 's/:/ /' > setopamacs.sh
-    # source setopamacs.sh
+# nodeattrib opa1 net.opa.hwaddr
+opa1: net.opa.hwaddr: 00:11:75:01:01:0d:cd:c7
+```
+
+To actually populate xCAT, the confluent2xcat command may be used.  If the node is not yet defined to xCAT at all:
+```
+[root@mgt ~]# confluent2xcat opa1 -o opa.stanza
+[root@mgt ~]# mkdef -z < opa.stanza 
+1 object definitions have been created or modified.
+```
+
+Or to add the mac address to existing node, the mac.csv may be useful:
+```
+[root@mgt ~]# confluent2xcat opa -m mac.csv
+[root@mgt ~]# tabrestore -a mac.csv 
+```
+
 
 ## Performing the install
 
 At this point, install can proceed as any normal install:
 
-    # nodeset d6 osimage=centos7.4-x86_64-install-compute
-    # nodeboot d6 net
+    # nodeset opa1 osimage=centos7.4-x86_64-install-compute
+    # nodeboot opa1 net
 
 ## Accessing without fabric
 
 If an issue occurs where the server is up, but the fabric is unreachable and login or scp is required,
 a backup path is available through the XCC:
 
-    # ssh -p 3389 $(nodelist d6 bmc|awk '{print $3}')
-    Last login: Wed May 10 00:09:47 2017 from 192.168.1.1
-    [root@d6 ~]# 
+    # ssh -p 3389 $(noderun -n opa1 echo {bmc})
+    Last login: Wed Apr 16 13:09:47 2017 from 192.168.1.1
+    [root@opa1 ~]# 
 
 All ssh capabilities are available, including scp:
 
-    # scp -P 3389 testfile $(nodelist d6 bmc|awk '{print $3}'):~
+    # scp -P 3389 testfile $(noderun -n opa1 echo [{bmc}]):~
     testfile                                        100%   16MB   2.7MB/s   00:06    
 
 As well as rsync:
 
-    # rsync -ave 'ssh -p 3389' testfile $(nodelist d6 bmc|awk '{print $3}'):/
+    # rsync -ave 'ssh -p 3389' testfile $(noderun -n opa1 echo [{bmc}]):/
 
 
