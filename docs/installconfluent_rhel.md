@@ -44,12 +44,12 @@ access to managed device web uis, at this time you must disable the firewall, fo
     systemctl stop firewalld
     systemctl disable firewalld
 
-In terms of confluent itself, it is by default set up without any user access.  To create a user that may be used from the web interface:
+In terms of confluent itself, it is by default set up without any user access.  To enable a user that can ssh into your server to access the web interface:
 
-    confetty create /users/demouser password=password
+    confetty create /users/demouser
 
-
-This will create a user named 'demouser' that will be able to use the password 'password'.
+The user 'demouser' may now use his login password to access the confluent web interface as an administrator.
+T
 
 If the web server is not already started, enable the web server:
 

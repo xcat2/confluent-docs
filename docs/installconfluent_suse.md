@@ -45,11 +45,12 @@ Enable SSL on Apache
     a2enflag SSL
     service apache2 restart
 
-In terms of confluent itself, it is by default set up without any user access.  To create a user that may be used from the web interface:
 
-    confetty create /users/demouser password=password
+In terms of confluent itself, it is by default set up without any user access.  To enable a user that can ssh into your server to access the web interface:
 
-This will create a user named 'demouser' that will be able to use the password 'password'
+    confetty create /users/demouser
+
+The user 'demouser' may now use his login password to access the confluent web interface as an administrator.
 
 After these steps, the GUI should be available at:
 
