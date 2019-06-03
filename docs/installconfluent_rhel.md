@@ -18,8 +18,8 @@ At this point, the package may be installed:
 
 Next, enable it and start the confluent service:
 
-    chkconfig confluent on
-    service confluent start
+    systemctl enable confluent
+    systemctl start confluent
 
 At this point, source the script below for confluent command line functionality or logout and log back in. 
 
