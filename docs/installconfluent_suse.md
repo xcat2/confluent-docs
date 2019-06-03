@@ -10,8 +10,8 @@ After adding the correct repository as indicated in the [download page]({{ site.
 
 At which point go ahead and enable it and start it.
 
-    chkconfig confluent on
-    service confluent start
+    systemctl enable confluent
+    systemctl start confluent
 
 At this point, source the script below for confluent command line functionality or logout and log back in. 
 
