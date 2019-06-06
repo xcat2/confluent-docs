@@ -7,7 +7,6 @@ permalink: /documentation/collective.html
 The collective mode of confluent allows multiple confluent servers to act as one, providing
 both high availability as well as scaling out to cover a larger number of servers with better
 performance.
-
 # Creating a collective
 
 To begin, select a confluent server to begin constructing the collective from.  This page will use `mgt1`
@@ -72,3 +71,10 @@ If a collective member is reinstalled, it's role in the cluster can be repaired 
 # Restoring a missing collective member by repeating the invite process
 
 At any point, the invite process can be repeated for a member as if it were joining new, and it will replace the stale entry.
+
+# Limitations
+
+Note that currently most functions are enabled to be identical across a collective,
+however /networking and /discovery apis are currently distinct per collective member.  This means
+that nodediscover commands and automatic discovery activity must be directly managed on the respective
+collective member.
