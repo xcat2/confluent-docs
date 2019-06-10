@@ -1,6 +1,6 @@
 ---
 layout: page
-title: OS Deployments Notes for RedHat Enterprise Linux 7
+title: OS Deployment Notes for RedHat Enterprise Linux 7
 permalink: /documentation/el7deploy.html
 ---
 

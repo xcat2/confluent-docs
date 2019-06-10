@@ -1,6 +1,6 @@
 ---
 layout: page
-title: OS Deployments Notes for CentOS
+title: OS Deployment Notes for CentOS
 permalink: /documentation/centosdeploy.html
 ---
 
