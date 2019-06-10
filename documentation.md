@@ -18,6 +18,7 @@ Getting started for EL7:
 * [Applying software updates of only Lenovo repository under EL7]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
 * [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
+* [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
 
 Getting started for SUSE Linux Enterprise:
 * [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_suse.html)
