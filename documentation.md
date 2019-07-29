@@ -49,6 +49,7 @@ Power and Cooling Monitoring:
 Advanced topics:
 
 * [Remote confluent access (for xCAT rcons with service nodes)]({{ site.baseurl }}/documentation/remoteconfluent.html)
+* [Using xCAT service nodes with a shared tftpboot directory]({{site.baseurl}}/documentation/sharedtftpnotes.html)
 
 For developers:
 
