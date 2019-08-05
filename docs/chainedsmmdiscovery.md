@@ -22,7 +22,7 @@ The [other](#pxe-driven-discovery) works with older chained SMM firmware, but re
   `enclosure.extends==smm1`, and smm3 would have `enclosure.extends==smm2`
 * It is *not* required to have `net` attributes defined for any of the nodes.
 * Discovery proceeds normally in accordance with the general documentation of
-  discovery [here]({{site.baseurl}}/documentaction/confluentdisco.html).
+  discovery [here]({{site.baseurl}}/documentation/confluentdisco.html).
 
 
 # PXE Driven Discovery
