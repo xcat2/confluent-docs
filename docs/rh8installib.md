@@ -9,6 +9,7 @@ This covers the process of EL8 deployment on a cluster using only InfiniBand.
 ## Pre-requisites for InfiniBand install
 
 Confluent >= 2.4.0
+
 xCAT >= 2.14.6.lenovo3
 
 ## Preparing for InfiniBand install
@@ -26,7 +27,7 @@ InfiniBand deployment is only supported in static mode.  Use the following comma
 
 EL 8 does not include the required mlx5_ib and ib_ipoib kernel modules in the OS installation initrd.  To make these drivers available during boot obtain the Mellanox OFED Driver update media for RHEL/CentOS 8 from here:
 
-https://support.lenovo.com/eg/en/solutions/ht509709
+[https://support.lenovo.com/eg/en/solutions/ht509709](https://support.lenovo.com/eg/en/solutions/ht509709)
 
 This file should be placed in the EL 8 (RHEL or CentOS) driverdisk directory, e.g.:
 
