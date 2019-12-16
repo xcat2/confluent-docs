@@ -8,8 +8,15 @@ toplevel: yes
 Lenovo provides yum repositories of relevant software for managing HPC as well
 as scale out Linux installations in general.  This includes xCAT and confluent.
 
-Adding Repository for Red Hat Enterprise Linux 7
+Adding Repository for Red Hat Enterprise Linux
 ============================
+
+Select the repository appropriate for the major version, for Red Hat Enterprise Linux 8:
+
+    rpm -ivh https://hpc.lenovo.com/yum/latest/el8/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+
+For Red Hat Enterprise Linux 7:
+
     rpm -ivh https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
     
 On a new Minimal Install without Red Hat Subscription Manager configured. You will need additional packages from the install media. 
@@ -29,6 +36,8 @@ The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.len
     #Download the package for your specific OS version
     wget https://hpc.lenovo.com/downloads/latest-el7.tar.bz2
     #or
+    wget https://hpc.lenovo.com/downloads/latest-el8.tar.bz2
+    #or
     wget https://hpc.lenovo.com/downloads/latest-suse15.tar.bz2
     
     #On your local system 
@@ -36,12 +45,12 @@ The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.len
     mkdir /mnt/local_repo
     
     #Extract the repository 
-    tar -xf latest-el7.tar.bz2 -C /mnt/local_repo
+    tar -xf latest-el8.tar.bz2 -C /mnt/local_repo
     #or
     tar -xf latest-suse15.tar.bz2 -C /mnt/local_repo
     
     #Create lenovo-hpc.repo to point to the local repository
-    cd /mnt/local_repo/lenovo-hpc-el7/
+    cd /mnt/local_repo/lenovo-hpc-el8/
     #or
     cd /mnt/local_repo/lenovo-hpc-suse15/
     ./mklocalrepo.sh
