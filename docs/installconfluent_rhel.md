@@ -49,7 +49,6 @@ In terms of confluent itself, it is by default set up without any user access.  
     confetty create /users/demouser
 
 The user 'demouser' may now use his login password to access the confluent web interface as an administrator.
-T
 
 If the web server is not already started, enable the web server:
 
