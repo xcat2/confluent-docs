@@ -1,6 +1,6 @@
 ---
 layout: page
-title: iCO 5.5.0 Import Build-in Container Image (Singularity)
+title: LiCO 5.5.0 Import Build-in Container Image (Singularity)
 permalink: /lico/lico550/host-import-buildin-images
 ---
 
