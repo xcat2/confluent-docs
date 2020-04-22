@@ -52,7 +52,7 @@ Advanced topics:
 * [Using xCAT service nodes with a shared tftpboot directory]({{site.baseurl}}/documentation/sharedtftpnotes.html)
 * [Installing EL8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
 * [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
-* [Using xCAT nodes with a shared <install> directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
+* [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
 
 For developers:
 
