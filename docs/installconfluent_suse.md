@@ -48,9 +48,14 @@ Enable SSL on Apache
 
 In terms of confluent itself, it is by default set up without any user access.  To enable a user that can ssh into your server to access the web interface:
 
-    confetty create /users/demouser
+    confetty create /users/demouser role=admin
 
-The user 'demouser' may now use his login password to access the confluent web interface as an administrator.
+The user 'demouser' may now use his login password to access the confluent web interface as an administrator.  The available roles are:
+
+* Administrator: Full access apart from reading 'secret.' attributes for all data and operations
+* Operator: Removes the ability to change or add usernames or passwords in various contexts
+* Monitor: Suitable for health check programs, unable to do anything to effect operation of systems, but can get power state, health, and sensor data.
+
 
 After these steps, the GUI should be available at:
 

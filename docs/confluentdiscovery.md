@@ -131,12 +131,16 @@ or to debug or help formulate a way to use [automatic discovery](#automatic-disc
 As a prelude for automatic discovery, first define the node using the values
 that it should be configured with at the end, regardless of current configuration.
 For example, we will define 42 nodes (`n1` through `n42`) that upon completion should have an
-xClarity Controller with the address '10.2.3.(node number)', the username `admin`, and the
-password `Passw0rd12`.  Here we will use a group to hold the patterns and just define the nodes
+xClarity Controller with the address '10.2.3.(node number)', and the username and 
+password of your choice.  Here we will use a group to hold the patterns and just define the nodes
 with just the single group membership:
 
-    nodegroupdefine compute bmc=10.2.3.{n1} bmcuser=admin bmcpass=$YOURPASS
+    nodegroupdefine compute bmc=10.2.3.{n1}
+    nodegroupattrib compute -p bmcuser bmcpass
     nodedefine n1-n42 groups=compute
+
+This will interactively prompt for username and password. This is the desired username and password not necessarily the current.
+If the devices are at factory default, then they will be changed automatically to the password and username given.
 
 If no value is provided for `bmc` it will not try to program IPv4 addresses, but will instead collect fe80:: ip addresses.  This is
 useful to have confluent commands work regardless of IPv4 misconfiguration, but may not be obvious to all users.
