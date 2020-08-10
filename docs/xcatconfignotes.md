@@ -12,4 +12,4 @@ If using xCAT's bmcsetup to manage the service processor port on Lenovo systems,
 Generally speaking, a value of `1` will refer to the dedicated port on Lenovo equipment, and `0` will refer to shared, with some exceptions:
   * For SD650 systems, the shared on-board port is designated by `0 2`
   * If using an ML2 adapter, the shared port is `2 0`
-
+  * For SR645 systems, the shared OCP port (port 1) is designated by `2 0`
