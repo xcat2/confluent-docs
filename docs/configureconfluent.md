@@ -54,6 +54,3 @@ At this point, there are a few alternative paths to proceed:
 * Discovery is intended to help when IP addresses, usernames, and/or passwords are not configured yet. If these activities are otherwise handled in the environmennt, it is suggested to skip discovery and read: [Managing hardware using confluent]({{site.baseurl}}/documentation/manageconfluent.html)
 * If the IP addresses, usernames, and/or passwords need to be configured and it is desired to use physical location of equipment as the key, see: [Using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html)
 * If the IP addresses, usernames, and/or passwords need to be configured and it is desired to either use serial numbers, mac addresses, or otherwise manually review the available data to proceed, see: [Using nodediscover assign]({{site.baseurl}}/documentation/confluentnodeassign.html)
-
-For information on using confluent to aid in autoconfiguration and mac address collection (whether automatic or manual), see [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html).
-
