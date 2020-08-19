@@ -9,6 +9,9 @@ permalink: /documentation/man/
 ---
 
 EOF
+cd ../confluent/confluent_client/
+python3 addattribs.py
+cd -
 cd ../confluent/confluent_client/doc/man/
 ./buildindex.sh
 cd -
