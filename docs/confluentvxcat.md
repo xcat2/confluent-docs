@@ -9,12 +9,37 @@ remain some differences and some gaps.
 
 # Features not currently in confluent
 
-Confluent does not cover all functionality of xCAT. Currently unavailable are:
+Confluent does not cover all functionality of xCAT. Some functions of xCAT that are currently not in confluent are:
 
 * Virtualization management
 * Deployment to networks through routers
 * Stateless image generation
 * Support for platforms other than x86
+* Configuration of additional networks
+
+# Interoperability
+
+xCAT generally is an all or nothing proposition. For full functionality, it must control DHCP, OS deployment, the BMC, and any data that is used in discovery can only
+be used to feed xCAT workflows.
+
+Confluent is designed for improved interoperability. It does not require control of services like DHCP, is less particular about DNS, and provides data more transparently
+to feed discovery data to alternative OS deployment software if desired rather than using the built in facilities.
+
+# Security
+
+xCAT generally expects a trusted network and offers material unencrypted in various contexts. It does not support running under SELinux and it does not support SecureBoot.
+
+The default configuration of confluent protects sensitive data, and opt-in for more convenient behavior still affords more protection than with xCAT. Notably:
+* Fully encrypted deployment over HTTPS is supported (Firmware configuration required)
+* tftp is now optional (Can use HTTP or HTTPS boot instead)
+* SecureBoot deployment is supported (HTTP or HTTPS boot only)
+* For RHEL/CentOS 8.2 or higher, encrypting the boot volume using the TPM is supported
+* For network deployments, a node api token is acquired by a node only once
+* All TLS communication is meaningfully validated against certificate authorities or stored fingerprints
+* System root password and grub passwords are stored only as non-recoverable hashes
+* Passwords are afforded greater protection when they must be stored (e.g. for accessing switches or BMCs)
+* Non-recoverable hash of root password is no longer trivially retrieved from default kickstart files or images
+* Default SSH configuration is more hardened, no private key of any sort is sent across the network
 
 # Name resolution
 
@@ -24,7 +49,7 @@ and is content so long as forward and reverse lookup works exactly as expected.
 In confluent, no helper facility is provided for name configuration, documentation instead mentions how to use dnsmasq
 if no other name resolution is otherwise in use. It is strongly recommended for forward resolution to function, though
 not required, and reverse lookup no longer has an impact on identifying nodes and will not cause problem identifying
-nodes if missing or unepected.
+nodes if missing or not particularly configured.
 
 # DHCP
 
@@ -33,8 +58,7 @@ on a network that xCAT needs to do discovery or deployment on.
 
 In Confluent, DHCP is optional and even when present is not managed by Confluent. No dynamic range is required for
 any discovery. The default behavior is to use static IP address. It may also be configured to always defer IP configuration
-to an external DHCP server or to do so only for the firmware phase (PXE/HTTP boot) but use static during the OS.
-
+to an external DHCP server or to do so only for the firmware phase (PXE/HTTP boot) but use static for the OS.
 
 # Discovery
 
@@ -64,7 +88,7 @@ specialization takes place on the target system rather than on the deployment se
 
 In xCAT, postscripts are in /install/postscripts and referenced by either osimage or per node entries across the pertinent tables.
 
-In confluent, scripts are always in the OS image profile itself, and invoking them is a matter of modifying the appropropriate script
+In confluent, scripts are always in the OS image profile itself, and invoking them is a matter of modifying the appropriate script
 for the phase of boot. Most commonly, scripts/fistboot.custom, scripts/post.custom. Unlike xCAT, having distinct postscripts per
 node sharing a common OS profile is not supported, and delegating that complexity to a facility such as salt or ansible is
 recommended.
@@ -78,10 +102,9 @@ In confluent, strict host key checking is left at default, and host keys are man
 the node will generate brand new keys privately and the public key is given a certificate.
 
 In xCAT, root's public key from a head node is placed in authorized_keys on all nodes. Further it is popular to copy down root's private key
-to facilitate node to node ssh. On the other hand, this optional behavior puts root's private key at risk.  Non-root users receive no accomodations.
+to facilitate node to node ssh. On the other hand, this optional behavior puts root's private key at risk.  Non-root users receive no accommodations.
 
 In Confluent, each collective member root public key is added to deployed authorized_keys, to enable ssh from any collective member to any node.
 root's private key is never sent across the wire under any circumstance, instead the work to fix known_hosts across the board is leveraged to
 enable host-based authentication within a confluent cluster. This extends to both the root user and all other users on the systems.
-
 
