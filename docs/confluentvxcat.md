@@ -89,7 +89,7 @@ specialization takes place on the target system rather than on the deployment se
 In xCAT, postscripts are in /install/postscripts and referenced by either osimage or per node entries across the pertinent tables.
 
 In confluent, scripts are always in the OS image profile itself, and invoking them is a matter of modifying the appropriate script
-for the phase of boot. Most commonly, scripts/fistboot.custom, scripts/post.custom. Unlike xCAT, having distinct postscripts per
+for the phase of boot. Most commonly, scripts/firstboot.custom, scripts/post.custom. Unlike xCAT, having distinct postscripts per
 node sharing a common OS profile is not supported, and delegating that complexity to a facility such as salt or ansible is
 recommended.
 

@@ -13,34 +13,33 @@ standalone directly rather than using xCAT to configure.
 
 ## Using Confluent without xCAT
 
-In confluent, configuration is organized as attributes on nodes.  The 
+In confluent, configuration is organized as [attributes]({{site.baseurl}}/documentation/nodeattributes.html) on nodes.  The 
 attributes may be directly configured on a node or inherited from a group.
 Values may be a straightforward string or an expression as documented in 
 the [attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
 documentation.
 
 To get started, it is suggested to use the `everything` group to set universal attributes.
-Usually a cluster uses the same username/password across the IMMs.  In such a case, it is
+The `everything` group automatically exists and all defined nodes are automatically
+placed into it, in addition to manually specified and created groups
+Usually a cluster uses the same username/password across the XCCs (xClarity Controllers).  In such a case, it is
 suggested to set this data as attributes on the `everything` group:
 
-	nodegroupattrib everything bmcuser=USERID bmcpass=$YOURPASSWORD console.method=ipmi
+	nodegroupattrib everything console.method=ipmi
+	nodegroupattrib everything -p bmcuser bmcpass
 
-If wanting to use the autodiscovery features, you may wish to opt into the less strict discovery policy `permissive,pxe`.  The `permissive` policy
-instructs confluent to take a node discovery at face value if there is no known TLS certificate.  Adding `,pxe` further relaxes the policy to allow
-MAC and UUID gathering from PXE requests, but does not allow replacing out of band devices that conflict weth stored TLS certificates as `open` would:
-
-	nodegroupattrib everything discovery.policy=permissive,pxe
+The `nodeattrib` and `nodegroupattrib` command can either accept key=value or -p key key format. The former allows fully non-interactive use, while the
+latter prompts interactively to prevent the username and password from being inadvertently on screen or stored in your shell history.
 
 From there, adding a specific node using values from the group `everything` combined with node specific attributes could involve the following:
 
-	nodedefine n3 bmc=n3-imm
+	nodedefine n3 bmc=n3-xcc
 
-Note that a complete list of attributes that may be set can be found  in [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
-
-Another common task is to create a custom group, with particular meaning to a specific environment.  For example:
+Another common task is to create a custom group, with particular meaning to a specific environment.  For example, here is creating a custom group called `rack1` and
+using the expression syntax to append '-xcc' to the end of the nodename to use as the XCC address:
 
 	nodegroupdefine rack1 location.rack=1
-	nodegroupdefine compute bmc={nodename}-imm
+	nodegroupdefine compute bmc={nodename}-xcc
 
 These groups, like the `everything` group can hold any attribute, and may also use expressions or normal values.  The process to create a node can include these groups:
 
@@ -48,6 +47,13 @@ These groups, like the `everything` group can hold any attribute, and may also u
 
 At which point, `n1` has location and IMM address configured just by virtue of the nodes it was assigned to.  Note that membership in
 the `everything` group is automatic, even if not listed in the groups for a node to be in, it will nevertheless be considered a member of that group.
+
+At this point, there are a few alternative paths to proceed:
+
+* Set up confluent to be able to deploy operating systems (recommended prior to autoconfiguration if planning for OS deployment using confluent): [Preparing for Operating System Deployment]({{site.baseurl}}/documentation/confluentosdeploy.html)
+* Discovery is intended to help when IP addresses, usernames, and/or passwords are not configured yet. If these activities are otherwise handled in the environmennt, it is suggested to skip discovery and read: [Managing hardware using confluent]({{site.baseurl}}/documentation/manageconfluent.html)
+* If the IP addresses, usernames, and/or passwords need to be configured and it is desired to use physical location of equipment as the key, see: [Using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html)
+* If the IP addresses, usernames, and/or passwords need to be configured and it is desired to either use serial numbers, mac addresses, or otherwise manually review the available data to proceed, see: [Using nodediscover assign]({{site.baseurl}}/documentation/confluentnodeassign.html)
 
 For information on using confluent to aid in autoconfiguration and mac address collection (whether automatic or manual), see [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html).
 
