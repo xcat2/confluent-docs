@@ -30,9 +30,9 @@ Again, if root login by password is desired (if unspecified, only key based logi
 
     # nodegroupattrib everything -p crypted.rootpassword
 
-# Name resolution
+# Name resolution (optional)
 
-An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. This section will provide an example to quickly generate IP addresses and use
+An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. If such a solution is unavailable, this section provides a strategy to quickly generate IP addresses and use
 `dnsmasq` as a name server.
 
 The [`noderun`]({{site.baseurl}}/documentation/man/noderun.html) command may be used to quickly generate lines to append to a local /etc/hosts using the same syntax as [attribute expressions]({{site.baseurl}}/documentation/attributeexpressions.html). Here is an example to generate 8 entries for nodes d1 through d8:
