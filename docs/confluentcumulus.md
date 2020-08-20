@@ -9,8 +9,7 @@ installation of the `affluent` agent.  Install the .deb file
 from /opt/confluent/share/affluent/ onto the switch:
 
     # scp /opt/confluent/share/affluent/*.deb cumulus@r4c1:~
-    lenovo-affluent_1.0.2.deb                                                                                      100% 8476     4.4MB/s   00:00    
-    # ssh -t cumulus@r4c1 sudo apt install ~cumulus/lenovo-affluent_1.0.2.deb
+    # ssh -t cumulus@r4c1 sudo apt install ~cumulus/affluent_*.deb
 
 
 With that installation complete, the switch merely
