@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Applying software updates to EL7
+title: Applying software updates to RedHat/CentOS
 permalink: /documentation/updatesw_rhel.html
 ---
 

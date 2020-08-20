@@ -9,13 +9,13 @@ Generally speaking, there are two suggested approaches:
 * Using xCAT and confluent together - When you are used to xCAT or want to use xCAT for OS deployment and/or service nodes.  For this situation, start with the xCAT documentation.
 * Using confluent standalone - If you do not have service nodes and do not have to deploy OSes, then skip xCAT and go straight to confluent documentation.
 
-Getting started for EL7:
+Getting started for EL8:
 * [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 * [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
 * [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 * [Configuring confluent standalone]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
-* [Applying software updates of only Lenovo repository under EL7]({{ site.baseurl }}//documentation/updatesw_rhel.html)
+* [Applying software updates of only Lenovo repository under RedHat or CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
 * [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
 * [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
