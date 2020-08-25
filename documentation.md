@@ -50,7 +50,7 @@ Advanced topics:
 
 * [Remote confluent access (for xCAT rcons with service nodes)]({{ site.baseurl }}/documentation/remoteconfluent.html)
 * [Using xCAT service nodes with a shared tftpboot directory]({{site.baseurl}}/documentation/sharedtftpnotes.html)
-* [Installing EL8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
+* [Installing RedHat/CentOS 8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
 * [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
 * [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
 
