@@ -28,3 +28,7 @@ The SN2010* Ethernet switch is half-wide and 1U tall, but also doesn’t install
     switch9091: location.rack: CR021.2
     switch9091: location.row: 2
     switch9091: location.u: 41
+
+And here is the result of this in the confluent rack view:
+
+![Confluent rack view]({{site.baseurl}}/assets/confluent_rack_view.png)
