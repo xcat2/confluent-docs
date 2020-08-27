@@ -74,7 +74,7 @@ the package `confluent-genesis-x86_64` if a genesis profile is desired.
 
 # Initializing OS deployment configuration.
 
-The `osdeploy initialize` command is used to prepare a confluent server to deploy operating systems.  To be walked through the various options, it may be run interactively:
+The `osdeploy initialize` command is used to prepare a confluent server to deploy operating systems.  For first time setup, run osdeploy initialize interactively to be walked through the various options:
 
     # osdeploy initialize -i
 
