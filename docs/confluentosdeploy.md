@@ -76,7 +76,7 @@ the package `confluent-genesis-x86_64` if a genesis profile is desired.
 
 Note that confluent now supports both PXE and HTTP Boot. If using purely HTTP boot, then you do not need a tftp server at all. Additionally, 
 Secureboot is only fully supported with HTTP Boot. To support
-clients that are PXE booting, install the TFTP package from your distribution, for example for RedHat or CentOS:
+clients that are PXE booting, ensure that tftp is installed.  Note that xCAT may have already installed and configured tftp. Otherwise an example of installing tftp for RedHat or CentOS would be:
 
     # yum install tftp-server
 
@@ -127,8 +127,9 @@ more details.  Additionally check files like kickstart.custom in the top level d
 
 # Handling xClarity Controller or TSM on shared ports (on board network or OCP)
 
-If wanting to move the xClarity Controller or TSM to be accessed over a port shared with the operating system, see pre.custom or onboot.sh for examples of how to
-incorporate `configbmc` into a Genesis boot or an install.
+If wanting to move the xClarity Controller or TSM to be accessed over a port shared with the operating system, see either `pre.custom` of an install profile or `onboot.sh` of the genesis profile for examples of how to
+incorporate `configbmc` into a Genesis boot or an install. This will move the network port to allow out of band discovery to continue and set username
+and password remotely.
 
 # Requesting os deployment
 
