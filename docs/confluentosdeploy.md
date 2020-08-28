@@ -72,6 +72,23 @@ the package `confluent-genesis-x86_64` if a genesis profile is desired.
 `osdeploy initialize` (see next step) has an option to generate a genesis profile. Once used, a genesis based profile would be in /var/lib/confluent/public/os/genesis-x86_64/.  Of particular interest is the
 `/var/lib/confluent/public/os/gensis-x86_64/scripts/onboot.sh` file to govern automatic action, or use ssh after nodes boot to manually perform actions.
 
+# Preparing for TFTP (optional)
+
+Note that confluent now supports both PXE and HTTP Boot. If using purely HTTP boot, then you do not need a tftp server at all. Additionally, 
+Secureboot is only fully supported with HTTP Boot. To support
+clients that are PXE booting, install the TFTP package from your distribution, for example for RedHat or CentOS:
+
+    # yum install tftp-server
+
+`osdeploy initialize` in the next step will help initialize needed tftp content.
+
+# Configuring nodes for HTTP Boot (optional)
+
+If wanting to use HTTP Boot instead, here is an example to configure Lenovo systems to use HTTP instead of PXE boot:
+
+    # nodeconfig d3-d6 NetworkStackSettings.IPv4PXESupport=disable NetworkStackSettings.IPv4HTTPSupport=enable
+
+
 # Initializing OS deployment configuration.
 
 The `osdeploy initialize` command is used to prepare a confluent server to deploy operating systems.  For first time setup, run osdeploy initialize interactively to be walked through the various options:
