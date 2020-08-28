@@ -80,7 +80,7 @@ clients that are PXE booting, install the TFTP package from your distribution, f
 
     # yum install tftp-server
 
-`osdeploy initialize` in the next step will help initialize needed tftp content.
+`osdeploy initialize` in an upcoming step will help initialize needed tftp content.
 
 # Configuring nodes for HTTP Boot (optional)
 
