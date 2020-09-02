@@ -54,6 +54,7 @@ Advanced topics:
 * [Installing RedHat/CentOS 8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
 * [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
 * [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
+* [Using driver update media for RedHat/CentOS]({{site.baseurl}}/documentation/driverupdatemedia.html)
 
 For developers:
 
