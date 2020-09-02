@@ -12,7 +12,7 @@ The most critical attributes for this section are:
 * `hardwaremanagement.method` with the following options:
   * `ipmi` (default) - Most widely implemented and quick, the plugin may use non-IPMI protocols as needed to get additional information.
   * `redfish` - A newer standard that generally offers richer information, at the cost of generally being slower.
-  * `affluent` - Communicate with a network switch with the affluent agent (see [using a cumulus switch with confluent]({{site.baseurl}}/documentation/confluentcumulus.html) 
+  * `affluent` - Communicate with a network switch with the affluent agent (see [using a cumulus switch with confluent]({{site.baseurl}}/documentation/confluentcumulus.html))
   * `cnos` - Communicate with a Lenovo network switch running CNOS
 * `console.method` - currently only provides ipmi.  Leave blank to opt out of [`nodeconsole`]({{site.baseurl}}/documentation/man/nodeconsole.html) and console logging, or set to `ipmi` to opt into `ipmi` console.
 * `hardwaremanagement.manager` - May alternatively be referred by alias `bmc`: The name or IP address of the xClarity Controller or equivalent associated with this node.
@@ -61,8 +61,8 @@ Forcing a boot to network (e.g. to do a PXE or HTTP based deployment)
     d5: reset
     d6: reset
 
-
 Examining firmware on a system:
+
     # nodefirmware d5
     d5: XCC: 4.00 (TEI3A4L 2020-07-13T23:58:08)
     d5: XCC Backup: 1.20 (TEI316A 2017-10-30T00:00:00)
