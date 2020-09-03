@@ -6,15 +6,15 @@ toplevel: yes
 ---
 
 Generally speaking, there are two suggested approaches:
-* Using xCAT and confluent together - When you are used to xCAT or want to use xCAT for OS deployment and/or service nodes.  For this situation, start with the xCAT documentation.
-* Using confluent standalone - If you do not have service nodes and do not have to deploy OSes, then skip xCAT and go straight to confluent documentation.
+* Using xCAT and confluent together - When you are used to xCAT or need stateless deployment or another currently xCAT exclusive feature and want to use it in conjunction with confluent.  For this situation, start with the xCAT documentation.
+* Using confluent - It is now recommended for most of those without existing xCAT installations to use confluent directly.
 
 Getting started for RedHat/CentOS:
 * [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 * [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
 * [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 * [Confluent configuration notes for Lenovo hardware]({{ site.baseurl }}/documentation/confluentconfignotes.html)
-* [Configuring confluent standalone]({{ site.baseurl }}/documentation/configconfluent.html)
+* [Configuring confluent without xCAT]({{ site.baseurl }}/documentation/configconfluent.html)
 * [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Applying software updates of only Lenovo repository under RedHat or CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)

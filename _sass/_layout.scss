@@ -1,12 +1,16 @@
 /**
  * Site header
  */
+img.logo {
+    max-width: 124px;
+    margin-right: 1em;
+}
 .site-header {
     //border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
-    background: linear-gradient($grey-color, $grey-color-dark);
-    color: white;
+    //border-bottom: 1px solid $grey-color-light;
+    //min-height: 56px;
+    background: #e3e3e3; //linear-gradient($grey-color, $grey-color-dark);
+    color: black;
 
     // Positioning context for the mobile navigation icon
     position: relative;
@@ -15,7 +19,7 @@
 .site-title {
     font-size: 26px;
     font-weight: 300;
-    line-height: 56px;
+    //line-height: 56px;
     letter-spacing: -1px;
     margin-bottom: 0;
     //float: left;
@@ -27,15 +31,19 @@
 }
 
 .site-nav {
-    float: right;
-    line-height: 56px;
+    display: inline-block; //float: right;
+    font-weight: bold;
+    height: 41px;
+    //line-height: 56px;
 
     .menu-icon {
         display: none;
     }
 
     .page-link {
-	color: $grey-color-light;
+        background-color: #e3e3e3; //$grey-color;
+	color: black; //$grey-color-light;
+	//color: $grey-color-light;
         line-height: $base-line-height;
 
         // Gaps between nav items, but not on the last one
@@ -46,20 +54,20 @@
 
     @include media-query($on-palm) {
         position: absolute;
-        top: 9px;
-        right: $spacing-unit / 2;
-        background-color: $grey-color;
-        border: 1px solid white;
-        border-radius: 5px;
+        top: 0px;
+        right: 0px; //$spacing-unit / 2;
+        //border: 1px solid white;
+        //border-radius: 5px;
         text-align: right;
 
         .menu-icon {
+	    border-left: 1px solid black;
             display: block;
             float: right;
             width: 36px;
-            height: 26px;
             line-height: 0;
-            padding-top: 10px;
+            padding-top: 13px;
+	    padding-bottom: 13px;
             text-align: center;
 
             > svg {
@@ -117,7 +125,7 @@
 
 .footer-col-wrapper {
     font-size: 15px;
-    color: $grey-color;
+    color: black; //$grey-color;
     margin-left: -$spacing-unit / 2;
     @extend %clearfix;
 }

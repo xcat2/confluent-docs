@@ -2,7 +2,6 @@
 layout: page
 title: Discussion
 permalink: /discussion/
-toplevel: yes
 ---
 
 Lenovo invites the community to participate in conversations in our [forums].
