@@ -4,9 +4,10 @@ title: Confluent quickstart
 permalink: /documentation/confluentquickstart_el8.html
 ---
 
-This document provides one example flow from installation to capable cluster. confluent is very flexible and there are
+This document provides one example flow from installation to capable cluster. Confluent is very flexible and there are
 multiple ways to do things. For example, this document is going to skip configuring automatic IP addresses, working with
-an external DHCP server, automatic configuration based on physical location, and other topics.
+an external DHCP server, automatic configuration based on physical location, and other topics. See the more detailed
+documentation for more detail and alternative strategies for particular areas.
 
 # Installing confluent
 
@@ -51,7 +52,7 @@ unspecified, default root password behavior is to disable password based login a
 # Defining nodes
 
 
-Nodes may contain any number of attributes. In this document, everything is defined at the group level, so we only need define the names. This document
+Nodes may contain any number of attributes. In this document, everything is defined at the group level, so we only need define the names. Here we
 will use a simple n[number] scheme, though any scheme may be used.
 
     # nodedefine n1-n4 
@@ -122,7 +123,7 @@ If desiring only to prepare for hardware management, then the guide has complete
 
 Note that no particular name resolution solution is required, but this document suggests a basic strategy if no strategy is already in place.
 
-This document starts by building /etc/hosts. This may be done manually, or noderun can be used to quickly generate lines for /etc/hosts. First a dry run to make sure it looks correct:
+We start by building /etc/hosts. This may be done manually, or noderun can be used to quickly generate lines for /etc/hosts. First a dry run to make sure it looks correct:
 
     # noderun -n n1-n4 echo 172.30.0.{n1} {node} {node}.{dns.domain}
     172.30.0.1 n1 n1.mydomain.example
@@ -145,36 +146,41 @@ Any time /etc/hosts is updated, restart dnsmasq to have it pick up changes.
 
 The osdeploy command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used
 to interactively prompt on the options that are available:
-
-    # osdeploy initialize -i
-    Add root user key to be authorized to log into nodes (-u)? (y/n): y
-    Set up an SSH authority to help manage known_hosts and node to node ssh for all users (-s)? (y/n): y
-    Update global known hosts on this server to trust local CA certificates (-k)? (y/n): y
-    Update tftp directory with binaries to support PXE (-p) (y/n): y
-    Generate new TLS certificates for HTTP, replacing any existing certificate (-t)? (y/n): y
-    New HTTPS certificates generated, restart the web server
-    Generating public/private ed25519 key pair.
-    Your identification has been saved in /etc/confluent/ssh/ca.
-    Your public key has been saved in /etc/confluent/ssh/ca.pub.
-    The key fingerprint is:
-    SHA256:eGhXHgsXeJJ1lpKYBv9ALZQ7qIYGVGtgsRu+ILsjj5A mgt.mydomain.example SSH CA
-    The key's randomart image is:
-    +--[ED25519 256]--+
-    | +o.  .ooOo.o.   |
-    |..o .  oX =+.    |
-    |.o o   o+=+.     |
-    |o +   .ooB o     |
-    |o+ . .+ S.+      |
-    |oo+ o. o         |
-    |Eo .             |
-    |+o               |
-    |+o.              |
-    +----[SHA256]-----+
-    4 blocks
-
-As specified above, restart the web server:
-
-    # systemctl restart httpd
+```
+# osdeploy initialize -i
+Add root user key to be authorized to log into nodes (-u)? (y/n): y
+Initialize a profile to boot Genesis on target systems (a small Linux environment for rescue and staging use)? (y/n): y
+Set up an SSH authority to help manage known_hosts and node to node ssh for all users (-s)? (y/n): y
+Update global known hosts on this server to trust local CA certificates (-k)? (y/n): y
+Allow managed nodes to ssh to this management node without a password (-l)? (y/n): y
+Update tftp directory with binaries to support PXE (-p) (y/n): y
+Generate new TLS certificates for HTTP, replacing any existing certificate (-t)? (y/n): y
+HTTP server has been restarted if it was running
+Generating public/private ed25519 key pair.
+Your identification has been saved in /etc/confluent/ssh/ca.
+Your public key has been saved in /etc/confluent/ssh/ca.pub.
+The key fingerprint is:
+SHA256:hnSBJPUL2tET7Djkdd3jP9zabTdGiefjuWnaNTvajec mgt3 SSH CA
+The key's randomart image is:
++--[ED25519 256]--+
+|    .oooo  . .   |
+|     .oooo. . o  |
+|     o++=.   . . |
+|     ++=.o    .  |
+|    . o.S     o.o|
+|       .     . *o|
+|              +++|
+|              +O&|
+|             oB%E|
++----[SHA256]-----+
+TFTP service is enabled and running
+Signed host key /tmp/tmpnc184l43/hostkey-cert.pub: id "mgt3" serial 0 for mgt3,mgt3.mycluster.example valid forever
+Signed host key /tmp/tmp0y1oyp46/hostkey-cert.pub: id "mgt3" serial 0 for mgt3,mgt3.mycluster.example valid forever
+Signed host key /tmp/tmp2i8lgmu_/hostkey-cert.pub: id "mgt3" serial 0 for mgt3,mgt3.mycluster.example valid forever
+10 blocks
+Updated: genesis-x86_64
+Site initramfs content packed successfully
+```
 
 # Importing Install media
 

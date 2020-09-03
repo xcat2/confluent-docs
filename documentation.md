@@ -12,10 +12,10 @@ Generally speaking, there are two suggested approaches:
 * Using xCAT and confluent together - When you are used to xCAT or need stateless deployment or another currently xCAT exclusive feature and want to use it in conjunction with confluent.  For this situation, start with the xCAT documentation under Advanced topics.
 
 Getting started:
-* [Installing confluent under RedHat/CentOS]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
-* [Installing confluent under SuSE distributions]({{ site.baseurl }}/documentation/installconfluent_suse.html)
-* [Configuring confluent]({{ site.baseurl }}/documentation/configconfluent.html)
-* [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
+* [Quick start guide for confluent under RedHat/CentOS]({{site.baseurl}}/documentation/confluentquickstart_el8.html)
+* [Detailed installation guide for confluent under RedHat/CentOS]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
+* [Detailed installation guide for confluent under SuSE]({{ site.baseurl }}/documentation/installconfluent_suse.html)
+* [Detailed configuration guide for confluent]({{ site.baseurl }}/documentation/configconfluent.html)
 
 User reference documentation:
 
@@ -30,6 +30,7 @@ User reference documentation:
 * [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
 * [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
 * [OS Deployment Notes for SUSE Linux Enterprise 15]({{site.baseurl}}/documentation/suse15deploy.html)
+* [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
 
 Advanced topics:
