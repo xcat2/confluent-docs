@@ -26,9 +26,9 @@ title: Manual for $cmdname
 permalink: /documentation/man/$cmdname.html
 ---
 EOF
-    ronn --pipe --html $page >> man/${cmdname%.ronn}.html 
-    ls man/${cmdname%.ronn}.html 
+    ronn --pipe --html $page >> man/${cmdname%.ronn}.html  &
 done
+wait
 
     
 
