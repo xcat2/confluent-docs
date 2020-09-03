@@ -5,51 +5,40 @@ permalink: /documentation/
 toplevel: yes
 ---
 
+For specific topics, it may be easier to use the [search]({{site.baseurl}}/search.html) function of this site.
+
 Generally speaking, there are two suggested approaches:
-* Using xCAT and confluent together - When you are used to xCAT or need stateless deployment or another currently xCAT exclusive feature and want to use it in conjunction with confluent.  For this situation, start with the xCAT documentation.
 * Using confluent - It is now recommended for most of those without existing xCAT installations to use confluent directly.
+* Using xCAT and confluent together - When you are used to xCAT or need stateless deployment or another currently xCAT exclusive feature and want to use it in conjunction with confluent.  For this situation, start with the xCAT documentation under Advanced topics.
 
-Getting started for RedHat/CentOS:
-* [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_rhel.html)
-* [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
-* [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
-* [Confluent configuration notes for Lenovo hardware]({{ site.baseurl }}/documentation/confluentconfignotes.html)
-* [Configuring confluent without xCAT]({{ site.baseurl }}/documentation/configconfluent.html)
-* [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
-* [Applying software updates of only Lenovo repository under RedHat or CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
+Getting started:
+* [Installing confluent under RedHat/CentOS]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
+* [Installing confluent under SuSE distributions]({{ site.baseurl }}/documentation/installconfluent_suse.html)
+* [Configuring confluent]({{ site.baseurl }}/documentation/configconfluent.html)
+* [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
+
+User reference documentation:
+
 * [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
-* [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
-* [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
-
-Getting started for SUSE Linux Enterprise:
-* [Installing xCAT]({{ site.baseurl }}/documentation/installxcat_suse.html)
-* [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
-* [Installing confluent]({{ site.baseurl }}/documentation/installconfluent_suse.html)
-* [Configuring confluent standalone]({{ site.baseurl }}/documentation/configconfluent.html)
-* [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
-* [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
-* [OS Deployment Notes for SUSE Linux Enterprise 15]({{site.baseurl}}/documentation/suse15deploy.html)
-* [OS Deployment Notes for SUSE Linux Enterprise Server 12]({{site.baseurl}}/documentation/sles12deploy.html)
-
-General documentation:
-
 * [Discovery with chained ThinkSystem D2 enclosures]({{site.baseurl}}/documentation/chainedsmmdiscovery.html)
-* [Configuring confluent from xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
 * [Man pages]({{ site.baseurl }}/documentation/man/)
 * [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
 * [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
 * [Attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
 * [Specifying connected switch ports for nodes]({{site.baseurl}}/documentation/switchportattribs.html)
-
-
-Power and Cooling Monitoring:
-
-* [Power Histogram]({{ site.baseurl }}/documentation/energyhistogram.html)
+* [Confluent configuration notes for Lenovo hardware]({{ site.baseurl }}/documentation/confluentconfignotes.html)
+* [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
+* [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
+* [OS Deployment Notes for SUSE Linux Enterprise 15]({{site.baseurl}}/documentation/suse15deploy.html)
 * [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
 
 Advanced topics:
 
+* [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
+* [Installing xCAT on SuSE platforms]({{ site.baseurl }}/documentation/installxcat_suse.html)
+* [Installing xCAT on RedHat/CentOS platforms]({{ site.baseurl }}/documentation/installxcat_rhel.html)
 * [Remote confluent access (for xCAT rcons with service nodes)]({{ site.baseurl }}/documentation/remoteconfluent.html)
+* [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
 * [Using xCAT service nodes with a shared tftpboot directory]({{site.baseurl}}/documentation/sharedtftpnotes.html)
 * [Installing RedHat/CentOS 8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
 * [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
