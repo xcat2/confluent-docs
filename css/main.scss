@@ -15,8 +15,9 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
-$text-color:       #111;
+$text-color:       #000;
 //$background-color: #fdfdfd;
+//$background-color: #ffffff;
 $background-color: #ffffff;
 $brand-color:      #2a7ae2;
 
@@ -62,9 +63,11 @@ dd {
         margin-bottom: 1.5em;
 }
 
-pre, pre>code {
-	color: #fff;
-	background-color: #000;
+pre {
+	//color: #657b83; solarized original
+	//color: #354b53;
+	color: #246;
+	background-color: #eef;
 }
 $terminal-window-height: 30px;
 $border-color: black;
