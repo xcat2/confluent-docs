@@ -54,7 +54,7 @@ An entry can be associated with a node in the same fashion as [manual discovery]
 
 The same mechanisms that may be used for management controller and enclosure controller discovery in [using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html) may be used to help gather the PXE information automatically.  The difference being that `nodediscover rescan` will not work for PXE attempts, and confluent must simply wait for an attempt before it can proceed.
 
-One example to designate the system cabled to a switch named `r4e1` on port `34' as `n1` and enable fully automatic mac gathering would be:
+One example to designate the system cabled to a switch named `r4e1` on port `34` as `n1` and enable fully automatic mac gathering would be:
 
     # nodedefine n1 discovery.policy=permissive,pxe net.switch=r4e1 net.switchport=34
 
