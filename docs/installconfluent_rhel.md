@@ -18,8 +18,7 @@ At this point, the package may be installed:
 
 Next, enable it and start the confluent service:
 
-    systemctl enable confluent
-    systemctl start confluent
+    systemctl enable confluent --now
 
 At this point, source the script below for confluent command line functionality or logout and log back in. 
 
@@ -56,8 +55,7 @@ The user 'demouser' may now use his login password to access the confluent web i
 
 If the web server is not already started, enable the web server:
 
-    chkconfig httpd on
-    service httpd start
+    systemctl enable httpd --now
 
 After these steps, the GUI should be available at:
 
