@@ -69,6 +69,11 @@ pre {
 	color: #246;
 	background-color: #eef;
 }
+
+:not(pre) > code {
+	background-color: #eef;
+	color: #246;
+}
 $terminal-window-height: 30px;
 $border-color: black;
 $base-color: grey;
