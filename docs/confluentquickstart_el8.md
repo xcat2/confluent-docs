@@ -208,17 +208,17 @@ At this point, the boot and install progress may be watched interactively throug
 
     # nodeconsole n1
 
-Additionally, watching nodeattrib n1 deployment.profile can be used to see if the deployment has completed. While install has not completed, it appears as:
+Also `nodedeploy` may be used to check the current status of a deployment:
 
-    # nodeattrib n1-n2 deployment.profile
-    n1: deployment.profile:
-    n2: deployment.profile:
+    # nodedeploy n1-n2
+    n1: pending: centos-8.2-x86_64-default (node authentication armed)
+    n2: pending: centos-8.2-x86_64-default (node authentication armed)
 
 When install is complete:
 
-    # nodeattrib n1,n2 deployment.profile
-    n1: deployment.profile: rhel-8.2-x86_64-default
-    n2: deployment.profile: rhel-8.2-x86_64-default
+    [root@mgt1 ~]# nodedeploy d3,d4
+    n1: completed: centos-8.2-x86_64-default
+    n2: completed: centos-8.2-x86_64-default
 
 Additionally, ssh to nodes will work:
 
