@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Manual discovery with nodeassign
+title: Manual discovery with nodediscover assign
 permalink: /documentation/confluentnodeassign.html
 ---
 
