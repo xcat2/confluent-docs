@@ -28,7 +28,7 @@ suggested to set this data as attributes on the `everything` group:
 	nodegroupattrib everything console.method=ipmi
 	nodegroupattrib everything -p bmcuser bmcpass
 
-The [`nodeattrib`]({{site.baseurl}}/documentation/man/nodeattrib.html) and [`nodegroupattrib`]({{site.baseurl}}/documentation/man/nodegroupattrib.html) commands can either accept key=value or -p key key format. The former allows fully non-interactive use, while the
+The [`nodeattrib`]({{site.baseurl}}/documentation/man/nodeattrib.html) and [`nodegroupattrib`]({{site.baseurl}}/documentation/man/nodegroupattrib.html) commands can either accept `key=value` or `-p key1 key2`. The former allows fully non-interactive use, while the
 latter prompts interactively to prevent the username and password from being inadvertently on screen or stored in your shell history.
 
 From there, adding a specific node using values from the group `everything` combined with node specific attributes could involve the following:

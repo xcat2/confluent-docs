@@ -14,7 +14,7 @@ from /opt/confluent/share/affluent/ onto the switch:
 
 With that installation complete, the switch merely
 has to be added to confluent.  Use the resolvable hostname or ip address
-as thte nodename(s):
+as the nodename(s):
 
     # nodedefine r4c1 type=switch hardwaremanagement.method=affluent
 
