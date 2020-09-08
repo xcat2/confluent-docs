@@ -45,6 +45,7 @@ Advanced topics:
 * [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
 * [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
 * [Using driver update media for RedHat/CentOS]({{site.baseurl}}/documentation/driverupdatemedia.html)
+* [Using confluent discovery for xCAT]({{site.baseurl}}/documentation/confluenttoxcat.html)
 
 For developers:
 
