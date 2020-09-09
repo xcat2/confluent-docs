@@ -10,7 +10,8 @@ prior to PXE booting, sometimes this is not feasible. Two such scenarios would b
 * The management controller may not be a supported device for discovery (xClarity Controller, ThinkSystem Server Manager, and System Management Module are supported devices.
 * The configuration has the management controller unavailable (for example, needing to move the management controller onto a port shared with the operating system)
 
-In such a scenario, doing discovery PXE first is a strategy to move forward.
+In such a scenario, doing discovery PXE first is a strategy to move forward.  Note that prior to confluent performing a PXE driven discovery, confluent must have
+[OS deployment capability initialized]({{site.baseurl}}/documentation/confluentosdeploy.html)
 
 # Specifying a deployment target in advance
 
