@@ -111,6 +111,8 @@ A deployment profile is simply the collection of files in /var/lib/confluent/pub
     # cd /var/lib/confluent/public/os/
     # cp -a rhel-8.2-x86_64-default rhel-8.2-x86_64-custom
 
+If having a lot of shared content, it may be wise to employ symbolic links to explicitly share content. It may also be a good idea to use git to manage and track changes as well.
+
 Labels and kernel arguments are in the profile.yaml file in the directory.  If modifying that file or kernel or initramfs content, the boot payloads of a profile can be updated with:
 
     # osdeploy updateboot rhel-8.2-x86_64-custom
