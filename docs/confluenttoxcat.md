@@ -36,6 +36,6 @@ In order to generate a 'stanza' format file for mkdef (pulling in confluent grou
 
 In order to generate a CSV of node and mac addresses suitable for tabrestore mac:
 
-    # confluent2xcat d1-d8 -o mac.csv
+    # confluent2xcat d1-d8 -m mac.csv
 
 
