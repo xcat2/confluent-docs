@@ -70,4 +70,7 @@ use an OCP card to provide BMC access.
 In order for this setting to be applied by the OS profile, the OS profile must invoke the configbmc script. For genesis, see `/var/lib/confluent/public/os/genesis-x86_64/scripts/onboot.sh` file for information on how to configure BMC locally, for OS install, see `/var/lib/confluent/public/os/<profilename>/scripts/pre.custom`
 
 
+After configbmc runs, then out of band discovery can pick up newly available management controllers and finish configuration as needed for ipmi or setting username or passwords. Do a rescan to induce discovery of the newly available devices:
+
+    # nodediscover rescan
 
