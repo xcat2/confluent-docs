@@ -46,6 +46,7 @@ Advanced topics:
 * [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
 * [Using driver update media for RedHat/CentOS]({{site.baseurl}}/documentation/driverupdatemedia.html)
 * [Using confluent discovery for xCAT]({{site.baseurl}}/documentation/confluenttoxcat.html)
+* [Adding snmp support to xCAT]({{site.baseurl}}/documentation/xcataddingsnmp.html)
 
 For developers:
 
