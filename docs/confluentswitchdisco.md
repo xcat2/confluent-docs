@@ -47,7 +47,7 @@ where they are plugged in. This can either be based on where the management cont
 for situtions where a port dedicated to management is connected) or the port that the system will be used
 to execute a network boot (required for scenarios where the management controller will be shared with the
 operating system). If using the network boot port, then discovery is delayed until PXE boot is attempted. For example,
-here is a node that has a XCC connected to switch port 29 of a switch:
+here is a node that has a TSM connected to switch port 29 of a switch:
 
     # nodedefine example1 net.switch=r4e1 net.switchport=29 discovery.policy=permissive,pxe
     example1: created
