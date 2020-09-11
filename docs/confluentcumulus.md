@@ -12,6 +12,11 @@ from /opt/confluent/share/affluent/ onto the switch:
     # ssh -t cumulus@r4c1 sudo apt install ~cumulus/affluent_*.deb
 
 
+Note that if the installation occured after confluent tried to interrogate the
+switch, you may need to restart confluent:
+
+    # systemctl restart confluent
+
 With that installation complete, the switch merely
 has to be added to confluent.  Use the resolvable hostname or ip address
 as the nodename(s):
