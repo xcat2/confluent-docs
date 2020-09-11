@@ -43,7 +43,11 @@ With that, the `nodediscover` command now can present data about network connect
      7X21CTOLWW|   DVJJ1086|    lenovo-xcc| 08:94:ef:2f:2e:9d|   r4e1| Ethernet35
 
 The data can be used to guide a manual discovery, but nodes may also be defined to automatically configure devices based on
-where they are plugged in.  For example:
+where they are plugged in. This can either be based on where the management controller is connected (recommended
+for situtions where a port dedicated to management is connected) or the port that the system will be used
+to execute a network boot (required for scenarios where the management controller will be shared with the
+operating system). If using the network boot port, then discovery is delayed until PXE boot is attempted. For example,
+here is a node that has a XCC connected to switch port 29 of a switch:
 
     # nodedefine example1 net.switch=r4e1 net.switchport=29 discovery.policy=permissive,pxe
     example1: created
