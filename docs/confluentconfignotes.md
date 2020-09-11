@@ -38,7 +38,7 @@ And here is the result of this in the confluent rack view:
 
 ## Domain name resolution may not work for Redfish-managed node attributes
 
-For nodes configured to be managed with Redfish, domain name resolution may not work for note attribute values. For example, it is known to not work in the case of the `hardwaremanagement.manager` attribute. In the example below:
+For SR655 nodes configured to be managed with Redfish, domain name resolution may not work for note attribute values. For example, it is known to not work in the case of the `hardwaremanagement.manager` attribute. In the example below:
 
     # nodeattrib node1 hardwaremanagement.method
 
