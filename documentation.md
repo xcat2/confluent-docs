@@ -42,6 +42,7 @@ Advanced topics:
 * [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
 * [Using xCAT service nodes with a shared tftpboot directory]({{site.baseurl}}/documentation/sharedtftpnotes.html)
 * [Installing RedHat/CentOS 8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
+* [Booting xCAT ramroot over InfiniBand]({{site.baseurl}}/documentation/xcatramrootibboot.html)
 * [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
 * [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
 * [Using driver update media for RedHat/CentOS]({{site.baseurl}}/documentation/driverupdatemedia.html)
