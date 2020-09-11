@@ -46,6 +46,9 @@ Advanced topics:
 * [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
 * [Using driver update media for RedHat/CentOS]({{site.baseurl}}/documentation/driverupdatemedia.html)
 * [Using confluent discovery for xCAT]({{site.baseurl}}/documentation/confluenttoxcat.html)
+* [Confluent OS Deployment and Syslog]({{site.baseurl}}/documentation/confluentosdeployment.html)
+* [Confluent Discovery/Autosense setting]({{site.baseurl}}/documentation/confluentdiscoverysetting.html)
+* [Limitations of usage of Confluent osdeploy initialize across multiple management nodes]({{site.baseurl}}/documentation/confluentlimitationsosdeploy.html)
 * [Adding snmp support to xCAT]({{site.baseurl}}/documentation/xcataddingsnmp.html)
 
 For developers:
