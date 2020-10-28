@@ -64,7 +64,9 @@ After these steps, the GUI should be available at:
 
 # Preparing for discovery if firewall enabled
 
-If wanting to use the confluent discovery capabilities and you have a firewall enabled, here are example commands to allow discovery to work when managed by firewalld:
+If wanting to use the confluent discovery capabilities and you have a firewall enabled, further firewall configuration
+is required. First, check /etc/firewalld/firewalld.conf and ensure that the FirewallBackend is set to iptables,
+as the multicast reply rules require it.  With that configured, here are example commands to allow discovery to work when managed by firewalld:
 
     firewall-cmd --permanent --new-ipset=confluentv4 --type=hash:ip,port --option timeout=3
     firewall-cmd --permanent --new-ipset=confluentv6 --type=hash:ip,port --option timeout=3 --family inet6
