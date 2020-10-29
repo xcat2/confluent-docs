@@ -29,7 +29,7 @@ to feed discovery data to alternative OS deployment software if desired rather t
 
 xCAT generally expects a trusted network and offers material unencrypted in various contexts. It does not support running under SELinux and it does not support SecureBoot.
 
-The default configuration of confluent protects sensitive data, and opt-in for more convenient behavior still affords more protection than with xCAT. Notably:
+The default configuration of confluent protects sensitive data. Even after opting into more convenient behavior, confluent will still protect sensitive data more than xCAT. Notably:
 * Fully encrypted deployment over HTTPS is supported (Firmware configuration required)
 * tftp is now optional (Can use HTTP or HTTPS boot instead)
 * SecureBoot deployment is supported (HTTP or HTTPS boot only)
