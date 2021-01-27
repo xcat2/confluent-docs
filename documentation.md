@@ -34,6 +34,10 @@ User reference documentation:
 * [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
 * [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
 
+Troubleshooting:
+
+* [Troubleshooting issues with confluent OS deployment]({{site.baseurl}}/documentation/confluentosdeploymenttroubleshooting.html)
+
 Advanced topics:
 
 * [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
