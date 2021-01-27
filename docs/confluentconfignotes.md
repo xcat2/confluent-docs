@@ -36,7 +36,13 @@ And here is the result of this in the confluent rack view:
 ![Confluent rack view]({{site.baseurl}}/assets/confluent_rack_view.png)
 
 
-## Domain name resolution may not work for Redfish-managed node attributes
+## nodeconfig may take a few seconds to reflect submitted changes
+
+When using nodeconfig to submit a system configuration change, it exits when
+the target device has accepted the change. However, an endpoint may take some time
+to activate the change so that it will be visible when showing the configuration.
+
+## Domain name resolution may not work for Redfish-managed nodes
 
 For SR655 nodes configured to be managed with Redfish, domain name resolution may not work for note attribute values. For example, it is known to not work in the case of the `hardwaremanagement.manager` attribute. In the example below:
 
