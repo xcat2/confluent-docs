@@ -51,7 +51,10 @@ in this case:
 
 # Managing the nodes' active manager
 
-Once in a collective, each managed system must have a designated manager.  This can be changed on the fly.  If unspecified and a node goes through the discovery process, the member that performs the discovery claims the node by default. 
+Once in a collective, each managed system must have a designated manager.  This can be changed on the fly.  If unspecified and a node goes through the discovery process, the member that performs the discovery claims the node by default. Additionally, automatic assignment in event of the collective.manager failing
+can be requested by setting `collective.managercandidates` which accepts a noderange of collective members to take over management in the case of
+the current manager going out.
+
 Here are examples of setting it
 for a node or a group.  Issuing the same commands with different collective.manager is all that is required to move a node.
 
