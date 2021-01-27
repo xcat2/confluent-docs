@@ -17,6 +17,7 @@ Getting started:
 * [Detailed installation guide for confluent under SuSE]({{ site.baseurl }}/documentation/installconfluent_suse.html)
 * [Detailed configuration guide for confluent]({{ site.baseurl }}/documentation/configconfluent.html)
 * [InfiniBand install with confluent on RHEL 8]({{ site.baseurl }}/documentation/ibinstallconfluentrhel8.html)
+* [InfiniBand install with confluent on SLE 15.2]({{ site.baseurl }}/documentation/ibinstallconfluentsle152.html)
 
 User reference documentation:
 
