@@ -8,19 +8,19 @@ Occasionally for network deployment of a RHEL or CentOS the modules included in 
 
 1. The driver update media package will typically be provided as a `*.iso` file.  This need to be wrapped into a cpio file, which may be done as follows:
 
-    echo <driver update media package filename>.iso | cpio -H newc -o > <driver update media package filename>.cpio
+    echo `<driver update media package filename>`.iso | cpio -H newc -o > `<driver update media package filename>`.cpio
 
 2. Place the driver update package cpio file into the OS profile being deployed, in the `boot/initramfs` directory:
 
-    cp <driver update media package filename>.cpio /var/lib/confluent/public/os/<OS profile name>/boot/initramfs
+    cp `<driver update media package filename>`.cpio /var/lib/confluent/public/os/`<OS profile name>`/boot/initramfs
 
 3. In the `profile.yaml` file in the `var/lib/confluent/public/os/<OS profile name>` directory, add the following to the kernelargs line:
 
-    dd=/<driver update media package filename>.iso
+    dd=/`<driver update media package filename>`.iso
 
 4. Update the profile (this updates the boot.ipxe and boot.img contents with the driver update media package file and kernelargs updates):
 
-    osdeploy updateboot <OS profile name>
+    osdeploy updateboot `<OS profile name>`
     
     
 [Preparing for Operating System Deployment](http://taurus.labs.lenovo.com/users/documentation/confluentosdeploy.html)
