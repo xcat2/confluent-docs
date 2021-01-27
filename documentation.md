@@ -56,6 +56,7 @@ Advanced topics:
 * [Confluent Discovery/Autosense setting]({{site.baseurl}}/documentation/confluentdiscoverysetting.html)
 * [Limitations of usage of Confluent osdeploy initialize across multiple management nodes]({{site.baseurl}}/documentation/confluentlimitationsosdeploy.html)
 * [Adding snmp support to xCAT]({{site.baseurl}}/documentation/xcataddingsnmp.html)
+* [xCAT stateless image creation under SLES 15.2 fails]({{site.baseurl}}/documentation/xcatstatelessimagesles152.html)
 
 For developers:
 
