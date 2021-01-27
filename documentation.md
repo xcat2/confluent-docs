@@ -1,4 +1,4 @@
----
+    ---
 layout: page
 title: Documentation
 permalink: /documentation/
@@ -16,6 +16,7 @@ Getting started:
 * [Detailed installation guide for confluent under RedHat/CentOS]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
 * [Detailed installation guide for confluent under SuSE]({{ site.baseurl }}/documentation/installconfluent_suse.html)
 * [Detailed configuration guide for confluent]({{ site.baseurl }}/documentation/configconfluent.html)
+* [InfiniBand install with confluent on RHEL 8]({{ site.baseurl }}/documentation/ibinstallconfluentrhel8.html)
 
 User reference documentation:
 
