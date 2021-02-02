@@ -28,4 +28,4 @@ Change the profile.yaml file in the the OS profile to be deployed to add:
 
 and run
 
-    # `osdeploy updateboot <OS profile name>`
+    `# osdeploy updateboot <OS profile name>`
