@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Submit Job Failed on Host Cluster
-permalink: /lico/lico5/faq-submit-slurm-job-failed
+permalink: /lico/faq/faq-submit-slurm-job-failed
 ---
 In most cases, submit job fail is because of incorrect slurm status. User can try the following methods to investigate:  
 

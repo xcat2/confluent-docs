@@ -1,7 +1,7 @@
 ---
 layout: page
 title: How to Use User Image in LiCO
-permalink: /lico/lico5/faq-how-to-use-user-image
+permalink: /lico/faq/faq-how-to-use-user-image
 ---
 ## Import user created singularity images into LiCO
 User can also import user created images into LiCO.
