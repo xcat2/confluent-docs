@@ -9,9 +9,9 @@ Build-in container images
 ============================
 - This site provides **LiCO build-in container images** [LiCO5.5](https://hpc.lenovo.com/lico/downloads/5.5/images/) [LiCO6.1](https://hpc.lenovo.com/lico/downloads/6.1/images/), 
 user can download singularity definition file or docker file from this site, then build container image, import the image into LiCO and use it in LiCO. 
-- For LiCO Host: LiCO uses singularity as container, user can **follow the guide** [LiCO5.5]({{ site.baseurl }}/lico/lico5/host-import-buildin-images.html) 
+- For LiCO Host: LiCO uses singularity as container, user can **follow the guide** [LiCO5.5]({{ site.baseurl }}/lico/lico550/host-import-buildin-images.html) 
 [LiCO6.1](https://hpc.lenovo.com/lico/downloads/6.1/images/host/readme.html) to build LiCO build-in singularity image and import image into LiCO.
-- For LiCO K8S: LiCO uses docker as container, user can **follow the guide** [LiCO5.5]({{ site.baseurl }}/lico/lico5/k8s-import-buildin-images.html) 
+- For LiCO K8S: LiCO uses docker as container, user can **follow the guide** [LiCO5.5]({{ site.baseurl }}/lico/lico550/k8s-import-buildin-images.html) 
 [LiCO6.1](https://hpc.lenovo.com/lico/downloads/6.1/images/k8s/readme.html) to build LiCO build-in docker image and import image into LiCO.
 
 Customer contributed container images

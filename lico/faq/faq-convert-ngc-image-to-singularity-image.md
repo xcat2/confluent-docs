@@ -1,7 +1,7 @@
 ---
 layout: page
 title: How to Convert NGC Image to Singularity Image 
-permalink: /lico/lico5/faq-how-to-convert-ngc-image-to-singularity-image
+permalink: /lico/faq/faq-how-to-convert-ngc-image-to-singularity-image
 ---
 **Step 1. Register an account on the NGC web site <https://ngc.nvidia.com>.**   
 **Step 2. Generate an API KEY as the authentication key to pull NGC image.**  
