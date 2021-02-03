@@ -4,13 +4,13 @@ title: InfiniBand install with confluent on RHEL 8
 permalink: /documentation/ibinstallconfluentrhel8.html
 ---
 
-### Pelease refer to the following link for the confluent OS deployment process:
+### Please refer to the following link for the confluent OS deployment process:
 
 [Preparing for Operating System Deployment](http://taurus.labs.lenovo.com/users/documentation/confluentosdeploy.html)
 
-## The confluent deployment process for installing over InfiniBand requires the following modifications
+### The confluent deployment process for installing over InfiniBand requires the following modifications:
 
-### Using driver update media for RedHat/CentOS
+#### Using driver update media for RedHat/CentOS
 
 Occasionally for network deployment of a RHEL or CentOS the modules included in the install initrd for the OS aren’t sufficient to work with the network device being installed over (for example, if the network device is very new and the driver support hasn’t been added to the OS yet).  In that scenario a driver update media package for that network device can be used to provide support for that network device during and after the OS installation. In order to do that, the following should be done:
 
@@ -30,7 +30,7 @@ Occasionally for network deployment of a RHEL or CentOS the modules included in 
 
     `osdeploy updateboot <OS profile name>`
 
-### Net config fixup postscript
+#### Net config fixup postscript
 
 InfiniBand network configuration does not work as expected out of the box.  If not installing Mellanox OFED, the following is an example of a
 postscript that can be added to correct that behavior:
@@ -40,12 +40,14 @@ postscript that can be added to correct that behavior:
     echo 'add_drivers+="mlx5_ib ib_ipoib"' > /<profile dir>/scripts/post.d/mlx.conf
     dracut -f
 
-### Kernel command line configuration
+#### Kernel command line configuration
 
 Change the profile.yaml file in the the OS profile to be deployed to add:
 
-    # rd.driver.pre="mlx5_ib,ib_ipoib rd.net.timeout.carrier=80 rd.bootif=0" on the kernel.args line
+    # rd.driver.pre="mlx5_ib,ib_ipoib rd.net.timeout.carrier=80 rd.bootif=0"
 
-and run
+on the kernel.args line
+
+Then run
 
     `# osdeploy updateboot <OS profile name>`
