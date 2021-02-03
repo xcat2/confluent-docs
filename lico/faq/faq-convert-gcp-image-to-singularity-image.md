@@ -1,7 +1,7 @@
 ---
 layout: page
 title: How to Convert GCP Image to Singularity Image 
-permalink: /lico/lico5/faq-how-to-convert-gcp-image-to-singularity-image
+permalink: /lico/faq/faq-how-to-convert-gcp-image-to-singularity-image
 ---
 **Step 1. Obtain the Google deep learning container URL.**   
 Google provides pre-configured and optimized deep learning containers that can be used within LiCO. To view available container images, visit <https://console.cloud.google.com/gcr/images/deeplearning-platform-release?project=deeplearning-platform-release>.  
