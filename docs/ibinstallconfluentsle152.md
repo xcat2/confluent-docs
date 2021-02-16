@@ -4,11 +4,11 @@ title: InfiniBand install with confluent on SLE 15.2
 permalink: /documentation/ibinstallconfluentsle152.html
 ---
 
-### Please refer to the following link for the confluent OS deployment process:
+#### Please refer to the following link for the confluent OS deployment process:
 
 [Preparing for Operating System Deployment](http://taurus.labs.lenovo.com/users/documentation/confluentosdeploy.html)
 
-### The confluent deployment process for installing over InfiniBand requires the following modifications:
+#### The confluent deployment process for installing over InfiniBand requires the following modifications:
 
 #### Net config fixup postscript
 
