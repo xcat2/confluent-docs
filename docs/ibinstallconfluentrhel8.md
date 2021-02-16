@@ -4,11 +4,11 @@ title: InfiniBand install with confluent on RHEL 8
 permalink: /documentation/ibinstallconfluentrhel8.html
 ---
 
-### Please refer to the following link for the confluent OS deployment process:
+#### Please refer to the following link for the confluent OS deployment process:
 
 [Preparing for Operating System Deployment](http://taurus.labs.lenovo.com/users/documentation/confluentosdeploy.html)
 
-### The confluent deployment process for installing over InfiniBand requires the following modifications:
+#### The confluent deployment process for installing over InfiniBand requires the following modifications:
 
 #### Using driver update media for RedHat/CentOS
 
@@ -50,4 +50,4 @@ on the kernel.args line
 
 Then run
 
-    `# osdeploy updateboot <OS profile name>`
+    # osdeploy updateboot <OS profile name>
