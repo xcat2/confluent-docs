@@ -4,6 +4,14 @@ title: Node discovery and autoconfiguration with confluent
 permalink: /documentation/confluentdisco.html
 ---
 
+Note that discovery is an optional portion of confluent that may be skipped.
+Further, the discovery process does not require that the user log into the
+target and do anything like change password or network configuration. It is
+designed to specifically help when a target has not been configured at all and
+implements everything it needs to automatically change password and adjust
+networking as required. If you do adjust networking, user, and password
+through other means, then this portion may be skipped.
+
 While it is possible to use confluent by directly specifying the pre-configured 
 address, username, and password of a BMC, confluent also has the ability to 
 automate the deployment of configuration of Integrated Management Module
