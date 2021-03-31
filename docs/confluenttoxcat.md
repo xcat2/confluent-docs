@@ -14,7 +14,7 @@ enabling management and console access prior to turning on the system.
 
 In order to direct confluent to retain PXE mac addresses, simply set the `net.bootable` attribute to 1 and ensure that `discovery.policy` includes PXE:
 
-    # nodegroup everything discovery.policy=permissive,pxe net.bootable=1
+    # nodegroupattrib everything discovery.policy=permissive,pxe net.bootable=1
 
 # Perform normal confluent discovery
 
