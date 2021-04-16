@@ -24,7 +24,7 @@ server configurations. It incorporates a variety of functions relevant to that e
     * Sample profiles for ESXi 6.7/7.0, RedHat/CentOS 7.x/8.x, SuSE 15.x, RHV-H 4.3/4.4 and Ubuntu 20.04
     * Deployment over PXE, HTTP(S)boot, or removable media (real or virtual)
     * Does not require a DHCP server, nor does it conflict with an external DHCP server for all deployment methods
-    * Support customization during phases of deploymennt (e.g. post, firstboot, onboot) by local commands or automatically launched remote ansible playbooks.
+    * Support customization during phases of deployment (e.g. post, firstboot, onboot) by local commands or automatically launched remote ansible playbooks.
 * Centralized access to network topology information
     * Access mac address table and lldp information across all switches in one interface
 * Rich device on-boarding capabilities
