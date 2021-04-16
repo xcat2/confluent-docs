@@ -29,7 +29,7 @@ Attributes may all be specified on the command line, and an example set could be
     # nodegroupattrib everything deployment.useinsecureprotocols=firmware console.method=ipmi dns.servers=172.30.0.254 dns.domain=mydomain.example net.ipv4_gateway=172.30.0.254
 
 
-The deployment.useinsecurueprotocols=firmware enables PXE support (HTTPS only mode is by default the only allowed mode), console.method=ipmi may be skipped but if specified instructs
+The deployment.useinsecureprotocols=firmware enables PXE support (HTTPS only mode is by default the only allowed mode), console.method=ipmi may be skipped but if specified instructs
 confluennt to use IPMI to access the text console to enable the `nodeconsole` command.
 
 While passwords and similar may be specified the same way, it is recommended to use the '-p' argument to prompt for values, to keep them out of your command history. Note that if
