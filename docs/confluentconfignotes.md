@@ -79,3 +79,7 @@ There are two options to address the problem:
 
     nodeattrib node1 hardwaremanagement.method=ipmi
     node1:  ipmi
+
+## Redfish management method not supported on FPC, SMM or SMM2
+
+The Lenovo FPC, SMM and SMM2 chassis management modules do not support redfish--use ipmi for their hardwaremanagementmethods.
