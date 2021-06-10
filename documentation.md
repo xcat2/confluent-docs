@@ -39,7 +39,7 @@ User reference documentation:
 Troubleshooting:
 
 * [Troubleshooting issues with confluent OS deployment]({{site.baseurl}}/documentation/confluentosdeploymenttroubleshooting.html)
-* [Troubleshooting issues with xCAT OS deployment]({{site.baseurl}}/documentation/xcatosdeploymenttroubleshooting.html)
+* [Troubleshooting issues with xCAT OS deployment and diskless image creation/boot]({{site.baseurl}}/documentation/xcatosdeploymenttroubleshooting.html)
 
 Advanced topics:
 
