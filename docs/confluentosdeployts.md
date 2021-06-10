@@ -24,3 +24,7 @@ and removing it using confetty:
 If the ssh ca certificate is changed on the management node, then confluent needs to be updated with this by running "osdeploy initialize -k".  This will allow for ssh from the management node to the managed nodes to work.
 
 To make sure ssh from one confluent-deployed managed node to another works, after the ssh ca certificate is changed on the management node, if using image-based (versus separate kernel and initrd downloads) deployment, then the OS profile image needs to be updated with "osdeploy updateboot <profile name>" prior to OS deployment.
+
+# Can't access OS repos from managed nodes after confluent deployment
+
+The OS repo URLs are set to the specific profile used to perform the deployment with confluent on a managed node.  If that profile is moved, renamed, or deleted on the management node, then the managed node will not longer be able to access those repos.  This is different from how this was done with xCAT where different install profiles pointed to a common install source location (this actually is deduplicated in confluent as well, but the URLs on the managed nodes are specific to the deployment profile).
