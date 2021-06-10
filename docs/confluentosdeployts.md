@@ -19,3 +19,8 @@ and removing it using confetty:
     # confetty rm /deployment/importing/centos_stream-8.4-x86_64
     Deleted: deployment/importing/centos_stream-8.4-x86_64
 
+# Can't ssh from the management node to a managed node after deployment, or from a managed node to another managed node after deployment
+
+If the ssh ca certificate is changed on the management node, then confluent needs to be updated with this by running "osdeploy initialize -k".  This will allow for ssh from the management node to the managed nodes to work.
+
+To make sure ssh from one confluent-deployed managed node to another works, after the ssh ca certificate is changed on the management node, if using image-based (versus separate kernel and initrd downloads) deployment, then the OS profile image needs to be updated with "osdeploy updateboot <profile name>" prior to OS deployment.
