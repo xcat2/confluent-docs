@@ -19,3 +19,17 @@ and removing it using confetty:
     # confetty rm /deployment/importing/centos_stream-8.4-x86_64
     Deleted: deployment/importing/centos_stream-8.4-x86_64
 
+# Can't ssh from the management node to a managed node after deployment, or from a managed node to another managed node after deployment
+
+If the ssh ca certificate is changed on the management node, then confluent needs to be updated with this by running "osdeploy initialize -k".  This will allow for ssh from the management node to the managed nodes to work.
+
+To make sure ssh from one confluent-deployed managed node to another works, after the ssh ca certificate is changed on the management node, if using image-based (versus separate kernel and initrd downloads) deployment, then the OS profile image needs to be updated with "osdeploy updateboot <profile name>" prior to OS deployment.
+
+# Can't access OS repos from managed nodes after confluent deployment
+
+The OS repo URLs are set to the specific profile used to perform the deployment with confluent on a managed node.  If that profile is moved, renamed, or deleted on the management node, then the managed node will not longer be able to access those repos.  This is different from how this was done with xCAT where different install profiles pointed to a common install source location (this actually is deduplicated in confluent as well, but the URLs on the managed nodes are specific to the deployment profile).
+
+# Managed node may hang during confluent OS deployment
+
+When performing OS deployment with confluent, the managed node may hang, for example at "Started cancel waiting for multipath siblings of <drive>" when deploying RHEL 8.3.  This can be caused by the collective.managercandidates nodattribute containing a management node that is not actually defined as a node in the confluent database.  Note that this has to be defined exactly as it appears in the "collective show" command output.  For example, if the management node is shown in "collective show" as "mn.domain" then that management node has to be defined with the nodename "mn.domain" in confluent, as opposed to just "mn".
+
