@@ -184,7 +184,7 @@ Site initramfs content packed successfully
 
 # Importing Install media
 
-Make sure the install media is readable by the confluent user or group (for example by being in /tmp), and then request import:
+The iso of a supported OS may be imported by using the `osdeploy import` command, for example:
 
     # osdeploy import RHEL-8.2.0-20200404.0-x86_64-dvd1.iso 
     Importing from /root/RHEL-8.2.0-20200404.0-x86_64-dvd1.iso to /var/lib/confluent/distributions/rhel-8.2-x86_64
