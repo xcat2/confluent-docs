@@ -10,8 +10,7 @@ After adding the correct repository as indicated in the [download page]({{ site.
 
 At which point go ahead and enable it and start it.
 
-    systemctl enable confluent
-    systemctl start confluent
+    systemctl enable confluent --now
 
 At this point, source the script below for confluent command line functionality or logout and log back in. 
 
@@ -22,28 +21,20 @@ At this point, source the script below for confluent command line functionality 
 
 ### Enable Secure WebServer with SSL
 
-For more information see [https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html](https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_apache2_ssl.html). 
-
-For quick start generating dummy ssl certificate: 
-
-    # Run gensslcert -n somename if you do not have a domain set
-    gensslcert
-
-Create SSL conf on Apache 	
+If not otherwise enabling and configuring TLS, then the following will activate a TLS configuration:	
 
     cd /etc/apache2/vhosts.d/
     cp vhost-ssl.template mySSL.conf 
 
-Edit mySSL.conf according to this example, replacing server.crt and server.key with the filenames specific to your server:
+Use osdeploy to create TLS certificate:
 
-    #Update SSLCertificateFile and SSLCertificateKeyFile lines to point to server
-    SSLCertificateFile /etc/apache2/ssl.crt/server.crt
-    SSLCertificateKeyFile /etc/apache2/ssl.key/server.key
+    osdeploy initialize -t
 
 Enable SSL on Apache
 
+    a2enmod rewrite
     a2enflag SSL
-    service apache2 restart
+    systemctl enable apache2 --now
 
 
 In terms of confluent itself, it is by default set up without any user access.  To enable a user that can ssh into your server to access the web interface:

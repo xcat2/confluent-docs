@@ -17,6 +17,8 @@ testupload:
 
 produpload: all
 	rsync -a _site/* ru3gkpgr@10.38.87.83:/var/www/html/hpc/users
+newupload: all
+	rsync -a _site/* ru3gkpgr@10.64.200.36:/data2/hpcsite/users
 
 betaupload: beta
 	rsync -a _site/* ru3gkpgr@10.38.87.83:/var/www/html/hpc/beta
