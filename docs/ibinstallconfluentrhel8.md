@@ -35,16 +35,16 @@ Net config fixup postscript
 InfiniBand network configuration does not work as expected out of the box.  If not installing Mellanox OFED, the following is an example of a
 postscript that can be added to correct that behavior:
 
-    # cat /install/postscripts/fixipoib
-    echo 'install mlx5_core /sbin/modprobe --ignore-install mlx5_core; /sbin/modprobe mlx5_ib; /sbin/modprobe ib_ipoib' >> /<profile dir>/scripts/post.d/mlx.conf
-    echo 'add_drivers+="mlx5_ib ib_ipoib"' > /<profile dir>/scripts/post.d/mlx.conf
+    # cat /var/lib/confluent/public/os/your-profile-here/scripts/pod.d/fixipoib
+    echo 'install mlx5_core /sbin/modprobe --ignore-install mlx5_core; /sbin/modprobe mlx5_ib; /sbin/modprobe ib_ipoib' >> /etc/modprobe.d/mlx.conf
+    echo 'add_drivers+="mlx5_ib ib_ipoib"' > /etc/dracut.conf.d/mlx.conf
     dracut -f
 
 Kernel command line configuration
 
 Change the profile.yaml file in the the OS profile to be deployed to add:
 
-    # rd.driver.pre="mlx5_ib,ib_ipoib rd.net.timeout.carrier=80 rd.bootif=0"
+    # rd.driver.pre="mlx5_ib,ib_ipoib"
 
 on the kernel.args line
 
