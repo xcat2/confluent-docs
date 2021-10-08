@@ -59,4 +59,8 @@ HTTP over IPv6 is now supported for the initial kernel/ramdisk and genesis can n
 
 The utility works in lieu of xCAT's `makehosts` for IPv4 and IPv6 addresses without requiring ip be in an attribute first.
 
+# Additional features for syncfile facility
+
+Ability to restrict an entry to a specific noderange.
+Specify user,group,permissions for an entry to explicitly change
 
