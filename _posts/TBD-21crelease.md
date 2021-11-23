@@ -34,7 +34,7 @@ SUSE Enterprise 15 SP3 and LEAP 15.3 are now supported.
 
 If configured, confluent gui will manifest the conversation prompts and support use of multiple fields for password.
 
-# Confluent no uses a disntinct TLS CA from webserver certificate instead of self-signed
+# Confluent now uses a disntinct TLS CA from webserver certificate instead of self-signed
 
 This change enables regenerating webserver certificates due to ip reconfiguration without disrupting trust in site.cpio, boot.img, and existing nodes. It also is
 compatible with some software that expcilitly forbids self signed certificates.
@@ -63,4 +63,12 @@ The utility works in lieu of xCAT's `makehosts` for IPv4 and IPv6 addresses with
 
 Ability to restrict an entry to a specific noderange.
 Specify user,group,permissions for an entry to explicitly change
+sycnfiles may now use '<' to indicate including another syncfile
+
+# Plugins may now extend the confluent api
+
+A private plugin is now allowed to extend the API. This can be used alongside 'custom.' attributes
+to have customized plugins for unique needs without coordinating with the upstream project.  Note
+that while the node/ api may be extended however the user likes, use of the word 'custom' in the
+path is recommended to not conflict with any future api changes.
 
