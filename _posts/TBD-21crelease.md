@@ -34,10 +34,10 @@ SUSE Enterprise 15 SP3 and LEAP 15.3 are now supported.
 
 If configured, confluent gui will manifest the conversation prompts and support use of multiple fields for password.
 
-# Confluent now uses a disntinct TLS CA from webserver certificate instead of self-signed
+# Confluent now uses a distinct TLS CA from webserver certificate instead of self-signed
 
 This change enables regenerating webserver certificates due to ip reconfiguration without disrupting trust in site.cpio, boot.img, and existing nodes. It also is
-compatible with some software that expcilitly forbids self signed certificates.
+compatible with some software that explicitly forbids self signed certificates.
 
 # Noderange [] syntax now supports a step
 
@@ -53,17 +53,17 @@ If two files comprise distinct amendments for /etc/passwd, for example, they may
 
 # Partial IPv6 deployment support
 
-HTTP over IPv6 is now supported for the initial kernel/ramdisk and genesis can now boot with ipv6 along with or instead of ipv4.
+HTTP over IPv6 is now supported for the initial kernel/initramfs and genesis can now boot with ipv6 along with or instead of ipv4.
 
 # New utility `confluent2hosts` to aid in creating and updating /etc/hosts
 
 The utility works in lieu of xCAT's `makehosts` for IPv4 and IPv6 addresses without requiring ip be in an attribute first.
 
-# Additional features for syncfile facility
+# Additional features for syncfiles facility
 
 Ability to restrict an entry to a specific noderange.
 Specify user,group,permissions for an entry to explicitly change
-sycnfiles may now use '<' to indicate including another syncfile
+syncfiles may now use '<' to indicate including another syncfile
 
 # Plugins may now extend the confluent api
 
