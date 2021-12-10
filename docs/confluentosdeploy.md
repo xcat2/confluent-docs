@@ -110,6 +110,10 @@ A deployment profile is simply the collection of files in /var/lib/confluent/pub
 
     # cd /var/lib/confluent/public/os/
     # cp -a rhel-8.2-x86_64-default rhel-8.2-x86_64-custom
+    # cd /var/lib/confluent/private/os/
+    # cp -a rhel-8.2-x86_64-default rhel-8.2-x86_64-custom
+
+Note that not all profiles contain private data, by default diskless images and captured clones have an encryption key in private, but scripted installs do not.
 
 If having a lot of shared content, it may be wise to employ symbolic links to explicitly share content rather than creating several copies of the same content (scripts or otherwise). It may also be a good idea to use git to manage and track changes as well.
 
@@ -122,10 +126,30 @@ not automatically replace any kickstart, autoyast, autoinstall, or script conten
 and modify kickstart.custom in CentOS and RedHat profiles, to make decisions about default firewall and SELinux configuration on nodes.
 
 
-# Specifying custom postscripts
+# Specifying custom postscripts or ansible plays.
 
-Postscripts (and other phases of scripting) are simply files in the 'scripts' directory of a profile.  See scripts/pre.custom, scripts/post.custom, and scripts/firstboot.custom for
-more details.  Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
+A number of phases are opened up for injecting custom scripts or ansible plays.  Scripts are executed directly on the deployment server while ansible plays are executed by the deployment server targeting
+the deploying system as if it were specified as a host in the play.
+
+The `pre` phase occurs prior to any disk formatting or installation.  This is a good time to manage RAID configuration, override install disk autodection, specify non-default partition plan, extend package list or
+otherwise dynamically modify the scripted install file prior to installation.  To override install disk, write the desired target disk to /tmp/installdisk.  Override default partitioning by writing to /tmp/partitioning.
+
+The `post` phase occurs after the installation has written content to disk, but prior to actually booting into the installation.  This is generally the optimal place to make most on-disk changes to
+an installed system to ensure they are in effect from the onset. This phase will be followed by an outage as the system reboots into the installed system.
+
+The `firstboot` phase occurs after the installed system has booted into the target system, has brought up the network and has sshd running. This is useful for changes that may depend upon drivers that would
+not have been configured yet in the `post` phase or else must run when the system is effectively immediately ready to be put into use.
+
+The `onboot` phase is only for diskless boots, and behaves similarly to `firstboot`, but runs on every boot, since each diskless boot must start from scratch. Where possible, doing modifications to the image
+itself (e.g. using `imgutil exec`) is recommended to keep memory consumption down and boot time down.
+
+The `pre` phase occurs prior to any disk formatting or installation.  This is a good time to manage RAID configuration, override install disk autodection, specify non-default partition plan, extend package list or
+
+All content are simple files stored under the respective profile (/var/lib/confluent/public/os/<profile>). For scripted install profiles and cloning,
+scripts may be placed in scripts/pre.d, scripts/post.d, and scripts/firstboot.d.
+For diskless installs, scripts/onboot.d is available.  Note that content under /var/lib/confluent/public is considered non-sensitive and must not include any passwords, secret keys, or similarly sensitive information.  See the document [Handling of security information in OS deployment]({{site.baseurl}}/documentation/osdeploysecurity.html) for guidance.
+
+Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
 
 # Handling xClarity Controller or TSM on shared ports (on board network or OCP)
 
