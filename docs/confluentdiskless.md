@@ -16,8 +16,6 @@ it is possible to deploy from imported media.  If wanting to use this strategy, 
     complete: 100.00%    
     Deployment profile created: alma-8.5-x86_64-default
 
-
-
 # Creating initial root filesystem tree
 
 In confluent, the root filesystem can be built wherever you like and does not need to be retained after packing.  To build a new
@@ -74,6 +72,7 @@ At which point modifications using imgutil exec or otherwise modifying the direc
 
 This is a recommended method to preserve both copies until the new image is determined to be correctly working
 
+# Duplicating an image without repacking
 
-
-    
+If wanting to copy a diskless profile for reasons that do not require repacking, then you must copy both /var/lib/confluent/private/os/<profilename> and /var/lib/confluent/public/os/<profilename>.
+The private portion usually contains an encryption key needed for the packed image to boot.
