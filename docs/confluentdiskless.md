@@ -76,3 +76,21 @@ This is a recommended method to preserve both copies until the new image is dete
 
 If wanting to copy a diskless profile for reasons that do not require repacking, then you must copy both /var/lib/confluent/private/os/<profilename> and /var/lib/confluent/public/os/<profilename>.
 The private portion usually contains an encryption key needed for the packed image to boot.
+
+# Login delays
+
+If accounts suffer a one-time delay after initial login, this is likely due to systemd user slice failing to actually function.
+To mitigate, it is possible to modify thte TimeoutStopSec value in /usr/lib/systemd/system/user@.service to a smaller value, like 10s
+
+# SELinux labelling issues
+
+If errors arise during booting suggesting that, for example, sshd_config is not writable, it may be due to a mislabeled image. By default,
+the image should be labeled correctly, but if the scratch filesystem use did not support proper labelling, this can be a problem.
+To fix the labeling, select an appropriate filesystem (e.g. the root filesystem generally is well equipped) and do:
+
+```
+imgutil unpack image-name /tmp/scratchdir
+cd /tmp/scriptchdir
+setfiles -r . /etc/selinux/targeted/contexts/files/file_contexts .
+```
+
