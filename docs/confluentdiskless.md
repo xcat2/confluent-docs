@@ -94,3 +94,17 @@ cd /tmp/scriptchdir
 setfiles -r . /etc/selinux/targeted/contexts/files/file_contexts .
 ```
 
+# Moving an image between confluent servers
+
+A diskless image is comprised of private and public directories in /var/lib/confluent. To archive an image for moving between different confluent instances, tar will suffice:
+```
+[root@mgt1 confluent]# cd /var/lib/confluent/
+[root@mgt1 confluent]# tar cf stream-image.tar public/os/stream86-diskless private/os/stream86-diskless
+```
+This will preserve permissions and owner as well as leave symbolic links in a state to pick up the new confluent server addons and site specific content.
+
+# Using another host to build diskless images
+
+If building an image is easier on another system, this is possible. For example, if the operating system mismatches or some software requires specific hardware to install. This is best accomplished
+by installing confluent on the 'build' system, but not bothering to define any nodes. This may include osdeploy initialize, but the TLS and SSH data will not be packed. In this scenario, simply build
+as documented here and then use the procedure for moving an image between confluent servers to place the image into your deployment infrastructure.

@@ -15,7 +15,7 @@ Select the repository appropriate for the major version, for Red Hat Enterprise 
 
     rpm -ivh https://hpc.lenovo.com/yum/latest/el8/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
 
-For Red Hat Enterprise Linux 7:
+For Red Hat Enterprise Linux 7.9:
 
     rpm -ivh https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
     
