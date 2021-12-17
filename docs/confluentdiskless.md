@@ -101,10 +101,18 @@ A diskless image is comprised of private and public directories in /var/lib/conf
 [root@mgt1 confluent]# cd /var/lib/confluent/
 [root@mgt1 confluent]# tar cf stream-image.tar public/os/stream86-diskless private/os/stream86-diskless
 ```
+
+On the server importing:
+```
+[root@mgt2 confluent]# tar f stream-image.tar
+[root@mgt2 confluent]# osdeploy updateboot stream86-diskless
+
+```
+
 This will preserve permissions and owner as well as leave symbolic links in a state to pick up the new confluent server addons and site specific content.
 
 # Using another host to build diskless images
 
 If building an image is easier on another system, this is possible. For example, if the operating system mismatches or some software requires specific hardware to install. This is best accomplished
-by installing confluent on the 'build' system, but not bothering to define any nodes. This may include osdeploy initialize, but the TLS and SSH data will not be packed. In this scenario, simply build
+by installing confluent on the 'build' system, but not bothering to define any nodes. This will include osdeploy initialize to have the profiles be complete, but the TLS and SSH data will not be carried over by the tar file and will take the site data from the target confluent instance. In this scenario, simply build
 as documented here and then use the procedure for moving an image between confluent servers to place the image into your deployment infrastructure.
