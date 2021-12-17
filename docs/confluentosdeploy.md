@@ -182,6 +182,7 @@ Alternatively, a system UUID may be used instead:
 
 With OS deployment ready, depending on circumstances it may be appropriate to move on to:
 
+* Deploying operating systems without disks: [Using confluent diskless support]({{site.baseurl}}/documentation/confluentdiskless.html)
 * Discovering rackmount systems with dedicated management port in use based on physical location: [Using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html)
 * Discovering systems in server enclosures based on physical location: [Using enclosure based discovery]({{site.baseurl}}/documentation/confluentenclosuredisco.html)
 * Discovering systems that have management port shared with the on board network or OCP add-on based on physical location: [PXE driven discovery]({{site.baseurl}}/documentation/confluentpxedisco.html)
