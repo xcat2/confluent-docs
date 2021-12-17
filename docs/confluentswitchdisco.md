@@ -54,6 +54,9 @@ here is a node that has a TSM connected to switch port 29 of a switch:
     # nodediscover rescan
     Rescan complete
 
+When specifying switches and net.switch value, ensure the attribute values match. Do not use IP
+in one place and a DNS name in the other, for example.
+
 Results can be seen by following `/var/log/confluent/events` or by watching `nodediscover list`:
 
     # grep example1 /var/log/confluent/events

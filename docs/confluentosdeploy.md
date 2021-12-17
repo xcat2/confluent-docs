@@ -113,7 +113,7 @@ A deployment profile is simply the collection of files in /var/lib/confluent/pub
     # cd /var/lib/confluent/private/os/
     # cp -a rhel-8.2-x86_64-default rhel-8.2-x86_64-custom
 
-Note that not all profiles contain private data, by default diskless images and captured clones have an encryption key in private, but scripted installs do not.
+Note that not all profiles contain private data, by default diskless images and captured clones have an encryption key in private, but scripted installs do not. Further note that a profile name may experience problems if the profile name is longer than 73 characters.
 
 If having a lot of shared content, it may be wise to employ symbolic links to explicitly share content rather than creating several copies of the same content (scripts or otherwise). It may also be a good idea to use git to manage and track changes as well.
 
