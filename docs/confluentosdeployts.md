@@ -33,3 +33,18 @@ The OS repo URLs are set to the specific profile used to perform the deployment 
 
 When performing OS deployment with confluent, the managed node may hang, for example at "Started cancel waiting for multipath siblings of <drive>" when deploying RHEL 8.3.  This can be caused by the collective.managercandidates nodattribute containing a management node that is not actually defined as a node in the confluent database.  Note that this has to be defined exactly as it appears in the "collective show" command output.  For example, if the management node is shown in "collective show" as "mn.domain" then that management node has to be defined with the nodename "mn.domain" in confluent, as opposed to just "mn".
 
+# Regenerating SSH host certificates
+
+If there is a requiremennt to regenerate SSH keys after installation and new
+certificates are needed, the following script may be used:
+
+```
+#!/bin/bash
+nodename=$(cat /etc/confluent/confluent.info | grep NODENAME | awk '{print $2}')
+mgr=$(cat /etc/confluent/confluent.info | grep MANAGER | head -n 1 | awk '{print $2}')
+for pubkey in /etc/ssh/ssh_host*key.pub
+do
+        certfile=${pubkey/.pub/-cert.pub}
+        curl -f -X POST -H "CONFLUENT_NODENAME: $nodename" -H "CONFLUENT_APIKEY: $(cat /etc/confluent/confluent.apikey)" -d @$pubkey https://[$mgr]/confluent-api/self/sshcert > $certfile
+done
+```
