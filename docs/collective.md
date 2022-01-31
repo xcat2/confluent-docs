@@ -7,6 +7,14 @@ permalink: /documentation/collective.html
 The collective mode of confluent allows multiple confluent servers to act as one, providing
 both high availability as well as scaling out to cover a larger number of servers with better
 performance.
+
+# Shared storage considerations
+
+For operating system deployment, it is expected that /var/lib/confluent be identical across all
+collective members.  This may through use of an NFS mount, clustered filesystem, or synchronized
+local filesystem content. Confluent has no particular requirements of how this is done, but does
+expect it to be identical if OS deploymennt features are used.
+
 # Creating a collective
 
 To begin, select a confluent server to begin constructing the collective from.  This page will use `mgt1`

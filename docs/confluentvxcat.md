@@ -13,9 +13,7 @@ Confluent does not cover all functionality of xCAT. Some functions of xCAT that 
 
 * Virtualization management
 * Deployment to networks through routers
-* Stateless image generation
 * Support for platforms other than x86
-* Configuration of additional networks
 
 # Interoperability
 
@@ -107,4 +105,16 @@ to facilitate node to node ssh. On the other hand, this optional behavior puts r
 In Confluent, each collective member root public key is added to deployed authorized_keys, to enable ssh from any collective member to any node.
 root's private key is never sent across the wire under any circumstance, instead the work to fix known_hosts across the board is leveraged to
 enable host-based authentication within a confluent cluster. This extends to both the root user and all other users on the systems.
+
+# Diskless
+
+In xCAT, diskless images require a special script to run to generate the diskless and statelite initramfs.  Once ready, packimage tries to trim 'superfluous' content and creates a
+compressed image that is always downloaded and uncompressed into RAM. It is expected that the extracted form of the image persists in the `/install` directory.
+
+In confluent, more efforts are made to have the built image naturally regenerate its own initramfs, meaning rpm installs that naturally trigger initramfs updates no longer require
+the user to go back and specially generate.  The pack utilitiy leaves the entire image intact and creates a compressed image that is by default downloaded on demand into evictable cache.
+Further, the read-write layer of a diskless image is compressed to mitigate memory usage over time. Images may be booted `untethered`, but even then the image remains compressed in memory.
+The workflow is such that images can be unpacked from their packed form for updates and maintenance, removing requirements for retaining the extracted form in an particular location.  Further,
+an `imgutil exec` facility is provided to boot an extracted image in a container-like environment (dedicated mount and process namespaces with chroot).  Also, a diskless image retains
+initramfs access for root user of collective nodes after the main image has booted, to facilitate debug.
 
