@@ -49,7 +49,7 @@ Any other number of mix and match of the above strategies may be used in a colle
 The invite token generated as part of the invite/join procedure is used as a shared secret to mutually attest to the in-use certificates
 for a join, and the persistent trust is managed through mutual TLS authentication. Every communication within a collective is protected
 by the certificates that were in-use at the time of issuing the join with the correct token.  Note that while the collective member
-that issued the invitation is validating the client, the client is also using the invitation to authtenticate the collective member, assuring
+that issued the invitation is validating the client, the client is also using the invitation to authenticate the collective member, assuring
 both parties that both certificates are valid with no intermediaries.
 
 # Replicated data
@@ -66,7 +66,7 @@ locks down functionality. At this time this includes all collective members with
 
 # Shared storage consideration
 
-While the node attribute database is replicated automatically among collective members, the /var/lib/confluent storage used is OS deployment must be
+While the node attribute database is replicated automatically among collective members, the /var/lib/confluent storage used by OS deployment must be
 synchronized or shared at the user's discretion.  There is no particular requirement placed on the mechanism beyond that it be consistent when used
 by the collective members, so a number of storage synchronization or remote/clustered filesystem approaches are acceptable. In contrast to xCAT, where /install
 was expected to be partially consistent, partially unique to the service node, confluent expects the entirety of the directory to be consistent.

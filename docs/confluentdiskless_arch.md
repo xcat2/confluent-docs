@@ -36,7 +36,7 @@ As of this writing, selective persistence of writable files to a remote filesyst
 
 # Sensitive information in diskless images and encryption
 
-All effort is made to avoid writing sesnsitive information to the images, but rpms and exec may result in sensitive data in the filesystem
+All effort is made to avoid writing sensitive information to the images, but rpms and exec may result in sensitive data in the filesystem
 beyond confluent's awareness.  Since the image is served over a public web server, it is therefore encrypted by default, with the private key
 stored in the 'private' directory alongside the 'public' directory.  This key is only provided through the confluent api
 
