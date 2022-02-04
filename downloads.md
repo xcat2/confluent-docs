@@ -34,20 +34,20 @@ The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.len
 
     #On a system that can reach https://hpc.lenovo.com/downloads/
     #Download the package for your specific OS version
-    wget https://hpc.lenovo.com/downloads/latest-el7.tar.bz2
+    wget https://hpc.lenovo.com/downloads/latest-el7.tar.xz
     #or
-    wget https://hpc.lenovo.com/downloads/latest-el8.tar.bz2
+    wget https://hpc.lenovo.com/downloads/latest-el8.tar.xz
     #or
-    wget https://hpc.lenovo.com/downloads/latest-suse15.tar.bz2
+    wget https://hpc.lenovo.com/downloads/latest-suse15.tar.xz
     
     #On your local system 
     #Create folder for the local repository
     mkdir /mnt/local_repo
     
     #Extract the repository 
-    tar -xf latest-el8.tar.bz2 -C /mnt/local_repo
+    tar -xf latest-el8.tar.xz -C /mnt/local_repo
     #or
-    tar -xf latest-suse15.tar.bz2 -C /mnt/local_repo
+    tar -xf latest-suse15.tar.xz -C /mnt/local_repo
     
     #Create lenovo-hpc.repo to point to the local repository
     cd /mnt/local_repo/lenovo-hpc-el8/

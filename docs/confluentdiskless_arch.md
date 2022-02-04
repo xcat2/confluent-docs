@@ -42,8 +42,14 @@ stored in the 'private' directory alongside the 'public' directory.  This key is
 
 # Node authentication using TPM2
 
-Since no persistence to disk is possible to maintain node credentials such as ssh keys or the confluent node api key, by default confluent requires
-the use of a TPM2 to persist and protect the node api key.  When retrieving the node api key from the TPM, confluent will extend a PCR to remove the TPM's ability
-to provide the node api key prior to the user filesystem starting. This api key is then used to authenticate to confluent and in turn get newly
-signed certificates for a brand new SSH keypair.  Private keys are never transmitted, as in scripted install, and having a proper certificate is considered
-the remedy for having ssh keys changing every reboot.
+No persistence to disk is possible to maintain node credentials such as ssh keys or the confluent node api key.  By default confluent diskless requires
+the use of a TPM2 to persist and protect the node api key.  During the diskless boot, an attempt is made to retrieve the Confluent Node API key from the TPM.
+If this fails it falls back to network attempt to get api key, and if that succeeds installs the new api key into the TPM.
+
+The TPM has a concept of 'Platform Configuration Registers', which may be used to measure various facets of the system and allow for certain data to be locked
+unless the registers are a certain value.  Prior to booting the OS, confluent diskless by default extends PCR 15 to lock the data such that the TPM is unable to provide the API key again until
+a system reboot.  This protects the node api key even if a user gains access to the TPM after boot.
+
+The api key is then used to retrieve information from the confluent service, such as the crypted root password. New ssh keys are generated every boot, and the api key is used
+to request a confluent server sign the new key, providing trust persistence for known_hosts despite a frequently changing host key.  This avoids transmission of any host or
+user private key in the confluent diskless environment, and enables secure trust persistence across reboots in a diskless environment.
