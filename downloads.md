@@ -24,7 +24,7 @@ Follow instuctions to add the install media as a repository on [https://access.r
 
 Adding Repository for SuSE Linux Enterprise 15
 ============================
-    zypper install http://hpc.lenovo.com/yum/latest/suse15/x86_64/lenovo-hpc-zypper-1-1.x86_64.rpm
+    zypper install https://hpc.lenovo.com/yum/latest/suse15/x86_64/lenovo-hpc-zypper-1-1.x86_64.rpm
     
 Adding Local Repository
 ============================    
