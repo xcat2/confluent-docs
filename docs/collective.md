@@ -69,16 +69,6 @@ for a node or a group.  Issuing the same commands with different collective.mana
     # nodeattrib n1 collective.manager=mgt1
     # nodegroupattrib rack1 collective.manager=mgt1
 
-# Restoring a missing collective member by restoring files
-
-If a collective member is reinstalled, it's role in the cluster can be repaired by restoring the following four files:
-
-    /etc/confluent/privkey.pem
-    /etc/confluent/srvcert.pem
-    /etc/confluent/cfg/collective
-    /etc/confluent/cfg/myname
-
-
 # Restoring a missing collective member by repeating the invite process
 
 At any point, the invite process can be repeated for a member as if it were joining new, and it will replace the stale entry.
