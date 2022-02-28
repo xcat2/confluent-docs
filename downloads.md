@@ -26,6 +26,8 @@ Adding Repository for SuSE Linux Enterprise 15
 ============================
     rpm --import https://hpc.lenovo.com/yum/latest/suse15/x86_64/lenovohpckey.pub
     zypper install https://hpc.lenovo.com/yum/latest/suse15/x86_64/lenovo-hpc-zypper-1-1.x86_64.rpm
+
+Further, if using SuSE Linux Enterprise 15, it is required to enable the Python2 module (e.g. Python2-Module_15.3-0)
     
 Adding Local Repository
 ============================    
