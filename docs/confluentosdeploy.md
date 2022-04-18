@@ -145,9 +145,9 @@ itself (e.g. using `imgutil exec`) is recommended to keep memory consumption dow
 
 The `pre` phase occurs prior to any disk formatting or installation.  This is a good time to manage RAID configuration, override install disk autodection, specify non-default partition plan, extend package list or
 
-All content are simple files stored under the respective profile (/var/lib/confluent/public/os/<profile>). For scripted install profiles and cloning,
+All content are simple files stored under the respective profile (/var/lib/confluent/public/os/[profile]). For scripted install profiles and cloning,
 scripts may be placed in scripts/pre.d, scripts/post.d, and scripts/firstboot.d.
-For diskless installs, scripts/onboot.d is available.  Note that content under /var/lib/confluent/public is considered non-sensitive and must not include any passwords, secret keys, or similarly sensitive information.  See the document [Handling of security information in OS deployment]({{site.baseurl}}/documentation/osdeploysecurity.html) for guidance.
+For diskless installs, scripts/onboot.d is available.  Note that content under /var/lib/confluent/public is considered non-sensitive and must not include any passwords, secret keys, or similarly sensitive information. See the document [Handling of security information in OS deployment]({{site.baseurl}}/documentation/osdeploysecurity.html) for guidance.
 
 Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
 

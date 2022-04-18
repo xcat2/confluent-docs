@@ -15,6 +15,11 @@ collective members.  This may through use of an NFS mount, clustered filesystem,
 local filesystem content. Confluent has no particular requirements of how this is done, but does
 expect it to be identical if OS deploymennt features are used.
 
+# OS Deployment considerations
+
+OS Deployment initialization (`osdeploy initialize`) operations must be done once per collective member to
+properly enable each member to provide deployment services to nodes.
+
 # Creating a collective
 
 To begin, select a confluent server to begin constructing the collective from.  This page will use `mgt1`
