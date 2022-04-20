@@ -90,8 +90,9 @@ To fix the labeling, select an appropriate filesystem (e.g. the root filesystem 
 
 ```
 imgutil unpack image-name /tmp/scratchdir
-cd /tmp/scriptchdir
+cd /tmp/scratchdir
 setfiles -r . /etc/selinux/targeted/contexts/files/file_contexts .
+imgputil pack /tmp/scratchdir -b image-name new-image-name
 ```
 
 # Moving an image between confluent servers
