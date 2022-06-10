@@ -52,7 +52,7 @@ For SR655 nodes configured to be managed with Redfish, IPv6 and domain name reso
     # nodeattrib node1 hardwaremanagement.manager
     node1:  hardwaremanagement.manager: node1-mgt
 
-Or IPv6 will trigger this error:
+Or:
     
     # nodeattrib node1 hardwaremanagement.manager
     node1:  hardwaremanagement.manager: fe80::3ee1:a1ff:fec7:e627%eno1
@@ -70,7 +70,7 @@ The domain name `node1-mgt1` will trigger an error on the target TSM, causing th
         sys.stderr.write('{0}: {1}\n'.format(node, res['error']))
     UnicodeEncodeError: 'ascii' codec can't encode characters in position 175-254: ordinal not in range(128)
 
-Or:
+Or IPv6 will trigger this error:
 
      # nodefirmware node1
      node1: Unexpected Error: /redfish/v1/Managers/Self:<pre style="font-size:12px; font-family:monospace; color:#8B0000;">[web.lua] Error in RequestHandler, thread: 0x758476e8 is dead.
