@@ -42,19 +42,22 @@ When using nodeconfig to submit a system configuration change, it exits when
 the target device has accepted the change. However, an endpoint may take some time
 to activate the change so that it will be visible when showing the configuration.
 
-## Domain name resolution may not work for Redfish-managed nodes
+## IPv6 and Domain name resolution may not work for Redfish-managed nodes
 
-For SR655 nodes configured to be managed with Redfish, domain name resolution may not work for note attribute values. For example, it is known to not work in the case of the `hardwaremanagement.manager` attribute. In the example below:
+For SR655 nodes configured to be managed with Redfish, ipv6 and domain name resolution may not work for node attribute values. For example, it is known to not work in the case of the `hardwaremanagement.manager` attribute. In the example below:
 
     # nodeattrib node1 hardwaremanagement.method
-
     node1:  hardwaremanagement.method:  redfish
 
     # nodeattrib node1 hardwaremanagement.manager
-
     node1:  hardwaremanagement.manager: node1-mgt
+
+Or:
     
-The domain name `node1-mgt1` will fail to resolve to an address, causing the following error:
+    # nodeattrib node1 hardwaremanagement.manager
+    node1:  hardwaremanagement.manager: fe80::3ee1:a1ff:fec7:e627%eno1
+
+The domain name `node1-mgt1` will trigger an error on the target TSM, causing the following error:
 
     # nodefirmware node1
     
@@ -72,13 +75,17 @@ There are two options to address the problem:
 
 1. Use a literal IP address for the node attribute in question:
 
+```
     nodeattrib node1 hardwaremanagement.manager=10.19.67.83
     node1:  10.19.67.13
+```
 
 2. Switch to IPMI management:
 
+```
     nodeattrib node1 hardwaremanagement.method=ipmi
     node1:  ipmi
+```
 
 ## Redfish management method not supported on FPC, SMM or SMM2
 
