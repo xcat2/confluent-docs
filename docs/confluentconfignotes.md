@@ -99,3 +99,7 @@ The Lenovo FPC, SMM and SMM2 chassis management modules do not support redfish--
 ## xCAT genesis does not include support for Intel E810 or Mellanox ConnectX-6 Lx Ethernet adapters
 
 xCAT genesis does not currently include support for Intel E810 or Mellanox ConnectX-6 Lx Ethernet adapters--confluent genesis should be used instead.
+
+## Occasional privilege errors from confluent commands
+
+Occasionally confluent out-of-band management commands may report "Error: Insufficient privilege level or firmware firewall".  If this occurs, the hardwaremanagement.manager node attribute on the node that the problem occurred on to something other than the actual IP or hostname of the hardwaremanagement manager for that node, and then set it back to the previous (correct) value.  After that the problem should no longer occur.
