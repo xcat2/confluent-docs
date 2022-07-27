@@ -101,3 +101,12 @@ This script is also available at:
 
 https://raw.githubusercontent.com/lenovo/confluent/master/misc/setupssh.sh
 
+
+
+# Confluent OS profile updates are not automatically applied on confluent updates
+
+The default confluent profiles for OSes (e.g. RHEL 8.4, SLE 15.3, etc.) do occasionally get updates as part of a confluent update.  However, these aren't applied automatically unless osdeploy import is re-run.  To make sure the updates available to an OS profile in a confluent update are applied is is recommended to remove (or backup in a directory confluent doesn't use) the existing default profile and re-run:
+
+osdeploy import <OS ISO image filename>
+
+Any customized profiles based on the default profile may need to be resetup based on the new default profile also.
