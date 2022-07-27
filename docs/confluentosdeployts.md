@@ -48,3 +48,52 @@ do
         curl -f -X POST -H "CONFLUENT_NODENAME: $nodename" -H "CONFLUENT_APIKEY: $(cat /etc/confluent/confluent.apikey)" -d @$pubkey https://[$mgr]/confluent-api/self/sshcert > $certfile
 done
 ```
+
+# Unable to ssh from one managed node to another on an interface which has a DNS hostname that doesn't match the confluent nodename
+
+In some cases ssh from one managed node to another will fail with the following error:
+
+```
+Certificate invalid: name is not a listed principal
+```
+
+This can occur if the net.<name>.hostname nodeattribute is not set properly on the managed nodes, and can occur if there was a non-existing managed node so that the ssh configuration on the already existing managed nodes couldn't setup for those nodes at that time.  The ssh configuration for those existing nodes would not be fixed on deployment of the new managed nodes, even if the net.<name>.hostname was set correctly on addition and deployment of the new managed node.  To address this, the following script should be run on each managed node that should be able to ssh without a password prompt to others on the interface with a DNS hostname that doesn't match the confluetn nodename:
+
+```
+[ -f /lib/confluent/functions ] && . /lib/confluent/functions
+[ -f /etc/confluent/functions ] && . /etc/confluent/functions
+[ -f /opt/confluent/bin/apiclient ] && confapiclient=/opt/confluent/bin/apiclient
+[ -f /etc/confluent/apiclient ] && confapiclient=/etc/confluent/apiclient
+for pubkey in /etc/ssh/ssh_host*key.pub; do
+    certfile=${pubkey/.pub/-cert.pub}
+    rm $certfile
+    confluentpython $confapiclient /confluent-api/self/sshcert $pubkey -o $certfile
+done
+TMPDIR=$(mktemp -d)
+cd $TMPDIR
+confluentpython $confapiclient /confluent-public/site/initramfs.tgz -o initramfs.tgz
+tar xf initramfs.tgz
+for ca in ssh/*.ca; do
+	LINE=$(cat $ca)
+	cp -af /etc/ssh/ssh_known_hosts /etc/ssh/ssh_known_hosts.new
+	grep -v "$LINE" /etc/ssh/ssh_known_hosts > /etc/ssh/ssh_known_hosts.new
+	echo '@cert-authority *' $LINE >> /etc/ssh/ssh_known_hosts.new
+	mv /etc/ssh/ssh_known_hosts.new /etc/ssh/ssh_known_hosts
+done
+for pubkey in ssh/*.*pubkey; do
+	LINE=$(cat $pubkey)
+	cp -af /root/.ssh/authorized_keys /root/.ssh/authorized_keys.new
+	grep -v "$LINE" /root/.ssh/authorized_keys > /root/.ssh/authorized_keys.new
+	echo "$LINE" >> /root/.ssh/authorized_keys.new
+	mv /root/.ssh/authorized_keys.new /root/.ssh/authorized_keys
+done
+confluentpython $confapiclient /confluent-api/self/nodelist | sed -e 's/^- //' > /etc/ssh/shosts.equiv
+cat /etc/ssh/shosts.equiv > /root/.shosts
+cd -
+rm -rf $TMPDIR
+```
+
+This script is also available at:
+
+https://raw.githubusercontent.com/lenovo/confluent/master/misc/setupssh.sh
+
