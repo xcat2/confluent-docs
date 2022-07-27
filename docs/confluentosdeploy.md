@@ -30,6 +30,10 @@ Again, if root login by password is desired (if unspecified, only key based logi
 
     # nodegroupattrib everything -p crypted.rootpassword
 
+# IPv6 configuration
+
+Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.
+
 # Name resolution (optional)
 
 An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. If such a solution is unavailable, this section provides a strategy to quickly generate IP addresses and use

@@ -50,6 +50,12 @@ unspecified, default root password behavior is to disable password based login a
     everything: secret.hardwaremanagementpassword: ********
     everything: secret.hardwaremanagementuser: ********
 
+# Leave IPv6 enabled
+
+Even if you are not using it explicitly, IPv6 needs to be enabled on interfaces. Generally this is default, but if you have disabled IPv6 on an interface, then re-enable it.
+No address needs to be assigned explicitly, no DHCPv6 server is needed.  The only thing required is that deployment interfaces have an automatic IPv6 address beginning with
+fe80::
+
 # Defining nodes
 
 

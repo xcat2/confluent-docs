@@ -3,6 +3,10 @@ layout: page
 title: Troubleshooting issues with confluent OS deployment
 permalink: /documentation/confluentosdeploymenttroubleshooting.html
 ---
+# IPv6 configuration
+
+Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.
+
 # Unable to import media after aborting with control-C or an error being encountered
 
 An attempt to import media after an error or abort may result in:
