@@ -69,9 +69,12 @@ as the multicast reply rules require it.  With that configured, here are example
     firewall-cmd --reload
     firewall-cmd --permanent --direct --add-rule ipv6 filter OUTPUT 1 -p udp -m udp --dport 427 -j SET --add-set confluentv6 src,src --exist
     firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -p udp -m udp --dport 427 -j SET --add-set confluentv4 src,src --exist
+    firewall-cmd --permanent --direct --add-rule ipv6 filter OUTPUT 1 -p udp -m udp --dport 1900 -j SET --add-set confluentv6 src,src --exist
+    firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -p udp -m udp --dport 1900 -j SET --add-set confluentv4 src,src --exist
     firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 1 -p udp -m set --match-set confluentv4 dst,dst -j ACCEPT
     firewall-cmd --permanent --direct --add-rule ipv6 filter INPUT 1 -p udp -m set --match-set confluentv6 dst,dst -j ACCEPT
     firewall-cmd --zone=public --add-port=427/udp --permanent
+    firewall-cmd --zone=public --add-port=1900/udp --permanent
     firewall-cmd --zone=public --add-service=dhcp --permanent
     firewall-cmd --reload
 
