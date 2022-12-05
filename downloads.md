@@ -15,9 +15,9 @@ Select the repository appropriate for the major version, for Red Hat Enterprise 
 
     rpm -ivh https://hpc.lenovo.com/yum/latest/el8/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
 
-For Red Hat Enterprise Linux 7.9:
+For Red Hat Enterprise Linux 9:
 
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el7/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+    rpm -ivh https://hpc.lenovo.com/yum/latest/el9/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
     
 On a new Minimal Install without Red Hat Subscription Manager configured. You will need additional packages from the install media. 
 Follow instuctions to add the install media as a repository on [https://access.redhat.com/solutions/1355683](https://access.redhat.com/solutions/1355683 "https://access.redhat.com/solutions/1355683"). 
