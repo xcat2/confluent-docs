@@ -40,7 +40,7 @@ Another common element to pull into an expression is the node name in whole:
 
 Additionally other attributes may be pulled in:
 
-	hardwaremanagement.switchport={location.u}
+	net.switchport={location.u}
 
 Multiple expressions are permissible within a single attribute:
 

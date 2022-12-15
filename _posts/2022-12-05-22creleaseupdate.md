@@ -22,21 +22,21 @@ In order to use, update affluent on the switch and use `nodediscover subscribe <
 
 # New `verified` discovery.policy
 
-When using the aforementioned switch driven discovery thrugh `subscribe` on nodediscover, a new policy `verified` is available for discovery.policy.  This allows for a node replacement to be fully automated,
-if and only if the new node certificate is vetted by the directly attached ethernet switch running affluent.  This only works with Lenovo SMMv2 and Lenovo xClarity 2 based systems.t
+When using the aforementioned switch driven discovery through `subscribe` on nodediscover, a new policy `verified` is available for discovery.policy.  This allows for a node replacement to be fully automated,
+if and only if the new node certificate is vetted by the directly attached ethernet switch running affluent.  This only works with Lenovo SMMv2 and Lenovo xClarity 2 based systems.
 
 # Registration of remote subnets in discovery
 
-xClarity Controller devices may not be added by IP or Subnet to scan using `nodediscover register`.  This brings such
+xClarity Controller devices may now be added by IP or Subnet to scan using `nodediscover register`.  This brings such
 devices into the nodediscover list for potential assignment.  This can take an IP address, subnet (address/prefix syntax), or
 range of IP addresses (address1-address2).
 
 # The hardwaremanagement.manager now accepts CIDR syntax
 
 To facilitate remote setup with static addressing, the `hardwaremanagement.manager` attribute can now have CIDR to indicate
-the subnet prefix lingth (1.2.3.4/24).  This can be used with either the `register` or `subscribe` discovery targets.
+the subnet prefix length (1.2.3.4/24).  This can be used with either the `register` or `subscribe` discovery targets.
 
-# Remote networks may now be used for operaing system deployment
+# Remote networks may now be used for operating system deployment
 
 A new attribute `trusted.subnets` can be used to indicate remote subnets that are allowed to acquire a node API token when the deployment api is armed.  Additionally, a standalone network may redirect boot services to a remote confluent server by offering the IP of a confluent server as 'next-server', and also sending 'PXEClient' as the vendor client identifier. Alternatively, a
 number of URLs have been added to facilitate delegated HTTP boot (confluent-api/boot/by-mac/${mac:hexhyp}/ipxe or confluent-api/boot/by-uuid/${uuid}/ipxe).  In the latter case the DHCP server can offer an ipxe client that url and confluent will handle
@@ -63,7 +63,7 @@ from rpm, skipping any customized files.
 
 # Add support for custom roles on BMC devices
 
-In addition to the defined roles for users on BMCs, support use of 'custom.<rolename>` to enable user to use custom roles created on BMCs.
+In addition to the defined roles for users on BMCs, support use of `custom.rolename` to enable user to use custom roles created on BMCs.
 
 # Suse 15 confluent is moved to python 3
 
@@ -89,7 +89,7 @@ without an IPv4 address in place at all.
 
 # The Web UI port forwarding feature is now anchored from port 3900
 
-Previously, when doing port forwarding for a GUI client, a random port assignd by the OS was used. The behavior is changed
+Previously, when doing port forwarding for a GUI client, a random port assigned by the OS was used. The behavior is changed
 to now go from port 3900 until the next available port, making firewall rules more reasonable for those that
 want to preserve the forwarding feature.  Firewall rules may now specify from port 3900 to some number based on how
 many forwards they anticipate needing.
