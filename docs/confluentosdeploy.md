@@ -93,7 +93,7 @@ If wanting to use HTTP Boot instead, here is an example to configure Lenovo syst
     # nodeconfig d3-d6 NetworkStackSettings.IPv4PXESupport=disable NetworkStackSettings.IPv4HTTPSupport=enable
 
 
-# Initializing OS deployment configuration.
+# Initializing OS deployment configuration
 
 The `osdeploy initialize` command is used to prepare a confluent server to deploy operating systems.  For first time setup, run osdeploy initialize interactively to be walked through the various options:
 
@@ -130,7 +130,7 @@ not automatically replace any kickstart, autoyast, autoinstall, or script conten
 and modify kickstart.custom in CentOS and RedHat profiles, to make decisions about default firewall and SELinux configuration on nodes.
 
 
-# Specifying custom postscripts or ansible plays.
+# Specifying custom postscripts or ansible plays
 
 A number of phases are opened up for injecting custom scripts or ansible plays.  Scripts are executed directly on the deployment server while ansible plays are executed by the deployment server targeting
 the deploying system as if it were specified as a host in the play.
@@ -146,8 +146,6 @@ not have been configured yet in the `post` phase or else must run when the syste
 
 The `onboot` phase is only for diskless boots, and behaves similarly to `firstboot`, but runs on every boot, since each diskless boot must start from scratch. Where possible, doing modifications to the image
 itself (e.g. using `imgutil exec`) is recommended to keep memory consumption down and boot time down.
-
-The `pre` phase occurs prior to any disk formatting or installation.  This is a good time to manage RAID configuration, override install disk autodection, specify non-default partition plan, extend package list or
 
 All content are simple files stored under the respective profile (/var/lib/confluent/public/os/[profile]). For scripted install profiles and cloning,
 scripts may be placed in scripts/pre.d, scripts/post.d, and scripts/firstboot.d.
