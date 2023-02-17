@@ -70,4 +70,4 @@ For VROC instances, please apply same principle as above (edit with needed info)
 
 Reference <https://github.com/lenovo/confluent/blob/master/misc/vroc> 
 
-Please **remember** to put the file for the corresponding system in **/path/to/pre.d** to run the script on the next boot-up. 
+Please **remember** to put the file for the corresponding system in **/path/to/pre.d** to run the script on the install of the profile. 
