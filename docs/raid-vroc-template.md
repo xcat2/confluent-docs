@@ -7,14 +7,14 @@ permalink: /documentation/raid-vroc-template.html
 #Synopsys:
 ---------------
 
-Add RAID and VCOR support for booting devices for RHEL and SLES. 
+Add RAID and VROC support for booting devices for RHEL and SLES. 
 
 #Solution:
 ---------------
 
 Confluent has a built in feature to be able to load custom made files in different parts of the booting process.
 
-Please, after editing the sample file, place it in **` /path/to/pre.d `.**
+Please, after editing the sample file, place it in **` /var/lib/confluent/public/os//scripts/pre.d `.**
 
 
 For RAID instances please find below as a sample file you may use but need to edit for your needs:
@@ -70,4 +70,4 @@ For VROC instances, please apply same principle as above (edit with needed info)
 
 Reference <https://github.com/lenovo/confluent/blob/master/misc/vroc> 
 
-Please **remember** to put the file for the corresponding system in **/path/to/pre.d** to run the script on the install of the profile. 
+Please **remember** to put the file for the corresponding system in **/var/lib/confluent/public/os//scripts/pre.d ** to run the script on the install of the profile. 
