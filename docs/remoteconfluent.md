@@ -14,7 +14,9 @@ in conjunction with xCAT in a service node setup.
 First, on every confluent server you want to access, a user must be created, using the
 same procedure as creating a user for the Web API:
 
-    confetty create /users/demouser password=password role=admin
+    useradd demouser
+    passwd demouser
+    confetty create /users/demouser role=admin
 
 Additionally, a TLS certificate must be provided, with the private key in /etc/confluent/privkey.pem and
 the certificate in /etc/confluent/srvcert.pem.  You can generate such certificates using the collective command:
