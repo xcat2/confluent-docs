@@ -47,7 +47,7 @@ Reference  <https://github.com/lenovo/confluent/blob/master/misc/swraid>
 
 For VROC instances, please apply same principle as above (edit with needed info) :
 
-Example file for VROC
+Example file for software RAID/md RAID:
 ---------------
 
 
