@@ -4,22 +4,22 @@ title: Template for RAID/ VROC boot device
 permalink: /documentation/raid-vroc-template.html
 ---
 
-#Synopsys:
+Synopsis
 ---------------
 
-Add RAID and VROC support for booting devices for RHEL and SLES. 
+Add software RAID/md RAID and VROC support for booting devices for RHEL and SLES. 
 
-#Solution:
+Solution
 ---------------
 
-Confluent has a built in feature to be able to load custom made files in different parts of the booting process.
+Confluent has a built-in feature to be able to load custom files in different parts of the booting process.
 
-Please, after editing the sample file, place it in **` /var/lib/confluent/public/os/<<profile name>>/scripts/pre.d `.**
+After editing the sample file, place it in **` /var/lib/confluent/public/os/<<profile name>>/scripts/pre.d `.**
 
 
-For RAID instances please find below as a sample file you may use but need to edit for your needs:
+For software RAID/md RAID instances please find below as a sample file may adapt for your needs:
 
-#Example file for RAID:
+Example file for software RAID/md RAID
 ---------------
 
 
@@ -47,7 +47,7 @@ Reference  <https://github.com/lenovo/confluent/blob/master/misc/swraid>
 
 For VROC instances, please apply same principle as above (edit with needed info) :
 
-#Example file for VROC:
+Example file for VROC
 ---------------
 
 
