@@ -19,9 +19,11 @@ By default, confluent API is only accessible locally over a unix domain socket.
 To enable a remote user for HTTP access, the quickest method is to use confetty
 to create a local account:
 
-    # confetty create /users/apiuser password=apipassword
+    # useradd apiuser
+    # passwd apiuser
+    # confetty create /users/apiuser role=Administrator
 
-With the above example, using 'apiuser' and 'apipassword' in the user/password
+With the above example, using 'apiuser' and the entered password in the user/password
 prompt will provide access when accessing the management server by http://servername:14005/.
 
 ## **Using python to access the API**
