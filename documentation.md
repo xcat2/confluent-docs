@@ -41,6 +41,7 @@ Troubleshooting:
 
 * [Troubleshooting issues with confluent OS deployment]({{site.baseurl}}/documentation/confluentosdeploymenttroubleshooting.html)
 * [Troubleshooting issues with xCAT OS deployment and diskless image creation/boot]({{site.baseurl}}/documentation/xcatosdeploymenttroubleshooting.html)
+* [Troubleshooting issues with nodefirmware and firmware updates]({{site.baseurl}}/documentation/confluentnodefirmwareupdatetroubleshooting.html)
 
 Advanced topics:
 
