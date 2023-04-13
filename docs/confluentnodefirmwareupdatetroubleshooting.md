@@ -38,3 +38,8 @@ permalink: /documentation/confluentnodefirmwareupdatetroubleshooting.html
     ```
     #nodefirmware <nodename> update payloads/lnvgy_fw_xcc_qgx306n-1.00_anyos_comp.uxz
     ```
+
+3. After updating XCC or UEFI firmware, the “Pending” status may not show if the system is managed via Redfish. The update is in fact pending, but the status does not show. To get the status to show, change the management method to IPMI:
+    ```
+    # nodeattrib <nodename> hardwaremanagement.method=ipmi
+    ```
