@@ -4,6 +4,8 @@ title: Confluent Installation for Red Hat Enterprise Linux
 permalink: /documentation/installconfluent_rhel.html
 ---
 
+Enterprise Linux 8.6 or 9.0 and higher is required for installation.
+
 First add the Lenovo HPC yum repository appropriate to your environment according to the procedure on the  [download page]({{ site.baseurl }}/downloads/).  It is suggested to then make sure there are no updates in the repository for your existing software:
 
     yum --disablerepo=* --enablerepo=lenovo-hpc update
