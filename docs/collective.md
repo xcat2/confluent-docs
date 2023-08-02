@@ -18,7 +18,9 @@ expect it to be identical if OS deploymennt features are used.
 # OS Deployment considerations
 
 OS Deployment initialization (`osdeploy initialize`) operations must be done once per collective member to
-properly enable each member to provide deployment services to nodes.
+properly enable each member to provide deployment services to nodes.  For the SSH material (automation (-a) and CA (-s)), it
+is important to wait until after joining the collective to perform the operation.  If those steps were performed prior to
+joining collective, then follow the guidance in the osdeploy initialize output to delete the prior CA and automation keys.
 
 # Creating a collective
 
