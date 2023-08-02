@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Confluent configuration notes for Lenovo hardware
+title: Confluent configuration and troubleshooting notes for Lenovo hardware
 permalink: /documentation/confluentconfignotes.html
 ---
 
@@ -103,3 +103,7 @@ xCAT genesis does not currently include support for Intel E810 or Mellanox Conne
 ## Occasional privilege errors from confluent commands
 
 Occasionally confluent out-of-band management commands may report "Error: Insufficient privilege level or firmware firewall".  If this occurs, the hardwaremanagement.manager node attribute on the node that the problem occurred on to something other than the actual IP or hostname of the hardwaremanagement manager for that node, and then set it back to the previous (correct) value.  After that the problem should no longer occur.
+
+## XCC web interfaces opened from the confluent web GUI may spontaneously log out when entering the firwmare update page
+
+When opening the XCC web interface for more than one XCC from the confluent GUI web interface, so that the URLs for those XCC web interfaces are forwarded ports with the same IP (the IP of the confluent server), when entering the firmware update page on the XCC web interface, the XCC web interface on one or more of the XCC web interfaces opened this way may spontaneously log out.  To work aruond this issue, either open just one XCC web interface through the confluent GUI or setup a socks proxy to access the XCC web interfaces (or access them directly if the network configuration allows for this) so that each XCC web interface is accessed through a separate IP address.
