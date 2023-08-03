@@ -117,3 +117,7 @@ This will preserve permissions and owner as well as leave symbolic links in a st
 If building an image is easier on another system, this is possible. For example, if the operating system mismatches or some software requires specific hardware to install. This is best accomplished
 by installing confluent on the 'build' system, but not bothering to define any nodes. This will include osdeploy initialize to have the profiles be complete, but the TLS and SSH data will not be carried over by the tar file and will take the site data from the target confluent instance. In this scenario, simply build
 as documented here and then use the procedure for moving an image between confluent servers to place the image into your deployment infrastructure.
+
+# SLES 15 diskless image product selection
+
+By default, building a SLES 15 diskless image will be setup as SuSE Linux Enterprise Server.  If the SuSE Linux Enterprise HPC product is desired, an additional package list file, including the SLE_HPC-release package should be created and specified with the "imgutil build -a" switch.
