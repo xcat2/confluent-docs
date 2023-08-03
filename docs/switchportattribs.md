@@ -29,7 +29,7 @@ Also in both cases, the software will try to determine the correct interface nam
 
 Note that in in confluent, the interface names that a particular switch uses can be found using the following command:
 ```confluent
-confetty show /networking/macs/by-switch/r4c1<switch name>/by-port/
+confetty show /networking/macs/by-switch/<switch name>/by-port/
 ```
 
 
