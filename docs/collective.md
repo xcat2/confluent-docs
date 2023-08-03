@@ -86,3 +86,5 @@ Note that currently most functions are enabled to be identical across a collecti
 however /networking and /discovery apis are currently distinct per collective member.  This means
 that nodediscover commands and automatic discovery activity must be directly managed on the respective
 collective member.
+
+Also note that all members of a collective must be running the same version of confluent and pyghmi.
