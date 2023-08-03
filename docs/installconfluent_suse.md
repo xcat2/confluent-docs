@@ -4,7 +4,7 @@ title: Confluent Installation for SUSE Linux Enterprise
 permalink: /documentation/installconfluent_suse.html
 ---
 
-SuSE Linux Entereprise 15 SP4 or higher is currently required for installation.
+SuSE Linux Enterprise 15 SP4 or higher is currently required for installation.
 
 After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:
 
