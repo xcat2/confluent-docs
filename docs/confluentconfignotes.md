@@ -107,3 +107,7 @@ Occasionally confluent out-of-band management commands may report "Error: Insuff
 ## XCC web interfaces opened from the confluent web GUI may spontaneously log out when entering the firwmare update page
 
 When opening the XCC web interface for more than one XCC from the confluent GUI web interface, so that the URLs for those XCC web interfaces are forwarded ports with the same IP (the IP of the confluent server), when entering the firmware update page on the XCC web interface, the XCC web interface on one or more of the XCC web interfaces opened this way may spontaneously log out.  To work around this issue, either open just one XCC web interface through the confluent GUI or setup a socks proxy to access the XCC web interfaces (or access them directly if the network configuration allows for this) so that each XCC web interface is accessed through a separate IP address.
+
+## Lenovo ThinkSystem generation "V3" systems may spontaneously reboot when using the nodefirmware command for certain firmware updates
+
+Certain firmware update packages for Lenovo V3 systems are performed in a system built-in Linux environment that the system has to reboot into to do the update, even though the update is initiated out-of-band.  In these cases the node will spontaneously and without warning reboot into that environment.  To avoid improper shutdown of a running OS on the system, the system can be turned off before running the nodefirmware command for these types of updates.
