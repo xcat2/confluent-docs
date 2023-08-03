@@ -27,6 +27,11 @@ nodegroupattrib switches secret.hardwaremanagementuser=snmp3user secret.hardware
 
 Also in both cases, the software will try to determine the correct interface name from the given description.  For example, if the switch offers `Ethernet17`, then either the literal value `Ethernet17` or simply `17` will suffice.  However, caution is warranted when using breakout cables as you may do with a switch like a G8332 to connect 4 systems to a single QSFP port.  If you simply specify `3`, it would not only consider `Ethernet3` a match, but also `Ethernet1/3`, `Ethernet2/3`, and so forth.  In such a case, it is required to provide the full string `Ethernet3` to avoid confusion between breakout and non-breakout connections.  For the breakout connections, either `2/3` or `Ethernet2/3` would be valid values that are unambiguous.
 
+Note that in in confluent, the interface names that a particular switch uses can be found using the following command:
+```confluent
+confetty show /networking/macs/by-switch/r4c1<switch name>/by-port/
+```
+
 
 For xCAT, this values are in the `switch` table.  The following command is an example of setting the values for a single node:
 
