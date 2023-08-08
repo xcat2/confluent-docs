@@ -66,9 +66,12 @@ If at any point a modification or update is required, `imgutil` can unpack a pro
     created 0 devices
     created 0 fifos
 
-At which point modifications using imgutil exec or otherwise modifying the directory tree can be done.  If wanting to pack a new 'version' of an image while preserving customizations to scripts:
+At which point modifications using imgutil exec or otherwise modifying the directory tree can be done.  If wanting to pack a new 'version' of an image while preserving customizations to scripts, you can use an existing diskless image profile to base a copy on:
 
     # imgutil pack -b alma-8.5-diskless /tmp/newscratchdir alma-8.5-disklesss-v2
+
+Note that '-b' will not function correctly if the distribution and nature of the
+profile do not match (e.g. using a different major version of linux, or trying to use diskful profile as a base for a diskless image).
 
 This is a recommended method to preserve both copies until the new image is determined to be correctly working
 
