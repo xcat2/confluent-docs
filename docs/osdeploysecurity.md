@@ -29,9 +29,8 @@ data by allowing confluent, but not other users to read the information
 # Content in /var/lib/confluent/private/
 
 The confluent api offers material in /var/lib/confluent/private to nodes that authenticate using their node api key. For example, confluent uses
-this facility to provide the encryption key for encrypted diskless images and disk cloning. Custom scripts may use this facility. For example, assuming
-a profile named os-profile and wanting to provide some sort of /etc/shadow entry for an account using the private facility:
-- Place hash of password in private file: `echo '$5$ssdUjvVexCw50Nvc$5uQMDLlikaiZKsTt4.8Xmlmr/O7qNXTrlBgnc20CQb7' > /var/lib/confluent/private/os/profilename/pending/someaccount.passwd'
+this facility to provide the encryption key for encrypted diskless images and disk cloning. Custom scripts may use this facility. For example, if wanting to provide some sort of /etc/shadow entry for an account using the private facility:
+- Place hash of password in private file (substituting [os-profile] for the os profile that you specify in `nodedeploy`): `echo '$5$ssdUjvVexCw50Nvc$5uQMDLlikaiZKsTt4.8Xmlmr/O7qNXTrlBgnc20CQb7' > /var/lib/confluent/private/os/[profilename]/pending/someaccount.passwd'
 - When in place, the client may access it either full time if diskless or prior to the conclusion of post by doing:
 ```
 # python3 /opt/confluent/bin/apiclient /confluent-api/self/profileprivate/pending/someaccount.passwd > /tmp/mylocalfile  
