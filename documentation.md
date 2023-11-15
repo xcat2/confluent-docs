@@ -39,7 +39,7 @@ User reference documentation:
 
 Troubleshooting:
 
-* [Troubleshooting issues with confluent OS deployment]({{site.baseurl}}/documentation/confluentosdeploymenttroubleshooting.html)
+* [Troubleshooting issues with confluent OS deployment or PXE boot]({{site.baseurl}}/documentation/confluentosdeploymenttroubleshooting.html)
 * [Troubleshooting issues with xCAT OS deployment and diskless image creation/boot]({{site.baseurl}}/documentation/xcatosdeploymenttroubleshooting.html)
 * [Troubleshooting issues with nodefirmware and firmware updates]({{site.baseurl}}/documentation/confluentnodefirmwareupdatetroubleshooting.html)
 * [Troubleshooting issue with updating confluent on SLES 15]({{site.baseurl}}/documentation/confluentupdatesles.html)
