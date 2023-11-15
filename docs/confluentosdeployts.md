@@ -112,3 +112,12 @@ osdeploy import <OS ISO image filename>
 ```
 
 Any customized profiles based on the default profile may need to be resetup based on the new default profile also.
+
+# Confluent does not support secure boot with PXE. 
+
+The ipxe boot loader that confluent uses in not signed, because of this an attempt to do secure boot with PXE will result in a secure boot violation. To do a network boot using confluent with secure boot enabled either http or https boot must be used. 
+
+
+
+
+
