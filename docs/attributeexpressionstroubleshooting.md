@@ -6,10 +6,10 @@ permalink: /documentation/nodeattribexpressionstroubleshooting.html
 
 An expression will contain some directives wrapped in {} characters. Within {} are a number of potential substitute values and operations.
 
-When using nodeattrib substitution there might be the temptation to do substition passwords which will not work. 
+When using nodeattrib substitution there might be the temptation to do substition of username and passwords which will not work. 
 
 ### Example 
-when using noderun using attribute expressions for bmcuser and bmcpass will not work this is expected behavior. 
+when using noderun attribute expressions for bmcuser and bmcpass will not work this is expected behavior. 
 ```
 noderun <nodename> ipmitool -I lanplus -U "{bmcuser}" -P {bmcpass} -H {bmc}
 ```
