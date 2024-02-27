@@ -117,7 +117,17 @@ Any customized profiles based on the default profile may need to be resetup base
 
 The ipxe boot loader that confluent uses in not signed, because of this an attempt to do secure boot with PXE will result in a secure boot violation. To do a network boot using confluent with secure boot enabled either http or https boot must be used. 
 
+# System gets non-desired IP address when being deployed or booting genesis
 
+One possible reason for this to occur is if the net.\<inteface name\>.hostname and net.\<interface name\>.ipv4_address nodeattributes for a node are defined, and the network configuration of the confluent server and network are such that there more than one set of net.\<interface name\>.hostname and net.\<interface name\>.ipv4_address settings that could match a particular L2 network.  In this case which of the net.\<interface name\>.* settings would be applied to the boot interface on the netbooting node may not be consistent from boot to boot.
+
+A scenario in which multiple net.\<interface name\>.hostname and net.\<interface name\>.ipv4_address nodeattributes would be set up this way would be if the XCC on a Lenovo server is configured with the XCC in shared NIC mode, and the interface of the XCC setup on the same L2 network as the NIC the XCC is sharing with, but with the XCC set to use a different IP subnet as the NIC being shared with the XCC.  One reason to set these values would be so that the "confluent2hosts" command can be used with the "-a" switch to populate /etc/hosts with the information from the nodeattributes.  However, this can be done as follows instead (once the hardwaremanagement.manager nodeattribute is defined):
+
+```
+confluent2hosts compute -n {node}-<suffix> -i {hardwaremanagement.manager}
+```
+
+In this way the net.\<interface name\>.hostname and net.\<interface name\>.ipv4_address nodeattributes don't have to be defined, leaving only one set of net.\<interface name\>.hostname and net.\<interface name\>.ipv4_address nodeattributes that match the network configuration for the L2 network that the managed node(s) is/are booting from, eliminating the ambiguity and ensuring that the netbooting nodes get the right address on each boot.
 
 
 
