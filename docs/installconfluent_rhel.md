@@ -22,7 +22,7 @@ At this point, source the script below for confluent command line functionality 
 
     source /etc/profile.d/confluent_env.sh
 
-# Enabling the Web UI
+# Enabling http connectivity for OS Deployment, REST API usage, and the Web UI
 
 If you have SELinux enforcing, you need to allow httpd to make network
 connections:
@@ -35,11 +35,20 @@ https use.  You may remedy this by doing the following:
     firewall-cmd --zone=public --add-service=https --permanent
     firewall-cmd --zone=public --add-service=https
 
-However, the web forwarding feature will still be blocked by firewall.  If wanting to provide
-access to managed device web uis, at this time you must disable the firewall, for example:
+If the web server is not already started, enable the web server:
+
+    systemctl enable httpd --now
+
+
+# Web UI Forwarding feature
+
+The WebUI offers dynamic port forwarding.  To enable this feature, ensure TCP ports starting from port 3900 through however many ports you anticipate concurrently using.
+Otherwise, you may opt to disable the firewall:
 
     systemctl stop firewalld
     systemctl disable firewalld
+
+# Web UI Login
 
 In terms of confluent itself, it is by default set up without any user access.  To enable a user that can ssh into your server to access the web interface:
 
@@ -50,10 +59,6 @@ The user 'demouser' may now use his login password to access the confluent web i
 * Administrator: Full access apart from reading 'secret.' attributes for all data and operations
 * Operator: Removes the ability to change or add usernames or passwords in various contexts
 * Monitor: Suitable for health check programs, unable to do anything to effect operation of systems, but can get power state, health, and sensor data.
-
-If the web server is not already started, enable the web server:
-
-    systemctl enable httpd --now
 
 After these steps, the GUI should be available at:
 
