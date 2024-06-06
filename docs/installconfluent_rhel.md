@@ -35,6 +35,25 @@ https use.  You may remedy this by doing the following:
     firewall-cmd --zone=public --add-service=https --permanent
     firewall-cmd --zone=public --add-service=https
 
+Further, OS deployment uses some more ports, depending on scenario.  
+
+If doing any sort of network based boot (PXE/HTTP) without using an 'identity image' mounted over virtual USB, then the following is required to facilitate the API arming mechanism, as
+well as the SSDP port (udp port 1900) to allow deploying systems to scan for confluent servers:
+
+    firewall-cmd --permanent --zone=public --add-port=13001/tcp
+    firewall-cmd --permanent --zone=public --add-port=1900/udp
+
+If doing HTTP boot with `deployment.useinsecureprotocols' set to firmware, you will need plain http (port 80):
+
+    firewall-cmd --permanent --zone=public --add-service=http
+
+If doing PXE boot, then you will need PXE and TFTP opened:
+
+    firewall-cmd --permanent --zone=public --add-port=13001/tcp
+    firewall-cmd --permanent --zone=public --add-port=13001/tcp
+
+
+
 If the web server is not already started, enable the web server:
 
     systemctl enable httpd --now
