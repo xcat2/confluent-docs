@@ -2,6 +2,7 @@
 layout: page
 title: Troubleshooting issues with confluent OS deployment
 permalink: /documentation/confluentosdeploymenttroubleshooting.html
+toc: true
 ---
 # IPv6 configuration
 

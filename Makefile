@@ -12,7 +12,7 @@ beta:
 	jekyll b
 	sed -i s/beta/VERSION/ _config.yml
 
-testupload:
+testupload: all
 	rsync -a _site/* taurus:/var/www/html/users
 
 produpload: all

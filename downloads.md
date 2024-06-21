@@ -35,7 +35,7 @@ The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.len
 
     #On a system that can reach https://hpc.lenovo.com/downloads/
     #Download the package for your specific OS version
-    wget https://hpc.lenovo.com/downloads/latest-el7.tar.xz
+    wget https://hpc.lenovo.com/downloads/latest-el9.tar.xz
     #or
     wget https://hpc.lenovo.com/downloads/latest-el8.tar.xz
     #or
