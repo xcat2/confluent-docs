@@ -15,4 +15,6 @@ profiles scripts directory, `/var/lib/confluent/public/os/<profile>/scripts/samp
     script works for either SuSE or RHEL deployments. 
     <br><br>
 
-    - 
+    - Execution: To run the script on an installed system and ensure the changes are in effect from the onset you should make changes
+    to the post.custom script to point to the consoleredirect script and run it. Add this line `run_remote sample/consoleredirect` to 
+    post.custom. 
