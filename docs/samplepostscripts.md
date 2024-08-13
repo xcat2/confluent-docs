@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Osdeploy sample post scripts and their usage
+title: Osdeployment sample postscripts and their usage
 permalink: /documentation/samplepostscripts.html
 ---
 
@@ -10,7 +10,10 @@ profiles scripts directory, `/var/lib/confluent/public/os/<profile>/scripts/samp
 
 1. **Post script to comment out the terminal and serial lines in the grub.conf after install on el9 or suse15**
     - location `/var/lib/confluent/public/os/<profile>/scripts/sample/consoleredirect`
-    - When serial console redirect is enabled in the uefi settings and in grub this might result in double text 
+    - When serial console redirect is enabled after POST in the UEFI settings and in grub this might result in double text 
     appearing in console. Commenting out the terminal and serial lines in the grub.cfg file will fix this. This
-    script works for either SUSE or Rhel deployments. 
+    script works for either SuSE or RHEL deployments. 
     <br><br>
+
+    - Execution: To run the script on an installed system and ensure the changes are in effect from the onset you should add the
+    `consoleredirect` script to the `post.d/` directory. 
