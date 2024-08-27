@@ -27,12 +27,12 @@ Adding Repository for Ubuntu Linux
 
 Download our gpg key:
 
-    # wget -O /etc/apt/trusted.gpg.d/confluent.gpg https://hpc.lenovo.com/apt/cf3/lenovo-hpc.key
+    # wget -O /etc/apt/trusted.gpg.d/confluent.gpg https://hpc.lenovo.com/apt/latest/lenovo-hpc.key
 
 Create the following apt configuration if running Ubuntu 24.04 (noble), substitute the distribution name for other editions (e.g. jammy instead of noble):
 
     Types: deb
-    URIs: https://hpc.lenovo.com/apt/cf3/noble
+    URIs: https://hpc.lenovo.com/apt/latest/noble
     Suites: noble
     Components: main
     Signed-By: /etc/apt/trusted.gpg.d/confluent.gpg
