@@ -34,7 +34,8 @@ User reference documentation:
 * [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
 * [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
 * [OS Deployment Notes for SUSE Linux Enterprise 15]({{site.baseurl}}/documentation/suse15deploy.html)
-* [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}//documentation/updatesw_rhel.html)
+* [OS Deployment Notes for Ubuntu]({{site.baseurl}}/documentation/ubuntudeploy.html) 
+* [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}/documentation/updatesw_rhel.html)
 * [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
 
 Troubleshooting:
@@ -44,6 +45,7 @@ Troubleshooting:
 * [Troubleshooting issues with nodefirmware and firmware updates]({{site.baseurl}}/documentation/confluentnodefirmwareupdatetroubleshooting.html)
 * [Troubleshooting issue with updating confluent on SLES 15]({{site.baseurl}}/documentation/confluentupdatesles.html)
 * [Troubleshooting issue with nodeattribexpressions]({{site.baseurl}}/documentation/nodeattribexpressionstroubleshooting.html)
+* [Troubleshooting issue with nodeshell]({{site.baseurl}}/documentation/nodeshelltroubleshooting.html)
 
 Advanced topics:
 
