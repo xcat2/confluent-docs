@@ -49,8 +49,13 @@ If doing HTTP boot with `deployment.useinsecureprotocols' set to firmware, you w
 
 If doing PXE boot, then you will need PXE and TFTP opened:
 
-    firewall-cmd --permanent --zone=public --add-port=13001/tcp
-    firewall-cmd --permanent --zone=public --add-port=13001/tcp
+    firewall-cmd --permanent --zone=public --add-port=67/udp
+    firewall-cmd --permanent --zone=public --add-port=69/udp
+    firewall-cmd --permanent --zone=public --add-port=4011/udp
+
+Further, if doing network boot over IPv6:
+
+    firewall-cmd --permanent --zone=public --add-port=547/udp
 
 
 
