@@ -38,21 +38,15 @@ The OS repo URLs are set to the specific profile used to perform the deployment 
 
 When performing OS deployment with confluent, the managed node may hang, for example at "Started cancel waiting for multipath siblings of <drive>" when deploying RHEL 8.3.  This can be caused by the collective.managercandidates nodattribute containing a management node that is not actually defined as a node in the confluent database.  Note that this has to be defined exactly as it appears in the "collective show" command output.  For example, if the management node is shown in "collective show" as "mn.domain" then that management node has to be defined with the nodename "mn.domain" in confluent, as opposed to just "mn".
 
+
+# Issues with SSH within a cluster after adding an additional collective member
+
+After adding a collective member, it is necessary to run `nodeapply -k <noderange>` on existing nodes, as well as `osdeploy initialize -k` on existing collective members after setting up SSH on the new collective member.
+
 # Regenerating SSH host certificates
 
 If there is a requiremennt to regenerate SSH keys after installation and new
-certificates are needed, the following script may be used:
-
-```
-#!/bin/bash
-nodename=$(cat /etc/confluent/confluent.info | grep NODENAME | awk '{print $2}')
-mgr=$(cat /etc/confluent/confluent.info | grep MANAGER | head -n 1 | awk '{print $2}')
-for pubkey in /etc/ssh/ssh_host*key.pub
-do
-        certfile=${pubkey/.pub/-cert.pub}
-        curl -f -X POST -H "CONFLUENT_NODENAME: $nodename" -H "CONFLUENT_APIKEY: $(cat /etc/confluent/confluent.apikey)" -d @$pubkey https://[$mgr]/confluent-api/self/sshcert > $certfile
-done
-```
+certificates are needed, this can be addressed by running `nodeapply <noderange> -k`
 
 # Unable to ssh from one managed node to another on an interface which has a DNS hostname that doesn't match the confluent nodename
 
@@ -64,59 +58,27 @@ Certificate invalid: name is not a listed principal
 
 This can occur if the net.<name>.hostname nodeattribute is not set properly on the managed nodes, and can occur if there was a non-existing managed node so that the ssh configuration on the already existing managed nodes couldn't setup for those nodes at that time.  The ssh configuration for those existing nodes would not be fixed on deployment of the new managed nodes, even if the net.<name>.hostname was set correctly on addition and deployment of the new managed node.  To address this, the following script should be run on each managed node that should be able to ssh without a password prompt to others on the interface with a DNS hostname that doesn't match the confluetn nodename:
 
-```
-[ -f /lib/confluent/functions ] && . /lib/confluent/functions
-[ -f /etc/confluent/functions ] && . /etc/confluent/functions
-[ -f /opt/confluent/bin/apiclient ] && confapiclient=/opt/confluent/bin/apiclient
-[ -f /etc/confluent/apiclient ] && confapiclient=/etc/confluent/apiclient
-for pubkey in /etc/ssh/ssh_host*key.pub; do
-    certfile=${pubkey/.pub/-cert.pub}
-    rm $certfile
-    confluentpython $confapiclient /confluent-api/self/sshcert $pubkey -o $certfile
-done
-TMPDIR=$(mktemp -d)
-cd $TMPDIR
-confluentpython $confapiclient /confluent-public/site/initramfs.tgz -o initramfs.tgz
-tar xf initramfs.tgz
-for ca in ssh/*.ca; do
-	LINE=$(cat $ca)
-	cp -af /etc/ssh/ssh_known_hosts /etc/ssh/ssh_known_hosts.new
-	grep -v "$LINE" /etc/ssh/ssh_known_hosts > /etc/ssh/ssh_known_hosts.new
-	echo '@cert-authority *' $LINE >> /etc/ssh/ssh_known_hosts.new
-	mv /etc/ssh/ssh_known_hosts.new /etc/ssh/ssh_known_hosts
-done
-for pubkey in ssh/*.*pubkey; do
-	LINE=$(cat $pubkey)
-	cp -af /root/.ssh/authorized_keys /root/.ssh/authorized_keys.new
-	grep -v "$LINE" /root/.ssh/authorized_keys > /root/.ssh/authorized_keys.new
-	echo "$LINE" >> /root/.ssh/authorized_keys.new
-	mv /root/.ssh/authorized_keys.new /root/.ssh/authorized_keys
-done
-confluentpython $confapiclient /confluent-api/self/nodelist | sed -e 's/^- //' > /etc/ssh/shosts.equiv
-cat /etc/ssh/shosts.equiv > /root/.shosts
-cd -
-rm -rf $TMPDIR
-```
-
-This script is also available at:
-
-https://raw.githubusercontent.com/lenovo/confluent/master/misc/setupssh.sh
+This can be addressed by running `nodeapply -k <noderange>'
 
 
 
 # Confluent OS profile updates are not automatically applied on confluent updates
 
-The default confluent profiles for OSes (e.g. RHEL 8.4, SLE 15.3, etc., including genesis) do occasionally get updates as part of a confluent update.  However, these aren't applied automatically unless osdeploy import is re-run.  To make sure the updates available to an OS profile in a confluent update are applied is is recommended to remove (or backup in a directory confluent doesn't use) the existing default profile and re-run:
+The default confluent profiles for OSes (e.g. RHEL 8.4, SLE 15.3, etc., including genesis) do occasionally get updates as part of a confluent update.  However, these aren't applied automatically.  To opt into updates, run
 
 ```
-osdeploy import <OS ISO image filename>
+osdeploy rebase <profile name>
 ```
 
-Any customized profiles based on the default profile may need to be resetup based on the new default profile also.
+Note this will try to preserve customization, but heavy customization may make files incompatible.
 
 # Confluent does not support secure boot with PXE. 
 
 The ipxe boot loader that confluent uses in not signed, because of this an attempt to do secure boot with PXE will result in a secure boot violation. To do a network boot using confluent with secure boot enabled either http or https boot must be used. 
+
+# KVM virtual machines immediately fail to netboot when using UEFI firmware with confluent
+
+This is due to iPXE not being compatible with secureboot.  For now, disable secureboot when using UEFI with KVM virtualization, since the KVM firmware does not support HTTP boot.
 
 # System gets non-desired IP address when being deployed or booting genesis
 
