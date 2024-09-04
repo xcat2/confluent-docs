@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Template for RAID/ VROC boot device 
+title: Template for RAID/VROC boot device 
 permalink: /documentation/raid-vroc-template.html
 ---
 
