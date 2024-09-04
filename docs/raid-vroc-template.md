@@ -7,7 +7,7 @@ permalink: /documentation/raid-vroc-template.html
 Synopsis
 ---------------
 
-Add software RAID/md RAID and VROC support for booting devices for RHEL and SLES. 
+Add software RAID/md RAID for RHEL/Rocky Linux/Alma Linux, and VROC support for booting devices for RHEL/Rocky Linux/Alma Linux and SLES. 
 
 Solution
 ---------------
