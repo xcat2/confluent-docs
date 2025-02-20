@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - main
+      - mkdocs
 permissions:
   contents: write
 jobs:
