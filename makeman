@@ -1,32 +1,27 @@
 #!/bin/bash
 cd `dirname $0`
-mkdir -p man
-cat << EOF > man/index.md
----
-layout: page
-title: Confluent command man pages
-permalink: /documentation/man/
----
+mkdir -p docs/manuals
+cat << EOF > docs/manuals/index.md
+# Confluent command man pages
 
 EOF
 cd ../confluent/confluent_client/
 python3 addattribs.py
 cd -
-cd ../confluent/confluent_client/doc/man/
-./buildindex.sh
-cd -
+#cd ../confluent/confluent_client/doc/man/
+#./buildindex.sh
+#cd -
 for page in ../confluent/confluent_client/doc/man/*.ronn; do
     cmdname=$(basename $page)
     cmdname=${cmdname%.ronn}
-    echo "* [$cmdname]({{ site.baseurl }}/documentation/man/$cmdname.html)" >> man/index.md
-    cat << EOF > man/${cmdname%.ronn}.html
+    echo "* [$cmdname]($cmdname)" >> docs/manuals/index.md
+    cat << EOF > docs/manuals/${cmdname%.ronn}.md
 ---
-layout: page
 title: Manual for $cmdname
-permalink: /documentation/man/$cmdname.html
 ---
+
 EOF
-    ronn --pipe --html $page >> man/${cmdname%.ronn}.html  &
+    ronn --pipe --markdown $page >> docs/manuals/${cmdname%.ronn}.md &
 done
 wait
 
