@@ -28,14 +28,19 @@ jobs:
             mkdocs-material-
       - name: Install Material for MkDocs requirements
         run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
-      - name: Install Ronn dependency
+      - name: Install Ronn for man pages
         run: sudo apt-get install -y ronn
-      - uses: actions/checkout@v4
+      - name: Checkout confluent repository for nodeattrib and man pages
+        uses: actions/checkout@v4
         with:
-          name: xcat2/confluent
-      - name: Generate nodeattrib document
+          repository: xcat2/confluent
+          sparse-checkout: |
+            confluent/confluent_server/confluent/config/attributes.py
+            confluent/confluent_client/addattribs.py
+            confluent/confluent_client/doc/man
+      - name: Make nodeattrib document
         run: ./makeattribdoc
-      - name: Generate man pages
+      - name: Make man pages
         run: ./makeman
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force
