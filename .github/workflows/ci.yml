@@ -26,6 +26,16 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-git-revision-date-localized-plugin
-      - run: mkdocs gh-deploy --force
+      - name: Install Material for MkDocs requirements
+        run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
+      - name: Install Ronn dependency
+        run: sudo apt-get install -y ronn
+      - uses: actions/checkout@v4
+        with:
+          name: xcat2/confluent
+      - name: Generate nodeattrib document
+        run: ./makeattribdoc
+      - name: Generate man pages
+        run: ./makeman
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
