@@ -5,13 +5,13 @@ cat << EOF > docs/manuals/index.md
 # Confluent command man pages
 
 EOF
-cd ../confluent/confluent_client/
+cd confluent/confluent_client/
 python3 addattribs.py
 cd -
-#cd ../confluent/confluent_client/doc/man/
+#cd confluent/confluent_client/doc/man/
 #./buildindex.sh
 #cd -
-for page in ../confluent/confluent_client/doc/man/*.ronn; do
+for page in confluent/confluent_client/doc/man/*.ronn; do
     cmdname=$(basename $page)
     cmdname=${cmdname%.ronn}
     echo "* [$cmdname]($cmdname)" >> docs/manuals/index.md
