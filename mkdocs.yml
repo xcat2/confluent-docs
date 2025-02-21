@@ -29,20 +29,30 @@ theme:
     - search.highlight
     - search.share
   palette:
+    # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
+      primary: red
+      accent: red
       toggle:
-        icon: material/link
+        icon: material/brightness-auto
         name: Switch to light mode
+    # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: red
+      accent: red
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to dark mode
+    # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: red
+      accent: red
       toggle:
-        icon: material/toggle-switch-off
+        icon: material/brightness-4
         name: Switch to system preference
+
 
 markdown_extensions:
   # Python Markdown
@@ -79,4 +89,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - blog:
+      blog_dir: news
+      blog_toc: true
   - git-revision-date-localized
