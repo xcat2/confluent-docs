@@ -37,6 +37,8 @@ jobs:
         with:
           repository: xcat2/confluent
           path: confluent
+      - run: pwd
+      - run: ls -lR
       - name: Make nodeattrib document
         run: python3 makeattribdoc
       - name: Make man pages
