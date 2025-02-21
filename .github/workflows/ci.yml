@@ -34,13 +34,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: xcat2/confluent
+          path: confluent
           sparse-checkout: |
             confluent/confluent_server/confluent/config/attributes.py
             confluent/confluent_client/addattribs.py
             confluent/confluent_client/doc/man
       - name: Make nodeattrib document
-        run: ./makeattribdoc
+        run: python3 makeattribdoc
       - name: Make man pages
-        run: ./makeman
+        run: bash makeman
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force
