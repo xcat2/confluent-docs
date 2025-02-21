@@ -38,7 +38,7 @@ jobs:
           repository: xcat2/confluent
           path: confluent
           sparse-checkout: |
-            confluent/confluent_server/confluent/config/attributes.py
+            confluent/confluent_server/confluent/config
             confluent/confluent_client/addattribs.py
             confluent/confluent_client/doc/man
       - name: Make nodeattrib document
