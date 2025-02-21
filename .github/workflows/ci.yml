@@ -37,10 +37,6 @@ jobs:
         with:
           repository: xcat2/confluent
           path: confluent
-          sparse-checkout: |
-            confluent/confluent_server/confluent
-            confluent/confluent_client/addattribs.py
-            confluent/confluent_client/doc/man
       - name: Make nodeattrib document
         run: python3 makeattribdoc
       - name: Make man pages
