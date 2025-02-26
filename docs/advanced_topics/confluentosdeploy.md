@@ -10,16 +10,17 @@ Some [node attributes]({{site.baseurl}}/documentation/nodeattributes.html) that 
 
 * `crypted.grubpassword` - By default, no boot loader password is used, specify one here to configure deployed OS to require a password to modify grub configuration.
 * `crypted.rootpassword` - By default, password based login as root is disabled in deployed operating systems. Set this to a desired value to enable password login. If this is not set, then
-there will be no way to log into the console of the target system by default.
+there will be no way to log into the console of the target system by default. Note that some OSes default to blocking password from root on ssh by default, and confluent by default honors the OS choice on this matter.  See 'PermitRootLogin' in sshd_config.
 * `deployment.encryptboot` - Only supported for RHEL or CentOS 8.2 or higher with TPM 2.0. This will cause the boot volume to be encrypted. If the system board is replaced or the TPM2 is otherwise unavailable or cleared, then the contents of the disk will be lost.
 * `deployment.useinsecureprotocols` - To support PXE boot or HTTP boot without HTTPS, set this to `firmware`.
 * `dns.domain` - Set this to the appropriate DNS domain for search path. It may in some scenarios be omitted, but it is highly recommended to have a domain.
 * `dns.servers` - Set to IP addresses that will provide name resolution services, separated by commas if more than one specified.
-* `hardwaremanagement.port` - If needing to change the XCC (xClarity Controller) network port to be shared with an OCP card or onboard network, set to 'ocp' or 'lom' respectively. Ignore for using the dedicated management port or the SMM (System Management Module) in dense, enclosure hosted systems.
-* `hardwaremanagement.vlan` - If needing to set the XCC to be on a tagged vlan, set this to the desired VLAN. Ignore if using the native VLAN.
-* `net.hostname` - If wanting to include other aliases for an interface to use to SSH in, use this attribute to indicate aliases other than the nodename itself, using commas as needed to indicate multiple values. This attribute is not needed if the node name is the only desired hostname.
-* `net.ipv4_gateway` - Set to the gateway IP for the deployed system to use
-* `net.ipv4_method` - This defaults to `static`, based on a name lookup of the node.  Use `firmwaredhcp` if there is an external DHCP server that serves addresses during PXE, but static is desired in the OS.  Set to `dhcp` to delegate OS addresses entirely to a DHCP server.
+* `hardwaremanagement.port` - If needing to change the XCC (xClarity Controller) network port to be shared with an OCP card or onboard network, set to 'ocp' or 'lom' respectively. Ignore for using the dedicated management port or the SMM (System Management Module) in dense, enclosure hosted systems.  Also ignore if you do not use the `configbmc` script.
+* `hardwaremanagement.vlan` - If needing to set the XCC to be on a tagged vlan, set this to the desired VLAN. Ignore if using the native VLAN. Again, this only applies if you use the `configbmc` script.
+* `net.hostname` - If wanting to include other aliases for an interface to use to SSH in, use this attribute to indicate aliases other than the nodename itself, using commas as needed to indicate multiple values. This attribute is not needed if the node name is the only desired hostname. Note that this setting may be done for multiple interfaces, e.g. `net.compute.hostname={node}-compute`, `net.fabric.hostname={node}-ib`.  See [Confluent multi interface configuration
+]({{site.baseurl}}/documentation/confignet.html) for more details on configuring multiple interfaces.
+* `net.ipv4_gateway` - Set to the gateway IP for the deployed system to use.  This also supports the multiple interface scheme as mentioned above.
+* `net.ipv4_method` - This defaults to `static`, based on a name lookup of the node.  Use `firmwaredhcp` if there is an external DHCP server that serves addresses during PXE, but static is desired in the OS.  Set to `dhcp` to delegate OS addresses entirely to a DHCP server.  This also supports the multiple interface scheme as mentioned above.
 * `ntp.servers` - NTP servers to use by deployed operating system, separated by commas if more than one specified.
 
 A somewhat minimalist example would be:
@@ -30,24 +31,45 @@ Again, if root login by password is desired (if unspecified, only key based logi
 
     # nodegroupattrib everything -p crypted.rootpassword
 
+Keep in mind that the OS being deployed may prohibit ssh password login by root as a default, see `PermitRootLogin` in sshd_config for your distribution for more details.
+
 # IPv6 configuration
 
-Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.
+Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.  Full IPv6 and IPv6 exclusive deployment is supported if desired, but even a "pure" IPv4 network will leverage the automatic IPv6 fe80:: for some key features.
 
 # Name resolution (optional)
 
 An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. If such a solution is unavailable, this section provides a strategy to quickly generate IP addresses and use
 `dnsmasq` as a name server.
 
-The [`noderun`]({{site.baseurl}}/documentation/man/noderun.html) command may be used to quickly generate lines to append to a local /etc/hosts using the same syntax as [attribute expressions]({{site.baseurl}}/documentation/attributeexpressions.html). Here is an example to generate 8 entries for nodes d1 through d8:
+The [`confluent2hosts`]({{site.baseurl}}/documentation/man/confluent2hosts.html) command may be used to manage entries in an /etc/hosts file. This can use [attribute expressions]({{site.baseurl}}/documentation/attributeexpressions.html) to help form entries for a range. Here is an example to generate 8 entries for nodes d1 through d8:
 
-    # noderun -n d1-d8 echo 172.30.100.{n1} {node} {node}.{dns.domain} >> /etc/hosts
+```
+# nodegroupattrib everything dns.domain=cluster.lan
+# confluent2hosts d1-d8 -i 172.30.100.{n1}
+# grep d5 /etc/hosts
+172.30.100.5                            d5 d5.cluster.lan
+```
+
+Additionally, confluent2hosts can use the `net.*` attributes to derive entries based on `net.*hostname`, `net.*ipv4_address`, and `net.*ipv6_address`.  Here is an example mixing and matching behaviors to address multiple names
+on multiple interfaces with ipv6 on one of the interfaces:
+
+```
+# nodegroupattrib dense net.compute.ipv4_address=172.30.100.{n1} net.fabric.ipv4_address=172.20.100.{n1} net.fabric.hostname={node}-ib net.compute.ipv6_address=fd98:8741:ae09::{n1}
+# confluent2hosts d1-d8 -a
+# grep d5 /etc/hosts
+172.30.100.5                            d5 d5.cluster.lan
+172.20.100.5                            d5-ib d5-ib.cluster.lan
+fd98:8741:ae09::5                       d5 d5.cluster.lan
+```
+
 
 With an /etc/hosts appropriately generated, use the package management software to install dnsmasq and then:
 
     # systemctl enable dnsmasq --now
 
-If /etc/hosts is updated, restart dnsmasq.
+If /etc/hosts is updated, restart dnsmasq, as dnsmasq does not automatically update on update of /etc/hosts.
+
 
 # DHCP (optional)
 
@@ -99,6 +121,9 @@ The `osdeploy initialize` command is used to prepare a confluent server to deplo
 
     # osdeploy initialize -i
 
+Every option provides a command line flag to use instead of -i if wanting to run osdeploy initialize in a non-interactive fashion opting into the specified options.
+
+
 # Importing an install source from media
 
 The `osdeploy import` is used to take recognized installation media and produce stock OS deployment profiles:
@@ -130,6 +155,15 @@ Labels and kernel arguments are in the profile.yaml file in the directory.  If m
 A profile by default will use symbolic links for some content, but most smaller configuration and script files are simply copied and may be freely edited. Updates to confluent will
 not automatically replace any kickstart, autoyast, autoinstall, or script content in existing profiles without manual intervention.  It is recommended to examine
 and modify kickstart.custom in CentOS and RedHat profiles, to make decisions about default firewall and SELinux configuration on nodes.
+
+Any content in a profile can be freely edited without worry about an update later overwriting it.  However, if an update is performed and it is desired for a profile to merge in content from the package updates, `osdeploy rebase` can be used:
+
+```
+# osdeploy rebase alma-8.7-x86_64-custom
+Updated: scripts/confignet
+Skipping update of scripts/firstboot.sh as current copy was customized or no manifest data was available
+```
+
 
 
 # Specifying custom postscripts or ansible plays
@@ -171,12 +205,23 @@ After the xClarity Controller or equivalents are accesible, it can also initiate
 
     # nodedeploy <nodes> -n rhel-8.2-x86_64-default
 
+
+# Requesting node identifiers from nodeinventory
+
+If discovery has been skipped and a BMC has been added manually, then the following command will populate attributes needed for deployment for most scenarios:
+
+    # nodeinventory node -s
+
 # Manually indicating node identifiers
 
-See next steps for ways of using auto discovery to skip any need to know mac addresses or uuids in advance. If however the data is
-available, then it is possible to feed the data into the requisite attributes rather than using a discovery process.  For a MAC address:
+For many users, node identifiers will be automatically gathered by node discovery process.  However, the discovery process is optional, and if
+not wanting to use the process, or using servers that are not supported by the discovery process, then it is possible to feed the data into the requisite attributes rather than using a discovery process.  For a MAC address:
 
     # nodeattrib node net.hwaddr=00:01:02:03:04:05
+
+Note that in discovery, we tend to prefer the UUID, as it makes the boot process the most adaptive for dealing with multi-nic booting with only a single identifier.  It's also more commonly available
+in nodeinventory across systems.  However, for certain non-Lenovo systems, the UUID may not be reliable and the MAC address can be used.  Also if MAC addresses are more familiar, they may be used.
+
 
 Alternatively, a system UUID may be used instead:
 
