@@ -21,6 +21,8 @@ OS Deployment initialization (`osdeploy initialize`) operations must be done onc
 properly enable each member to provide deployment services to nodes.  For the SSH material (automation (-a) and CA (-s)), it
 is important to wait until after joining the collective to perform the operation.  If those steps were performed prior to
 joining collective, then follow the guidance in the osdeploy initialize output to delete the prior CA and automation keys.
+Further, after adding a new collective member and performing collective initialize on the new host,
+run osdeploy initialize -k on all other hosts to trust the new collective member's SSH certificate authority.
 
 # Creating a collective
 
