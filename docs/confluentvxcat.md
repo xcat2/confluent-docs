@@ -12,8 +12,6 @@ remain some differences and some gaps.
 Confluent does not cover all functionality of xCAT. Some functions of xCAT that are currently not in confluent are:
 
 * Virtualization management
-* Deployment to networks through routers
-* Support for platforms other than x86
 
 # Interoperability
 
