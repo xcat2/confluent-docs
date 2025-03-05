@@ -1,8 +1,5 @@
 ---
 date: 2022-12-05
-categories:
-  - hpc
-  - update
 ---
 
 # 3.6.0 Confluent release
