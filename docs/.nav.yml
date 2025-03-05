@@ -1,5 +1,5 @@
 nav:
-  - Home: index.md
+  - index.md
   - getting_started
   - user_reference
   - troubleshooting
@@ -7,5 +7,5 @@ nav:
   - miscellaneous
   - manuals
   - developer
-  - downloads
+  - downloads.md
   - release_notes
