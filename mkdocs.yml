@@ -10,6 +10,8 @@ edit_uri: edit/master/docs/
 
 copyright: Copyright &copy; Confluent Community
 
+site_dir: _site
+
 theme:
   name: material
   favicon: assets/icon.png
