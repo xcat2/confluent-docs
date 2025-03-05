@@ -1,0 +1,10 @@
+nav:
+  - Home: index.md
+  - getting_started
+  - user_reference
+  - troubleshooting
+  - advanced_topics
+  - manuals
+  - developer
+  - downloads
+  - release_notes

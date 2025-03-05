@@ -1,70 +1,59 @@
-# Documentation
+# Home
 
-For specific topics, it may be easier to use the [search]({{site.baseurl}}/search.html) function of this site.
+## Confluent
+
+Confluent is a software package to handle essential bootstrap and operation of scale-out
+server configurations. It incorporates a variety of functions relevant to that end:
+
+## Features
+
+* Console Management
+    * Arbitrate multi-user access
+    * Full logging with fine grained timestamps
+    * VT-aware buffering for quality reconstitution of a console after reconnect
+* Hardware Control: Essential operations using ipmi, redfish, and/or implementation specific plugins to implement features including:
+    * Power on/off
+    * Set next boot device (e.g. force network boot)
+    * Configure BIOS/UEFI/BMC settings
+    * Configure hardware storage controllers (e.g. create/delete raid arrays and set drive usage)
+    * Health check
+    * Telemetry (temperature, voltages, power, energy, etc)
+    * Virtual USB device mount management
+    * Retrieve support data
+* OS Deployment including:
+    * Sample profiles for ESXi 6.7/7.0, RedHat/CentOS 7.x/8.x, SuSE 15.x, RHV-H 4.3/4.4 and Ubuntu 20.04
+    * Deployment over PXE, HTTP(S)boot, or removable media (real or virtual)
+    * Does not require a DHCP server, nor does it conflict with an external DHCP server for all deployment methods
+    * Support customization during phases of deployment (e.g. post, firstboot, onboot) by local commands or automatically launched remote ansible playbooks.
+* Centralized access to network topology information
+    * Access mac address table and lldp information across all switches in one interface
+* Rich device on-boarding capabilities
+    * Detect generic PXE systems and Lenovo hardware management devices at a glance
+    * Rapidly onboard devices manually, based on data such as serial number or mac address, or based on where things are physically plugged in to chassis or switches.
+* Scalability and Availability
+    * Powerful noderange syntax to describe target systems simply but with great flexibility
+    * An attribute database with group inheritance and formulaic attribute derivation for structured data-centers
+    * Collective mode enables scaling a single confluent interface across multiple servers or virtual machines for HA and/or to manage thousands of systems
+    * Tools to quickly analyze data and highlight inconsistencies or to do quick statistical analysis
+* Security
+    * Designed with secure default behaviors with opt-in to reduced security
+    * Use of fully validated TLS to protect collective, deployment and hardware management
+    * Take advantage of TPM2 to protect boot volumes for supported profiles
+    * Use TPM2 to persist node trust across reboots in stateless environments
+    * Node authentication options to balance convenience versus hardening to protect potentially sensitive data such as encrypted root password
+    * SSH PKI strategy to securely enable convenient SSH without users having to self-curate SSH keys or having to update known_hosts
+    * SecureBoot is supported for media and HTTP boot methods
+* Flexible usage scenarios
+    * Collection of straightforward Linux commands
+    * Command line API browser that is like browsing a file-system
+    * Python client library
+    * REST API over HTTP
+
+## Installation
 
 Generally speaking, there are two suggested approaches:
 * Using confluent - It is now recommended for most of those without existing xCAT installations to use confluent directly.
 * Using xCAT and confluent together - When you are used to xCAT or need stateless deployment or another currently xCAT exclusive feature and want to use it in conjunction with confluent.  For this situation, start with the xCAT documentation under Advanced topics.
 
-Getting started:
-
-* [Quick start guide for confluent under RedHat/CentOS]({{site.baseurl}}/documentation/confluentquickstart_el8.html)
-* [Using groups to scale up node attributes]({{site.baseurl}}/documentation/confluentgroups.html)
-* [Detailed installation guide for confluent under RedHat/CentOS]({{ site.baseurl }}/documentation/installconfluent_rhel.html)
-* [Detailed installation guide for confluent under Ubuntu]({{ site.baseurl }}/documentation/installconfluent_ubuntu.html)
-* [Detailed installation guide for confluent under SuSE]({{ site.baseurl }}/documentation/installconfluent_suse.html)
-* [Detailed configuration guide for confluent]({{ site.baseurl }}/documentation/configconfluent.html)
-* [InfiniBand install with confluent on RHEL 8]({{ site.baseurl }}/documentation/ibinstallconfluentrhel8.html)
-* [InfiniBand install with confluent on SLE 15.2]({{ site.baseurl }}/documentation/ibinstallconfluentsle152.html)
-
-User reference documentation:
-
-* [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html)
-* [Discovery with chained ThinkSystem D2 enclosures]({{site.baseurl}}/documentation/chainedsmmdiscovery.html)
-* [Setting up the confluent rackview]({{site.baseurl}}/documentation/confluentrackview.html)
-* [Man pages]({{ site.baseurl }}/documentation/man/)
-* [Noderange syntax]({{ site.baseurl }}/documentation/noderange.html)
-* [Node attributes]({{ site.baseurl }}/documentation/nodeattributes.html)
-* [Attribute expressions]({{ site.baseurl }}/documentation/attributeexpressions.html)
-* [Specifying connected switch ports for nodes]({{site.baseurl}}/documentation/switchportattribs.html)
-* [Confluent configuration notes for Lenovo hardware]({{ site.baseurl }}/documentation/confluentconfignotes.html)
-* [OS Deployment Notes for CentOS]({{site.baseurl}}/documentation/centosdeploy.html)
-* [OS Deployment Notes for Red Hat Enterprise Linux 7]({{site.baseurl}}/documentation/el7deploy.html)
-* [OS Deployment Notes for SUSE Linux Enterprise 15]({{site.baseurl}}/documentation/suse15deploy.html)
-* [OS Deployment Notes for Ubuntu]({{site.baseurl}}/documentation/ubuntudeploy.html) 
-* [Applying software updates of only Lenovo repository under RedHat/CentOS]({{ site.baseurl }}/documentation/updatesw_rhel.html)
-* [Power and cooling monitoring with confluent]({{ site.baseurl }}/documentation/thermalpowerconfluent.html)
-
-Troubleshooting:
-
-* [Troubleshooting issues with confluent OS deployment or PXE boot]({{site.baseurl}}/documentation/confluentosdeploymenttroubleshooting.html)
-* [Troubleshooting issues with xCAT OS deployment and diskless image creation/boot]({{site.baseurl}}/documentation/xcatosdeploymenttroubleshooting.html)
-* [Troubleshooting issues with nodefirmware and firmware updates]({{site.baseurl}}/documentation/confluentnodefirmwareupdatetroubleshooting.html)
-* [Troubleshooting issue with updating confluent on SLES 15]({{site.baseurl}}/documentation/confluentupdatesles.html)
-* [Troubleshooting issue with nodeattribexpressions]({{site.baseurl}}/documentation/nodeattribexpressionstroubleshooting.html)
-* [Troubleshooting issue with nodeshell]({{site.baseurl}}/documentation/nodeshelltroubleshooting.html)
-
-Advanced topics:
-
-* [Configuring confluent with xCAT]({{ site.baseurl }}/documentation/configconfluent_xcat.html)
-* [Installing xCAT on SuSE platforms]({{ site.baseurl }}/documentation/installxcat_suse.html)
-* [Installing xCAT on RedHat/CentOS platforms]({{ site.baseurl }}/documentation/installxcat_rhel.html)
-* [Remote confluent access (for xCAT rcons with service nodes)]({{ site.baseurl }}/documentation/remoteconfluent.html)
-* [xCAT configuration notes for Lenovo hardware]({{site.baseurl}}/documentation/xcatconfignotes.html)
-* [Using xCAT service nodes with a shared tftpboot directory]({{site.baseurl}}/documentation/sharedtftpnotes.html)
-* [Installing RedHat/CentOS 8 over InfiniBand]({{site.baseurl}}/documentation/el8ibinstall.html)
-* [Installing SLE 15.2 over InfiniBand]({{site.baseurl}}/documentation/sle152ibinstall.html)
-* [Booting xCAT ramroot over InfiniBand]({{site.baseurl}}/documentation/xcatramrootibboot.html)
-* [nodemedia caveats]({{site.baseurl}}/documentation/nodemedia_caveats.html)
-* [Using xCAT nodes with a shared install directory]({{site.baseurl}}/documentation/sharedinstallnotes.html)
-* [Using driver update media for RedHat/CentOS]({{site.baseurl}}/documentation/driverupdatemedia.html)
-* [Using confluent discovery for xCAT]({{site.baseurl}}/documentation/confluenttoxcat.html)
-* [Confluent OS Deployment and Syslog]({{site.baseurl}}/documentation/confluentosdeployment.html)
-* [Confluent Discovery/Autosense setting]({{site.baseurl}}/documentation/confluentdiscoverysetting.html)
-* [Limitations of usage of Confluent osdeploy initialize across multiple management nodes]({{site.baseurl}}/documentation/confluentlimitationsosdeploy.html)
-* [Adding snmp support to xCAT]({{site.baseurl}}/documentation/xcataddingsnmp.html)
-* [xCAT stateless image creation under SLES 15.2 fails]({{site.baseurl}}/documentation/xcatstatelessimagesles152.html)
-
-For developers:
-
-* [API reference]({{ site.baseurl }}/documentation/developer/api.html)
+!!! note
+    For specific topics, it may be easier to use the Search function of this site.

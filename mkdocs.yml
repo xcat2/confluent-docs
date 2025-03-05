@@ -1,4 +1,4 @@
-site_name: Confluent documentation
+site_name: Confluent
 site_author: Confluent Community
 site_url: https://obihoernchen.github.io/confluent-docs/
 site_description: >-
@@ -12,6 +12,7 @@ copyright: Copyright &copy; Confluent Community
 
 theme:
   name: material
+  favicon: assets/icon.png
   features:
     - content.action.edit
     - content.action.view
@@ -20,11 +21,13 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
-    - toc.follow
+    - navigation.footer
+    # - toc.follow
+    - toc.integrate
     - search.suggest
     - search.highlight
     - search.share
@@ -90,6 +93,9 @@ markdown_extensions:
 plugins:
   - search
   - blog:
-      blog_dir: news
+      blog_dir: release_notes
       blog_toc: true
-  - git-revision-date-localized
+  - awesome-nav
+  - git-revision-date-localized:
+      type: timeago
+      enable_creation_date: true
