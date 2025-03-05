@@ -6,7 +6,7 @@ site_description: >-
 
 repo_name: Obihoernchen/confluent-docs
 repo_url: https://github.com/Obihoernchen/confluent-docs
-edit_uri: edit/master/docs/
+edit_uri: edit/mkdocs/docs/
 
 copyright: Copyright &copy; Confluent Community
 
