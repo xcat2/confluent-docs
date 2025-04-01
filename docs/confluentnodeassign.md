@@ -2,6 +2,7 @@
 layout: page
 title: Manual discovery with nodediscover assign
 permalink: /documentation/confluentnodeassign.html
+toc: true
 ---
 
 Note that discovery in confluent is an optional process intended to aid with automatic gathering of mac addresses,

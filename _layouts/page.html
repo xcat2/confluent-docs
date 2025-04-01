@@ -4,11 +4,31 @@ layout: default
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+
+      <div class="page-heading">
+        <div class="page-heading_image-container">
+          <picture>
+            <img src="{{ "/images/grad_red.webp" | prepend: site.baseurl }}" class="page-heading-image" alt="Decorative gradient red background">
+          </picture>
+        </div>
+        
+        <div class="page-heading-container">
+          <h1 class="page-heading-title">{{ page.title }}</h1>
+        </div>
+
+      </div>
   </header>
 
-  <div class="post-content">
-    {{ content | toc }}
+  <div style="display: flex;">
+    <div style="flex: 4; padding-right: 10px;" class="post-content">
+      {{ content | inject_anchors }}
+    </div>
+    <div class="toc-navigation">
+      <!-- Right column content (20%) -->
+      <div class="panel-heading"> Table of Contents</div>
+      <aside">
+      {{ content | toc_only }}
+      </aside>
+    </div>
   </div>
-
 </article>

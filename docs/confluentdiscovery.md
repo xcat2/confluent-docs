@@ -2,6 +2,7 @@
 layout: page
 title: Node discovery and autoconfiguration with confluent
 permalink: /documentation/confluentdisco.html
+toc: true
 ---
 
 Note that discovery is an optional portion of confluent that may be skipped.

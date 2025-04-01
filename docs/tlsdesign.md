@@ -2,6 +2,7 @@
 layout: page
 title: Confluent TLS Configuration
 permalink: /documentation/tlsdesign.html
+toc: true
 ---
 # Challenges of using TLS in a private network
 

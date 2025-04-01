@@ -2,6 +2,7 @@
 layout: page
 title: Using switch based discovery
 permalink: /documentation/confluentswitchdisco.html
+toc: true
 ---
 
 Confluent can identify unknown devices based on what network port they are connected to.
