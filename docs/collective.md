@@ -16,15 +16,6 @@ collective members.  This may through use of an NFS mount, clustered filesystem,
 local filesystem content. Confluent has no particular requirements of how this is done, but does
 expect it to be identical if OS deploymennt features are used.
 
-# OS Deployment considerations
-
-OS Deployment initialization (`osdeploy initialize`) operations must be done once per collective member to
-properly enable each member to provide deployment services to nodes.  For the SSH material (automation (-a) and CA (-s)), it
-is important to wait until after joining the collective to perform the operation.  If those steps were performed prior to
-joining collective, then follow the guidance in the osdeploy initialize output to delete the prior CA and automation keys.
-Further, after adding a new collective member and performing collective initialize on the new host,
-run osdeploy initialize -k on all other hosts to trust the new collective member's SSH certificate authority.
-
 # Creating a collective
 
 To begin, select a confluent server to begin constructing the collective from.  This page will use `mgt1`
@@ -66,6 +57,16 @@ in this case:
     Active collective members:
         mgt2
         mgt3
+
+# OS Deployment considerations
+
+OS Deployment initialization (`osdeploy initialize`) operations must be done once per collective member to
+properly enable each member to provide deployment services to nodes.  For the SSH material (automation (-a) and CA (-s)), it
+is important to wait until after joining the collective to perform the operation.  If those steps were performed prior to
+joining collective, then follow the guidance in the osdeploy initialize output to delete the prior CA and automation keys, and then
+run osdeploy initialize -ask.
+Further, after adding a new collective member and performing collective initialize on the new host,
+run osdeploy initialize -k on all other hosts to trust the new collective member's SSH certificate authority.
 
 # Managing the nodes' active manager
 

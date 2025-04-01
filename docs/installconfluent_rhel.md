@@ -46,6 +46,7 @@ well as the SSDP port (udp port 1900) to allow deploying systems to scan for con
 
 If doing HTTP boot with `deployment.useinsecureprotocols' set to firmware, you will need plain http (port 80):
 
+    firewall-cmd --permanent --zone=public --add-service=http --permanent
     firewall-cmd --permanent --zone=public --add-service=http
 
 If doing PXE boot, then you will need PXE and TFTP opened:
