@@ -2,6 +2,7 @@
 layout: page
 title: Confluent Installation for Red Hat Enterprise Linux
 permalink: /documentation/installconfluent_rhel.html
+toc: true
 ---
 
 Enterprise Linux 8.6 or 9.0 and higher is required for installation.

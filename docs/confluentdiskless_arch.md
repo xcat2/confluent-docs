@@ -2,6 +2,7 @@
 layout: page
 title: Confluent diskless architecture
 permalink: /documentation/confluentdiskless_arch.html
+toc: true
 ---
 
 The confluent diskless implementation has a number of design points of interest compared to other diskless implementations or scripted install.

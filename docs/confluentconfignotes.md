@@ -2,6 +2,7 @@
 layout: page
 title: Confluent configuration and troubleshooting notes for Lenovo hardware
 permalink: /documentation/confluentconfignotes.html
+toc: true
 ---
 
 ## SN2010 rack view

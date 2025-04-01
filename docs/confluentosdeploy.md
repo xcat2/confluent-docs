@@ -2,6 +2,7 @@
 layout: page
 title: Preparing for Operating System Deployment
 permalink: /documentation/confluentosdeploy.html
+toc: true
 ---
 
 If opting to use the confluent OS deployment mechanism, some additional preparation steps are suggested.

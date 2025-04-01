@@ -2,6 +2,7 @@
 layout: page
 title: Confluent quickstart
 permalink: /documentation/confluentquickstart_el8.html
+toc: true
 ---
 
 This document provides one example flow from installation to capable cluster. Confluent is very flexible and there are

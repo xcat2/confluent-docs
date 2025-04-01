@@ -2,6 +2,7 @@
 layout: page
 title: Confluent SSH Configuration
 permalink: /documentation/sshdesign.html
+toc: true
 ---
 # SSH authentication architecture as configured by confluent
 

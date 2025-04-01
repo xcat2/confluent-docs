@@ -3,6 +3,7 @@ layout: page
 title: Downloads
 permalink: /downloads/
 toplevel: yes
+toc: true
 ---
 
 Lenovo provides yum repositories of relevant software for managing HPC as well

@@ -2,6 +2,7 @@
 layout: page
 title: Using xCAT to install EL7 on Intel RSTe
 permalink: /documentation/el7rste.html
+toc: true
 ---
 
 # Directing xCAT to install to the RSTe array

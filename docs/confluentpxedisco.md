@@ -2,6 +2,7 @@
 layout: page
 title: Using PXE driven discovery
 permalink: /documentation/confluentpxedisco.html
+toc: true
 ---
 
 While the best experience is through discovering the xClarity Controller first and having full management

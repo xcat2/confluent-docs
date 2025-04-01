@@ -2,6 +2,7 @@
 layout: page
 title: Installing EL8 over InfiniBand
 permalink: /documentation/el8ibinstall.html
+toc: true
 ---
 
 This covers the process of EL8 deployment on a cluster using only InfiniBand.
