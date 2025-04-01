@@ -37,11 +37,19 @@ function generateGridCellContent(CellContent) {
 }
 
 
+
+
   document.addEventListener('DOMContentLoaded', function() {
     const tocLinks = document.querySelectorAll('.toc-entry a');
     const sections = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]');
 
-    console.log(sections);
+    if (sections.length === 0) {
+      const toc = document.querySelector('.toc-navigation');
+      if (toc) {
+        toc.style.display = 'none';
+      }
+      return;
+    }
 
     function onScroll() {
       let currentSection = null;
@@ -62,4 +70,6 @@ function generateGridCellContent(CellContent) {
 
     window.addEventListener('scroll', onScroll);
   });
+
+
 
