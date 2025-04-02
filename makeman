@@ -17,7 +17,7 @@ for page in confluent/confluent_client/doc/man/*.ronn; do
     echo "* [$cmdname](${cmdname}.md)" >> docs/manuals/index.md
     cat << EOF > docs/manuals/${cmdname}.md
 ---
-title: Manual for $cmdname
+title: $cmdname
 ---
 
 EOF

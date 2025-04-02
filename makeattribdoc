@@ -4,19 +4,16 @@ import sys
 path = os.path.dirname(os.path.realpath(__file__))
 path = os.path.realpath(os.path.join(path, 'confluent', 'confluent_server'))
 sys.path.append(path)
-
-
 import confluent.config.attributes as attr
-import shutil
 
-shutil.copyfile('_special/nodeattribtmpl.md', 'docs/user_reference/node_attributes.md')
-outf = open('docs/user_reference/node_attributes.md', 'a')
-
-previous_category  = None
-for field in sorted(attr.node):
-    category = field.split('.')[0]
-    if category != previous_category:
-        outf.write('\n## {}\n'.format(category))
-    outf.write('\n### {0}\n\n: {1}\n'.format(field, attr.node[field]['description']))
-    previous_category = category
+with open('docs/user_reference/node_attributes.md', 'w', encoding='utf-8') as outf:
+    outf.write('# Node Attributes\n\n')
+    outf.write('Confluent uses a variety of attributes on nodes to be configured and provide information.  The currently recognized attributes are as follows.\n\n')
+    previous_category  = None
+    for field in sorted(attr.node):
+        category = field.split('.')[0]
+        if category != previous_category:
+            outf.write(f'\n## {category}\n')
+        outf.write(f'\n### {field}\n\n: {attr.node[field]['description']}\n')
+        previous_category = category
 
