@@ -15,12 +15,14 @@ site_dir: _site
 theme:
   name: material
   favicon: assets/icon.png
+  #logo:
   features:
     - content.action.edit
     - content.action.view
+    #- content.code.annotate
     - content.code.copy
+    - content.tooltips
     - navigation.instant
-    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
@@ -28,11 +30,11 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
-    # - toc.follow
-    - toc.integrate
-    - search.suggest
     - search.highlight
     - search.share
+    - search.suggest
+    - toc.follow
+    #- toc.integrate
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -69,12 +71,14 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+  - tables
 
   # Python Markdown Extensions
-  - pymdownx.arithmatex:
-      generic: true
+  #- pymdownx.arithmatex:
+  #    generic: true
   - pymdownx.betterem:
       smart_enable: all
+  - pymdownx.blocks.caption
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
@@ -85,6 +89,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
@@ -97,6 +102,7 @@ plugins:
   - blog:
       blog_dir: release_notes
       blog_toc: true
+  - privacy
   - awesome-nav
   - git-revision-date-localized:
       type: timeago
