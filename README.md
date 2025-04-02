@@ -29,12 +29,11 @@ mkdocs serve
 
 Then, access the live documentation at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-### Building HTML documentation
+## Building HTML documentation
 
 To build static HTML pages, use either:
 
-bash
-```
+```bash
 ./makeattribdoc   # generate node_attributes.md from ../confluent
 ./makeman         # generate man pages from ../confluent
 mkdocs build      # build HTML pages
