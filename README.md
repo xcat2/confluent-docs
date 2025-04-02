@@ -1,6 +1,6 @@
 # Confluent documentation
 
-[![Build Status](https://github.com/Obihoernchen/confluent-docs/workflows/ci/badge.svg)](https://github.com/Obihoernchen/confluent-docs/actions) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/Obihoernchen/confluent-docs/blob/master/LICENSE)
+[![Build Status](https://github.com/Obihoernchen/confluent-docs/workflows/ci/badge.svg)](https://github.com/Obihoernchen/confluent-docs/actions) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/Obihoernchen/confluent-docs/blob/mkdocs/LICENSE)
 
 The [confluent documentation](https://obihoernchen.github.io/confluent-docs/) is built using [MkDocs](https://www.mkdocs.org/). All **Markdown** files in the `docs` directory are automatically added to the documentation.  
 Navigation can be customized using `.nav.yml` files located in each directory.
