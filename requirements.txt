@@ -1,3 +1,4 @@
 mkdocs-material
 mkdocs-awesome-nav
 mkdocs-git-revision-date-localized-plugin
+mkdocs-minify-plugin
