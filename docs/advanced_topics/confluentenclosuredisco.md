@@ -24,4 +24,4 @@ enclosure the SMM would need to use to reach the switch:
     # nodeattrib smm2 enclosure.extends=smm1
     # nodeattrib smm3 enclosure.extends=smm2
 
-With that, discovery will proceed identically to the procedure in [using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html)
+With that, discovery will proceed identically to the procedure in [using switch based discovery](confluentswitchdisco.md)

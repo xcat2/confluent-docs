@@ -4,7 +4,7 @@ title: Configuring network port attributes
 permalink: /documentation/switchportattribs.html
 ---
 
-In xCAT and confluent, the [discovery process]({{site.baseurl}}/documentation/confluentdisco.html) can use ethernet switch connectivity to assess real node identity to use in deploying configuration and gathering info such as mac addresses.
+In xCAT and confluent, the [discovery process](confluentdiscovery.md) can use ethernet switch connectivity to assess real node identity to use in deploying configuration and gathering info such as mac addresses.
 
 Both support a variety of switches, using snmp v1/v2c/v3.  Using v3 is recommended where feasible.  In xCAT if using SNMPv1, you can indicate your community globally in site:
 ```xcat

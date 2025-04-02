@@ -70,7 +70,7 @@ The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.len
     
 Further information
 =======================
-See the [documentation]({{ site.baseurl }}/documentation) for information on how to install and configure software provided in these repositories.
+See the [documentation](index.md) for information on how to install and configure software provided in these repositories.
 
 Sources are available at [https://hpc.lenovo.com/downloads/sources/](https://hpc.lenovo.com/downloads/sources/)
     

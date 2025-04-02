@@ -68,7 +68,7 @@ all the temperature sensors in a system in CSV format over time for 5 seconds:
 
 Live power and cooling data is available from confluent
 via the 'sensors' portion of the API.  See the
-[API reference]({{ site.baseurl }}/documentation/developer/api.html)
+[API reference](../developer/api.md)
 for a general introduction to general usage of the API.
 
 Specifically, the sensors of interest are under the `/sensors/hardware/temperature` and `/sensors/hardware/power`

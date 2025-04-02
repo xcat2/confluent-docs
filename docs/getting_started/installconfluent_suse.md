@@ -6,7 +6,7 @@ permalink: /documentation/installconfluent_suse.html
 
 SuSE Linux Enterprise 15 SP4 or higher is currently required for installation.
 
-After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install confluent by doing:
+After adding the correct repository as indicated in the [download page](../downloads.md), you can install confluent by doing:
 
     zypper install lenovo-confluent
 
@@ -56,5 +56,5 @@ After these steps, the GUI should be available at:
 
 # Getting ready to use confluent
  
-Proceed to [configuring confluent ]({{ site.baseurl }}/documentation/configconfluent.html) for information on
+Proceed to [configuring confluent ](configureconfluent.md) for information on
 adding groups and nodes.

@@ -22,9 +22,9 @@ Confluent discovery may be done against the BMC device or against PXE attempts. 
 to use the dedicated management port switch and port for standby power discovery, and the network boot port switch and port if doing PXE. Detailed
 procedures on a few strategies for discovery are:
 
-* [Discovering systems attached to ethernet switches]({{site.baseurl}}/documentation/confluentswitchdisco.html)
-* [Discovering systems in enclosures]({{site.baseurl}}/documentation/confluentenclosuredisco.html)
-* [Discovering systems manually]({{site.baseurl}}/documentation/confluentnodeassign.html)
+* [Discovering systems attached to ethernet switches](confluentswitchdisco.md)
+* [Discovering systems in enclosures](confluentenclosuredisco.md)
+* [Discovering systems manually](confluentnodeassign.md)
 
 # Populating xCAT with node information
 

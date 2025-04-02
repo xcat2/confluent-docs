@@ -57,7 +57,7 @@ potentially sensitive material, if wanting to share for diagnostic purposes.
 
     # confluentdbutil -r dump /tmp/redacted
 
-See confluentdbutil [man page]({{ site.baseurl }}/documentation/man/confluentdbutil.html) for more detail.
+See confluentdbutil [man page](../manuals/confluentdbutil.md) for more detail.
 
 
 

@@ -41,7 +41,7 @@ Next, you'll want to create a client session:
 By default, this will reach out to the local instance.  If you want to reach
 out to a remote server, you may pass that as a string to the `Command()` call,
 as in `Command('172.20.0.1')`. Also you would have to enable remote native
-confluent protocol, as described in [remote confluent]({{site.baseurl}}/documentation/remoteconfluent.html).
+confluent protocol, as described in [remote confluent](../advanced_topics/remoteconfluent.md).
 
 
 For many common interactions, there is a convenient method on the session

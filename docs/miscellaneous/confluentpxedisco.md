@@ -11,7 +11,7 @@ prior to PXE booting, sometimes this is not feasible. Two such scenarios would b
 * The configuration has the management controller unavailable (for example, needing to move the management controller onto a port shared with the operating system)
 
 In such a scenario, doing discovery PXE first is a strategy to move forward.  Note that prior to confluent performing a PXE driven discovery, confluent must have
-[OS deployment capability initialized]({{site.baseurl}}/documentation/confluentosdeploy.html)
+[OS deployment capability initialized](../advanced_topics/confluentosdeploy.md)
 
 # Specifying a deployment target in advance
 
@@ -45,7 +45,7 @@ Once attempted, nodediscover will list all detected mac addresses:
 -----|------|-------|-------------------------------------|------------------|-----------|---------------------
      |      |       | 58962b3d-088b-11e7-b8b8-9e59e5cf61db| 08:94:ef:41:01:f0| pxe-client|                     
 ```
-An entry can be associated with a node in the same fashion as [manual discovery]({{site.baseurl}}/documentation/confluentnodeassign.html)
+An entry can be associated with a node in the same fashion as [manual discovery](../advanced_topics/confluentnodeassign.md)
 
     # nodediscover assign -e 08:94:ef:41:01:f0 -n n1
     Assigned: n1
@@ -53,7 +53,7 @@ An entry can be associated with a node in the same fashion as [manual discovery]
 
 # Automatic discovery of mac addresses
 
-The same mechanisms that may be used for management controller and enclosure controller discovery in [using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html) may be used to help gather the PXE information automatically.  The difference being that `nodediscover rescan` will not work for PXE attempts, and confluent must simply wait for an attempt before it can proceed.
+The same mechanisms that may be used for management controller and enclosure controller discovery in [using switch based discovery](../advanced_topics/confluentswitchdisco.md) may be used to help gather the PXE information automatically.  The difference being that `nodediscover rescan` will not work for PXE attempts, and confluent must simply wait for an attempt before it can proceed.
 
 One example to designate the system cabled to a switch named `r4e1` on port `34` as `n1` and enable fully automatic mac gathering would be:
 

@@ -11,7 +11,7 @@ For many industry switches, standard SNMP mibs are supported (QBRIDGE, BRIDGE, I
 attribute 'secret.snmpcommunity' instead of `switchuser` and `switchpass` referenced below.
 
 # Cumulus
-For cumulus switches, install the affluent agent as documented in ['Using a Cumulus switch with confluent']({{site.baseurl}}/documentation/confluentcumulus.html)
+For cumulus switches, install the affluent agent as documented in ['Using a Cumulus switch with confluent'](../miscellaneous/confluentcumulus.md)
 
 # Adding the ethernet switch
 

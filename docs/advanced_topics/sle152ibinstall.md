@@ -47,7 +47,7 @@ xCAT does not understand how to collect addresses for InfiniBand.  Instead, enab
 
 ## Gathering InfiniBand hardware addresses and putting into xCAT
 
-When confluent is configured to do 'zero power' discovery, it can collect mac addresses for boot devices such as InfiniBand without having to describe the fabric topology. This document assumes familiarity with [Node discovery and autoconfiguration with confluent]({{ site.baseurl }}/documentation/confluentdisco.html) and that the management network discovery has been configured.
+When confluent is configured to do 'zero power' discovery, it can collect mac addresses for boot devices such as InfiniBand without having to describe the fabric topology. This document assumes familiarity with [Node discovery and autoconfiguration with confluent](../user_reference/confluentdiscovery.md) and that the management network discovery has been configured.
 
 Have the systems attempt to network boot over infiniBand.  For example:
 

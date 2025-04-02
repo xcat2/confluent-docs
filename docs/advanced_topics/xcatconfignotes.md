@@ -4,8 +4,8 @@ title: xCAT configuration notes
 permalink: /documentation/xcatconfignotes.html
 ---
 
-* [Installing EL7 with RSTe support]({{site.baseurl}}/documentation/el7rste.html)
-* [Installing SLES12 with RSTe support]({{site.baseurl}}/documentation/sles12rste.html)
+* [Installing EL7 with RSTe support](el7rste.md)
+* [Installing SLES12 with RSTe support](sles12rste.md)
 
 If using xCAT's bmcsetup to manage the service processor port on Lenovo systems, that is, whether the dedicated management port will be used or the service processor management traffic will be carried over the same port as what is used for "normal" network traffic (shared mode), this can be set by the `bmcport` attribute in `chdef` or `ipmi.bmcport` in `nodech`.
 

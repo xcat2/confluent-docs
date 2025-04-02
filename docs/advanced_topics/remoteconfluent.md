@@ -4,7 +4,7 @@ title: Remote confluent
 permalink: /documentation/remoteconfluent.html
 ---
 
-Note this method for xCAT usage is largely superseded by using a [collective]({{site.baseurl}}/documentation/collective.html) instead,
+Note this method for xCAT usage is largely superseded by using a [collective](collective.md) instead,
 and using nodeconsole rather than rcons. There remain scenarios however where remote access is expected.
 
 Confluent CLI access is normally local, after using SSH to access a management node.

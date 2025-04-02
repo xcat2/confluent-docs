@@ -7,12 +7,12 @@ permalink: /documentation/confluentnodeassign.html
 Note that discovery in confluent is an optional process intended to aid with automatic gathering of mac addresses,
 configuring IP addresses and authentication of management controllers (e.g. xClarity Controller) when they may not have
 a viable or known IP address. If wanting to use confluent in an environment where the onboarding is otherwise handled,
-you may want to skip ahead to [managing hardware using confluent]({{site.baseurl}}/documentation/manageconfluent.html).
+you may want to skip ahead to [managing hardware using confluent](../miscellaneous/manageconfluent.md).
 
-Once parameters have been [configured]({{site.baseurl}}/documentation/configureconfluennt.html) such as desired username and password,
+Once parameters have been [configured](../getting_started/configureconfluent.md) such as desired username and password,
 discovery can be performed to push that configuration from the confluent configuration into the actual configuration on the devices.
 
-Confluent is capable of fully automated onboarding of equipment based on either [ethernet switch]({{site.baseurl}}/documentation/confluentswitchdisco.html) or [server enclosure]({{site.baseurl}}/documentation/confluentenclosuredisco.html). However, sometimes
+Confluent is capable of fully automated onboarding of equipment based on either [ethernet switch](confluentswitchdisco.md) or [server enclosure](confluentenclosuredisco.md). However, sometimes
 this would require things that are either not applicable, not known, or not allowed. In such circumstancecs, there are manual
 methods to aid in simplified onboarding kicked off by manual data despite those devices still not yet having viable configuration.
 
@@ -42,12 +42,12 @@ anything and merely declares an intent to use a particular name:
 
     # nodedefine t1
 
-Further attributes may be defined on this line, in this example we are taking advantage of group inheritance to provide all information about a node. See [configuring confluent]({{site.baseurl}}/documentation/configconfluent.html) for more information on how to configure data such as username and password. With a node defined, we can associate a specific system with the system, using data such as serial number or mac address. Here we associate the serial number DVJJ1003 with the name t1:
+Further attributes may be defined on this line, in this example we are taking advantage of group inheritance to provide all information about a node. See [configuring confluent](../getting_started/configureconfluent.md) for more information on how to configure data such as username and password. With a node defined, we can associate a specific system with the system, using data such as serial number or mac address. Here we associate the serial number DVJJ1003 with the name t1:
 
     # nodediscover assign -s DVJJ1003 -n t1
     Assigned: t1
 
-The specified node at this point can be [managed by confluent]({{site.baseurl}}/documentation/manageconfluent.html).
+The specified node at this point can be [managed by confluent](../miscellaneous/manageconfluent.md).
 
 # Bulk manual discovery
 
@@ -97,6 +97,6 @@ This file can be processed by nodediscover to associate all the serial numbers w
     Defined n4
     Discovered n4
 
-Within a few moments of this output, it should be possible to move on to [managing the devices using confluent]({{site.baseurl}}/documentation/manageconfluent.html)
+Within a few moments of this output, it should be possible to move on to [managing the devices using confluent](../miscellaneous/manageconfluent.md)
 
 

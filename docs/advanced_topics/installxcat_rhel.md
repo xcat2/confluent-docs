@@ -4,7 +4,7 @@ title: xCAT Installation for Red Hat Enterprise Linux 7
 permalink: /documentation/installxcat_rhel.html
 ---
 
-After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install xCAT by running:
+After adding the correct repository as indicated in the [download page](../downloads.md), you can install xCAT by running:
 
     yum install xCAT
 
@@ -28,9 +28,9 @@ At this point, source the script below for xCAT command line functionality or lo
 
     source /etc/profile.d/xcat.sh
 
-For some notes on configuring certain Lenovo equipment in xCAT, see [xCAT configuration nodes]({{site.baseurl}}/documentation/xcatconfignotes.html "xCAT config notes")
+For some notes on configuring certain Lenovo equipment in xCAT, see [xCAT configuration notes](xcatconfignotes.md)
 
-For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Install Guide")
+For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html)
 
-To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_rhel.html "Install Confluent")
+To continue to install confluent go to [install confluent](../getting_started/installconfluent_rhel.md)
 

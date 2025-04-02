@@ -6,7 +6,7 @@ permalink: /documentation/installxcat_suse.html
 
 Note that for SUSE Linux Enterprise 15, the HA module is required to be available for xCAT install to succeed.
 
-After adding the correct repository as indicated in the [download page]({{ site.baseurl }}/downloads/), you can install xCAT by running:
+After adding the correct repository as indicated in the [download page](../downloads.md), you can install xCAT by running:
 
     zypper install xCAT
 
@@ -30,11 +30,11 @@ At this point, source the script below for xCAT command line functionality or lo
 
     source /etc/profile.d/xcat.sh
 
-For some notes on configuring certain Lenovo equipment in xCAT, see [xCAT configuration notes]({{site.baseurl}}/documentation/xcatconfignotes.html "xCAT config notes")
+For some notes on configuring certain Lenovo equipment in xCAT, see [xCAT configuration notes](xcatconfignotes.md)
 
-For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html "xCAT Install Guide")
+For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html)
 
-To continue to install confluent go to [install confluent]({{ site.baseurl }}/documentation/installconfluent_suse.html "Install Confluent")
+To continue to install confluent go to [install confluent](../getting_started/installconfluent_suse.md)
 
 
 

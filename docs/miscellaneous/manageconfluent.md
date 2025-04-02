@@ -4,26 +4,26 @@ title: Managing hardware using confluent
 permalink: /documentation/manageconfluent.html
 ---
 
-As mentioned in the [configuring confluent]({{site.baseurl}}/documentation/configconfluent.html) section,
-confluent manages nodes through a few [node attributes]({{site.baseurl}}/documentation/nodeattributes.html).
+As mentioned in the [configuring confluent](../getting_started/configureconfluent.md) section,
+confluent manages nodes through a few [node attributes](../user_reference/node_attributes.md).
 
 The most critical attributes for this section are:
 
 * `hardwaremanagement.method` with the following options:
   * `ipmi` (default) - Most widely implemented and quick, the plugin may use non-IPMI protocols as needed to get additional information.
   * `redfish` - A newer standard that generally offers richer information, at the cost of generally being slower.
-  * `affluent` - Communicate with a network switch with the affluent agent (see [using a cumulus switch with confluent]({{site.baseurl}}/documentation/confluentcumulus.html))
+  * `affluent` - Communicate with a network switch with the affluent agent (see [using a cumulus switch with confluent](confluentcumulus.md))
   * `cnos` - Communicate with a Lenovo network switch running CNOS
-* `console.method` - currently only provides ipmi.  Leave blank to opt out of [`nodeconsole`]({{site.baseurl}}/documentation/man/nodeconsole.html) and console logging, or set to `ipmi` to opt into `ipmi` console.
+* `console.method` - currently only provides ipmi.  Leave blank to opt out of [`nodeconsole`](../manuals/nodeconsole.md) and console logging, or set to `ipmi` to opt into `ipmi` console.
 * `hardwaremanagement.manager` - May alternatively be referred by alias `bmc`: The name or IP address of the xClarity Controller or equivalent associated with this node.
-* `enclosure.bay` - For systems that are installed into an enclosure, the bay the node is located (which can help with [`nodereseat`]({{site.baseurl}}/documentation/man/nodereseat.html) as well as discovery)
-* `enclosure.manager` - The resolveable name or ip address of the device managing the enclosure that would ultimately perform commands like [`nodereseat`]({{site.baseurl}}/documentation/man/nodereseat.html) on behalf of a node.)
+* `enclosure.bay` - For systems that are installed into an enclosure, the bay the node is located (which can help with [`nodereseat`](../manuals/nodereseat.md) as well as discovery)
+* `enclosure.manager` - The resolveable name or ip address of the device managing the enclosure that would ultimately perform commands like [`nodereseat`](../manuals/nodereseat.md) on behalf of a node.)
 * `secret.hardwaremanagementpassword` - May alternatively be referred to by alias `bmcpass`: The password to log into the xClarity Controller or equivalent
 * `secret.hardwaremanagementuser` - May alternatively be referred to by alias `bmcuser`: The user to log into the xClarity Controller or equivalent
 
 Once a node has the necessary attributes defined, most commands that begin with node become functional.
 
-Some examples are provided here, see the list of [man pages]({{site.baseurl}}/documentation/man/) for more possibilities and more detail on each command.
+Some examples are provided here, see the list of [man pages](../manuals/index.md) for more possibilities and more detail on each command.
 
 Hard resetting nodes:
 

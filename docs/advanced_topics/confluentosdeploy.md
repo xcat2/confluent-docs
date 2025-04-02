@@ -6,7 +6,7 @@ permalink: /documentation/confluentosdeploy.html
 
 If opting to use the confluent OS deployment mechanism, some additional preparation steps are suggested.
 
-Some [node attributes]({{site.baseurl}}/documentation/nodeattributes.html) that may be particularly relevant are:
+Some [node attributes](../user_reference/node_attributes.md) that may be particularly relevant are:
 
 * `crypted.grubpassword` - By default, no boot loader password is used, specify one here to configure deployed OS to require a password to modify grub configuration.
 * `crypted.rootpassword` - By default, password based login as root is disabled in deployed operating systems. Set this to a desired value to enable password login. If this is not set, then
@@ -18,7 +18,7 @@ there will be no way to log into the console of the target system by default. No
 * `hardwaremanagement.port` - If needing to change the XCC (xClarity Controller) network port to be shared with an OCP card or onboard network, set to 'ocp' or 'lom' respectively. Ignore for using the dedicated management port or the SMM (System Management Module) in dense, enclosure hosted systems.  Also ignore if you do not use the `configbmc` script.
 * `hardwaremanagement.vlan` - If needing to set the XCC to be on a tagged vlan, set this to the desired VLAN. Ignore if using the native VLAN. Again, this only applies if you use the `configbmc` script.
 * `net.hostname` - If wanting to include other aliases for an interface to use to SSH in, use this attribute to indicate aliases other than the nodename itself, using commas as needed to indicate multiple values. This attribute is not needed if the node name is the only desired hostname. Note that this setting may be done for multiple interfaces, e.g. `net.compute.hostname={node}-compute`, `net.fabric.hostname={node}-ib`.  See [Confluent multi interface configuration
-]({{site.baseurl}}/documentation/confignet.html) for more details on configuring multiple interfaces.
+](../miscellaneous/confignet.md) for more details on configuring multiple interfaces.
 * `net.ipv4_gateway` - Set to the gateway IP for the deployed system to use.  This also supports the multiple interface scheme as mentioned above.
 * `net.ipv4_method` - This defaults to `static`, based on a name lookup of the node.  Use `firmwaredhcp` if there is an external DHCP server that serves addresses during PXE, but static is desired in the OS.  Set to `dhcp` to delegate OS addresses entirely to a DHCP server.  This also supports the multiple interface scheme as mentioned above.
 * `ntp.servers` - NTP servers to use by deployed operating system, separated by commas if more than one specified.
@@ -42,7 +42,7 @@ Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: 
 An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. If such a solution is unavailable, this section provides a strategy to quickly generate IP addresses and use
 `dnsmasq` as a name server.
 
-The [`confluent2hosts`]({{site.baseurl}}/documentation/man/confluent2hosts.html) command may be used to manage entries in an /etc/hosts file. This can use [attribute expressions]({{site.baseurl}}/documentation/attributeexpressions.html) to help form entries for a range. Here is an example to generate 8 entries for nodes d1 through d8:
+The [`confluent2hosts`](../manuals/confluent2hosts.md) command may be used to manage entries in an /etc/hosts file. This can use [attribute expressions](../user_reference/attributeexpressions.md) to help form entries for a range. Here is an example to generate 8 entries for nodes d1 through d8:
 
 ```
 # nodegroupattrib everything dns.domain=cluster.lan
@@ -185,7 +185,7 @@ itself (e.g. using `imgutil exec`) is recommended to keep memory consumption dow
 
 All content are simple files stored under the respective profile (/var/lib/confluent/public/os/[profile]). For scripted install profiles and cloning,
 scripts may be placed in scripts/pre.d, scripts/post.d, and scripts/firstboot.d.
-For diskless installs, scripts/onboot.d is available.  Note that content under /var/lib/confluent/public is considered non-sensitive and must not include any passwords, secret keys, or similarly sensitive information. See the document [Handling of security information in OS deployment]({{site.baseurl}}/documentation/osdeploysecurity.html) for guidance.
+For diskless installs, scripts/onboot.d is available.  Note that content under /var/lib/confluent/public is considered non-sensitive and must not include any passwords, secret keys, or similarly sensitive information. See the document [Handling of security information in OS deployment](../miscellaneous/osdeploysecurity.md) for guidance.
 
 Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
 
@@ -231,8 +231,8 @@ Alternatively, a system UUID may be used instead:
 
 With OS deployment ready, depending on circumstances it may be appropriate to move on to:
 
-* Deploying operating systems without disks: [Using confluent diskless support]({{site.baseurl}}/documentation/confluentdiskless.html)
-* Discovering rackmount systems with dedicated management port in use based on physical location: [Using switch based discovery]({{site.baseurl}}/documentation/confluentswitchdisco.html)
-* Discovering systems in server enclosures based on physical location: [Using enclosure based discovery]({{site.baseurl}}/documentation/confluentenclosuredisco.html)
-* Discovering systems that have management port shared with the on board network or OCP add-on based on physical location: [PXE driven discovery]({{site.baseurl}}/documentation/confluentpxedisco.html)
-* Using criteria such as mac address or serial number to manually discover or discover from spreadsheet: [Using nodediscover assign]({{site.baseurl}}/documentation/confluentnodeassign.html)
+* Deploying operating systems without disks: [Using confluent diskless support](../miscellaneous/confluentdiskless.md)
+* Discovering rackmount systems with dedicated management port in use based on physical location: [Using switch based discovery](confluentswitchdisco.md)
+* Discovering systems in server enclosures based on physical location: [Using enclosure based discovery](confluentenclosuredisco.md)
+* Discovering systems that have management port shared with the on board network or OCP add-on based on physical location: [PXE driven discovery](../miscellaneous/confluentpxedisco.md)
+* Using criteria such as mac address or serial number to manually discover or discover from spreadsheet: [Using nodediscover assign](confluentnodeassign.md)

@@ -10,7 +10,7 @@ but the groups may provide for easier configuration management at larger scale o
 
 # Use in noderanges
 
-Node groups can be used the same as nodes in [noderange syntax]({{ site.baseurl }}/documentation/noderange.html).  
+Node groups can be used the same as nodes in [noderange syntax](../manuals/noderange.md).  
 
 Additionally, a group can be used to be shorthand for a noderange.  For example, to make a group `all` to represent every node
 excluding `switches` and `pdus`, without having to continually update the `all` group as nodes are added or removed:
@@ -22,7 +22,7 @@ Note that `noderange` groups do not contribute to providing attributes to the no
 # Attribute inheritence
 
 Attributes on a group will flow into specific node attributes.  A node may inherit attributes from multiple groups at the same time.  If a node is in multiple groups, and more than one group offers an attribute value, the highest priority group overrides the lower priority group.  Priority proceeds from the first listed group to last group for highest to lower priority when looking at the `groups` attribute on a node.  Attributes defined on a node specifically will always supersede anything from groups.  A
-large number of attributes require individual values, but proceed in a predictable fashion.  These may be defined on a group level, leveraging [attribute expressions]({{site.baseurl}}/documentation/attributeexpressions.html) to individualize the
+large number of attributes require individual values, but proceed in a predictable fashion.  These may be defined on a group level, leveraging [attribute expressions](../user_reference/attributeexpressions.md) to individualize the
 group setting accordingly.
 
 # Using `nodeattrib` versus `nodegroupattrib`
