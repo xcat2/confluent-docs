@@ -14,14 +14,14 @@ cd -
 for page in confluent/confluent_client/doc/man/*.ronn; do
     cmdname=$(basename $page)
     cmdname=${cmdname%.ronn}
-    echo "* [$cmdname]($cmdname)" >> docs/manuals/index.md
-    cat << EOF > docs/manuals/${cmdname%.ronn}.md
+    echo "* [$cmdname](${cmdname}.md)" >> docs/manuals/index.md
+    cat << EOF > docs/manuals/${cmdname}.md
 ---
 title: Manual for $cmdname
 ---
 
 EOF
-    ronn --pipe --markdown $page >> docs/manuals/${cmdname%.ronn}.md &
+    ronn --pipe --markdown $page >> docs/manuals/${cmdname}.md &
 done
 wait
 
