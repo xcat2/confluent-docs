@@ -18,8 +18,8 @@ with open('docs/user_reference/node_attributes.md', 'w', encoding='utf-8') as ou
 
         outf.write(f'\n### {field}\n\n: {attr.node[field]['description']}\n')
         # Optionally write valid values if they exist
-        if 'validvalues' in attr.node[field]:
-            valid_vals = attr.node[field]['validvalues']
-            values_formatted = ', '.join(str(v) for v in valid_vals)
-            outf.write(f"\n: **Valid values:** {values_formatted}\n")
+        for key, values in attr.node[field].items():
+            if key.startswith('valid'):
+                values_formatted = ', '.join(f"`{v if v != '' else ' '}`" for v in values)
+                outf.write(f"\n: Valid values: {values_formatted}\n")
 
