@@ -16,4 +16,4 @@ profiles scripts directory, `/var/lib/confluent/public/os/<profile>/scripts/samp
     <br><br>
 
     - Execution: To run the script on an installed system and ensure the changes are in effect from the onset you should add the
-    `consoleredirect` script to the `post.d/` directory. 
+    `consoleredirect` script to the `firstboot.d` directory. 

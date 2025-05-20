@@ -2,6 +2,7 @@
 layout: page
 title: Confluent Database backup and restore
 permalink: /documentation/backup.html
+toc: true
 ---
 
 Confluent maintains its database in /etc/confluent/cfg

@@ -2,6 +2,7 @@
 layout: page
 title: Confluent and DHCP interaction
 permalink: /documentation/confluentdhcp.html
+toc: true
 ---
 
 For confluent OS deployment, a specific design goal is improved interoperability with DHCP infrastructure. The result is that a DHCP server

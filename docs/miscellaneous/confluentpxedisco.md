@@ -2,6 +2,7 @@
 layout: page
 title: Using PXE driven discovery
 permalink: /documentation/confluentpxedisco.html
+toc: true
 ---
 
 While the best experience is through discovering the xClarity Controller first and having full management
@@ -66,6 +67,11 @@ use an OCP card to provide BMC access.
 
 
     # nodeattrib n1 hardwaremanagement.port=lom
+
+There are systems that have two `lom` ports that are configurable for hardware management. In this case it is possible to choose which port to use by specifying either the port number or the connecter type. 
+
+    # nodeattrib n1 hardwaremanagement.port=lom_1
+    # nodeattrib n3 hardwaremanagement.port=low_sfp28
 
 In order for this setting to be applied by the OS profile, the OS profile must invoke the configbmc script. For genesis, see `/var/lib/confluent/public/os/genesis-x86_64/scripts/onboot.sh` file for information on how to configure BMC locally, for OS install, see `/var/lib/confluent/public/os/<profilename>/scripts/pre.custom`
 

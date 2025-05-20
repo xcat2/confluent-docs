@@ -2,6 +2,7 @@
 layout: page
 title: Confluent Installation for Ubuntu
 permalink: /documentation/installconfluent_ubuntu.html
+toc: true
 ---
 
 Ubuntu Linux 22.04 or 24.04 is supported for installation.

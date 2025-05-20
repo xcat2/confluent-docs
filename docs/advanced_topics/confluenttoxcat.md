@@ -2,6 +2,7 @@
 layout: page
 title: Using confluent discovery to feed xCAT configuration
 permalink: /documentation/confluenttoxcat.html
+toc: true
 ---
 
 While xCAT has its own discovery mechanism, in some scenarios confluent

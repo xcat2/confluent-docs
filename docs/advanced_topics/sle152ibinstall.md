@@ -2,6 +2,7 @@
 layout: page
 title: Installing SLE 15.2 over InfiniBand
 permalink: /documentation/sle152ibinstall.html
+toc: true
 ---
 
 This covers the process of SLE 15.2 deployment on a cluster using only InfiniBand.

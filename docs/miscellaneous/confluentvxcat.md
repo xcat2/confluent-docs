@@ -2,6 +2,7 @@
 layout: page
 title: xCAT and confluent comparison
 permalink: /documentation/confluentvxcat.html
+toc: true
 ---
 
 As of confluent 3.0, the scope of Confluent has increased to cover much of xCAT functionality. There will

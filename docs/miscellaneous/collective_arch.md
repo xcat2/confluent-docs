@@ -2,6 +2,7 @@
 layout: page
 title: Confluent collective architecture
 permalink: /documentation/collective_arch.html
+toc: true
 ---
 
 This document will describe the design of the confluent collective implementation.
