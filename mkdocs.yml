@@ -4,8 +4,8 @@ site_url: https://obihoernchen.github.io/confluent-docs/
 site_description: >-
   Confluent documentation
 
-repo_name: Obihoernchen/confluent-docs
-repo_url: https://github.com/Obihoernchen/confluent-docs
+repo_name: xcat2/confluent-docs
+repo_url: https://github.com/xcat2/confluent-docs
 edit_uri: edit/mkdocs/docs/
 
 copyright: Copyright &copy; Confluent Community
