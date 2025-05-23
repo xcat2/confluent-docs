@@ -6,7 +6,7 @@ site_description: >-
 
 repo_name: xcat2/confluent-docs
 repo_url: https://github.com/xcat2/confluent-docs
-edit_uri: edit/mkdocs/docs/
+edit_uri: edit/master/docs/
 
 copyright: Copyright &copy; Confluent Community
 
