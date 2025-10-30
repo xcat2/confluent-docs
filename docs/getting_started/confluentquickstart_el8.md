@@ -14,7 +14,7 @@ documentation for more detail and alternative strategies for particular areas.
 
 To install confluent as well as optional requirements, after adding a yum repository according to downloads page:
 
-    # yum install lenovo-confluent confluent_osdeploy-x86_64 tftp-server
+    # yum install lenovo-confluent tftp-server
     # systemctl enable confluent --now
     # systemctl enable httpd --now # if wanting to deploy operating systems and/or the web gui
     # systemctl enable tftp.socket --now  # If wanting to support PXE install

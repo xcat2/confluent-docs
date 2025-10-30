@@ -49,7 +49,7 @@ permalink: /documentation/confluentnodefirmwareupdatetroubleshooting.html
 
 5. When doing a nodefirmware update on a BMU type update, nodefirmware will  return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied. 
 
-
+6. When doing a nodefirmware update of LXUM firmware, nodefirmware will  return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied.
 
 
 

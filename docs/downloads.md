@@ -24,7 +24,8 @@ Download our gpg key:
 
     # wget -O /etc/apt/trusted.gpg.d/confluent.gpg https://hpc.lenovo.com/apt/latest/lenovo-hpc.key
 
-Create the following apt configuration if running Ubuntu 24.04 (noble), substitute the distribution name for other editions (e.g. jammy instead of noble):
+Create the following apt configuration (e.g. as a file like /etc/apt/sources.list.d/lenovo-hpc.sources) if running Ubuntu 24.04 (noble):
+
 
     Types: deb
     URIs: https://hpc.lenovo.com/apt/latest/noble
@@ -48,6 +49,8 @@ The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.len
     #On a system that can reach https://hpc.lenovo.com/downloads/
     #Download the package for your specific OS version
     wget https://hpc.lenovo.com/downloads/latest-el9.tar.xz
+    #or
+    wget https://hpc.lenovo.com/downloads/latest-el10.tar.xz
     #or
     wget https://hpc.lenovo.com/downloads/latest-el8.tar.xz
     #or

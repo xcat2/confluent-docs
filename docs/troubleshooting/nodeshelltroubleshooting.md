@@ -18,7 +18,7 @@ n1812: debconf: falling back to frontend: Teletype
 n1812: dpkg-preconfigure: unable to re-open stdin:
 ```
 
-Modifying the `nodeshell` command to have the DEBIAN_FRONTENT set to noninteractive will fix this issue
+Modifying the `nodeshell` command to have the DEBIAN_FRONTEDT set to noninteractive will fix this issue
 
 `[root@n790 ~]# nodeshell bf3 "DEBIAN_FRONTEND=noninteractive apt-get -y install net-tools" | collate`
 

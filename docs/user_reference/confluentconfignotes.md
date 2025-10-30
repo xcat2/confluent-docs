@@ -112,3 +112,16 @@ When opening the XCC web interface for more than one XCC from the confluent GUI 
 ## Lenovo ThinkSystem generation "V3" systems may spontaneously reboot when using the nodefirmware command for certain firmware updates
 
 Certain firmware update packages for Lenovo V3 systems are performed in a system built-in Linux environment that the system has to reboot into to do the update, even though the update is initiated out-of-band.  In these cases the node will spontaneously and without warning reboot into that environment.  To avoid improper shutdown of a running OS on the system, the system can be turned off before running the nodefirmware command for these types of updates.
+
+## XCC3/V4 Systems 
+When using Lenovo Confluent for managing Lenovo Version 4 (V4) systems that have the XClarity Controller 3 (XCC3) version of the baseboard management controller (BMC), 
+it is recommended that you set the `hardwaremanagement.method` node attribute to `redfish`. Not all functionality is implemented using IPMI for V4 systems, hence 
+using V4 systems with hardwaremanagement method set to IPMI might result in failures or incomplete data.
+
+## SR670 V2
+When using the Lenovo Confluent nodeinventory command to read the inventory data on an SR670 v2, it is recommended that you set the `hardwaremanagement.method` 
+node attribute to `ipmi`.
+
+## Http boot will fail for profile names with 84 or more characters
+When attempting to http boot and the profile name is too long the attempt will not work. When using IPv6 addresses there is no limit to the number of characters in the url, whereas for IPv4 addresses the profile name is limited to 84 characters. 
+
