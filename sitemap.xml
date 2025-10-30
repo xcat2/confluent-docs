@@ -325,6 +325,14 @@
          <lastmod>2025-10-30</lastmod>
     </url>
     <url>
+         <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/bf3-troubleshooting/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/broadcom-nic-driver-install/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
          <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/collective_arch/</loc>
          <lastmod>2025-10-30</lastmod>
     </url>
@@ -373,7 +381,19 @@
          <lastmod>2025-10-30</lastmod>
     </url>
     <url>
+         <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/doca2-10-intstall/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/doca3-0-install/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
          <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/energyhistogram/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/hpcxtroubleshooting/</loc>
          <lastmod>2025-10-30</lastmod>
     </url>
     <url>
@@ -382,6 +402,10 @@
     </url>
     <url>
          <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/manageconfluent/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://obihoernchen.github.io/confluent-docs/miscellaneous/nvidiagpudriverinstall/</loc>
          <lastmod>2025-10-30</lastmod>
     </url>
     <url>
