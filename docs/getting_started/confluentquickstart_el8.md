@@ -12,7 +12,7 @@ documentation for more detail and alternative strategies for particular areas.
 
 # Installing confluent
 
-To install confluent as well as optional requirements, after adding a yum repository according to downloads page:
+To install confluent as well as optional requirements, after adding a yum repository according to [download page](../downloads.md):
 
     # yum install lenovo-confluent tftp-server
     # systemctl enable confluent --now
