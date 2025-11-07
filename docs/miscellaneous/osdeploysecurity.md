@@ -10,7 +10,7 @@ toc: true
 In confluent, hosts are given SSH certificates when required to vouch for their identity. /etc/ssh/shosts.equiv and /etc/ssh/ssh_known_hosts
 are configured to facilitate node to node ssh without working about known_hosts and to enable host based authentication of users. This
 facility may be customized by setting `ssh.trustnodes` to limit the generated hosts.equiv file to a subset of hosts.  For example,
-if wanting to limit members of the group `storage` to only trust fellow members of `storage`, then set `ssh.trustnnodes` to `storage`.
+if wanting to limit members of the group `storage` to only trust fellow members of `storage`, then set `ssh.trustnodes` to `storage`.
 Conversely if a compute node has `ssh.trustnodes` set to `compute,storage`, then nodes would trust either group, allowing `storage` to
 ssh to `compute`, but not the other way around.
 
