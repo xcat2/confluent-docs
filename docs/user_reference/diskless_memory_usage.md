@@ -1,5 +1,7 @@
 Memory usage of diskless has a number of factors to keep in mind.
 
+## tethered (statelite)
+
 First, we will delve into the behavior of `tethered` diskless, where nodes download from the deployment servers on demand, rather than hosting the image in memory. In this approach, memory is kept at a minimum, in many cases approximately the same as booting from a local disk.
 
 For reference, here is an example `free` output from a traditionally installed node, after dropping cache:
@@ -86,7 +88,9 @@ Swap:              0           0           0
 In this case, the write layer compression was effective in mitigating the memory cost of that file.
 
 
-This characterizes the behavior of the tethered mode of operation, so we can now look at the behavior of untethered diskless.  First we boot and take a look at initial state, after dropping cache:
+## untethered (stateless/diskless)
+
+This characterizes the behavior of the `tethered` mode of operation, so we can now look at the behavior of `untethered` diskless.  First we boot and take a look at initial state, after dropping cache:
 
 ```
 # free -m
@@ -103,7 +107,8 @@ We can see the rather large increase in 'used' memory to back the compressed ram
 Mem:            7935        1468        5524          37        1227        6466
 Swap:              0           0           0
 ```
-Here we still incur the increase in used memory, but also carry the data mostly replicated in cache as well. Just as in tethered, that cache is evictable and can be reclaimed easily by the OS:
+
+Here we still incur the increase in used memory, but also carry the data mostly replicated in cache as well. Just as in `tethered`, that cache is evictable and can be reclaimed easily by the OS:
 ```
 # echo 3 > /proc/sys/vm/drop_caches 
 # free -m
@@ -125,8 +130,4 @@ Swap:              0           0           0
 Mem:            7935         983        7029          37         150        6952
 Swap:              0           0           0
 ```
-
-
-
-
 

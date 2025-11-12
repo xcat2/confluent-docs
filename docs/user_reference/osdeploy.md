@@ -57,7 +57,7 @@ With an `imgutil` managed profile, there are three approaches to deployment, sel
 
 #### tethered (statelite)
 
-* `confluent_image=tethered` - This will instruct the OS to boot with HTTPS-as-root approach.  This results in memory consumption similar to installing from disk, but without actually using local disk in the process. In a confluent collective architecture, this remote root filesystem is
+* `confluent_image=tethered` - This will instruct the OS to boot with HTTPS-as-root approach.  This results in [memory consumption](diskless_memory_usage.md) similar to installing from disk, but without actually using local disk in the process. In a confluent collective architecture, this remote root filesystem is
 given multipath capabilities, allowing continued functionality if one confluent member goes down.  Benefits and drawbacks of this approach are:
 
 | Benefits | Drawbacks |
@@ -66,7 +66,7 @@ given multipath capabilities, allowing continued functionality if one confluent 
 
 #### untethered (stateless/diskless)
 
-* `confluent_image=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand. Benefits and drawbacks:
+* `confluent_image=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand.  This results in increased [memory consuption](diskless_memory_usage.md).  Benefits and drawbacks:
 
 | Benefits | Drawbacks |
 | ------ | -------- |
