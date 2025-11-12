@@ -25,7 +25,7 @@ The benefits of this approach are:
 | ------ | -------- |
 |<ul><li>Most familiar mechanism for interacting with the distribution developers, support, and community</li><li>The process to transition from common, standard OS material to your bespoke setup remains clearly documented in post/firstboot automation | <ul><li>Indefinite term for local ad-hoc modifications to induce 'drift' in OS state if care is not taken</li><li>Generally slower to deploy than other approaches</li><li>Uses local disk</li></ul>
 
-## Image approach (stateless/diskless)
+## Image approach
 
 For many platforms, Confluent further supports an 'image' based approach goverened by 'imgutil'.  This approach works with chroot-style directory trees or cloning to maintain an image.
 
