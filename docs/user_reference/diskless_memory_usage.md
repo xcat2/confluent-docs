@@ -30,7 +30,7 @@ then content will become memory resident, just like it would for a diskfull inst
 # find /usr -type f -exec cat {} + > /dev/null
 # free -m
                total        used        free      shared  buff/cache   available
-Mem:            7935         492        5814          42        1926        7443
+Mem:            7935         488        6498          42        1246        7447
 Swap:              0           0           0
 ```
 
