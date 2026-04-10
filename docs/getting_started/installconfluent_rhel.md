@@ -5,7 +5,7 @@ permalink: /documentation/installconfluent_rhel.html
 toc: true
 ---
 
-Enterprise Linux 8.6 or 9.0 and higher is required for installation.
+Enterprise Linux 8.6, 9.0, or 10.0 and higher is required for installation.
 
 First add the Lenovo HPC yum repository appropriate to your environment according to the procedure on the  [download page](../downloads.md).  It is suggested to then make sure there are no updates in the repository for your existing software:
 
@@ -65,6 +65,8 @@ If the web server is not already started, enable the web server:
 
     systemctl enable httpd --now
 
+
+If wanting to use nginx instead of Apache, then see this [document](../advanced_topics/switchtonginx) for details.
 
 # Web UI Forwarding feature
 
