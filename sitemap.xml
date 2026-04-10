@@ -481,14 +481,6 @@
          <lastmod>2026-04-10</lastmod>
     </url>
     <url>
-         <loc>https://xcat2.github.io/confluent-docs/release_notes/2026-02-12-262release/</loc>
-         <lastmod>2026-04-10</lastmod>
-    </url>
-    <url>
-         <loc>https://xcat2.github.io/confluent-docs/release_notes/2026-04-10-3151release/</loc>
-         <lastmod>2026-04-10</lastmod>
-    </url>
-    <url>
          <loc>https://xcat2.github.io/confluent-docs/release_notes/2017/12/04/recent-confluent-features/</loc>
          <lastmod>2026-04-10</lastmod>
     </url>
@@ -617,6 +609,14 @@
          <lastmod>2026-04-10</lastmod>
     </url>
     <url>
+         <loc>https://xcat2.github.io/confluent-docs/release_notes/2026/02/12/confluent-3150-release/</loc>
+         <lastmod>2026-04-10</lastmod>
+    </url>
+    <url>
+         <loc>https://xcat2.github.io/confluent-docs/release_notes/2026/04/10/confluent-3151-release/</loc>
+         <lastmod>2026-04-10</lastmod>
+    </url>
+    <url>
          <loc>https://xcat2.github.io/confluent-docs/troubleshooting/attributeexpressionstroubleshooting/</loc>
          <lastmod>2026-04-10</lastmod>
     </url>
@@ -702,6 +702,10 @@
     </url>
     <url>
          <loc>https://xcat2.github.io/confluent-docs/user_reference/updatesw_rhel/</loc>
+         <lastmod>2026-04-10</lastmod>
+    </url>
+    <url>
+         <loc>https://xcat2.github.io/confluent-docs/release_notes/archive/2026/</loc>
          <lastmod>2026-04-10</lastmod>
     </url>
     <url>
