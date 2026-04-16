@@ -45,7 +45,7 @@ Note that proxmox may lengthen the post and firstboot phases a bit, wait until y
 
 ## Using proxmox virtual machines as nodes
 
-The first step is to create virtual machine(s) on the Proxmox host.  Currently, there isn't really any confluent facilities to change this, just create them as usual.  It is suggested to enable TPM2, particularly for diskless images.
+The first step is to create virtual machine(s) on the Proxmox host.  Currently, there are not any confluent facilities to change this, just create them as usual.  It is suggested to enable TPM2, particularly for diskless images.
 
 ### Setting up networking using the proxmox WebUI
 
