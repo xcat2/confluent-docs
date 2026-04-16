@@ -9,9 +9,9 @@ toc: true
 
 Proxmox may be installed manually or by using confluent.  You do not have to use confluent to install proxmox to use proxmox as a virtual machine platform.
 
-Manual installation is well covered by Proxmox documentation, so this guide will touch on the confluent deployment of the proxmox host, [skip to the next section](#using-proxmox-virtual-machines-as-nodes) if you already have proxmox deployed or want to deploy it manually or by other means.
+Manual installation is well covered by Proxmox documentation, so this guide will touch on the confluent deployment of the proxmox host. [Skip to the next section](#using-proxmox-virtual-machines-as-nodes) if you already have proxmox deployed or want to deploy it manually or by other means.
 
-For proxmox, start with creating a debian profile for confluent.  Grab the `mini.iso` for debian, for trixie that is currently at
+For proxmox, start by creating a debian profile for confluent.  Grab the `mini.iso` for debian; for trixie, it is currently at
 [this url](https://deb.debian.org/debian/dists/trixie/main/installer-amd64/current/images/netboot/mini.iso)
 
 With this downloaded, import it using osdeploy:
@@ -45,7 +45,7 @@ Note that proxmox may lengthen the post and firstboot phases a bit, wait until y
 
 ## Using proxmox virtual machines as nodes
 
-The first step is to create virtual machine(s) on the Proxmox host.  Currently, there are not any confluent facilities to change this, just create them as usual.  It is suggested to enable TPM2, particularly for diskless images.
+The first step is to create virtual machine(s) on the Proxmox host.  Currently, confluent does not have facilities for this, just create them as usual.  It is suggested to enable TPM2, particularly for diskless images.
 
 ### Setting up networking using the proxmox WebUI
 
@@ -53,7 +53,7 @@ By default, you access the proxmox WebUI on port 8006.  If deployed by confluent
 
 In order to use VMs as nodes, you will probably want to change the networking to a bridge configuration.
 
-First, you will want to clear the configuration from the current nic that you want to turn into bridge.  Don't worry, changes will not apply even as you hit 'ok'.  This is needed to make the network addresses available to the bridge.
+First, you will want to clear the configuration from the current nic that you want to turn into a bridge.  Don't worry, changes will not apply even when you click 'OK'.  This is needed to make the network addresses available to the bridge.
 
 ![clearnic](../../assets/Proxmox/CreateNetworking-1ClearNicConfig.png)
 
@@ -69,22 +69,22 @@ When finished, click `Apply Configuration` to continue.
 
 ### Using the Proxmox WebUI to create a virtual machine
 
-If wanting to use the web gui, here's an example of creating a VM:
+If you want to use the WebUI, here's an example of creating a VM:
 
 
 Select `Create VM` from the right click menu on the host.  For name, have the VM name match the node name you will want in confluent.
 
 ![createvmdropdown](../../assets/Proxmox/CreateVM-1.png)
 
-Do not use any media, we will be using confluent for the OS deployment instead
+Do not use any media; we will be using confluent for the OS deployment instead.
 
 ![skipmedia](../../assets/Proxmox/CreateVM-2.png)
 
-For system, you will likely want to add a TPM and select a storage for the TPM. This allows better diskless boot behaviors in the VM.
+For system, you will likely want to add a TPM and select storage for the TPM. This allows better diskless boot behaviors in the VM.
 
 ![addtpm](../../assets/Proxmox/CreateVM-3AddTPM.png)
 
-You can select disk size as appropriate.  Here we did select Write back cache for better behavior.
+You can select disk size as appropriate.  Here we selected write-back cache for better performance.
 
 ![adddisk](../../assets/Proxmox/CreateVM-4AddDisk.png)
 
@@ -92,7 +92,7 @@ For CPU, you will likely want to change to `host`, as the default is incompatibl
 
 ![setcpu](../../assets/Proxmox/CreateVM-5HostCPU.png)
 
-You will likely want more memory than default, OS installers run from ramfs and some can require a few gigabytes.
+You will likely want more memory than the default. OS installers run from ramfs and some can require a few gigabytes.
 
 ![setmem](../../assets/Proxmox/CreateVM-6SetMemory.png)
 
@@ -106,7 +106,7 @@ Review settings and click 'Finish' to create the VM
 
 ### Using CLI to create a virtual machine
 
-The following is an example using the CLI to create a VM instead of the WebUI (With TPM2, 96GB disk, 8 cores, 16GB of RAM):
+The following is an example using the CLI to create a VM instead of the WebUI (with TPM2, 96GB disk, 8 cores, 16GB of RAM):
 
     # qm create 101 --name pvm2 --ostype l26 --scsihw virtio-scsi-single --tpmstate0 local:1,version=v2.0 -scsi0 local:96,format=qcow2,iothread=on,cache=writeback --sockets 1 --cores 8 --numa 0 --cpu host --memory 16384 --net0 virtio,bridge=vmbr0,firewall=1
     Formatting '/var/lib/vz/images/101/vm-101-disk-0.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off   preallocation=metadata compression_type=zlib size=103079215104 lazy_refcounts=off refcount_bits=16
@@ -122,7 +122,7 @@ First, if it doesn't already exist as a confluent node, define a node using the 
     # nodedefine pmx8
     pmx8: created
 
-Create a node as you would normally do.  A terse example assuming existing general group settings and focusing solely on the proxmox facet:
+Create a node as you normally would.  A terse example assuming existing general group settings and focusing solely on the proxmox facet:
 
     # nodedefine pvm1 hardwaremanagement.method=proxmox bmcuser=root@pam hardwaremanagement.manager=pmx8
     pvm1: created
@@ -150,7 +150,7 @@ To push the ipv4 addresses from net attributes to /etc/hosts:
     # getent hosts pvm2
     172.30.84.130   pvm2 pvm2.devcluster.net
 
-Next, have confluent gather needed information about the virtual machines, similarly to a manually added BMC managed node:
+Next, have confluent gather needed information about the virtual machines, similar to a manually added BMC-managed node:
 
     # nodeinventory pvm[1,2] -s
 
@@ -169,7 +169,7 @@ The node is now ready for use as a normal node, for example, to boot a diskless 
 
 ## Confluent commands to work with Proxmox VMs
 
-If you add a serial port to the VM, then you can use console.method=proxmox to have SOL console in nodeconsole.  Other than that, the graphics console in proxmox vms are supported in the confluent webui as well as nodeconsole:
+If you add a serial port to the VM, then you can use console.method=proxmox to have a SOL console in nodeconsole.  Other than that, the graphics console in proxmox VMs is supported in the confluent webui as well as nodeconsole:
 
 ![nodeconsole](../../assets/Proxmox/nodeconsole.png)
 
