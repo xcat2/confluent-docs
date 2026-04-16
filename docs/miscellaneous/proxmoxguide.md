@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Proxmox Guide with confluent
+title: Proxmox Guide with Confluent
 toc: true
 ---
-# Proxmox Guide with confluent
+# Proxmox Guide with Confluent
 
 ## Installing proxmox
 
