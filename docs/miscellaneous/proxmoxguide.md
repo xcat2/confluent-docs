@@ -70,37 +70,38 @@ When finished, click `Apply Configuration` to continue.
 
 If wanting to use the web gui, here's an example of creating a VM:
 
-![createvmdropdown](../../assets/Proxmox/CreateVM-1.png)
 
 Select `Create VM` from the right click menu on the host.  For name, have the VM name match the node name you will want in confluent.
 
-![skipmedia](../../assets/Proxmox/CreateVM-2.png)
+![createvmdropdown](../../assets/Proxmox/CreateVM-1.png)
 
 Do not use any media, we will be using confluent for the OS deployment instead
 
-![addtpm](../../assets/Proxmox/CreateVM-3AddTPM.png)
+![skipmedia](../../assets/Proxmox/CreateVM-2.png)
 
 For system, you will likely want to add a TPM and select a storage for the TPM. This allows better diskless boot behaviors in the VM.
 
-![adddisk](../../assets/Proxmox/CreateVM-4AddDisk.png)
+![addtpm](../../assets/Proxmox/CreateVM-3AddTPM.png)
 
 You can select disk size as appropriate.  Here we did select Write back cache for better behavior.
 
-![setcpu](../../assets/Proxmox/CreateVM-5HostCPU.png)
+![adddisk](../../assets/Proxmox/CreateVM-4AddDisk.png)
 
 For CPU, you will likely want to change to `host`, as the default is incompatible with some newer distributions.
 
-![setmem](../../assets/Proxmox/CreateVM-6SetMemory.png)
+![setcpu](../../assets/Proxmox/CreateVM-5HostCPU.png)
 
 You will likely want more memory than default, OS installers run from ramfs and some can require a few gigabytes.
 
-![setnet](../../assets/Proxmox/CreateVM-7SetNetworking.png)
+![setmem](../../assets/Proxmox/CreateVM-6SetMemory.png)
 
 Here we select the bridge we created before.
 
-![confirmvm](../../assets/Proxmox/CreateVM-8Confirm.png)
+![setnet](../../assets/Proxmox/CreateVM-7SetNetworking.png)
 
 Review settings and click 'Finish' to create the VM
+
+![confirmvm](../../assets/Proxmox/CreateVM-8Confirm.png)
 
 ### Using CLI to create a virtual machine
 
