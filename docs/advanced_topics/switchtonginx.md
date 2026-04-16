@@ -1,5 +1,5 @@
 ---
-title: Confluent Installation for Red Hat Enterprise Linux
+title: Switching from Apache to NGINX on RHEL
 ---
 
 By default, confluent indicates use of apache configuration due to the way apache is packaged.  However, there are some benefits to switching to nginx:
