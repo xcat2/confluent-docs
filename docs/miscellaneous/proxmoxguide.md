@@ -52,17 +52,17 @@ By default, you access the proxmox WebUI on port 8006.  If deployed by confluent
 
 In order to use VMs as nodes, you will probably want to change the networking to a bridge configuration.
 
-![clearnic](../../assets/Proxmox/CreateNetworking-1ClearNicConfig.png)
-
 First, you will want to clear the configuration from the current nic that you want to turn into bridge.  Don't worry, changes will not apply even as you hit 'ok'.  This is needed to make the network addresses available to the bridge.
 
-![selectbridge](../../assets/Proxmox/CreateNetworking-2SelectBridge.png)
+![clearnic](../../assets/Proxmox/CreateNetworking-1ClearNicConfig.png)
 
 You will want to select to create a new bridge
 
-![newbridge](../../assets/Proxmox/CreateNetworking-3SetupNewBridge.png)
+![selectbridge](../../assets/Proxmox/CreateNetworking-2SelectBridge.png)
 
 Finally, apply the network configuration and make sure to include the port name in the configuration.
+
+![newbridge](../../assets/Proxmox/CreateNetworking-3SetupNewBridge.png)
 
 When finished, click `Apply Configuration` to continue.
 
