@@ -86,11 +86,15 @@ For system, you will likely want to add a TPM and select a storage for the TPM. 
 
 You can select disk size as appropriate.  Here we did select Write back cache for better behavior.
 
-![setmem](../../assets/Proxmox/CreateVM-5SetMemory.png)
+![setcpu](../../assets/Proxmox/CreateVM-5HostCPU.png)
+
+For CPU, you will likely want to change to `host`, as the default is incompatible with some newer distributions.
+
+![setmem](../../assets/Proxmox/CreateVM-6SetMemory.png)
 
 You will likely want more memory than default, OS installers run from ramfs and some can require a few gigabytes.
 
-![setnet](../../assets/Proxmox/CreateVM-7SetNeworking.png)
+![setnet](../../assets/Proxmox/CreateVM-7SetNetworking.png)
 
 Here we select the bridge we created before.
 
