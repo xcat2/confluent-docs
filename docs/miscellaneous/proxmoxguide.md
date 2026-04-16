@@ -23,6 +23,7 @@ With this downloaded, import it using osdeploy:
 
 It is suggested to make a copy of the profile to customize for proxmox:
 
+    # cd /var/lib/confluent/public/os/
     # cp -a debian-13.4-x86_64-default/ debian-13.4-x86_64-proxmox
 
 Enable the provided example proxmox scripts:
