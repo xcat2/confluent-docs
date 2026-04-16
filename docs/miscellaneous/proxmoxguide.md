@@ -9,7 +9,7 @@ toc: true
 
 Proxmox may be installed manually or by using confluent.  You do not have to use confluent to install proxmox to use proxmox as a virtual machine platform.
 
-Manual installation is well covered by Proxmox documentation, so this guide will touch on the confluent deployment of the proxmox host, skip to the next section if you already have proxmox deployed or want to deploy it manually or by other means.
+Manual installation is well covered by Proxmox documentation, so this guide will touch on the confluent deployment of the proxmox host, [skip to the next section](#using-proxmox-virtual-machines-as-nodes) if you already have proxmox deployed or want to deploy it manually or by other means.
 
 For proxmox, start with creating a debian profile.  Grab the `mini.iso` for debian, for trixie that is currently at
 [this url](https://deb.debian.org/debian/dists/trixie/main/installer-amd64/current/images/netboot/mini.iso)
