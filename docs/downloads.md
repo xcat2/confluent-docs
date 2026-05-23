@@ -10,7 +10,7 @@ Select the repository appropriate for the major version.
 
 For Red Hat Enterprise Linux 10:
 
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el0/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+    rpm -ivh https://hpc.lenovo.com/yum/latest/el10/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
 
 For Red Hat Enterprise Linux 9:
 
