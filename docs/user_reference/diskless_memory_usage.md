@@ -23,8 +23,8 @@ Mem:            7935         403        7628          42         116        7532
 Swap:              0           0           0
 ```
 
-As expected, the memory consumption for both diskfull and diskless are comparable.  If we induce a heavy read of the filesystem,
-then content will become memory resident, just like it would for a diskfull installation:
+As expected, the memory consumption for both diskful and diskless are comparable.  If we induce a heavy read of the filesystem,
+then content will become memory resident, just like it would for a diskful installation:
 
 ```
 # find /usr -type f -exec cat {} + > /dev/null
@@ -34,7 +34,7 @@ Mem:            7935         488        6498          42        1246        7447
 Swap:              0           0           0
 ```
 
-However, just as with a diskfull system, that memory is 'evictable' and the OS can freely reclaim that memory if needed.  We can simulate the scenario by dropping cache:
+However, just as with a diskful system, that memory is 'evictable' and the OS can freely reclaim that memory if needed.  We can simulate the scenario by dropping cache:
 
 ```
 # echo 3 > /proc/sys/vm/drop_caches 
