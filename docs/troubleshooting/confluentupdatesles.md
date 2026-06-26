@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Troubleshooting issue with updating confluent on SLES 15
-permalink: /documentation/confluentupdatesles.html
 ---
 
 ## Known Issue: 

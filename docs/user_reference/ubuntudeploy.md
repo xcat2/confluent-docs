@@ -1,7 +1,5 @@
 ---
-layout: page
 title: OS Deployment Notes for Ubuntu 
-permalink: /documentation/ubuntudeploy.html
 ---
 
 <b>Troubleshooting name resolution issues</b>  

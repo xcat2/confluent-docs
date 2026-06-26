@@ -1,8 +1,7 @@
 ---
-layout: page
 title: Proxmox Guide with Confluent
-toc: true
 ---
+
 # Proxmox Guide with Confluent
 
 ## Installing proxmox
@@ -55,15 +54,15 @@ In order to use VMs as nodes, you will probably want to change the networking to
 
 First, you will want to clear the configuration from the current nic that you want to turn into a bridge.  Don't worry, changes will not apply even when you click 'OK'.  This is needed to make the network addresses available to the bridge.
 
-![clearnic](../../assets/Proxmox/CreateNetworking-1ClearNicConfig.png)
+![clearnic](../assets/Proxmox/CreateNetworking-1ClearNicConfig.png)
 
 You will want to select to create a new bridge
 
-![selectbridge](../../assets/Proxmox/CreateNetworking-2SelectBridge.png)
+![selectbridge](../assets/Proxmox/CreateNetworking-2SelectBridge.png)
 
 Finally, apply the network configuration and make sure to include the port name in the configuration.
 
-![newbridge](../../assets/Proxmox/CreateNetworking-3SetupNewBridge.png)
+![newbridge](../assets/Proxmox/CreateNetworking-3SetupNewBridge.png)
 
 When finished, click `Apply Configuration` to continue.
 
@@ -74,35 +73,35 @@ If you want to use the WebUI, here's an example of creating a VM:
 
 Select `Create VM` from the right click menu on the host.  For name, have the VM name match the node name you will want in confluent.
 
-![createvmdropdown](../../assets/Proxmox/CreateVM-1.png)
+![createvmdropdown](../assets/Proxmox/CreateVM-1.png)
 
 Do not use any media; we will be using confluent for the OS deployment instead.
 
-![skipmedia](../../assets/Proxmox/CreateVM-2.png)
+![skipmedia](../assets/Proxmox/CreateVM-2.png)
 
 For system, you will likely want to add a TPM and select storage for the TPM. This allows better diskless boot behaviors in the VM.
 
-![addtpm](../../assets/Proxmox/CreateVM-3AddTPM.png)
+![addtpm](../assets/Proxmox/CreateVM-3AddTPM.png)
 
 You can select disk size as appropriate.  Here we selected write-back cache for better performance.
 
-![adddisk](../../assets/Proxmox/CreateVM-4AddDisk.png)
+![adddisk](../assets/Proxmox/CreateVM-4AddDisk.png)
 
 For CPU, you will likely want to change to `host`, as the default is incompatible with some newer distributions.
 
-![setcpu](../../assets/Proxmox/CreateVM-5HostCPU.png)
+![setcpu](../assets/Proxmox/CreateVM-5HostCPU.png)
 
 You will likely want more memory than the default. OS installers run from ramfs and some can require a few gigabytes.
 
-![setmem](../../assets/Proxmox/CreateVM-6SetMemory.png)
+![setmem](../assets/Proxmox/CreateVM-6SetMemory.png)
 
 Here we select the bridge we created before.
 
-![setnet](../../assets/Proxmox/CreateVM-7SetNetworking.png)
+![setnet](../assets/Proxmox/CreateVM-7SetNetworking.png)
 
 Review settings and click 'Finish' to create the VM
 
-![confirmvm](../../assets/Proxmox/CreateVM-8Confirm.png)
+![confirmvm](../assets/Proxmox/CreateVM-8Confirm.png)
 
 ### Using CLI to create a virtual machine
 
@@ -171,7 +170,7 @@ The node is now ready for use as a normal node, for example, to boot a diskless 
 
 If you add a serial port to the VM, then you can use console.method=proxmox to have a SOL console in nodeconsole.  Other than that, the graphics console in proxmox VMs is supported in the confluent webui as well as nodeconsole:
 
-![nodeconsole](../../assets/Proxmox/nodeconsole.png)
+![nodeconsole](../assets/Proxmox/nodeconsole.png)
 
 Nodeinventory also works:
 

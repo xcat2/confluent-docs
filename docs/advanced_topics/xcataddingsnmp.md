@@ -1,7 +1,5 @@
 ---
 title: Adding snmp support to xCAT
-layout: page
-permalink: /documentation/xcataddingsnmp.html
 ---
 
 Due to changes in RedHat/CentOS 8, net-snmp-perl is no longer provided in either the vendor repository nor the lenovo repository.

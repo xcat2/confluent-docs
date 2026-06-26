@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Using a Cumulus switch with confluent
-permalink: /documentation/confluentcumulus.html
 ---
 
 In order to use a Cumulus switch with confluent, it requires
@@ -12,7 +10,7 @@ from /opt/confluent/share/affluent/ onto the switch:
     # ssh -t cumulus@r4c1 sudo apt install ~cumulus/affluent_*.deb
 
 
-Note that if the installation occured after confluent tried to interrogate the
+Note that if the installation occurred after confluent tried to interrogate the
 switch, you may need to restart confluent:
 
     # systemctl restart confluent

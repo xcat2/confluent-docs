@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Installing EL7 over OmniPath
-permalink: /documentation/el7opainstall.html
-toc: true
 ---
 
 It is possible with the Lenovo xCAT and confluent software to install

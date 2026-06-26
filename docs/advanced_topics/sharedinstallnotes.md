@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Using xCAT management nodes with an NFS-mounted install directory
-permalink: /documentation/sharedinstallnotes.html
 ---
 
 When using an NFS-mounted install directory, installing or updating the xCAT RPMs can result in errors (e.g., lsetfilecon errors) due to some files in the xCAT RPM installing to the install directory and certain filesystem operations not supported on NFS.

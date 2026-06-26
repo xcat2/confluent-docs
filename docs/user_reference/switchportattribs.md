@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Configuring network port attributes
-permalink: /documentation/switchportattribs.html
 ---
 
 In xCAT and confluent, the [discovery process](confluentdiscovery.md) can use ethernet switch connectivity to assess real node identity to use in deploying configuration and gathering info such as mac addresses.

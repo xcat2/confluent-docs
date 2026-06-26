@@ -1,9 +1,6 @@
 ---
-layout: page
 title: OS Deployment Notes for SLES 12.3
-permalink: /documentation/sles12deploy.html
 ---
-
 
 After performing copycds on disk 2 of the SLES 12 media, SUSE may experience problems interacting with the install source, such as:                                                             
 

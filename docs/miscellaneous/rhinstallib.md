@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Installing EL7 over InfiniBand
-permalink: /documentation/el7ibinstall.html
-toc: true
 ---
 
 This covers the process of EL7 deployment on a cluster using only InfiniBand.

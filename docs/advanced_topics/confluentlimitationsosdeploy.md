@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Limitations of usage of Confluent osdeploy initialize across multiple management nodes
-permalink: /documentation/confluentlimitationsosdeploy.html
 ---
 
 The Confluent "osdeploy initialize" command provides assistance in setting up facilities relating to deployment and access of managed nodes from one or more management nodes. Setting up these facilities involve accessing one or more shared files.

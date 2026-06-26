@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Deploying servers using the xClarity Controller
-permalink: /documentation/xccdeployment.html
 ---
 
 This procedure will leverage the Virtual USB function on appropriately licensed

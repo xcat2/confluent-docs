@@ -1,7 +1,5 @@
 ---
-layout: page
 title: InfiniBand install with confluent on RHEL 8
-permalink: /documentation/ibinstallconfluentrhel8.html
 ---
 
 Please refer to the following link for the confluent OS deployment process:
@@ -35,19 +33,25 @@ Net config fixup postscript
 InfiniBand network configuration does not work as expected out of the box.  If not installing Mellanox OFED, the following is an example of a
 postscript that can be added to correct that behavior:
 
-    # cat /var/lib/confluent/public/os/your-profile-here/scripts/pod.d/fixipoib
-    echo 'install mlx5_core /sbin/modprobe --ignore-install mlx5_core; /sbin/modprobe mlx5_ib; /sbin/modprobe ib_ipoib' >> /etc/modprobe.d/mlx.conf
-    echo 'add_drivers+="mlx5_ib ib_ipoib"' > /etc/dracut.conf.d/mlx.conf
-    dracut -f
+```bash
+# cat /var/lib/confluent/public/os/your-profile-here/scripts/pod.d/fixipoib
+echo 'install mlx5_core /sbin/modprobe --ignore-install mlx5_core; /sbin/modprobe mlx5_ib; /sbin/modprobe ib_ipoib' >> /etc/modprobe.d/mlx.conf
+echo 'add_drivers+="mlx5_ib ib_ipoib"' > /etc/dracut.conf.d/mlx.conf
+dracut -f
+```
 
 Kernel command line configuration
 
 Change the profile.yaml file in the the OS profile to be deployed to add:
 
-    # rd.driver.pre="mlx5_ib,ib_ipoib"
+```bash
+# rd.driver.pre="mlx5_ib,ib_ipoib"
+```
 
 on the kernel.args line
 
 Then run
 
-    # osdeploy updateboot <OS profile name>
+```bash
+# osdeploy updateboot <OS profile name>
+```

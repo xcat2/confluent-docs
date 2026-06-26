@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Discovery with chained ThinkSystem D2 enclosures
-permalink: /documentation/chainedsmmdiscovery.html
 ---
 
 The ThinkSystem D2 enclosure (which houses SD530 servers) has a variant of System Management Module (SMM) that supports chaining

@@ -1,61 +1,152 @@
-# Home
+---
+title: Home
+---
 
-## Confluent
+# Confluent
 
-Confluent is a software package to handle essential bootstrap and operation of scale-out
-server configurations. It incorporates a variety of functions relevant to that end:
+Confluent handles the essential bootstrap and day-to-day operation of scale-out
+server configurations. It deploys operating systems, controls hardware, manages
+consoles, gathers telemetry, and onboards new devices across clusters ranging
+from a handful of nodes to many thousands.
 
-## Features
+Confluent is the modern successor of [xCAT](https://github.com/xcat2/xcat-core).
+If you are coming from xCAT, see
+[Confluent vs. xCAT](miscellaneous/confluentvxcat.md).
 
-* Console Management
-    * Arbitrate multi-user access
-    * Full logging with fine grained timestamps
-    * VT-aware buffering for quality reconstitution of a console after reconnect
-* Hardware Control: Essential operations using ipmi, redfish, and/or implementation specific plugins to implement features including:
-    * Power on/off
-    * Set next boot device (e.g. force network boot)
-    * Configure BIOS/UEFI/BMC settings
-    * Configure hardware storage controllers (e.g. create/delete raid arrays and set drive usage)
-    * Health check
-    * Telemetry (temperature, voltages, power, energy, etc)
-    * Virtual USB device mount management
-    * Retrieve support data
-* OS Deployment including:
-    * Stateless images and stateful OS deployment
-    * Sample profiles for ESXi 6.7/7.0, RedHat/CentOS/Alma/Rocky 7.x/8.x/9.x, SuSE 15.x, RHV-H 4.3/4.4 and Ubuntu 20.04/22.04/24.04
-    * Deployment over PXE, HTTP(S)boot, or removable media (real or virtual)
-    * Does not require a DHCP server, nor does it conflict with an external DHCP server for all deployment methods
-    * Support customization during phases of deployment (e.g. post, firstboot, onboot) by local commands or automatically launched remote ansible playbooks.
-* Centralized access to network topology information
-    * Access mac address table and lldp information across all switches in one interface
-* Rich device on-boarding capabilities
-    * Detect generic PXE systems and Lenovo hardware management devices at a glance
-    * Rapidly onboard devices manually, based on data such as serial number or mac address, or based on where things are physically plugged in to chassis or switches.
-* Scalability and Availability
-    * Powerful noderange syntax to describe target systems simply but with great flexibility
-    * An attribute database with group inheritance and formulaic attribute derivation for structured data-centers
-    * Collective mode enables scaling a single confluent interface across multiple servers or virtual machines for HA and/or to manage thousands of systems
-    * Tools to quickly analyze data and highlight inconsistencies or to do quick statistical analysis
-* Security
-    * Designed with secure default behaviors with opt-in to reduced security
-    * Use of fully validated TLS to protect collective, deployment and hardware management
-    * Take advantage of TPM2 to protect boot volumes for supported profiles
-    * Use TPM2 to persist node trust across reboots in stateless environments
-    * Node authentication options to balance convenience versus hardening to protect potentially sensitive data such as encrypted root password
-    * SSH PKI strategy to securely enable convenient SSH without users having to self-curate SSH keys or having to update known_hosts
-    * SecureBoot is supported for media and HTTP boot methods
-* Flexible usage scenarios
-    * Collection of straightforward Linux commands
-    * Command line API browser that is like browsing a file-system
-    * Python client library
-    * REST API over HTTP
+[Get started :material-rocket-launch:](getting_started/confluentquickstart_el8.md){ .md-button .md-button--primary }
+[Download :material-download:](downloads.md){ .md-button }
 
-## Installation
+## Where to begin
 
-Generally speaking, there are two suggested approaches:
+<div class="grid cards" markdown>
 
-* Using confluent - It is strongly recommended for most of those without existing xCAT installations to use confluent directly.
-* Using xCAT and confluent together (not recommended) - When you are used to xCAT or another currently xCAT exclusive feature and want to use it in conjunction with confluent.  For this situation, start with the xCAT documentation under Advanced topics.
+-   :material-rocket-launch:{ .lg .middle } **Get started**
 
-!!! note
-    For specific topics, it may be easier to use the Search function of this site.
+    ---
+
+    Install confluent and take a single example flow from a bare management
+    server to a deployed cluster.
+
+    [:octicons-arrow-right-24: Quickstart (Enterprise Linux)](getting_started/confluentquickstart_el8.md)
+
+-   :material-server:{ .lg .middle } **Install**
+
+    ---
+
+    Set up the confluent management server on your distribution of choice and
+    open the required firewall ports.
+
+    [:octicons-arrow-right-24: Red Hat / Alma / Rocky](getting_started/installconfluent_rhel.md)
+
+    [:octicons-arrow-right-24: SUSE](getting_started/installconfluent_suse.md)
+
+    [:octicons-arrow-right-24: Ubuntu](getting_started/installconfluent_ubuntu.md)
+
+-   :material-harddisk:{ .lg .middle } **Deploy operating systems**
+
+    ---
+
+    Provision stateful and stateless images over PXE, HTTP(S) boot, or virtual
+    media, with customization at every phase.
+
+    [:octicons-arrow-right-24: OS deployment](user_reference/osdeploy.md)
+
+    [:octicons-arrow-right-24: Diskless / stateless](miscellaneous/confluentdiskless.md)
+
+-   :material-tune:{ .lg .middle } **Reference**
+
+    ---
+
+    The building blocks you use every day: node attributes, the noderange
+    language, and attribute expressions.
+
+    [:octicons-arrow-right-24: Noderange syntax](user_reference/noderange.md)
+
+    [:octicons-arrow-right-24: Attribute expressions](user_reference/attributeexpressions.md)
+
+-   :material-radar:{ .lg .middle } **Discover & onboard**
+
+    ---
+
+    Detect generic PXE systems and Lenovo hardware managers, then onboard them
+    by serial number, MAC, or physical location.
+
+    [:octicons-arrow-right-24: Discovery](user_reference/confluentdiscovery.md)
+
+-   :material-code-braces:{ .lg .middle } **Automate (API)**
+
+    ---
+
+    Drive confluent from the REST API, the Python client library, or the
+    filesystem-like `confetty` browser.
+
+    [:octicons-arrow-right-24: API documentation](developer/api.md)
+
+</div>
+
+## What confluent does
+
+<div class="grid cards" markdown>
+
+-   :material-console-line:{ .lg .middle } __Console management__
+
+    Arbitrate multi-user access with full, fine-grained timestamped logging and
+    VT-aware buffering, so a console reconnect reconstitutes cleanly.
+
+-   :material-power:{ .lg .middle } __Hardware control__
+
+    Power, next-boot device, BIOS/UEFI/BMC settings, storage controllers
+    (RAID), health checks, telemetry, virtual media, and support data over
+    IPMI, Redfish, and vendor plugins.
+
+-   :material-lan:{ .lg .middle } __Network topology__
+
+    Centralized access to MAC address tables and LLDP information across every
+    switch through one interface.
+
+-   :material-arrow-expand-all:{ .lg .middle } __Scale & availability__
+
+    Group inheritance and formulaic attribute derivation, plus collective mode
+    to span one confluent interface across servers for HA and large fleets.
+
+</div>
+
+## Security by default
+
+Confluent is designed with secure default behaviors and explicit opt-in to
+reduced security:
+
+- Fully validated TLS protects collective, deployment, and hardware management
+  traffic.
+- TPM2 can protect boot volumes and persist node trust across reboots in
+  stateless environments.
+- Node authentication options balance convenience against hardening for
+  sensitive data such as the encrypted root password.
+- An SSH PKI strategy enables convenient SSH without users curating their own
+  keys or updating `known_hosts`.
+- Secure Boot is supported for media and HTTP boot methods.
+
+See [TLS configuration](miscellaneous/tlsdesign.md),
+[SSH design](miscellaneous/sshdesign.md), and
+[OS deployment security](miscellaneous/osdeploysecurity.md) for details.
+
+## Ways to drive confluent
+
+- A collection of straightforward Linux commands (`nodepower`, `nodeconsole`,
+  `nodedeploy`, ...).
+- A command-line API browser, `confetty`, that works like browsing a filesystem.
+- A Python client library.
+- A REST API over HTTP.
+
+## Installation paths
+
+There are two suggested approaches:
+
+- **Confluent directly** *(recommended)* — best for most users, especially
+  those without an existing xCAT installation.
+- **xCAT and confluent together** — when you rely on an xCAT-exclusive feature
+  and want to use it alongside confluent. Start with the xCAT material under
+  [Advanced topics](advanced_topics/xcatconfluentsetup.md).
+
+!!! tip
+    Looking for something specific? Use the search box at the top of the page.

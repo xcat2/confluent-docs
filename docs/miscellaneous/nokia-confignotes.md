@@ -1,5 +1,4 @@
 ---
-
 title: Confluent configuration and troubleshooting notes for Nokia Ethernet switches
 ---
 

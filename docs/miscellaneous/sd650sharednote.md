@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Configured for shared port in SD650 in xCAT
-permalink: /documentation/sd650sharednote.html
 ---
 
 The SD650 water cooled system requires the following value for the `ipmi.bmcport` field of the node

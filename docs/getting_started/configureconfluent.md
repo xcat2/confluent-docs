@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Configuring confluent
-permalink: /documentation/configconfluent.html
-toc: true
 ---
 
 ## When used in conjunction with xCAT

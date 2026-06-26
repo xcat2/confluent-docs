@@ -1,7 +1,5 @@
 ---
-layout: page
 title: xCAT Installation for Red Hat Enterprise Linux 7
-permalink: /documentation/installxcat_rhel.html
 ---
 
 After adding the correct repository as indicated in the [download page](../downloads.md), you can install xCAT by running:

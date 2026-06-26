@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Osdeployment sample postscripts and their usage
-permalink: /documentation/samplepostscripts.html
 ---
 
 Listed here are some sample post scripts that you might choose to use when deploying 

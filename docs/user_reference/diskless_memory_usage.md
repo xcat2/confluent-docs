@@ -1,3 +1,7 @@
+---
+title: Diskless memory usage
+---
+
 Memory usage of diskless has a number of factors to keep in mind.
 
 ## tethered (statelite)

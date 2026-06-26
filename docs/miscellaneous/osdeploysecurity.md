@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Handling of security information in OS deployment
-permalink: /documentation/osdeploysecurity.html
-toc: true
 ---
 
 # SSH host and user authentication

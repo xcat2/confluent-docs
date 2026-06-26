@@ -1,7 +1,5 @@
 ---
-layout: page
 title: NVIDIA GPU Driver Install on RHEL 9.5 and Ubuntu 24.04.2
-permalink: /documentation/nvidiagpudriverinstall.html
 ---
 
 # NVIDIA GPU Driver Install on RHEL 9.5

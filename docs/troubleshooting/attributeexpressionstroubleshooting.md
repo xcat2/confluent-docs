@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Troubleshooting issues with nodeattribute expressions. 
-permalink: /documentation/nodeattribexpressionstroubleshooting.html
 ---
 
 An expression will contain some directives wrapped in {} characters.

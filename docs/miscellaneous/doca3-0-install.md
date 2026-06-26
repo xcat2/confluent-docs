@@ -1,7 +1,5 @@
 ---
-layout: page
 title: DOCA 3.0 Installation/Upgrade on RHEL 9.5 and Ubuntu 24.04.2
-permalink: /documentation/doca3-0-install.html
 ---
 
 # DOCA 3.0 Installation/Upgrade on RHEL 9.5

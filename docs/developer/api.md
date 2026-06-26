@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Confluent API Documentation
-permalink: /documentation/developer/api.html
 ---
 
 Confluent models functionality in a hierarchical structure.  It is a RESTful or
@@ -45,10 +43,10 @@ confluent protocol, as described in [remote confluent](../advanced_topics/remote
 
 
 For many common interactions, there is a convenient method on the session
-object called 'simple_noderange_command()'. To accomodate more complex
+object called 'simple_noderange_command()'. To accommodate more complex
 scenarios and map more directly to the underlying REST structure, the
 functions `create()`, `read()`, `update()`, and `delete()` are provided.
-See the client.py python API documentaion for more details.
+See the client.py python API documentation for more details.
 
 <!--
 ## /discovery/
@@ -420,7 +418,7 @@ Each event has:
               the event. For example, "Progress", "Host Power", "Non Auth DIMMs"
 * **component_type** - A description of what type of entity the component is.
                       Examples are: "System Firmware", "Power Unit" and "Memory"
-* **event** - A text description of the event that occured
+* **event** - A text description of the event that occurred
 * **id** - A numerical value representing the id, useful for looking up the id
        against a database
 * **record_id** - An identifier associated with the event by the providing device 

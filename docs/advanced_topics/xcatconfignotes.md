@@ -1,7 +1,5 @@
 ---
-layout: page
 title: xCAT configuration notes
-permalink: /documentation/xcatconfignotes.html
 ---
 
 * [Installing EL7 with RSTe support](el7rste.md)
