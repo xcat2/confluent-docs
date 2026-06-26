@@ -1,9 +1,6 @@
 ---
-layout: page
 title: Troubleshooting issues with upgrading BlueField-3 BFB using DOCA (host) 3.0
-permalink: /documentation/bf3-troubleshooting.html
 ---
-
 
 # RHEL/Rocky Linux 9.5
  The following items apply for RHEL/Rocky Linux 9.5.

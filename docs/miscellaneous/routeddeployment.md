@@ -1,9 +1,7 @@
 ---
-layout: page
 title: Deployment through a routed network
-permalink: /documentation/routed-deployment.html
-toc: true
 ---
+
 While it is most straightforward to do OS deployment when on the same network, sometimes there is a need to deploy through
 a routed network.  Note that regardless of the strategy, the routed network will incur more manual configuration and have more
 chances for a failure to occur, so it is strongly advised, if at all possible, to have confluent on the local network, or use

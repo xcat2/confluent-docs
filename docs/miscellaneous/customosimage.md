@@ -1,7 +1,5 @@
 ---
 title: Creating a custom confluent OS image
-layout: page
-permalink: /documentation/customosimage.html
 ---
 
 Sometimes the options available for `osdeploy import` are too limited and an additional boot payload is

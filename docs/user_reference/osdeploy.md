@@ -1,10 +1,33 @@
 ---
-layout: page
 title: OS Deployment concepts
-permalink: /documentation/osdeploy.html
 ---
 
 Confluent supports a number of mechanisms for operating system deployment, with various benefits and drawbacks.
+
+## Supported operating systems
+
+Confluent recognizes the following operating system families when media is
+imported. The exact versions available as starting profiles depend on the
+media you import and the installed confluent release; newer point releases are
+generally detected automatically.
+
+| Family | Versions recognized |
+|--------|---------------------|
+| Enterprise Linux (RHEL, Rocky, AlmaLinux, CentOS Stream, Oracle Linux, openEuler) | 7, 8, 9, 10 |
+| Fedora | 41, 42 (handled as Enterprise Linux 10) |
+| SUSE Linux Enterprise / openSUSE Leap | 12, 15, 16 |
+| Ubuntu | 18.04, 20.04, 22.04 (and newer when a matching profile exists) |
+| Debian | 12 and newer |
+| VMware ESXi | Version detected from the install media |
+| Red Hat Virtualization Host (RHV-H) | 4.x |
+| Red Hat CoreOS / Fedora CoreOS | Version detected from the image |
+| Microsoft Windows | 2019, 2022, 2025 |
+| NVIDIA BlueField (DOCA/BFB) | Version detected from the BFB payload |
+
+!!! note
+    Recognition does not guarantee that every listed version ships a ready-made
+    sample profile. Importing media that confluent does not yet recognize will
+    report an unsupported-distribution error.
 
 ## Scripted install (stateful/diskful)
 

@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Confluent multi interface configuration
-permalink: /documentation/confignet.html
-toc: true
 ---
 
 Confluent profiles initialized as of 3.3 or later contain the `confignet` network configuration facility. It is invoked

@@ -1,9 +1,7 @@
 ---
-layout: page
 title: Confluent TLS Configuration
-permalink: /documentation/tlsdesign.html
-toc: true
 ---
+
 # Challenges of using TLS in a private network
 
 Using TLS in a private network configuration can be daunting. The usual approach requires that DNS be in order and resolving the way that is intended and imposes a requirement that the user explicitly tell the software correctly the name that will be used.  Further, when faced with multihomed systems, it adds more complexity, as the certificate must cover all possible names and the software must use the correct name at the correct time, depending on context.
@@ -21,7 +19,7 @@ Note that every possible ip address is added, and added both properly as IP addr
 
 # The confluent TLS authority
 
-To allow easily updating the certificate to accomodate IP address changes, confluent tends to make it's own certificate authority:
+To allow easily updating the certificate to accommodate IP address changes, confluent tends to make it's own certificate authority:
 ```
 /etc/confluent/tls/cakey.pem
 /etc/confluent/tls/cacert.pem

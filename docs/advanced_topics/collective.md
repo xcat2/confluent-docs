@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Confluent collective mode
-permalink: /documentation/collective.html
-toc: true
 ---
 
 The collective mode of confluent allows multiple confluent servers to act as one, providing

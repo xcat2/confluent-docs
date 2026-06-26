@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Confluent discovery of Enclosure based systems
-permalink: /documentation/confluentenclosuredisco.html
 ---
 
 When discovering SD530 servers with an SMM, the enclosure may be used as an indication

@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Containerized confluent run 
-permalink: /documentation/containerized-confluent.html
 ---
 
 Synopsys

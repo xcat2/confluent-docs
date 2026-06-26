@@ -1,8 +1,5 @@
 ---
 title: Setting up the confluent rackview
-layout: page
-permalink: /documentation/confluentrackview.html
-toc: true
 ---
 
 Confluent's web interface offers a rackview for rackmount and enclosure based systems. It can show where nodes are located in
@@ -17,11 +14,13 @@ recommended to also set location.height, as that will help the rackview draw mor
 
 Here is an example of how o2 was defined:
 
-    # nodeattrib o2 location.rack location.u location.row location.height
-    o2: location.height: 2
-    o2: location.rack: 4
-    o2: location.row: 1
-    o2: location.u: 32
+```bash
+# nodeattrib o2 location.rack location.u location.row location.height
+o2: location.height: 2
+o2: location.rack: 4
+o2: location.row: 1
+o2: location.u: 32
+```
 
 
 # Setting up an enclosure/dense system
@@ -31,14 +30,16 @@ should not have any location information, as their location will be defined by e
 
 Here is an example of a server (d1) inside an enclosure (smm1):
 
-    # nodeattrib d1 enclosure.manager enclosure.bay
-    d1: enclosure.bay: 1
-    d1: enclosure.manager: smm1
-    # nodeattrib smm1 location.rack location.u location.row location.height
-    smm1: location.height: 2
-    smm1: location.rack: 4
-    smm1: location.row: 1
-    smm1: location.u: 35
+```bash
+# nodeattrib d1 enclosure.manager enclosure.bay
+d1: enclosure.bay: 1
+d1: enclosure.manager: smm1
+# nodeattrib smm1 location.rack location.u location.row location.height
+smm1: location.height: 2
+smm1: location.rack: 4
+smm1: location.row: 1
+smm1: location.u: 35
+```
 
 
 

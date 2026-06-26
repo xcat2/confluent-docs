@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Remote confluent
-permalink: /documentation/remoteconfluent.html
 ---
 
 Note this method for xCAT usage is largely superseded by using a [collective](collective.md) instead,

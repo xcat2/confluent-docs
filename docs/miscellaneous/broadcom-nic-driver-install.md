@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Broadcom NIC driver install on Ubuntu 24.04.2
-permalink: /documentation/broadcom-nic-driver-install.html
 ---
 
 # Broadcom NIC Driver Installation on Ubuntu 24.04.2

@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Confluent Groups
-permalink: /documentation/confluentgroups.html
 ---
 
 In confluent, there is a concept of node groups to provide convenient shorthand for noderanges as well as 
@@ -15,7 +13,9 @@ Node groups can be used the same as nodes in [noderange syntax](../manuals/noder
 Additionally, a group can be used to be shorthand for a noderange.  For example, to make a group `all` to represent every node
 excluding `switches` and `pdus`, without having to continually update the `all` group as nodes are added or removed:
 
-    nodegroupdefine all noderange=everything,-switches,-pdus
+```bash
+nodegroupdefine all noderange=everything,-switches,-pdus
+```
 
 Note that `noderange` groups do not contribute to providing attributes to the node attributes.
 
@@ -44,53 +44,67 @@ Now a sample will be presented leveraging groups to define a representative conf
 First will set the 'global' username and password that is preferred in this site.  This will use the interactive prompt to
 keep the values out of the shell history and ps output for other users.
 
-    # nodegroupattrib everything -p secret.hardwaremanagementuser secret.hardwaremanagementpassword
-    Enter value for secret.hardwaremanagementuser:
-    Confirm value for secret.hardwaremanagementuser:
-    Enter value for secret.hardwaremanagementpassword:
-    Confirm value for secret.hardwaremanagementpassword:
-    everything: secret.hardwaremanagementpassword: ********
-    everything: secret.hardwaremanagementuser: ********
+```bash
+# nodegroupattrib everything -p secret.hardwaremanagementuser secret.hardwaremanagementpassword
+Enter value for secret.hardwaremanagementuser:
+Confirm value for secret.hardwaremanagementuser:
+Enter value for secret.hardwaremanagementpassword:
+Confirm value for secret.hardwaremanagementpassword:
+everything: secret.hardwaremanagementpassword: ********
+everything: secret.hardwaremanagementuser: ********
+```
 
 A group will be created to explain the configurations naming scheme and how it influences network connectivity:
 
-    # nodegroupdefine rackmount location.rack={n1} location.u={n2} \
-      net.switch=r{location.rack}eth net.switchport=swp{location.u} \
-      discovery.nodeconfig=bmc.ipv4_address=172.30.{location.rack}.{location.u} \
-      discovery.policy=permissive \
-      power.outlet='{(n2-1)%12+1}' power.pdu=r{n1}pdu'{(n2-1)/12+1}'
+```bash
+# nodegroupdefine rackmount location.rack={n1} location.u={n2} \
+  net.switch=r{location.rack}eth net.switchport=swp{location.u} \
+  discovery.nodeconfig=bmc.ipv4_address=172.30.{location.rack}.{location.u} \
+  discovery.policy=permissive \
+  power.outlet='{(n2-1)%12+1}' power.pdu=r{n1}pdu'{(n2-1)/12+1}'
+```
 
 A group will be created to declare the method to manage how to manage pdus:
 
-    # nodegroupdefine pdus hardwaremanagement.method=geist
+```bash
+# nodegroupdefine pdus hardwaremanagement.method=geist
+```
 
 A group to explain method to manage ethernet switches:
 
-    # nodegroupdefine switches hardwaremanagement.method=affluent
+```bash
+# nodegroupdefine switches hardwaremanagement.method=affluent
+```
 
 A group to have a shorthand for all server devices excluding infrastructure equipment when using noderanges:
 
-    # nodegroupdefine all noderange=everything,-pdus,-switches
+```bash
+# nodegroupdefine all noderange=everything,-pdus,-switches
+```
 
 Then define nodes according to what is expected for an eight rack configuration with 42 1U servers each:
 
-    # nodedefine r[1:8]eth groups=switches
-    # nodedefine r[1:8]pdu[1:4] groups=pdus
-    # nodedefine r[1:8]u[1:42] groups=rackmount
+```bash
+# nodedefine r[1:8]eth groups=switches
+# nodedefine r[1:8]pdu[1:4] groups=pdus
+# nodedefine r[1:8]u[1:42] groups=rackmount
+```
 
 With this in place, `nodeattrib --blame` can be used to see the results of the sequence of commands:
 
-    # nodeattrib r3u32 --blame
-    r3u32: discovery.nodeconfig: bmc.ipv4_address=172.30.3.32 (inherited from group rackmount, derived from expression "bmc.ipv4_address=172.30.{location.rack}.{location.u}")
-    r3u32: discovery.policy: permissive (inherited from group rackmount)
-    r3u32: groups: rackmount,everything
-    r3u32: location.rack: 3 (inherited from group rackmount, derived from expression "{n1}")
-    r3u32: location.u: 32 (inherited from group rackmount, derived from expression "{n2}")
-    r3u32: net.switch: r3eth (inherited from group rackmount, derived from expression "r{location.rack}eth")
-    r3u32: net.switchport: swp32 (inherited from group rackmount, derived from expression "swp{location.u}")
-    r3u32: power.outlet: 8 (inherited from group rackmount, derived from expression "{(n2-1)%12+1}")
-    r3u32: power.pdu: r3pdu3 (inherited from group rackmount, derived from expression "r{n1}pdu{(n2-1)/12+1}")
-    r3u32: secret.hardwaremanagementpassword: ******** (inherited from group everything)
-    r3u32: secret.hardwaremanagementuser: ******** (inherited from group everything)
+```bash
+# nodeattrib r3u32 --blame
+r3u32: discovery.nodeconfig: bmc.ipv4_address=172.30.3.32 (inherited from group rackmount, derived from expression "bmc.ipv4_address=172.30.{location.rack}.{location.u}")
+r3u32: discovery.policy: permissive (inherited from group rackmount)
+r3u32: groups: rackmount,everything
+r3u32: location.rack: 3 (inherited from group rackmount, derived from expression "{n1}")
+r3u32: location.u: 32 (inherited from group rackmount, derived from expression "{n2}")
+r3u32: net.switch: r3eth (inherited from group rackmount, derived from expression "r{location.rack}eth")
+r3u32: net.switchport: swp32 (inherited from group rackmount, derived from expression "swp{location.u}")
+r3u32: power.outlet: 8 (inherited from group rackmount, derived from expression "{(n2-1)%12+1}")
+r3u32: power.pdu: r3pdu3 (inherited from group rackmount, derived from expression "r{n1}pdu{(n2-1)/12+1}")
+r3u32: secret.hardwaremanagementpassword: ******** (inherited from group everything)
+r3u32: secret.hardwaremanagementuser: ******** (inherited from group everything)
+```
 
 

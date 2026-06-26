@@ -1,9 +1,7 @@
 ---
-layout: page
 title: Confluent SSH Configuration
-permalink: /documentation/sshdesign.html
-toc: true
 ---
+
 # SSH authentication architecture as configured by confluent
 
 In confluent, some more advanced SSH features are leveraged to tighten secure use of passwordless SSH and

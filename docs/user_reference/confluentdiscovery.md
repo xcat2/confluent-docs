@@ -1,8 +1,5 @@
 ---
-layout: page
 title: Node discovery and autoconfiguration with confluent
-permalink: /documentation/confluentdisco.html
-toc: true
 ---
 
 Note that discovery is an optional portion of confluent that may be skipped.
@@ -39,11 +36,13 @@ servers to configure or replacing a server or system board.
 
 Discovery can be followed by examining `/var/log/confluent/events`, Using `tail -f` for example:
 
-    May 25 16:28:25 {"info": "Discovered n1 (XCC)"} 
-    May 25 16:28:37 {"info": "Discovered n4 (XCC)"}
-    May 25 16:28:38 {"info": "Discovered n2 (XCC)"} 
-    May 25 16:28:40 {"info": "Discovered n3 (XCC)"}
-    
+```bash
+May 25 16:28:25 {"info": "Discovered n1 (XCC)"} 
+May 25 16:28:37 {"info": "Discovered n4 (XCC)"}
+May 25 16:28:38 {"info": "Discovered n2 (XCC)"} 
+May 25 16:28:40 {"info": "Discovered n3 (XCC)"}
+```
+
 
 ## Manual discovery
 
@@ -112,17 +111,19 @@ ok
 
 If there are switches defined, their mac address tables can be navigated through the `/networking/macs` interface.  Using the mac address example from above:
 
-    / -> show /networking/macs/by-mac/40-f2-e9-b9-10-1d
-    possiblenode=""
-    mac: 40:f2:e9:b9:10:1d
-    ports=[
-     {
-      "switch": "r8e1", 
-      "macsonport": 1, 
-      "port": "Ethernet28"
-     }
-    ]
-    / -> 
+```bash
+/ -> show /networking/macs/by-mac/40-f2-e9-b9-10-1d
+possiblenode=""
+mac: 40:f2:e9:b9:10:1d
+ports=[
+ {
+  "switch": "r8e1", 
+  "macsonport": 1, 
+  "port": "Ethernet28"
+ }
+]
+/ -> 
+```
 
 
 You may also use this to get the mac addresses from an ethernet port, if you do not know the mac address:
@@ -144,10 +145,12 @@ xClarity Controller with the address '10.2.3.(node number)', and the username an
 password of your choice.  Here we will use a group to hold the patterns and just define the nodes
 with just the single group membership:
 
-    nodegroupdefine compute bmc=10.2.3.{n1}
-    nodegroupattrib compute -p bmcuser bmcpass
-    nodegroupattrib compute net.<name>.ipv4_gateway=<IP of gateway for xClarity Controllers to use)
-    nodedefine n1-n42 groups=compute
+```bash
+nodegroupdefine compute bmc=10.2.3.{n1}
+nodegroupattrib compute -p bmcuser bmcpass
+nodegroupattrib compute net.<name>.ipv4_gateway=<IP of gateway for xClarity Controllers to use)
+nodedefine n1-n42 groups=compute
+```
 
 This will interactively prompt for username and password. This is the desired username and password not necessarily the current.
 If the devices are at factory default, then they will be changed automatically to the password and username given.
@@ -181,18 +184,24 @@ automate.  In this mode, ethernet mac addresses will be collected to a `net.<n>.
 
 The policy can be defined on a per node basis or by group.  Here we will select `permissive,pxe` across the board, and enable PXE collection to a field called `net.pxe.hwaddr`:
 
-    nodegroupattrib everything discovery.policy=permissive,pxe net.pxe.bootable=true
+```bash
+nodegroupattrib everything discovery.policy=permissive,pxe net.pxe.bootable=true
+```
 
 The policy can be changed on the fly, if for example you want `open` or `permissive`
 during initial deployment, but change to `manual` after systems are up:
 
-    nodegroupattrib everything discovery.policy=manual
+```bash
+nodegroupattrib everything discovery.policy=manual
+```
 
 If you have a system that needs to be replaced, you can use manual discovery as
 documented in the previous section or temporarily override the policy for just the
 one node:
 
-    nodeattrib n3 discovery.policy=open
+```bash
+nodeattrib n3 discovery.policy=open
+```
 
 ### Defining required attributes on the nodes, enclosure managers, and switches
 
@@ -201,27 +210,37 @@ has a management port plugged into a switch called `r8e1` on port 8.
 
 First we set the enclosure attributes on the nodes:
 
-    nodeattrib n1-n4 enclosure.manager=enc1 enclosure.bay={n1}
-    
+```bash
+nodeattrib n1-n4 enclosure.manager=enc1 enclosure.bay={n1}
+```
+
 We then make sure the enclosure manager is a node and configure the location of
 it's switch port:
 
-    nodeattrib enc1 net.switchport=8 net.switch=r8e1
-    
+```bash
+nodeattrib enc1 net.switchport=8 net.switch=r8e1
+```
+
 By default, confluent will assume it can use SNMPv1/v2c, community string `public`
 to communicate with the switch.  To use a different SNMP community string, make
 sure the ethernet switch is defined as a node and set a value for secret.snmpcommunity:
 
-    nodedefine r8e1 secret.snmpcommunity=otherpublic
+```bash
+nodedefine r8e1 secret.snmpcommunity=otherpublic
+```
 
 Or for SNMPv3, use secret.hardwaremanagementuser and hardwaremanagementpassword:
 
-    nodedefine r8e1 secret.hardwaremanagementuser=snmpv3user secret.hardwaremanagementpassword=snmpv3password
+```bash
+nodedefine r8e1 secret.hardwaremanagementuser=snmpv3user secret.hardwaremanagementpassword=snmpv3password
+```
 
 In the event of a rackmount system, such as the [Thinksystem SD650](http://www3.lenovo.com/us/en/data-center/servers/racks/Lenovo-ThinkSystem-SR650/p/77XX7SRSR65),
 simply assign net attributes directly to the node:
 
-    nodeattrib n1-n20 net.switchport={n1} net.switch=r8e1
+```bash
+nodeattrib n1-n20 net.switchport={n1} net.switch=r8e1
+```
 
 
 ### Resetting automatic discovery process for nodes
@@ -229,11 +248,15 @@ simply assign net attributes directly to the node:
 If the wiring or configuration of set of nodes was incorrect at time of discovery,
 the situation can be corrected by doing [manual discovery](#manual-discovery) or by resetting the discovery process for the nodes.  Resetting the automatic discovery process can be done by clearing the `pubkeys.tls_hardwaremanager` attribute:
 
-    nodeattrib n1-n4 pubkeys.tls_hardwaremanager=
-    
+```bash
+nodeattrib n1-n4 pubkeys.tls_hardwaremanager=
+```
+
 This can be combined with a configuration change.  For example, if we decide that the previous scheme of 10.2.3.{n1} really should be 10.2.4.{n1}:
 
-    nodeattrib n1-n42 hardwaremanagement.manager=10.2.4.{n1} pubkeys.tls_hardwaremanager=
+```bash
+nodeattrib n1-n42 hardwaremanagement.manager=10.2.4.{n1} pubkeys.tls_hardwaremanager=
+```
 
 This will change the desired ip address and reset the discovery process for those nodes
 to apply the requested change.

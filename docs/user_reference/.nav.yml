@@ -1,0 +1,16 @@
+nav:
+  - osdeploy.md
+  - noderange.md
+  - attributeexpressions.md
+  - confluentdiscovery.md
+  - confluentrackview.md
+  - switchportattribs.md
+  - thermalpowerconfluent.md
+  - confluentconfignotes.md
+  - chainedsmmdiscovery.md
+  - diskless_memory_usage.md
+  - centosdeploy.md
+  - el7deploy.md
+  - suse15deploy.md
+  - ubuntudeploy.md
+  - updatesw_rhel.md

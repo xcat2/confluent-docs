@@ -1,7 +1,5 @@
 ---
-layout: page
 title: xCAT Installation for SUSE Linux Enterprise
-permalink: /documentation/installxcat_suse.html
 ---
 
 Note that for SUSE Linux Enterprise 15, the HA module is required to be available for xCAT install to succeed.

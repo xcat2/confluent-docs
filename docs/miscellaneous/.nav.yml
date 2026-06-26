@@ -1,0 +1,46 @@
+nav:
+  # Overview
+  - confluentvxcat.md
+  - projects.md
+  # Management and setup
+  - manageconfluent.md
+  - confluentadoptnode.md
+  - containerized-confluent.md
+  - confluentbackup.md
+  # Networking
+  - confignet.md
+  - confluentdhcp.md
+  - routeddeployment.md
+  - confluentpxedisco.md
+  # Security
+  - tlsdesign.md
+  - sshdesign.md
+  - osdeploysecurity.md
+  - makelimitedtls.md
+  # Diskless and custom images
+  - confluentdiskless.md
+  - confluentdiskless_arch.md
+  - customosimage.md
+  - raid-vroc-template.md
+  - samplepostscripts.md
+  # Collective
+  - collective_arch.md
+  # Platform-specific deployment
+  - proxmoxguide.md
+  - xccdeployment.md
+  - sd650sharednote.md
+  - sles12deploy.md
+  # Drivers and adapters
+  - doca2-10-intstall.md
+  - doca3-0-install.md
+  - bf3-troubleshooting.md
+  - nvidiagpudriverinstall.md
+  - broadcom-nic-driver-install.md
+  - rhinstallib.md
+  - rhinstallopa.md
+  - hpcxtroubleshooting.md
+  # Switches
+  - confluentcumulus.md
+  - nokia-confignotes.md
+  # Other
+  - energyhistogram.md

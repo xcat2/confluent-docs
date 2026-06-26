@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Adding an installed node to confluent SSH setup
-permalink: /documentation/confluentadoptnode.html
 ---
 
 This procedure will provide confluent SSH configuration to a node that was not installed by confluent.

@@ -1,0 +1,29 @@
+nav:
+  # Confluent deployment and discovery
+  - confluentosdeploy.md
+  - confluentosdeployment.md
+  - confluentlimitationsosdeploy.md
+  - confluentdiscoverysetting.md
+  - confluentnodeassign.md
+  - confluentswitchdisco.md
+  - confluentenclosuredisco.md
+  - collective.md
+  - remoteconfluent.md
+  - driverupdatemedia.md
+  - nodemedia_caveats.md
+  - rh8installib.md
+  - sle152ibinstall.md
+  # xCAT interoperation and legacy topics
+  - xcatconfluentsetup.md
+  - confluenttoxcat.md
+  - xcatconfignotes.md
+  - xcataddingsnmp.md
+  - sharedinstallnotes.md
+  - sharedtftpnotes.md
+  - installxcat_rhel.md
+  - installxcat_suse.md
+  - el7rste.md
+  - sles12rste.md
+  - xcatramrootibboot.md
+  - xcatstatelessimagesles152.md
+  - switchtonginx.md

@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Confluent API Documentation
-permalink: /documentation/developer/api.html
 ---
 
 Confluent models functionality in a hierarchical structure.  It is a RESTful or
@@ -24,7 +22,7 @@ to create a local account:
     # confetty create /users/apiuser role=Administrator
 
 With the above example, using 'apiuser' and the entered password in the user/password
-prompt will provide access when accessing the management server by http://servername:14005/.
+prompt will provide access when accessing the management server by http://servername:4005/.
 
 ## **Using python to access the API**
 All of the confluent command lines are implemented in python.  They serve
@@ -45,35 +43,37 @@ confluent protocol, as described in [remote confluent](../advanced_topics/remote
 
 
 For many common interactions, there is a convenient method on the session
-object called 'simple_noderange_command()'. To accomodate more complex
+object called 'simple_noderange_command()'. To accommodate more complex
 scenarios and map more directly to the underlying REST structure, the
 functions `create()`, `read()`, `update()`, and `delete()` are provided.
-See the client.py python API documentaion for more details.
+See the client.py python API documentation for more details.
 
-<!--
-## /discovery/
+## **Top-level collections**
+
+The root of the API presents the following collections:
+
+| Collection | Purpose |
+|------------|---------|
+| `/nodes/` | All defined nodes and every per-node operation |
+| `/noderange/` | The same per-node structure, applied to a noderange |
+| `/nodegroups/` | Node groups and their attributes |
+| `/users/` | Confluent user accounts |
+| `/usergroups/` | Confluent user groups |
+| `/deployment/` | OS deployment distributions, profiles, and media import |
+| `/discovery/` | Detection and onboarding of new systems |
+| `/networking/` | Switch-derived topology (MAC address tables, LLDP) |
+| `/storage/` | Remote storage/mount management |
+| `/events/` | Alert decoding and event handling |
+| `/staging/` | File upload staging used during deployment |
+| `/version` | The running confluent version |
+| `/uuid` | The confluent collective UUID |
+
+## **The discovery collection: /discovery/**
 
 The discovery collection gathers functionality related to detecting and scanning
-for new systems.
-
-## /discovery/detected/
-
-A collection of systems that have been detected (through scan or otherwise) but
-not yet a node or related to a node.
-
-## /discovery/log
-
-A log of discovery related activity including things being detected and things
-promoting to being a managed node.
-
-## /discovery/scan
-
-A resource to request an active scan.  Generally confluent will scan on startup
-and then passively listen for changes.  This resource can be used to explicitly
-request a scan be performed.  Results from such a scan will appear in the detected/
-collection.
-
--->
+for new systems, and promoting detected systems to managed nodes. Generally
+confluent scans on startup and then passively listens for changes, so detected
+systems appear here automatically as they are found.
 
 ## **API Structure**
 
@@ -285,7 +285,7 @@ the following fields:
             giving up
 * **acknowledge_timeout** - When waiting for an acknowledgement from the target,
                         how long to wait before evaluating the need to retrytime
-* **acknowledge** - Whether to expect an explicit acknowledgement.  For example, SNMP  <!-- Do all of these acronyms make sense? -->
+* **acknowledge** - Whether to expect an explicit acknowledgement.  For example, SNMP
                 traps do not have an SNMP mechanism to acknowledge receipt, so
                 this would be disabled for normal SNMP traps.  However, IPMI
                 PET alerts are SNMP traps, but provide a mechanism a receiver
@@ -354,7 +354,7 @@ Attributes can be accessed via the following groups:
 * **all** - Provides all possible attributes as well as current values
 * **current** - Provides only those attributes that have been given values
 
-When doing UPDATE, 'all' and 'current' will behave identically. The fields are    <!-- What fields? -->
+When doing UPDATE, 'all' and 'current' will behave identically. The fields are
 defined in the [attributes] document.  Each attribute has:
 
 * **value** - The current value of the attribute, after any potential expressions and
@@ -420,7 +420,7 @@ Each event has:
               the event. For example, "Progress", "Host Power", "Non Auth DIMMs"
 * **component_type** - A description of what type of entity the component is.
                       Examples are: "System Firmware", "Power Unit" and "Memory"
-* **event** - A text description of the event that occured
+* **event** - A text description of the event that occurred
 * **id** - A numerical value representing the id, useful for looking up the id
        against a database
 * **record_id** - An identifier associated with the event by the providing device 
@@ -433,8 +433,8 @@ Each event has:
 ### **Decoding alert data: /nodes/[nodename]/events/hardware/decode**
 
 This provides a facility for decoding and enriching alert data from a target.
-For example, an SNMP trap handler can use this to decode a PET alert from an   <!-- Document further. Also what does this mean -->
-IPMI source.  TODO: Document this further                  
+For example, an SNMP trap handler can use this to decode a PET (Platform Event
+Trap) alert originating from an IPMI source into a human-readable event.
 
 
 ### **Managing physical and virtual media: /nodes/[nodename]/media/[argument]**
@@ -446,6 +446,34 @@ Arguments include:
 * **current** - A collection of all uploaded and attached media
 * **uploads** - Manages process of uploading media to management controller for use in OS.
                 Will list current and completed uploads, until told to delete.
-* **attach** - Requests that BMC connect to another server and associate that URL with a media device,   <!-- Arguments needed? -->
+* **attach** - Requests that BMC connect to another server and associate that URL with a media device,
                 instructing BMC to use the file at the URL
 * **detach** - Detaches attached media or deletes an uploaded image or file
+
+
+### **Additional node resources**
+
+The following resources are also available under `/nodes/[nodename]/` and
+`/noderange/[noderange]/`. They map directly to the corresponding client
+commands, which are the most convenient way to explore them.
+
+* **power/inlets** and **power/outlets** - Power distribution unit (PDU) inlets
+  and outlets associated with the node, for environments where confluent manages
+  PDUs alongside servers.
+* **console/graphical**, **console/ikvm**, **console/ikvm_methods**,
+  **console/ikvm_screenshot** - Remote graphical (KVM) console access and a
+  screenshot of the current graphical console, where licensed and supported.
+* **deployment/lock**, **deployment/ident_image**, **deployment/remote_config/run**,
+  **deployment/remote_config/active** - Per-node OS deployment control, including
+  the deployment lock and remotely launched configuration (e.g. Ansible) runs.
+* **configuration/storage/** - Hardware storage controller configuration:
+  `all`, `arrays`, `disks`, and `volumes` for creating and managing RAID arrays
+  and drive usage (see the `nodestorage` command).
+* **configuration/management_controller/licenses** and **.../certificate** -
+  Management controller license installation and TLS certificate signing,
+  CSR generation, and installation (see the `nodelicense` and `nodecertutil`
+  commands).
+* **inventory/firmware/[category]** - In addition to `all`, firmware is broken
+  out into `core`, `adapters`, `disks`, and `misc` categories.
+* **support/servicedata** - Collect vendor service data (support archives) from
+  the node's management controller (see the `nodesupport` command).

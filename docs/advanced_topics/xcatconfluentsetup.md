@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Confluent setup in existing xCAT configuration
-permalink: /documentation/configconfluent_xcat.html
 ---
 
 In order to opt into using confluent as your console service, set the site table value for consoleservice:

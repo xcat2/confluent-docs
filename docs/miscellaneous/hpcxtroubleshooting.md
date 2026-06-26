@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Troubleshooting issues with hpcx
-permalink: /documentation/hpcxtroubleshooting.html
 ---
 
 # libnuma Error

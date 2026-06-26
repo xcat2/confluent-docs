@@ -1,3 +1,7 @@
+---
+title: Creating a scope-limited TLS certificate authority
+---
+
 This will create a certificate authority that is identical, but constrained.
 
 It will also create a certificate with SAN values limited to the authorized scope, as TLS

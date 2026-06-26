@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Managing hardware using confluent
-permalink: /documentation/manageconfluent.html
 ---
 
 As mentioned in the [configuring confluent](../getting_started/configureconfluent.md) section,

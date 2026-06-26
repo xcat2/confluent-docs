@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Using xCAT to install SLES12 on Intel RSTe
-permalink: /documentation/sles12rste.html
 ---
 
 xCAT does not currently consider the RSTe array as a default

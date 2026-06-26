@@ -1,9 +1,6 @@
 ---
-layout: page
 title: DOCA 2.10 Installation on RHEL 9.5
-permalink: /documentation/doca2-10-install.html
 ---
-
 
 The following procedure is for installing the NVIDIA DOCA stack (doca-ofed profile) on RHEL 9.5. 
 

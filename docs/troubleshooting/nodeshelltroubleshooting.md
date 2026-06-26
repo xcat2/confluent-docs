@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Confluent nodeshell and apt-get command
-permalink: /documentation/nodeshelltroubleshooting.html
 ---
 
 #### Running the `apt-get install` command can be interactive and so not suited for running through Confluent `nodeshell` command. 
