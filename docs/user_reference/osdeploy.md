@@ -16,7 +16,7 @@ generally detected automatically.
 | Enterprise Linux (RHEL, Rocky, AlmaLinux, CentOS Stream, Oracle Linux, openEuler) | 7, 8, 9, 10 |
 | Fedora | 41, 42 (handled as Enterprise Linux 10) |
 | SUSE Linux Enterprise / openSUSE Leap | 12, 15, 16 |
-| Ubuntu | 18.04, 20.04, 22.04 (and newer when a matching profile exists) |
+| Ubuntu | 18.04, 20.04, 22.04, 24.04, 26.04 (and newer when a matching profile exists) |
 | Debian | 12 and newer |
 | VMware ESXi | Version detected from the install media |
 | Red Hat Virtualization Host (RHV-H) | 4.x |
