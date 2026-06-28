@@ -2,24 +2,20 @@
 title: Containerized confluent run 
 ---
 
-Synopsys
----------------
+## Synopsys
 
  Containerized confluent image with docker
 
-Solution
----------------
+## Solution
 
 To create a containerized confluent image with docker we need to edit the custom file "/confluent/container/Dockerfile 
 
-Constrains:
----------------
+## Constrains:
 
 Container must be run privileged.
 Container must be run with the ' --net = host' flag.
 
-Dockerfile customization
----------------
+## Dockerfile customization
 
 ```bash
 1  FROM almalinux:8    
@@ -54,8 +50,7 @@ These will add to bin and run the "runconfluent.sh" file that will install and r
 (default /confluent/container/runconfluent.sh)
 
 
-Reference 
----------------
+## Reference
 
 <https://github.com/lenovo/confluent/blob/master/container/Dockerfile>
 <https://github.com/lenovo/confluent/blob/master/container/runconfluent.sh>

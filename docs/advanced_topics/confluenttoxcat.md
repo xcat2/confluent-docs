@@ -8,7 +8,7 @@ confluent does not require a dynamic range and does not require net-snmp-perl.
 Additionally, confluent supports standby power discovery in a number of scenarios,
 enabling management and console access prior to turning on the system.
 
-# Preparing for PXE mac collection
+## Preparing for PXE mac collection
 
 In order to direct confluent to retain PXE mac addresses, simply set the `net.bootable` attribute to 1 and ensure that `discovery.policy` includes PXE:
 
@@ -16,7 +16,7 @@ In order to direct confluent to retain PXE mac addresses, simply set the `net.bo
 # nodegroupattrib everything discovery.policy=permissive,pxe net.bootable=1
 ```
 
-# Perform normal confluent discovery
+## Perform normal confluent discovery
 
 Confluent discovery may be done against the BMC device or against PXE attempts. If using the network switch as a reference for discovery, be sure
 to use the dedicated management port switch and port for standby power discovery, and the network boot port switch and port if doing PXE. Detailed
@@ -26,7 +26,7 @@ procedures on a few strategies for discovery are:
 * [Discovering systems in enclosures](confluentenclosuredisco.md)
 * [Discovering systems manually](confluentnodeassign.md)
 
-# Populating xCAT with node information
+## Populating xCAT with node information
 
 Confluent has a command called `confluent2xcat` to export confluent data to xCAT. It can generate one of two files.
 

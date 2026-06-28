@@ -30,4 +30,5 @@ defined in both files. If you are having issues with the network on the node, we
 `00-installer-config.yaml` file given that you have the right networking config in the interface file configured by 
 confluent. 
 
-Note: The values set in the `{interface}-confluentcfg.yaml` file are retrieved from the nodeattributes set for that particular node
+!!! note
+    The values set in the `{interface}-confluentcfg.yaml` file are retrieved from the nodeattributes set for that particular node

@@ -83,7 +83,7 @@ systems appear here automatically as they are found.
 
 ## **API Structure**
 
-The Confluent API structure is set up like a psuedo file system. Reading these paths
+The Confluent API structure is set up like a pseudo file system. Reading these paths
 will list the respective data. To update, the same path is given, along with the data to
 be used in the update, such as *{'state' : [newstate]}*. 
 
@@ -158,7 +158,7 @@ the default OS boot is not desired, but only for one boot.  Parameters are:
                with persistent set to True should reboot from network from that
                point on, rather than reverting to default boot order after next
                boot
-* **nextdevice** - The device/psuedo device to use in the next boot attempt.  This
+* **nextdevice** - The device/pseudo device to use in the next boot attempt.  This
                is a single device and not an order of devices.  The recognized
                devices are:
   * *default* - Use the usual boot sequence behavior without any overrides
@@ -275,9 +275,10 @@ this provides the following mechanisms:
 * **enabled** - Enable or disable NTP
 * **servers** - Collection of servers currently configured. Can create new or update existing
 
-Note that in confluent, efforts are made to correct timestamps with detectable
-systematic errors, so local time on the management controller may not necessarily
-impact accuracy of data such as event log timestamps.
+!!! note
+    In confluent, efforts are made to correct timestamps with detectable
+    systematic errors, so local time on the management controller may not necessarily
+    impact accuracy of data such as event log timestamps.
 
 #### **Managing alert destinations: /nodes/[nodename]/configuration/management_controller/alerts/destinations/**
 

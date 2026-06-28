@@ -7,7 +7,7 @@ multiple ways to do things. For example, this document is going to skip configur
 an external DHCP server, automatic configuration based on physical location, and other topics. See the more detailed
 documentation for more detail and alternative strategies for particular areas.
 
-# Installing confluent
+## Installing confluent
 
 To install confluent as well as optional requirements, after adding a yum repository according to [download page](../downloads.md):
 
@@ -20,7 +20,7 @@ To install confluent as well as optional requirements, after adding a yum reposi
 
 More details, including firewall rules and enabling GUI login may be found in the dedicated install page.
 
-# Specifying some global behavior
+## Specifying some global behavior
 
 In confluent, most all configuration is node oriented and can be derived from a group. A default group
 called 'everything` is automatically added to every node. It provides a method to indicate global settings.
@@ -54,13 +54,13 @@ everything: secret.hardwaremanagementpassword: ********
 everything: secret.hardwaremanagementuser: ********
 ```
 
-# Leave IPv6 enabled
+## Leave IPv6 enabled
 
 Even if you are not using it explicitly, IPv6 needs to be enabled on interfaces. Generally this is default, but if you have disabled IPv6 on an interface, then re-enable it.
 No address needs to be assigned explicitly, no DHCPv6 server is needed.  The only thing required is that deployment interfaces have an automatic IPv6 address beginning with
 fe80::
 
-# Defining nodes
+## Defining nodes
 
 
 Nodes may contain any number of attributes. In this document, everything is defined at the group level, so we only need define the names. Here we
@@ -71,7 +71,7 @@ will use a simple n[number] scheme, though any scheme may be used.
 ```
 
 
-# Establishing hardware management through confluent discovery
+## Establishing hardware management through confluent discovery
 
 It is possible to skip discovery and manually configure the xClarity Controllers and define them to confluent. On the other extreme, it is possible to configure
 fully automatic discovery based on physical location.
@@ -138,13 +138,14 @@ n3: on
 n4: off
 ```
 
-# Preparing for OS deployment
+## Preparing for OS deployment
 
 If desiring only to prepare for hardware management, then the guide has completed. However, confluent also optionally supports OS deployment.
 
-# Preparing name resolution
+## Preparing name resolution
 
-Note that no particular name resolution solution is required, but this document suggests a basic strategy if no strategy is already in place.
+!!! note
+    No particular name resolution solution is required, but this document suggests a basic strategy if no strategy is already in place.
 
 We start by building /etc/hosts. This may be done manually, or noderun can be used to quickly generate lines for /etc/hosts. First a dry run to make sure it looks correct:
 
@@ -171,7 +172,7 @@ Finally, to quickly have a dns server, installing and starting dnsmasq can make 
 
 Any time /etc/hosts is updated, restart dnsmasq to have it pick up changes.
 
-# Initializing confluent OS deployment.
+## Initializing confluent OS deployment.
 
 The osdeploy command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used
 to interactively prompt on the options that are available:
@@ -211,7 +212,7 @@ Updated: genesis-x86_64
 Site initramfs content packed successfully
 ```
 
-# Importing Install media
+## Importing Install media
 
 The iso of a supported OS may be imported by using the `osdeploy import` command, for example:
 
@@ -222,10 +223,11 @@ complete: 100.00%
 Deployment profile created: rhel-8.2-x86_64-default
 ```
 
-Note that a new directory exists in /var/lib/confluent/public/os/rhel-8.2-x86_64-default. This is intended to be freely editable for customization
-as desired.
+!!! note
+    A new directory exists in /var/lib/confluent/public/os/rhel-8.2-x86_64-default. This is intended to be freely editable for customization
+    as desired.
 
-# Deploying a node
+## Deploying a node
 
 To initiate network deployment of the profile above, the nodedeploy command may be used (TIP: the profile name like many other things may be tab completed when used interactively):
 

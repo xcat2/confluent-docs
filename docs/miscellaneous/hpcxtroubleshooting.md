@@ -2,7 +2,7 @@
 title: Troubleshooting issues with hpcx
 ---
 
-# libnuma Error
+## libnuma Error
 
 When using hpcx for MPI jobs on RHEL 9.5, the following error message may be displayed:
 
@@ -16,7 +16,7 @@ To keep this issue from happening, install the following package:
 numactl-devel-2.0.18-2.el9.x86_64
 ```
 
-# Multicast Errors
+## Multicast Errors
 
 The following errors may be reported when running an MPI job with hpcx:
 

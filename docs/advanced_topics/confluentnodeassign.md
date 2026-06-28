@@ -2,10 +2,11 @@
 title: Manual discovery with nodediscover assign
 ---
 
-Note that discovery in confluent is an optional process intended to aid with automatic gathering of mac addresses,
-configuring IP addresses and authentication of management controllers (e.g. xClarity Controller) when they may not have
-a viable or known IP address. If wanting to use confluent in an environment where the onboarding is otherwise handled,
-you may want to skip ahead to [managing hardware using confluent](../miscellaneous/manageconfluent.md).
+!!! note
+    Discovery in confluent is an optional process intended to aid with automatic gathering of mac addresses,
+    configuring IP addresses and authentication of management controllers (e.g. xClarity Controller) when they may not have
+    a viable or known IP address. If wanting to use confluent in an environment where the onboarding is otherwise handled,
+    you may want to skip ahead to [managing hardware using confluent](../miscellaneous/manageconfluent.md).
 
 Once parameters have been [configured](../getting_started/configureconfluent.md) such as desired username and password,
 discovery can be performed to push that configuration from the confluent configuration into the actual configuration on the devices.
@@ -14,7 +15,7 @@ Confluent is capable of fully automated onboarding of equipment based on either 
 this would require things that are either not applicable, not known, or not allowed. In such circumstancecs, there are manual
 methods to aid in simplified onboarding kicked off by manual data despite those devices still not yet having viable configuration.
 
-# Showing currently known data
+## Showing currently known data
 
 By default confluent is always trying to passively gather data about a network. It is however prudent to request that confluent actively scan the environment to recognize new devices or update stale information.  If wanting to purge all data to ensure no stale data
 is visible, clearing the discovery information can be done by executing:
@@ -47,7 +48,7 @@ Further attributes may be defined on this line, in this example we are taking ad
 
 The specified node at this point can be [managed by confluent](../miscellaneous/manageconfluent.md).
 
-# Bulk manual discovery
+## Bulk manual discovery
 
 The `nodediscover` command can accept a csv file of data and handle defining and associating devices. Here we will use nodediscover
 list to create a starting point:
@@ -79,8 +80,9 @@ add a `bmc` column to the CSV to specify the desired IP (which need not be the s
     DVJJ1042,n3,172.30.170.3
     DVJJ1003,n4,172.30.170.4
 
-Note that if you receive an error like `Nodename is a required field`, check for any completely blank lines, for example at the
-end of the file. Delete any such lines and try again.
+!!! note
+    If you receive an error like `Nodename is a required field`, check for any completely blank lines, for example at the
+    end of the file. Delete any such lines and try again.
     
 
 This file can be processed by nodediscover to associate all the serial numbers with node names:

@@ -6,7 +6,7 @@ Confluent maintains its database in /etc/confluent/cfg
 
 For a plain text backup and restore capability, the `confluentdbutil` utility is provided.
 
-# Backing up the database
+## Backing up the database
 
 The recommended approach is to do at least one interactive backup:
 
@@ -36,7 +36,7 @@ collective.json  main.json
 This backup is a full backup, but lacks a keys.json file to decrypt the content, and thus
 cannot be restored by itself.  
 
-# Restoring from backup
+## Restoring from backup
 
 If following the example above, and desiring to restore from the '/tmp/unattended/' backup, first
 copy in a keys.json file from the interactive backup:
@@ -60,7 +60,7 @@ If running the restore as root, then you may need to change ownership back to co
 ```
 
 
-# Redacting configuration
+## Redacting configuration
 
 Additionally, `confluentdbutil dump -r` will generate a dump that redacts the
 potentially sensitive material, if wanting to share for diagnostic purposes.

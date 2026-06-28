@@ -28,7 +28,7 @@ At this point, source the script below for confluent command line functionality 
 source /etc/profile.d/confluent_env.sh
 ```
 
-# Enabling http connectivity for OS Deployment, REST API usage, and the Web UI
+## Enabling http connectivity for OS Deployment, REST API usage, and the Web UI
 
 If you have SELinux enforcing, you need to allow httpd to make network
 connections:
@@ -87,7 +87,7 @@ systemctl enable httpd --now
 
 If wanting to use nginx instead of Apache, then see this [document](../advanced_topics/switchtonginx.md) for details.
 
-# Web UI Forwarding feature
+## Web UI Forwarding feature
 
 The WebUI offers dynamic port forwarding.  To enable this feature, ensure TCP ports starting from port 3900 through however many ports you anticipate concurrently using.
 Otherwise, you may opt to disable the firewall:
@@ -97,7 +97,7 @@ systemctl stop firewalld
 systemctl disable firewalld
 ```
 
-# Web UI Login
+## Web UI Login
 
 In terms of confluent itself, it is by default set up without any user access.  To enable a user that can ssh into your server to access the web interface:
 
@@ -118,7 +118,7 @@ https://[server]/lenovo-confluent/
 ```
 
 
-# Preparing for discovery if firewall enabled
+## Preparing for discovery if firewall enabled
 
 If wanting to use the confluent discovery capabilities and you have a firewall enabled, further firewall configuration
 is required. First, check /etc/firewalld/firewalld.conf and ensure that the FirewallBackend is set to iptables,
@@ -141,7 +141,7 @@ firewall-cmd --reload
 ```
 
 
-# Getting ready to use confluent
+## Getting ready to use confluent
  
 Proceed to [configuring confluent](configureconfluent.md) for information on
 adding groups and nodes.

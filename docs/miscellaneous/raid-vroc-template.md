@@ -2,13 +2,11 @@
 title: Template for RAID/VROC boot device 
 ---
 
-Synopsis
----------------
+## Synopsis
 
 Add software RAID/md RAID for RHEL/Rocky Linux/Alma Linux, and VROC support for booting devices for RHEL/Rocky Linux/Alma Linux and SLES. 
 
-Solution
----------------
+## Solution
 
 Confluent has a built-in feature to be able to load custom files in different parts of the booting process.
 
@@ -17,8 +15,7 @@ After editing the sample file, place it in **` /var/lib/confluent/public/os/<<pr
 
 For software RAID/md RAID instances please find below as a sample file may adapt for your needs:
 
-Example file for software RAID/md RAID
----------------
+## Example file for software RAID/md RAID
 
 
 ```bash
@@ -47,8 +44,7 @@ Reference  <https://github.com/lenovo/confluent/blob/master/misc/swraid>
 
 For VROC instances, please apply same principle as above (edit with needed info) :
 
-Example file for VROC RAID:
----------------
+## Example file for VROC RAID:
 
 
 ```bash

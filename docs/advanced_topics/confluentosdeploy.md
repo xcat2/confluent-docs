@@ -31,11 +31,11 @@ Again, if root login by password is desired (if unspecified, only key based logi
 
 Keep in mind that the OS being deployed may prohibit ssh password login by root as a default, see `PermitRootLogin` in sshd_config for your distribution for more details.
 
-# IPv6 configuration
+## IPv6 configuration
 
 Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.  Full IPv6 and IPv6 exclusive deployment is supported if desired, but even a "pure" IPv4 network will leverage the automatic IPv6 fe80:: for some key features.
 
-# Name resolution (optional)
+## Name resolution (optional)
 
 An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. If such a solution is unavailable, this section provides a strategy to quickly generate IP addresses and use
 `dnsmasq` as a name server.
@@ -69,7 +69,7 @@ With an /etc/hosts appropriately generated, use the package management software 
 If /etc/hosts is updated, restart dnsmasq, as dnsmasq does not automatically update on update of /etc/hosts.
 
 
-# DHCP (optional)
+## DHCP (optional)
 
 DHCP is not required or if present, may be externally managed.  Skip this section if either a DHCP server is already in place or if there is no requirement for a dynamic pool of DHCP addresses on the network.  Confluent will not require any DHCP dynamic range if one is not available.  However, if wanting to provide a dynamic DHCP range for various devices that may also exist on the network, `dnsmasq` can provide that functionality.  If using `dnsmasq` on the same system as confluent for DHCP function, add the following to /etc/dnsmasq.conf to allow both dnsmasq and confluent to share the network:
 
@@ -85,7 +85,7 @@ If using a dynamic range on a network, instruct confluent to use `firmwaredhcp` 
 
     # nodegroupattrib everything net.ipv4_method=firmwaredhcp
 
-# Having a Genesis network boot environment (optional)
+## Having a Genesis network boot environment (optional)
 
 The 'genesis' image is a very small network booted linux environment for servicing/rescue.  When deployed, the node can run linux commands and can be sshed into as if it
 were a normal OS, but it won't touch any disks.
@@ -96,7 +96,7 @@ the package `confluent-genesis-x86_64` if a genesis profile is desired.
 `osdeploy initialize` (see next step) has an option to generate a genesis profile. Once used, a genesis based profile would be in /var/lib/confluent/public/os/genesis-x86_64/.  Of particular interest is the
 `/var/lib/confluent/public/os/gensis-x86_64/scripts/onboot.sh` file to govern automatic action, or use ssh after nodes boot to manually perform actions.
 
-# Preparing for TFTP (optional)
+## Preparing for TFTP (optional)
 
 Note that confluent now supports both PXE and HTTP Boot. If using purely HTTP boot, then you do not need a tftp server at all. Additionally, 
 Secureboot is only fully supported with HTTP Boot. To support
@@ -106,14 +106,14 @@ clients that are PXE booting, ensure that tftp is installed.  Note that xCAT may
 
 `osdeploy initialize` in an upcoming step will help initialize needed tftp content.
 
-# Configuring nodes for HTTP Boot (optional)
+## Configuring nodes for HTTP Boot (optional)
 
 If wanting to use HTTP Boot instead, here is an example to configure Lenovo systems to use HTTP instead of PXE boot:
 
     # nodeconfig d3-d6 NetworkStackSettings.IPv4PXESupport=disable NetworkStackSettings.IPv4HTTPSupport=enable
 
 
-# Initializing OS deployment configuration
+## Initializing OS deployment configuration
 
 The `osdeploy initialize` command is used to prepare a confluent server to deploy operating systems.  For first time setup, run osdeploy initialize interactively to be walked through the various options:
 
@@ -122,7 +122,7 @@ The `osdeploy initialize` command is used to prepare a confluent server to deplo
 Every option provides a command line flag to use instead of -i if wanting to run osdeploy initialize in a non-interactive fashion opting into the specified options.
 
 
-# Importing an install source from media
+## Importing an install source from media
 
 The `osdeploy import` is used to take recognized installation media and produce stock OS deployment profiles:
 
@@ -131,7 +131,7 @@ The `osdeploy import` is used to take recognized installation media and produce 
     complete: 100.00%    
     Deployment profile created: rhel-8.2-x86_64-default
 
-# Customizing or copying a profile
+## Customizing or copying a profile
 
 A deployment profile is simply the collection of files in /var/lib/confluent/public/os/<profilename>.  The stock profile may be edited in place, however to create a copy for customization, it is as straightforward as:
 
@@ -142,7 +142,8 @@ A deployment profile is simply the collection of files in /var/lib/confluent/pub
 
 For Ubuntu profiles, you also need to modify profile.yaml to update the profile name embedded in the kernel arguments, and then run `osdeploy updateboot newprofilenamehere`.
 
-Note that not all profiles contain private data, by default diskless images and captured clones have an encryption key in private, but scripted installs do not. Further note that a profile name may experience problems if the profile name is longer than 73 characters.
+!!! note
+    Not all profiles contain private data, by default diskless images and captured clones have an encryption key in private, but scripted installs do not. Further note that a profile name may experience problems if the profile name is longer than 73 characters.
 
 If having a lot of shared content, it may be wise to employ symbolic links to explicitly share content rather than creating several copies of the same content (scripts or otherwise). It may also be a good idea to use git to manage and track changes as well.
 
@@ -164,7 +165,7 @@ Skipping update of scripts/firstboot.sh as current copy was customized or no man
 
 
 
-# Specifying custom postscripts or ansible plays
+## Specifying custom postscripts or ansible plays
 
 A number of phases are opened up for injecting custom scripts or ansible plays.  Scripts are executed directly on the deployment server while ansible plays are executed by the deployment server targeting
 the deploying system as if it were specified as a host in the play.
@@ -187,13 +188,13 @@ For diskless installs, scripts/onboot.d is available.  Note that content under /
 
 Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
 
-# Handling xClarity Controller or TSM on shared ports (on board network or OCP)
+## Handling xClarity Controller or TSM on shared ports (on board network or OCP)
 
 If wanting to move the xClarity Controller or TSM to be accessed over a port shared with the operating system, see either `pre.custom` of an install profile or `onboot.sh` of the genesis profile for examples of how to
 incorporate `configbmc` into a Genesis boot or an install. This will move the network port to allow out of band discovery to continue and set username
 and password remotely.
 
-# Requesting os deployment
+## Requesting os deployment
 
 Even before discovery, nodedeploy is able to request that the next boot be into a profile:
 
@@ -204,28 +205,29 @@ After the xClarity Controller or equivalents are accesible, it can also initiate
     # nodedeploy <nodes> -n rhel-8.2-x86_64-default
 
 
-# Requesting node identifiers from nodeinventory
+## Requesting node identifiers from nodeinventory
 
 If discovery has been skipped and a BMC has been added manually, then the following command will populate attributes needed for deployment for most scenarios:
 
     # nodeinventory node -s
 
-# Manually indicating node identifiers
+## Manually indicating node identifiers
 
 For many users, node identifiers will be automatically gathered by node discovery process.  However, the discovery process is optional, and if
 not wanting to use the process, or using servers that are not supported by the discovery process, then it is possible to feed the data into the requisite attributes rather than using a discovery process.  For a MAC address:
 
     # nodeattrib node net.hwaddr=00:01:02:03:04:05
 
-Note that in discovery, we tend to prefer the UUID, as it makes the boot process the most adaptive for dealing with multi-nic booting with only a single identifier.  It's also more commonly available
-in nodeinventory across systems.  However, for certain non-Lenovo systems, the UUID may not be reliable and the MAC address can be used.  Also if MAC addresses are more familiar, they may be used.
+!!! note
+    In discovery, we tend to prefer the UUID, as it makes the boot process the most adaptive for dealing with multi-nic booting with only a single identifier.  It's also more commonly available
+    in nodeinventory across systems.  However, for certain non-Lenovo systems, the UUID may not be reliable and the MAC address can be used.  Also if MAC addresses are more familiar, they may be used.
 
 
 Alternatively, a system UUID may be used instead:
 
     # nodeattrib node id.uuid=c70998ec-0585-45da-85f0-f06717ec97e6
 
-# Next steps
+## Next steps
 
 With OS deployment ready, depending on circumstances it may be appropriate to move on to:
 

@@ -2,6 +2,22 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Heading and prose cleanup
+
+### Changed
+- Normalized heading levels so each page has a single H1 (the page title) with
+  sections at H2 and below, fixing pages that used multiple H1 headings for
+  sections (which broke the on-page table of contents).
+- Converted legacy setext (`====` / `----`) headings to ATX (`#` / `##`).
+
+### Added
+- Converted standalone "Note that ..." paragraphs to Material `!!! note`
+  admonitions for better scannability.
+
+### Fixed
+- Spelling typos (pseudo, governed, existence, consumption, arbitrarily,
+  supported, minimum, Subiquity).
+
 ## Code-block modernization
 
 Completed the code-block conversion begun in the documentation revamp.

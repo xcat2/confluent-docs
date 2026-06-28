@@ -4,14 +4,14 @@ title: Using switch based discovery
 
 Confluent can identify unknown devices based on what network port they are connected to.
 
-# SNMP
+## SNMP
 For many industry switches, standard SNMP mibs are supported (QBRIDGE, BRIDGE, IF) to get the information.  If wanting to use SNMPv1/SNMPv2c, use the
 attribute 'secret.snmpcommunity' instead of `switchuser` and `switchpass` referenced below.
 
-# Cumulus
+## Cumulus
 For cumulus switches, install the affluent agent as documented in ['Using a Cumulus switch with confluent'](../miscellaneous/confluentcumulus.md)
 
-# Adding the ethernet switch
+## Adding the ethernet switch
 
 Adding an ethernet switch is done simply by adding the IP or a name that resolves to the switch:
 

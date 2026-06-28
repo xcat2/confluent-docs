@@ -6,14 +6,14 @@ The collective mode of confluent allows multiple confluent servers to act as one
 both high availability as well as scaling out to cover a larger number of servers with better
 performance.
 
-# Shared storage considerations
+## Shared storage considerations
 
 For operating system deployment, it is expected that /var/lib/confluent be identical across all
 collective members.  This may through use of an NFS mount, clustered filesystem, or synchronized
 local filesystem content. Confluent has no particular requirements of how this is done, but does
 expect it to be identical if OS deploymennt features are used.
 
-# Creating a collective
+## Creating a collective
 
 To begin, select a confluent server to begin constructing the collective from.  This page will use `mgt1`
 as the server to start from.  All other
@@ -43,7 +43,7 @@ Active collective members:
     mgt2
 ```
 
-Note that a two server collective is actually not redundant, as a minimun of 3 servers is required for redundancy.  Any member of a collective
+Note that a two server collective is actually not redundant, as a minimum of 3 servers is required for redundancy.  Any member of a collective
 can invite an additional member.  For example, extending the collective above to include mgt3 could be done from mgt1, but we will do it from mgt2
 in this case:
 
@@ -63,7 +63,7 @@ Active collective members:
     mgt3
 ```
 
-# OS Deployment considerations
+## OS Deployment considerations
 
 OS Deployment initialization (`osdeploy initialize`) operations must be done once per collective member to
 properly enable each member to provide deployment services to nodes.  For the SSH material (automation (-a) and CA (-s)), it
@@ -73,7 +73,7 @@ run osdeploy initialize -ask.
 Further, after adding a new collective member and performing collective initialize on the new host,
 run osdeploy initialize -k on all other hosts to trust the new collective member's SSH certificate authority.
 
-# Managing the nodes' active manager
+## Managing the nodes' active manager
 
 Once in a collective, each managed system must have a designated manager.  This can be changed on the fly.  If unspecified and a node goes through the discovery process, the member that performs the discovery claims the node by default. Additionally, automatic assignment in event of the collective.manager failing
 can be requested by setting `collective.managercandidates` which accepts a noderange of collective members to take over management in the case of
@@ -87,15 +87,16 @@ for a node or a group.  Issuing the same commands with different collective.mana
 # nodegroupattrib rack1 collective.manager=mgt1
 ```
 
-# Restoring a missing collective member by repeating the invite process
+## Restoring a missing collective member by repeating the invite process
 
 At any point, the invite process can be repeated for a member as if it were joining new, and it will replace the stale entry.
 
-# Limitations
+## Limitations
 
-Note that currently most functions are enabled to be identical across a collective,
-however /networking and /discovery apis are currently distinct per collective member.  This means
-that nodediscover commands and automatic discovery activity must be directly managed on the respective
-collective member.
+!!! note
+    Currently most functions are enabled to be identical across a collective,
+    however /networking and /discovery apis are currently distinct per collective member.  This means
+    that nodediscover commands and automatic discovery activity must be directly managed on the respective
+    collective member.
 
 Also note that all members of a collective must be running the same version of confluent and pyghmi.

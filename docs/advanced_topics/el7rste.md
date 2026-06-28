@@ -2,7 +2,7 @@
 title: Using xCAT to install EL7 on Intel RSTe
 ---
 
-# Directing xCAT to install to the RSTe array
+## Directing xCAT to install to the RSTe array
 
 The disk to specify would be `/dev/md/Volume0_0`.  To do this in xCAT, create a file called  /install/custom/el7rste.partitions containing the following:
 
@@ -25,7 +25,7 @@ Modify the osimage to use this file, for example:
 
 Future nodeset commands will target the RSTe volume.
 
-# Adding support to 7.4 (not needed for 7.5 or newer)
+## Adding support to 7.4 (not needed for 7.5 or newer)
 
 
 EL 7.5 and newer include support, for 7.4 it is required to download the RSTe software from Lenovo [support site](https://datacentersupport.lenovo.com/us/en/products/SERVERS/THINKSYSTEM/SD530/7X21/downloads/DS504607)

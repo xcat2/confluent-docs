@@ -24,4 +24,5 @@ In order to define the value of the setting for a particular Confluent managemen
 enabled: False
 ```
 
-Note that the setting defaults to "True".
+!!! note
+    The setting defaults to "True".

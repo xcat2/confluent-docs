@@ -6,7 +6,7 @@ In confluent, there is a concept of node groups to provide convenient shorthand 
 a way to group attributes together.  This may be ignored and everything be individually managed directly,
 but the groups may provide for easier configuration management at larger scale of components.
 
-# Use in noderanges
+## Use in noderanges
 
 Node groups can be used the same as nodes in [noderange syntax](../manuals/noderange.md).  
 
@@ -17,27 +17,28 @@ excluding `switches` and `pdus`, without having to continually update the `all` 
 nodegroupdefine all noderange=everything,-switches,-pdus
 ```
 
-Note that `noderange` groups do not contribute to providing attributes to the node attributes.
+!!! note
+    `noderange` groups do not contribute to providing attributes to the node attributes.
 
-# Attribute inheritence
+## Attribute inheritence
 
 Attributes on a group will flow into specific node attributes.  A node may inherit attributes from multiple groups at the same time.  If a node is in multiple groups, and more than one group offers an attribute value, the highest priority group overrides the lower priority group.  Priority proceeds from the first listed group to last group for highest to lower priority when looking at the `groups` attribute on a node.  Attributes defined on a node specifically will always supersede anything from groups.  A
 large number of attributes require individual values, but proceed in a predictable fashion.  These may be defined on a group level, leveraging [attribute expressions](../user_reference/attributeexpressions.md) to individualize the
 group setting accordingly.
 
-# Using `nodeattrib` versus `nodegroupattrib`
+## Using `nodeattrib` versus `nodegroupattrib`
 
 A point of confusion is using `nodeattrib [group] [attribute]=[value]` versus `nodegroupattrib [group] [attribute]=[value]`.
 The `nodeattrib [group]` command sets attributes individually on every *current* member of [group].  This means that the attribute will override anything from groups, even if there's a higher priority group.  It means that the attribute will not be set
 on future members of the group, as it wasn't targeted by nodeattrib.  The `nodegroupattrib` command specifically ensures the attribute is set on the group.  It will avoid overriding higher priority groups and it will be inherited as appropriate on any
 future nodes added to the group going forward.
 
-# The `everything` group
+## The `everything` group
 
 There is an implicit group called `everything`, intended to provide a shorthand in lieu of global settings.  Anything set
 on a node can be set on `everything`, and attributes set on `everything` will be inherited by all nodes, unless the specific attribute is superseded by a higher priority group or the node itself.
 
-# Bringing it together
+## Bringing it together
 
 Now a sample will be presented leveraging groups to define a representative configuration.
 

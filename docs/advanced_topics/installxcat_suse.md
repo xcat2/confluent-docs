@@ -2,7 +2,8 @@
 title: xCAT Installation for SUSE Linux Enterprise
 ---
 
-Note that for SUSE Linux Enterprise 15, the HA module is required to be available for xCAT install to succeed.
+!!! note
+    For SUSE Linux Enterprise 15, the HA module is required to be available for xCAT install to succeed.
 
 After adding the correct repository as indicated in the [download page](../downloads.md), you can install xCAT by running:
 

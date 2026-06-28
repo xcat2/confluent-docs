@@ -10,7 +10,7 @@ with the least network.
 
 That said, there are a number of strategies to perform deployment through a router:
 
-# Remote media boot
+## Remote media boot
 
 You can use the remote media to boot a confluent image, in conjunction with an 'identity' image.
 
@@ -52,10 +52,11 @@ so it is advised to only use `upload`.
 ```
 # nodemedia rackmount attach https://172.30.193.20/confluent-public/os/rocky-9.4-x86_64-default/boot.img
 ```
-Note that attach is frequently needed, as boot.img is often larger than the space allowed by the xClarity Controller for upload. However, the boot.img should contain
-no particularly confidential information.
+!!! note
+    Attach is frequently needed, as boot.img is often larger than the space allowed by the xClarity Controller for upload. However, the boot.img should contain
+    no particularly confidential information.
 
-# URL driven remote boot using iPXE
+## URL driven remote boot using iPXE
 
 This approach has the local DHCP server handle chainloading iPXE and sending a URL parameter only to iPXE.
 
@@ -76,7 +77,7 @@ To proceed:
 - osdeploy updateboot [osimagename]
 - Have the local DHCP configuration ultimately tell iPXE to boot `http://[ip.of.confluent.server]/confluent-api/boot/by-uuid/${uuid}/ipxe` or `http://[ip.of.confluent.server]/confluent-api/boot/by-mac/${mac:hexhyp}/ipxe`, depending on whether you collected UUID or mac addresses previously
 
-# DHCP delegation of PXE
+## DHCP delegation of PXE
 
 This approach has the local DHCP server only handling addressing, and pointing the booting system towards confluent for further instructions
 
