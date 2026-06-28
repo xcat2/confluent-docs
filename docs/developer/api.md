@@ -17,9 +17,11 @@ By default, confluent API is only accessible locally over a unix domain socket.
 To enable a remote user for HTTP access, the quickest method is to use confetty
 to create a local account:
 
-    # useradd apiuser
-    # passwd apiuser
-    # confetty create /users/apiuser role=Administrator
+```bash
+# useradd apiuser
+# passwd apiuser
+# confetty create /users/apiuser role=Administrator
+```
 
 With the above example, using 'apiuser' and the entered password in the user/password
 prompt will provide access when accessing the management server by http://servername:4005/.
@@ -30,11 +32,15 @@ as a good reference to review accessing the API.  For example, reviewing
 the source code of 'nodepower' can be very informative.  In general, a
 python developer will want to start by importing the client library:
 
-	import confluent.client as client
+```bash
+import confluent.client as client
+```
 
 Next, you'll want to create a client session:
 
-	session = client.Command()
+```bash
+session = client.Command()
+```
 
 By default, this will reach out to the local instance.  If you want to reach
 out to a remote server, you may pass that as a string to the `Command()` call,

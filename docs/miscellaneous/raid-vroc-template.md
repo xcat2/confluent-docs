@@ -21,23 +21,25 @@ Example file for software RAID/md RAID
 ---------------
 
 
-    DEVICES="/dev/sda /dev/sdb"
-    RAIDLEVEL=1
-    mdadm --detail /dev/md*|grep 'Version : 1.0' >& /dev/null && exit 0
-    lvm vgchange -a n
-    mdadm -S -s
-    NUMDEVS=$(for dev in $DEVICES; do
-       echo wipefs -a $dev
-    done|wc -l)
-    for dev in $DEVICES; do
-       wipefs -a $dev
-    done
-    # must use older metadata format to leave disks looking normal for uefi
-    mdadm -C /dev/md/raid $DEVICES -n $NUMDEVS -e 1.0 -l $RAIDLEVEL
-    # shut and restart array to prime things for anaconda
-    mdadm -S -s
-    mdadm --assemble --scan
-    readlink /dev/md/raid|sed -e 's/.*\///' > /tmp/installdisk
+```bash
+DEVICES="/dev/sda /dev/sdb"
+RAIDLEVEL=1
+mdadm --detail /dev/md*|grep 'Version : 1.0' >& /dev/null && exit 0
+lvm vgchange -a n
+mdadm -S -s
+NUMDEVS=$(for dev in $DEVICES; do
+   echo wipefs -a $dev
+done|wc -l)
+for dev in $DEVICES; do
+   wipefs -a $dev
+done
+# must use older metadata format to leave disks looking normal for uefi
+mdadm -C /dev/md/raid $DEVICES -n $NUMDEVS -e 1.0 -l $RAIDLEVEL
+# shut and restart array to prime things for anaconda
+mdadm -S -s
+mdadm --assemble --scan
+readlink /dev/md/raid|sed -e 's/.*\///' > /tmp/installdisk
+```
 
 
 Reference  <https://github.com/lenovo/confluent/blob/master/misc/swraid> 
@@ -49,21 +51,23 @@ Example file for VROC RAID:
 ---------------
 
 
-    DEVICES="/dev/sda /dev/sdb"
-    RAIDLEVEL=1
-    mdadm --detail /dev/md* | grep imsm >& /dev/null && exit 0
-    lvm vgchange -a n
-    mdadm -S -s
-    NUMDEVS=$(for dev in $DEVICES; do
-       echo wipefs -a $dev
-    done|wc -l)
-    for dev in $DEVICES; do
-       wipefs -a $dev
-    done
-    mdadm -C /dev/md/imsm0 $DEVICES -n $NUMDEVS -e imsm
-    mdadm -C /dev/md/md0_0 /dev/md/imsm0 -n $NUMDEVS -l $RAIDLEVEL
-    mdadm -S -s
-    mdadm --assemble --scan
+```bash
+DEVICES="/dev/sda /dev/sdb"
+RAIDLEVEL=1
+mdadm --detail /dev/md* | grep imsm >& /dev/null && exit 0
+lvm vgchange -a n
+mdadm -S -s
+NUMDEVS=$(for dev in $DEVICES; do
+   echo wipefs -a $dev
+done|wc -l)
+for dev in $DEVICES; do
+   wipefs -a $dev
+done
+mdadm -C /dev/md/imsm0 $DEVICES -n $NUMDEVS -e imsm
+mdadm -C /dev/md/md0_0 /dev/md/imsm0 -n $NUMDEVS -l $RAIDLEVEL
+mdadm -S -s
+mdadm --assemble --scan
+```
 
 
 Reference <https://github.com/lenovo/confluent/blob/master/misc/vroc> 

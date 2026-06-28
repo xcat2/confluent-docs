@@ -11,17 +11,23 @@ Modern confluent includes some configuration for both nginx and apache, but as p
 
 The procedure:
 
-    dnf install nginx
+```bash
+dnf install nginx
+```
 
 With nginx installed, examine the configuration.  For example, edit `/etc/nginx/nginx.conf` and uncomment the "Settings for a TLS enabled server" section.
 
 After enabling the nginx configuration:
 
-    osdeploy initialize -t
+```bash
+osdeploy initialize -t
+```
 
 The above will read the nginx configuration, detect where the TLS material should be, and generate it as appropriate.  Note if the configuration indicates directories that do not exist, you will have to `mkdir -p` yourself to ensure the directory exists for `osdeploy` to write to.  With this done:
 
-    systemctl disable httpd --now
-    systemctl enable nginx --now
+```bash
+systemctl disable httpd --now
+systemctl enable nginx --now
+```
 
 The system should now be running with nginx instead

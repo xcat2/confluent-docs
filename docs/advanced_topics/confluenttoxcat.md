@@ -12,7 +12,9 @@ enabling management and console access prior to turning on the system.
 
 In order to direct confluent to retain PXE mac addresses, simply set the `net.bootable` attribute to 1 and ensure that `discovery.policy` includes PXE:
 
-    # nodegroupattrib everything discovery.policy=permissive,pxe net.bootable=1
+```bash
+# nodegroupattrib everything discovery.policy=permissive,pxe net.bootable=1
+```
 
 # Perform normal confluent discovery
 
@@ -30,10 +32,14 @@ Confluent has a command called `confluent2xcat` to export confluent data to xCAT
 
 In order to generate a 'stanza' format file for mkdef (pulling in confluent group membership and other information):
 
-    # confluent2xcat d1-d8 -o nodes.stanza
+```bash
+# confluent2xcat d1-d8 -o nodes.stanza
+```
 
 In order to generate a CSV of node and mac addresses suitable for tabrestore mac:
 
-    # confluent2xcat d1-d8 -m mac.csv
+```bash
+# confluent2xcat d1-d8 -m mac.csv
+```
 
 

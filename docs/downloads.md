@@ -10,16 +10,22 @@ Select the repository appropriate for the major version.
 
 For Red Hat Enterprise Linux 10:
 
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el10/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+```bash
+rpm -ivh https://hpc.lenovo.com/yum/latest/el10/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+```
 
 For Red Hat Enterprise Linux 9:
 
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el9/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+```bash
+rpm -ivh https://hpc.lenovo.com/yum/latest/el9/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+```
 
 For Red Hat Enterprise Linux 8:
 
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el8/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
-    
+```bash
+rpm -ivh https://hpc.lenovo.com/yum/latest/el8/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+```
+
 If using Red Hat, On a new Minimal Install without Red Hat Subscription Manager configured. You will need additional packages from the install media. Follow instuctions to add the install media as a repository on [https://access.redhat.com/solutions/1355683](https://access.redhat.com/solutions/1355683 "https://access.redhat.com/solutions/1355683"). 
 
 Adding Repository for Ubuntu Linux
@@ -27,16 +33,20 @@ Adding Repository for Ubuntu Linux
 
 Download our gpg key:
 
-    # wget -O /etc/apt/trusted.gpg.d/confluent.gpg https://hpc.lenovo.com/apt/latest/lenovo-hpc.key
+```bash
+# wget -O /etc/apt/trusted.gpg.d/confluent.gpg https://hpc.lenovo.com/apt/latest/lenovo-hpc.key
+```
 
 Create the following apt configuration (e.g. as a file like /etc/apt/sources.list.d/lenovo-hpc.sources) if running Ubuntu 24.04 (noble):
 
 
-    Types: deb
-    URIs: https://hpc.lenovo.com/apt/latest/noble
-    Suites: noble
-    Components: main
-    Signed-By: /etc/apt/trusted.gpg.d/confluent.gpg
+```bash
+Types: deb
+URIs: https://hpc.lenovo.com/apt/latest/noble
+Suites: noble
+Components: main
+Signed-By: /etc/apt/trusted.gpg.d/confluent.gpg
+```
 
 Then run `apt update` to pull the repository information.
 
@@ -51,31 +61,33 @@ If you cannot reach the repository from your target system, you can download the
 
 The files may be browsed at [https://hpc.lenovo.com/downloads/]( https://hpc.lenovo.com/downloads/ "https://hpc.lenovo.com/downloads/" ):
 
-    #On a system that can reach https://hpc.lenovo.com/downloads/
-    #Download the package for your specific OS version
-    wget https://hpc.lenovo.com/downloads/latest-el9.tar.xz
-    #or
-    wget https://hpc.lenovo.com/downloads/latest-el10.tar.xz
-    #or
-    wget https://hpc.lenovo.com/downloads/latest-el8.tar.xz
-    #or
-    wget https://hpc.lenovo.com/downloads/latest-suse15.tar.xz
-    
-    #On your local system 
-    #Create folder for the local repository
-    mkdir /mnt/local_repo
-    
-    #Extract the repository 
-    tar -xf latest-el8.tar.xz -C /mnt/local_repo
-    #or
-    tar -xf latest-suse15.tar.xz -C /mnt/local_repo
-    
-    #Create lenovo-hpc.repo to point to the local repository
-    cd /mnt/local_repo/lenovo-hpc-el8/
-    #or
-    cd /mnt/local_repo/lenovo-hpc-suse15/
-    ./mklocalrepo.sh
-    
+```bash
+#On a system that can reach https://hpc.lenovo.com/downloads/
+#Download the package for your specific OS version
+wget https://hpc.lenovo.com/downloads/latest-el9.tar.xz
+#or
+wget https://hpc.lenovo.com/downloads/latest-el10.tar.xz
+#or
+wget https://hpc.lenovo.com/downloads/latest-el8.tar.xz
+#or
+wget https://hpc.lenovo.com/downloads/latest-suse15.tar.xz
+
+#On your local system 
+#Create folder for the local repository
+mkdir /mnt/local_repo
+
+#Extract the repository 
+tar -xf latest-el8.tar.xz -C /mnt/local_repo
+#or
+tar -xf latest-suse15.tar.xz -C /mnt/local_repo
+
+#Create lenovo-hpc.repo to point to the local repository
+cd /mnt/local_repo/lenovo-hpc-el8/
+#or
+cd /mnt/local_repo/lenovo-hpc-suse15/
+./mklocalrepo.sh
+```
+
 Further information
 =======================
 See the [documentation](index.md) for information on how to install and configure software provided in these repositories.

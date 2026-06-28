@@ -20,40 +20,48 @@ as the server to start from.  All other
 confluent servers will lose their configuration and the starting server configuration will replace it.
 On this server, generate an invitation for another server:
 
-    [root@mgt1 ~]# collective invite mgt2
-    bWd0MkD/e95FBKP6NrBP4VSZFbZkwDmH5XqiIi8kpf3B0hGWuP6bfAcimUrs/7mKfI78+sGOHz7+YFg5zBm7Ubzzpx2j
+```bash
+[root@mgt1 ~]# collective invite mgt2
+bWd0MkD/e95FBKP6NrBP4VSZFbZkwDmH5XqiIi8kpf3B0hGWuP6bfAcimUrs/7mKfI78+sGOHz7+YFg5zBm7Ubzzpx2j
+```
 
 On mgt2, use the data above to join the collective:
 
-    [root@mgt2 ~]# collective join mgt1 -i bWd0MkD/e95FBKP6NrBP4VSZFbZkwDmH5XqiIi8kpf3B0hGWuP6bfAcimUrs/7mKfI78+sGOHz7+YFg5zBm7Ubzzpx2j
-    Certificate generated successfully
-    Success
+```bash
+[root@mgt2 ~]# collective join mgt1 -i bWd0MkD/e95FBKP6NrBP4VSZFbZkwDmH5XqiIi8kpf3B0hGWuP6bfAcimUrs/7mKfI78+sGOHz7+YFg5zBm7Ubzzpx2j
+Certificate generated successfully
+Success
+```
 
 On any member, `collective show` will show current status of the collective:
 
-    [root@mgt2 ~]# collective show
-    Quorum: True
-    Leader: mgt1
-    Active collective members:
-        mgt2
+```bash
+[root@mgt2 ~]# collective show
+Quorum: True
+Leader: mgt1
+Active collective members:
+    mgt2
+```
 
 Note that a two server collective is actually not redundant, as a minimun of 3 servers is required for redundancy.  Any member of a collective
 can invite an additional member.  For example, extending the collective above to include mgt3 could be done from mgt1, but we will do it from mgt2
 in this case:
 
-    [root@mgt2 ~]# collective invite mgt3
-    bWd0M0Bur9G7oFs31jkHiNeFNIoMI7lz8O354e7OhJ5Scqq6goztkoZsSnThbNxih45c3UYs5vc33F1gJ8XX+9FJCw51
+```bash
+[root@mgt2 ~]# collective invite mgt3
+bWd0M0Bur9G7oFs31jkHiNeFNIoMI7lz8O354e7OhJ5Scqq6goztkoZsSnThbNxih45c3UYs5vc33F1gJ8XX+9FJCw51
 
-    [root@mgt3 ~]# collective join mgt2 -i bWd0M0Bur9G7oFs31jkHiNeFNIoMI7lz8O354e7OhJ5Scqq6goztkoZsSnThbNxih45c3UYs5vc33F1gJ8XX+9FJCw51
-    Certificate generated successfully
-    Success
-    
-    [root@mgt3 ~]# collective show
-    Quorum: True
-    Leader: mgt1
-    Active collective members:
-        mgt2
-        mgt3
+[root@mgt3 ~]# collective join mgt2 -i bWd0M0Bur9G7oFs31jkHiNeFNIoMI7lz8O354e7OhJ5Scqq6goztkoZsSnThbNxih45c3UYs5vc33F1gJ8XX+9FJCw51
+Certificate generated successfully
+Success
+
+[root@mgt3 ~]# collective show
+Quorum: True
+Leader: mgt1
+Active collective members:
+    mgt2
+    mgt3
+```
 
 # OS Deployment considerations
 
@@ -74,8 +82,10 @@ the current manager going out.
 Here are examples of setting it
 for a node or a group.  Issuing the same commands with different collective.manager is all that is required to move a node.
 
-    # nodeattrib n1 collective.manager=mgt1
-    # nodegroupattrib rack1 collective.manager=mgt1
+```bash
+# nodeattrib n1 collective.manager=mgt1
+# nodegroupattrib rack1 collective.manager=mgt1
+```
 
 # Restoring a missing collective member by repeating the invite process
 

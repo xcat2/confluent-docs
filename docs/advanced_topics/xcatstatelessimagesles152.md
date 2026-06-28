@@ -6,10 +6,12 @@ During the process of creating an `xCAT stateless image` under `SLES 15.2`, the 
 
 Repetitive output such as the following would be seen:
 
-    Loading repository data...
-    Reading installed packages...
-    'aaa_base' not found in package names. Trying capabilities.
-    No provider of 'aaa_base' found.
+```bash
+Loading repository data...
+Reading installed packages...
+'aaa_base' not found in package names. Trying capabilities.
+No provider of 'aaa_base' found.
+```
 
 In the example where the SLES 15.2 distribution has been extracted (`via the xCAT copycds utility`) onto an xCAT management node in the `/install/sle15.2/x86_64` directory, `the workaround` for the above problem would be to `rename the file` `/install/sle15.2/x86_64/1/repodata`, such as to `/install/sle15.2/x86_64/1/repodata-ignore`.
 
