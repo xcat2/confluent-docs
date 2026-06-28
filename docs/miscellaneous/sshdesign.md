@@ -1,5 +1,7 @@
 ---
 title: Confluent SSH Configuration
+tags:
+  - security
 ---
 
 ## SSH authentication architecture as configured by confluent

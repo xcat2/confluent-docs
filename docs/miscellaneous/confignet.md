@@ -1,5 +1,7 @@
 ---
 title: Confluent multi interface configuration
+tags:
+  - networking
 ---
 
 Confluent profiles initialized as of 3.3 or later contain the `confignet` network configuration facility. It is invoked

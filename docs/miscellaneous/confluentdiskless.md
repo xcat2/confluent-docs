@@ -1,5 +1,7 @@
 ---
 title: Using confluent diskless support
+tags:
+  - diskless
 ---
 
 Confluent offers the ability to create diskless images to boot operating systems. This facility is managed through the `imgutil` command.

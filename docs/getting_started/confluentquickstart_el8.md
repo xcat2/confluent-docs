@@ -1,5 +1,7 @@
 ---
 title: Confluent quickstart
+tags:
+  - deployment
 ---
 
 This document provides one example flow from installation to capable cluster. Confluent is very flexible and there are

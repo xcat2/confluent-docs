@@ -1,5 +1,7 @@
 ---
 title: Using PXE driven discovery
+tags:
+  - discovery
 ---
 
 While the best experience is through discovering the xClarity Controller first and having full management

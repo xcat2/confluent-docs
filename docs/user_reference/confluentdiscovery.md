@@ -1,5 +1,7 @@
 ---
 title: Node discovery and autoconfiguration with confluent
+tags:
+  - discovery
 ---
 
 !!! note

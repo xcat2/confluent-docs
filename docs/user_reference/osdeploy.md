@@ -1,5 +1,7 @@
 ---
 title: OS Deployment concepts
+tags:
+  - deployment
 ---
 
 Confluent supports a number of mechanisms for operating system deployment, with various benefits and drawbacks.

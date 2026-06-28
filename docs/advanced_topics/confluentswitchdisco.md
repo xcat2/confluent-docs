@@ -1,5 +1,7 @@
 ---
 title: Using switch based discovery
+tags:
+  - discovery
 ---
 
 Confluent can identify unknown devices based on what network port they are connected to.

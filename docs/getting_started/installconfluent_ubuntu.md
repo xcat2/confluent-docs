@@ -1,5 +1,7 @@
 ---
 title: Confluent Installation for Ubuntu
+tags:
+  - installation
 ---
 
 Ubuntu Linux 22.04 or 24.04 is supported for installation.

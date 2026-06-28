@@ -1,5 +1,8 @@
 ---
 title: Handling of security information in OS deployment
+tags:
+  - security
+  - deployment
 ---
 
 ## SSH host and user authentication

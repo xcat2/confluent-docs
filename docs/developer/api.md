@@ -1,5 +1,7 @@
 ---
 title: Confluent API Documentation
+tags:
+  - api
 ---
 
 Confluent models functionality in a hierarchical structure.  It is a RESTful or

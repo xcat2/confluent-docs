@@ -1,5 +1,7 @@
 ---
 title: Confluent TLS Configuration
+tags:
+  - security
 ---
 
 ## Challenges of using TLS in a private network

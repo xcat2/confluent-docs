@@ -1,5 +1,7 @@
 ---
 title: Managing hardware using confluent
+tags:
+  - hardware
 ---
 
 As mentioned in the [configuring confluent](../getting_started/configureconfluent.md) section,

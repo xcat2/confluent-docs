@@ -1,5 +1,7 @@
 ---
 title: Confluent and DHCP interaction
+tags:
+  - networking
 ---
 
 For confluent OS deployment, a specific design goal is improved interoperability with DHCP infrastructure. The result is that a DHCP server

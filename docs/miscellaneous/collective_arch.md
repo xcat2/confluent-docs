@@ -1,5 +1,7 @@
 ---
 title: Confluent collective architecture
+tags:
+  - collective
 ---
 
 This document will describe the design of the confluent collective implementation.

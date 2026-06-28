@@ -1,5 +1,7 @@
 ---
 title: Attribute Expressions
+tags:
+  - reference
 ---
 
 In confluent, any attribute may either be a straightforward value, or an expression

@@ -1,5 +1,7 @@
 ---
 title: Confluent diskless architecture
+tags:
+  - diskless
 ---
 
 The confluent diskless implementation has a number of design points of interest compared to other diskless implementations or scripted install.

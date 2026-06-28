@@ -2,6 +2,33 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Site feature modernization
+
+Enabled several Material for MkDocs capabilities.
+
+### Added
+- **Tags**: a tag taxonomy with a `tags.md` index page, seeded across key pages
+  (deployment, installation, discovery, networking, hardware, diskless,
+  security, collective, reference, api).
+- **RSS feed** for the release-notes blog (`mkdocs-rss-plugin`).
+- **Image zoom** on screenshots via `mkdocs-glightbox`.
+- **Mermaid diagram support** via a `pymdownx.superfences` custom fence
+  (` ```mermaid ` blocks now render as diagrams).
+- **Social cards**: the Material `social` plugin, configured but dormant
+  (`enabled: !ENV [SOCIAL_CARDS, false]`). It activates only when the
+  `SOCIAL_CARDS` env var is set, so local and CI builds are unaffected until a
+  maintainer opts in. Enabling also requires the Cairo system libraries and the
+  `pillow` + `cairosvg` packages (already in `requirements.txt`).
+
+### Notes
+- The four architecture diagrams currently shipped as SVGs
+  (`hierarchy`, `redundant_hierarchy`, `segmented`, `flat`) could be migrated
+  to inline Mermaid now that the capability is enabled; left as a follow-up
+  since it requires re-authoring the diagram source.
+- Enabling social cards needs a small CI change (install Cairo libs + set
+  `SOCIAL_CARDS`); not made here because the access token used lacked the
+  `workflow` scope to modify `.github/workflows/`.
+
 ## Heading and prose cleanup
 
 ### Changed

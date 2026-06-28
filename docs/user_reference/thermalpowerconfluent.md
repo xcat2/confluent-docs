@@ -1,5 +1,7 @@
 ---
 title: Power and Cooling Monitoring with Confluent
+tags:
+  - hardware
 ---
 
 Confluent provides access to various power and cooling data on the monitored hardware.

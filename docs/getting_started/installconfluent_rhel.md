@@ -1,5 +1,7 @@
 ---
 title: Confluent Installation for Red Hat Enterprise Linux
+tags:
+  - installation
 ---
 
 Enterprise Linux 8.6, 9.0, or 10.0 and higher is required for installation.

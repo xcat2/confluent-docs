@@ -1,5 +1,7 @@
 ---
 title: Confluent collective mode
+tags:
+  - collective
 ---
 
 The collective mode of confluent allows multiple confluent servers to act as one, providing

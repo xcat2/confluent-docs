@@ -1,5 +1,7 @@
 ---
 title: Configuring confluent
+tags:
+  - installation
 ---
 
 ## When used in conjunction with xCAT
