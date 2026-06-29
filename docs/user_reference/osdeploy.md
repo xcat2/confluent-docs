@@ -1,5 +1,7 @@
 ---
 title: OS Deployment concepts
+tags:
+  - deployment
 ---
 
 Confluent supports a number of mechanisms for operating system deployment, with various benefits and drawbacks.
@@ -37,7 +39,7 @@ approach leverages the OS deployment automation supported natively by the provid
 | OS                  | Mechanism              |
 |---------------------|------------------------|
 | Red Hat and similar | Kickstart (Anaconda)   |
-| Ubuntu              | cloud-init (Subiquitiy)|
+| Ubuntu              | cloud-init (Subiquity)|
 | SUSE                | Autoyast               |
 | Debian              | Debian-Installer       |
 | VMWare              | Kickstart (Weasel)     |
@@ -50,7 +52,7 @@ The benefits of this approach are:
 
 ## Image approach
 
-For many platforms, Confluent further supports an 'image' based approach goverened by 'imgutil'.  This approach works with chroot-style directory trees or cloning to maintain an image.
+For many platforms, Confluent further supports an 'image' based approach governed by 'imgutil'.  This approach works with chroot-style directory trees or cloning to maintain an image.
 
 Generally speaking, the benefits and drawbacks of an image based approach are:
 
@@ -85,11 +87,11 @@ given multipath capabilities, allowing continued functionality if one confluent 
 
 | Benefits | Drawbacks |
 | ------ | -------- |
-| <ul><li>No local disk required</li><li>Dramatically reduced memory requirements compared with traditional diskless approaches</li><li>Faster diskless boot compared with traditional diskless approaches</li><li>OS may contain arbitraily large content without risking extra memory consumption</li></ul> | <ul><li>Nodes have an ongoing dependency on the confluent infrastructure and profile's existance on the servers. Mitigated by using a collective to provide HA capabilities.</li><li>Writing to the local filesystem (logging, scratch, updates, installs) will increase memory consumption
+| <ul><li>No local disk required</li><li>Dramatically reduced memory requirements compared with traditional diskless approaches</li><li>Faster diskless boot compared with traditional diskless approaches</li><li>OS may contain arbitrarily large content without risking extra memory consumption</li></ul> | <ul><li>Nodes have an ongoing dependency on the confluent infrastructure and profile's existence on the servers. Mitigated by using a collective to provide HA capabilities.</li><li>Writing to the local filesystem (logging, scratch, updates, installs) will increase memory consumption
 
 #### untethered (stateless/diskless)
 
-* `confluent_image=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand.  This results in increased [memory consuption](diskless_memory_usage.md).  Benefits and drawbacks:
+* `confluent_image=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand.  This results in increased [memory consumption](diskless_memory_usage.md).  Benefits and drawbacks:
 
 | Benefits | Drawbacks |
 | ------ | -------- |

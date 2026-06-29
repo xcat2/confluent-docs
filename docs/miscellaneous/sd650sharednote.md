@@ -7,4 +7,6 @@ to induce bmcsetup to correctly move the XCC to the shared port.
 
 The value can be set by the following command, if your SD650 are in a group called `dwc`:
 
-    nodegrpch dwc ipmi.bmcport=`0 2'
+```bash
+nodegrpch dwc ipmi.bmcport=`0 2'
+```

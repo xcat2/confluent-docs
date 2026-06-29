@@ -2,11 +2,11 @@
 title: Troubleshooting issues with confluent OS deployment
 ---
 
-# IPv6 configuration
+## IPv6 configuration
 
 Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.
 
-# Unable to import media after aborting with control-C or an error being encountered
+## Unable to import media after aborting with control-C or an error being encountered
 
 An attempt to import media after an error or abort may result in:
 
@@ -26,31 +26,31 @@ centos_stream-8.4-x86_64
 Deleted: deployment/importing/centos_stream-8.4-x86_64
 ```
 
-# Can't ssh from the management node to a managed node after deployment, or from a managed node to another managed node after deployment
+## Can't ssh from the management node to a managed node after deployment, or from a managed node to another managed node after deployment
 
 If the ssh ca certificate is changed on the management node, then confluent needs to be updated with this by running "osdeploy initialize -k".  This will allow for ssh from the management node to the managed nodes to work.
 
 To make sure ssh from one confluent-deployed managed node to another works, after the ssh ca certificate is changed on the management node, if using image-based (versus separate kernel and initrd downloads) deployment, then the OS profile image needs to be updated with "osdeploy updateboot <profile name>" prior to OS deployment.
 
-# Can't access OS repos from managed nodes after confluent deployment
+## Can't access OS repos from managed nodes after confluent deployment
 
 The OS repo URLs are set to the specific profile used to perform the deployment with confluent on a managed node.  If that profile is moved, renamed, or deleted on the management node, then the managed node will not longer be able to access those repos.  This is different from how this was done with xCAT where different install profiles pointed to a common install source location (this actually is deduplicated in confluent as well, but the URLs on the managed nodes are specific to the deployment profile).
 
-# Managed node may hang during confluent OS deployment
+## Managed node may hang during confluent OS deployment
 
 When performing OS deployment with confluent, the managed node may hang, for example at "Started cancel waiting for multipath siblings of <drive>" when deploying RHEL 8.3.  This can be caused by the collective.managercandidates nodattribute containing a management node that is not actually defined as a node in the confluent database.  Note that this has to be defined exactly as it appears in the "collective show" command output.  For example, if the management node is shown in "collective show" as "mn.domain" then that management node has to be defined with the nodename "mn.domain" in confluent, as opposed to just "mn".
 
 
-# Issues with SSH within a cluster after adding an additional collective member
+## Issues with SSH within a cluster after adding an additional collective member
 
 After adding a collective member, it is necessary to run `nodeapply -k <noderange>` on existing nodes, as well as `osdeploy initialize -k` on existing collective members after setting up SSH on the new collective member.
 
-# Regenerating SSH host certificates
+## Regenerating SSH host certificates
 
 If there is a requiremennt to regenerate SSH keys after installation and new
 certificates are needed, this can be addressed by running `nodeapply <noderange> -k`
 
-# Unable to ssh from one managed node to another on an interface which has a DNS hostname that doesn't match the confluent nodename
+## Unable to ssh from one managed node to another on an interface which has a DNS hostname that doesn't match the confluent nodename
 
 In some cases ssh from one managed node to another will fail with the following error:
 
@@ -64,7 +64,7 @@ This can be addressed by running `nodeapply -k <noderange>'
 
 
 
-# Confluent OS profile updates are not automatically applied on confluent updates
+## Confluent OS profile updates are not automatically applied on confluent updates
 
 The default confluent profiles for OSes (e.g. RHEL 8.4, SLE 15.3, etc., including genesis) do occasionally get updates as part of a confluent update.  However, these aren't applied automatically.  To opt into updates, run
 
@@ -74,15 +74,15 @@ osdeploy rebase <profile name>
 
 Note this will try to preserve customization, but heavy customization may make files incompatible.
 
-# Confluent does not support secure boot with PXE. 
+## Confluent does not support secure boot with PXE. 
 
 The ipxe boot loader that confluent uses in not signed, because of this an attempt to do secure boot with PXE will result in a secure boot violation. To do a network boot using confluent with secure boot enabled either http or https boot must be used. 
 
-# KVM virtual machines immediately fail to netboot when using UEFI firmware with confluent
+## KVM virtual machines immediately fail to netboot when using UEFI firmware with confluent
 
 This is due to iPXE not being compatible with secureboot.  For now, disable secureboot when using UEFI with KVM virtualization, since the KVM firmware does not support HTTP boot.
 
-# System gets non-desired IP address when being deployed or booting genesis
+## System gets non-desired IP address when being deployed or booting genesis
 
 One possible reason for this to occur is if the net.\<inteface name\>.hostname and net.\<interface name\>.ipv4_address nodeattributes for a node are defined, and the network configuration of the confluent server and network are such that there more than one set of net.\<interface name\>.hostname and net.\<interface name\>.ipv4_address settings that could match a particular L2 network.  In this case which of the net.\<interface name\>.* settings would be applied to the boot interface on the netbooting node may not be consistent from boot to boot.
 

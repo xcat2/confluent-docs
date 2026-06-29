@@ -1,5 +1,7 @@
 ---
 title: Noderange Syntax
+tags:
+  - reference
 ---
 
 Confluent implements a powerful language to indicate a target

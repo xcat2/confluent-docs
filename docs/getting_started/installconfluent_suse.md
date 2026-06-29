@@ -1,5 +1,7 @@
 ---
 title: Confluent Installation for SUSE Linux Enterprise
+tags:
+  - installation
 ---
 
 SuSE Linux Enterprise 15 SP4 or higher is currently required for installation.

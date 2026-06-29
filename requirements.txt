@@ -2,3 +2,8 @@ mkdocs-material
 mkdocs-awesome-nav
 mkdocs-git-revision-date-localized-plugin
 mkdocs-minify-plugin
+mkdocs-glightbox
+mkdocs-rss-plugin
+# Required by the Material "social" plugin (social cards), built in CI
+pillow
+cairosvg

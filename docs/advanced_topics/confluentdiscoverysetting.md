@@ -10,14 +10,19 @@ The setting must be defined for each Confluent management node, including all me
 
 In order to view the current value of the setting for a particular Confluent management node, run the following command locally:
 
-    # confetty show discovery/autosense
-    enabled: True
+```bash
+# confetty show discovery/autosense
+enabled: True
+```
 
 In order to define the value of the setting for a particular Confluent management node, run the following command locally:
 
-    # confetty set discovery/autosense enabled=False
+```bash
+# confetty set discovery/autosense enabled=False
 
-    # confetty show discovery/autosense
-    enabled: False
+# confetty show discovery/autosense
+enabled: False
+```
 
-Note that the setting defaults to "True".
+!!! note
+    The setting defaults to "True".

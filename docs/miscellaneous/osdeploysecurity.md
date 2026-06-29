@@ -1,8 +1,11 @@
 ---
 title: Handling of security information in OS deployment
+tags:
+  - security
+  - deployment
 ---
 
-# SSH host and user authentication
+## SSH host and user authentication
 
 In confluent, hosts are given SSH certificates when required to vouch for their identity. /etc/ssh/shosts.equiv and /etc/ssh/ssh_known_hosts
 are configured to facilitate node to node ssh without working about known_hosts and to enable host based authentication of users. This
@@ -17,14 +20,14 @@ within a confluent install (e.g. skipping setting up ~/.ssh/authorized_keys and 
 One exception to this is that root and syncfiles/ansible ssh user keys are added to the local root user to provide management and automation
 regardless of host based authentication state.
 
-# syncfiles facility
+## syncfiles facility
 
 The syncfiles facility allows content from deployment server to be copied to a target node in flexible ways. The source content may be located
 anywhere on the deployment server, but must be accessible by the `confluent` user, as `confluent` does not run as `root`.  It may be convenient
 to use `sudo -u confluent bash` to examine files for access if you receive errors about inaccessible files. This may be used to convey more sensitive
 data by allowing confluent, but not other users to read the information
 
-# Content in /var/lib/confluent/private/
+## Content in /var/lib/confluent/private/
 
 The confluent api offers material in /var/lib/confluent/private to nodes that authenticate using their node api key. For example, confluent uses
 this facility to provide the encryption key for encrypted diskless images and disk cloning. Custom scripts may use this facility. For example, if wanting to provide some sort of /etc/shadow entry for an account using the private facility:
@@ -36,7 +39,7 @@ this facility to provide the encryption key for encrypted diskless images and di
 $5$ssdUjvVexCw50Nvc$5uQMDLlikaiZKsTt4.8Xmlmr/O7qNXTrlBgnc20CQb7  
 ```
 
-# API calls
+## API calls
 
 Confluent API calls provide information for deployment authenticated by the node API key.  For example in conjunction with custom node attributes, data can be stored and
 accessed in an authenticated fashion:
@@ -47,7 +50,7 @@ accessed in an authenticated fashion:
     [root@d11 ~]# python3 /opt/confluent/bin/apiclient /confluent-api/self/myattribs|grep custom.mysecret
     custom.mysecret: area51
 
-# Content in /var/lib/confluent/public is considered public
+## Content in /var/lib/confluent/public is considered public
 
 Material is published without authentication from /var/lib/confluent/public, and thus sensitive information such as passwords or private keys should be avoided, and instead syncfiles, profile private area, or node attributes should be used.
 One borderline scenario is diskless and cloned images.  Confluent attempts to strip well known confidential information during capture or pack (e.g. shadow and private ssh keys), but custom OS content

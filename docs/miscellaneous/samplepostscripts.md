@@ -3,7 +3,7 @@ title: Osdeployment sample postscripts and their usage
 ---
 
 Listed here are some sample post scripts that you might choose to use when deploying 
-confluent surported operating systems. These scripts are located in the initialized 
+confluent supported operating systems. These scripts are located in the initialized 
 profiles scripts directory, `/var/lib/confluent/public/os/<profile>/scripts/sample`.
 
 1. **Post script to comment out the terminal and serial lines in the grub.conf after install on el9 or suse15**

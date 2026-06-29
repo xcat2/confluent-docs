@@ -7,7 +7,7 @@ racks and organize the racks into rows in the datacenter:
 
 ![Example Rackview](../assets/rackview.png)
 
-# Setting up a rackmount system
+## Setting up a rackmount system
 
 The three attributes relevant for a node are location.rack, location.u, and location.row. Ensure all three are set to a value. For multi-u systems, specify the lowest U. It is optional, though
 recommended to also set location.height, as that will help the rackview draw more quickly than auto-detecting the component height.
@@ -23,7 +23,7 @@ o2: location.u: 32
 ```
 
 
-# Setting up an enclosure/dense system
+## Setting up an enclosure/dense system
 
 The recommended attributes to set are for the enclosure to be specified according to the same instructions as a rackmount system above. The servers themselves
 should not have any location information, as their location will be defined by enclosure.manager and enclosure.bay within the chassis definition.

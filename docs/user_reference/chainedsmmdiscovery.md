@@ -9,7 +9,7 @@ There are two strategies.  The [first](#fully-out-of-band-discovery) is more res
 
 The [other](#pxe-driven-discovery) works with older chained SMM firmware, but requires nodes to attempt PXE boot.
 
-# Fully out of band discovery
+## Fully out of band discovery
 
 * The Ethernet switch must have LLDP enabled.
 * Confirm that you have confluent version 1.8.0, and that all SMMs will at
@@ -23,7 +23,7 @@ The [other](#pxe-driven-discovery) works with older chained SMM firmware, but re
   discovery [here](confluentdiscovery.md).
 
 
-# PXE Driven Discovery
+## PXE Driven Discovery
 If using older SMM firmware in a chain, or else wanting to drive discovery from the node network side
 rather than the SMM side, the method with PXE may be used.
 
