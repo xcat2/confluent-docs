@@ -1,6 +1,7 @@
 nav:
   - osdeploy.md
   - noderange.md
+  - node_attributes.md
   - attributeexpressions.md
   - confluentdiscovery.md
   - confluentrackview.md
