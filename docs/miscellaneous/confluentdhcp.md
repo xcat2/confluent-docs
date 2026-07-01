@@ -20,6 +20,17 @@ The node attribute `net.ipv4_method` supports two possible modes for working wit
 In a mostly static environment with a need for dynamic addressing, it is possible to use firmwaredhcp and setting dnsmasq or similar to serve up a dynamic range
 without having to coordinate the configuration.
 
+## Generating dnsmasq configuration with confluent2dnsmasq
+
+For sites that want dnsmasq to act as an actual DHCP server for confluent managed nodes (rather than relying purely on
+static addressing or `firmwaredhcp`), the [`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md) command generates a
+dnsmasq configuration fragment directly from the confluent node `net.*` attribute database. It emits static `dhcp-host`
+reservations for every network interface with a hardware address, along with the covering `dhcp-range` declarations
+dnsmasq requires to serve a subnet, and a `bind-dynamic` directive so dnsmasq and confluent can share the same network.
+Optional flags can also add gateway, DNS, domain, NTP, and MTU information from confluents `net.*` attributes per
+subnet. Because the configuration is generated from the same database confluent itself uses, there is no separate set of
+host records to keep in sync.
+
 ## Working with xCAT configured DHCP server
 
 With xCAT, the biggest potential for conflict is the dynamic range, where xCAT will offer any network boot device a boot payload and potentially conflict.  There are a few strategies:
