@@ -108,6 +108,5 @@ net.example.interface_names=eno1,eno2
 
 The current features are not currently implemented as of this writing:
 
-* VLAN tagging
 * Bridging/vSwitch configuration
 * Static routes apart from default gateway
