@@ -5,8 +5,7 @@ title: Adding snmp support to xCAT
 Due to changes in RedHat/CentOS 8, net-snmp-perl is no longer provided in either the vendor repository nor the lenovo repository.
 As such, xCAT support for SNMP is now considered optional.
 
-It is recommended to either [use confluent to do PXE discovery and feed the data into xCAT](confluenttoxcat.md) or [use confluent for the OS deployment](confluentosdeploy.md). However,
-if wanting to use xCAT discovery with SNMP support, builds of the net-snmp rpms are [available](/downloads/snmp/).
+It is recommended to either [use confluent to do PXE discovery and feed the data into xCAT](confluenttoxcat.md) or [use confluent for the OS deployment](confluentosdeploy.md).
 
 Installing net-snmp-perl will add SNMP support to xCAT. Note that every rpm beginning with net-snmp must be exactly the same version, so it may be required to upgrade multiple rpms.
 
