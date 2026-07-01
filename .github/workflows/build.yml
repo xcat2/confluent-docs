@@ -23,11 +23,11 @@ jobs:
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - uses: actions/cache@v5
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-materialx-${{ env.cache_id }}
           path: ~/.cache
           restore-keys: |
-            mkdocs-material-
-      - name: Install Material for MkDocs requirements
+            mkdocs-materialx-
+      - name: Install MaterialX requirements
         run: pip install -r requirements.txt
       - name: Install man pages and social cards requirements
         run: sudo apt-get install -y --no-install-recommends --no-install-suggests ronn libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
@@ -45,4 +45,4 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           SOCIAL_CARDS: true
-        run: mkdocs gh-deploy --force
+        run: properdocs gh-deploy --force
