@@ -165,6 +165,11 @@ And then append to /etc/hosts when it looks correct:
 # noderun -n n1-n4 echo 172.30.0.{n1} {node} {node}.{dns.domain} >> /etc/hosts
 ```
 
+!!! tip
+    [`confluent2hosts`](../manuals/confluent2hosts.md) can generate these same entries directly from node
+    attributes instead of using `noderun`, and can also derive entries from `net.*` interface attributes. See
+    [Preparing for Operating System Deployment](../advanced_topics/confluentosdeploy.md) for examples.
+
 Finally, to quickly have a dns server, installing and starting dnsmasq can make /etc/hosts available through dns:
 
 ```bash
