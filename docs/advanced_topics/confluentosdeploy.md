@@ -81,6 +81,13 @@ The following lines in /etc/dnsmasq.conf would provide a dynamic DHCP range:
 
 Avoid suggesting to dnsmasq any directives that would influence PXE boot. See the dnsmasq man page and other documentation for more details on use of dnsmasq.
 
+If static reservations are wanted instead of, or in addition to, a dynamic range, the
+[`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md) command can generate the `dhcp-host` and `dhcp-range` lines (as
+well as the `bind-dynamic` directive above) directly from the node attribute database, rather than hand-authoring
+/etc/dnsmasq.conf:
+
+    # confluent2dnsmasq everything
+
 If using a dynamic range on a network, instruct confluent to use `firmwaredhcp` for deployment:
 
     # nodegroupattrib everything net.ipv4_method=firmwaredhcp

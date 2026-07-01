@@ -174,6 +174,11 @@ Finally, to quickly have a dns server, installing and starting dnsmasq can make 
 
 Any time /etc/hosts is updated, restart dnsmasq to have it pick up changes.
 
+!!! tip
+    This same dnsmasq instance can also serve DHCP for the nodes: [`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md)
+    generates a static reservation for each node straight from the node attribute database. See [Confluent and DHCP
+    interaction](../miscellaneous/confluentdhcp.md) for more.
+
 ## Initializing confluent OS deployment.
 
 The osdeploy command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used

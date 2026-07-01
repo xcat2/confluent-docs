@@ -40,7 +40,7 @@ The default configuration of confluent protects sensitive data. Even after optin
 In xCAT, makedns is provided as an aid to generate ISC BIND configuration. However, it does not require this be used,
 and is content so long as forward and reverse lookup works exactly as expected.
 
-In confluent, no helper facility is provided for name configuration, documentation instead mentions how to use dnsmasq
+In confluent, no helper facility is provided for name configuration, documentation instead mentions how to use `/etc/hosts` with dnsmasq
 if no other name resolution is otherwise in use. It is strongly recommended for forward resolution to function, though
 not required, and reverse lookup no longer has an impact on identifying nodes and will not cause problem identifying
 nodes if missing or not particularly configured.
@@ -53,6 +53,11 @@ on a network that xCAT needs to do discovery or deployment on.
 In Confluent, DHCP is optional and even when present is not managed by Confluent. No dynamic range is required for
 any discovery. The default behavior is to use static IP address. It may also be configured to always defer IP configuration
 to an external DHCP server or to do so only for the firmware phase (PXE/HTTP boot) but use static for the OS.
+
+Where xCAT provides `makedhcp` to maintain ISC dhcpd from its own tables, confluent instead provides
+[`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md), which generates a dnsmasq configuration of static reservations
+directly from the confluent node `net.*` attribute database, for sites that want confluent to help manage a DHCP server
+rather than only interoperate with one.
 
 ## Discovery
 
