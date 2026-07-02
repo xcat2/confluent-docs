@@ -47,7 +47,7 @@ title: NVIDIA GPU Driver Install on RHEL 9.5 and Ubuntu 24.04.2
 
 
 ### Update kernel tools and kernel abi stablelists
- Note that this still will update the existing kernel tools packages, as multiple versions of these kernel tools on the system as the same time.
+ Note that this still will update the existing kernel tools packages, as multiple versions of these kernel tools will exist on the system at the same time.
  ```
  dnf install kernel-tools kernel-tools-libs kernel-abi-stablelists
  ```
@@ -92,7 +92,7 @@ title: NVIDIA GPU Driver Install on RHEL 9.5 and Ubuntu 24.04.2
 
 
 ### Install GPU drivers
- **Note** The nvidia-fabric-manager package is only necesssary on 8-GPU HGX configs.
+ **Note** The nvidia-fabric-manager package is only necessary on 8-GPU HGX configs.
  ```
  dnf install nvidia-driver-cuda kmod-nvidia-open-dkms nvidia-fabric-manager
  ```

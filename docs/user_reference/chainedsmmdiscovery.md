@@ -42,8 +42,8 @@ The procedure will then automatically proceed as follows:
 * If there is a detected XCC that matches the uuid, that XCC gets discovered and configured appropriately, and the SMM is enabled, if not previously enabled.
 * When an SMM is detected that has a UUID that matches the enclosure UUID indicated by a relevant XCC, that SMM is discovered and autoconfigured.
 
-Trobuleshooting:
+Troubleshooting:
 
 * If no lenovo-smm devices are appearing, it may be worth doing `nodediscover rescan`.
 * It may be the case that the XCCs were otherwise configured without enabling SMM.  To rediscover XCC to try to enable SMM, `nodeattrib <noderange> pubkeys.tls_hardwaremanager=`.  This will induce the SMM enablement process that is normally part of XCC discovery.
-* If using older SD530 firmware, confluent may not be able to link XCC and SMM.  If this is the case, XCC discovery sholud still work and enable XCC firmware updates to proceed.
+* If using older SD530 firmware, confluent may not be able to link XCC and SMM.  If this is the case, XCC discovery should still work and enable XCC firmware updates to proceed.

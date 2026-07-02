@@ -21,7 +21,7 @@ documentation.
 
 To get started, it is suggested to use the `everything` group to set universal attributes.
 The `everything` group automatically exists and all defined nodes are automatically
-placed into it, in addition to manually specified and created groups
+placed into it, in addition to manually specified and created groups.
 Usually a cluster uses the same username/password across the XCCs (xClarity Controllers).  In such a case, it is
 suggested to set this data as attributes on the `everything` group:
 

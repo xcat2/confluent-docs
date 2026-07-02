@@ -66,7 +66,7 @@ Benefits:
 Drawbacks:
 - Requires the most DHCP configuration to be sorted out in the DHCP configuration
 - It does not support direct UEFI HTTP boot, and thus currently is incompatible with confluent SecureBoot support
-- Requires the administrator to modiy an OS image profile to indicate the location of the confluent server
+- Requires the administrator to modify an OS image profile to indicate the location of the confluent server
 - Requires the administrator to designate remote network as "trusted"
 
 To proceed:
@@ -86,7 +86,7 @@ Benefits:
 
 Drawbacks:
 - Still requires some DHCP configuration
-- Requires the administrator to modiy an OS image profile to indicate the location of the confluent server
+- Requires the administrator to modify an OS image profile to indicate the location of the confluent server
 - It only supports PXE boot, and thus currently is incompatible with confluent SecureBoot support
 - Requires the administrator to designate remote network as "trusted"
 
@@ -96,7 +96,7 @@ To proceed:
 - Set the remote network to be a trusted network for the node: `nodeattrib [nodes] trusted.subnets=172.20.0.0/24`
 - Modify the profile.yaml of the OS profile(s) and add `confluent=[ip.of.confluent.server]` to the kernel arguments
 - osdeploy updateboot [osimagename]
-- Have the DHCP server send option 67 "PXEClient".  As an example, here is an exceprt from an ISC DHCP configuration file 
+- Have the DHCP server send option 67 "PXEClient".  As an example, here is an excerpt from an ISC DHCP configuration file 
 
 ```
      class "PXE" {

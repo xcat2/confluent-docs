@@ -17,7 +17,7 @@ The most critical attributes for this section are:
 * `console.method` - currently only provides ipmi.  Leave blank to opt out of [`nodeconsole`](../manuals/nodeconsole.md) and console logging, or set to `ipmi` to opt into `ipmi` console.
 * `hardwaremanagement.manager` - May alternatively be referred by alias `bmc`: The name or IP address of the xClarity Controller or equivalent associated with this node.
 * `enclosure.bay` - For systems that are installed into an enclosure, the bay the node is located (which can help with [`nodereseat`](../manuals/nodereseat.md) as well as discovery)
-* `enclosure.manager` - The resolveable name or ip address of the device managing the enclosure that would ultimately perform commands like [`nodereseat`](../manuals/nodereseat.md) on behalf of a node.)
+* `enclosure.manager` - The resolvable name or ip address of the device managing the enclosure that would ultimately perform commands like [`nodereseat`](../manuals/nodereseat.md) on behalf of a node.)
 * `secret.hardwaremanagementpassword` - May alternatively be referred to by alias `bmcpass`: The password to log into the xClarity Controller or equivalent
 * `secret.hardwaremanagementuser` - May alternatively be referred to by alias `bmcuser`: The user to log into the xClarity Controller or equivalent
 

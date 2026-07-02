@@ -42,7 +42,7 @@ approach leverages the OS deployment automation supported natively by the provid
 | Ubuntu              | cloud-init (Subiquity)|
 | SUSE                | Autoyast               |
 | Debian              | Debian-Installer       |
-| VMWare              | Kickstart (Weasel)     |
+| VMware              | Kickstart (Weasel)     |
 
 The benefits of this approach are:
 

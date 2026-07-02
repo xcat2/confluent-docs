@@ -94,7 +94,7 @@ In this case, the write layer compression was effective in mitigating the memory
 
 ## untethered (stateless/diskless)
 
-This characterizes the behavior of the `tethered` mode of operation, so we can now look at the behavior of `untethered` diskless.  First we boot and take a look at initial state, after dropping cache:
+This concludes the behavior of the `tethered` mode of operation, so we can now look at the behavior of `untethered` diskless.  First we boot and take a look at initial state, after dropping cache:
 
 ```
 # free -m

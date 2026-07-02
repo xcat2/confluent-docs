@@ -20,7 +20,7 @@ nodegroupdefine all noderange=everything,-switches,-pdus
 !!! note
     `noderange` groups do not contribute to providing attributes to the node attributes.
 
-## Attribute inheritence
+## Attribute inheritance
 
 Attributes on a group will flow into specific node attributes.  A node may inherit attributes from multiple groups at the same time.  If a node is in multiple groups, and more than one group offers an attribute value, the highest priority group overrides the lower priority group.  Priority proceeds from the first listed group to last group for highest to lower priority when looking at the `groups` attribute on a node.  Attributes defined on a node specifically will always supersede anything from groups.  A
 large number of attributes require individual values, but proceed in a predictable fashion.  These may be defined on a group level, leveraging [attribute expressions](../user_reference/attributeexpressions.md) to individualize the

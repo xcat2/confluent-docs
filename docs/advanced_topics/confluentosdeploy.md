@@ -101,7 +101,7 @@ In confluent, core discovery and functionality like in-band configuration of BMC
 the package `confluent-genesis-x86_64` if a genesis profile is desired.
 
 `osdeploy initialize` (see next step) has an option to generate a genesis profile. Once used, a genesis based profile would be in /var/lib/confluent/public/os/genesis-x86_64/.  Of particular interest is the
-`/var/lib/confluent/public/os/gensis-x86_64/scripts/onboot.sh` file to govern automatic action, or use ssh after nodes boot to manually perform actions.
+`/var/lib/confluent/public/os/genesis-x86_64/scripts/onboot.sh` file to govern automatic action, or use ssh after nodes boot to manually perform actions.
 
 ## Preparing for TFTP (optional)
 
@@ -207,7 +207,7 @@ Even before discovery, nodedeploy is able to request that the next boot be into 
 
     # nodedeploy <nodes> -p rhel-8.2-x86_64-default
 
-After the xClarity Controller or equivalents are accesible, it can also initiate a boot to network (whether manually configured or if running this after discovery has been done):
+After the xClarity Controller or equivalents are accessible, it can also initiate a boot to network (whether manually configured or if running this after discovery has been done):
 
     # nodedeploy <nodes> -n rhel-8.2-x86_64-default
 

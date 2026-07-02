@@ -29,7 +29,7 @@ cooling related data.  A key sensor of interest is the 'DC Energy' sensor:
 n1: DC Energy: 19.5191344589 kWh
 ```
 
-Using this value before and after some interval enables you to know the 
+Using this value before and after some interval enables you to know how many 
 kilowatt hours have been consumed over that time.  You can use this information
 to calculate average power over an interval of your choosing.  For example, to
 know the average power before and after a 2 minute job (using sleep 120 as

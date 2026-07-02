@@ -28,7 +28,7 @@ and boot time SSH configuration.  The DSA key is no longer carried forward.
 ## Writing output of nodefirmware/nodemedia/nodersync has been improved
 
 It dramatically reduces output put to screen and interacts better with a running terminal, avoiding
-forced clear screns
+forced clear screens
 
 ## Fix imgutil working with ported diskless images
 

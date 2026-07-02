@@ -19,7 +19,7 @@ running SR Linux 25.10.1.
 
 
 ## Configuring Nokia switches for normal L2 operation
- With Nokia SR Linux, configuring switches in normal L2 mode can be more complex than some other switches OS.  The following are some tips on regarding this particular scenario.
+ With Nokia SR Linux, configuring switches in normal L2 mode can be more complex than some other switches' OS. The following are some tips regarding this particular scenario.
  
  To configure the Nokia switches in normal L2 mode, it is recommended to set tagging enabled on the Ethernet interface, and set tagging or no tagging on the subinterfaces.  This is because if tagging is not set on the parent interface, both tagged and untagged frames are accepted, but their association to a VLAN isn't well defined.
 
@@ -27,7 +27,7 @@ running SR Linux 25.10.1.
  With the Ethernet interface set to tagged, then for ports intended for untagged traffic only, then set up only one subinterface and set it as untagged.
 
 ### Hybrid ports
- For ports intended as hybrid traffic, setup one subinterface as untagged, and one or more additional subinterfaces as tagged.  Note that the values available to be set for the VLAN when tagged on a subinterface are a single VLAN number, or "optional" or "any".  For the case of "option" untagged traffic is accepted to the subinterface as well, and again this can result in a non-well defined VLAN association for the frame.  For the "any" value, that can be useful for carrying all VLANs, particularly for ISLs, but to carry a subset of all VLANs then a separate subinterface has to be defined for each tagged VLAN.
+ For ports intended as hybrid traffic, setup one subinterface as untagged, and one or more additional subinterfaces as tagged.  Note that the values available to be set for the VLAN when tagged on a subinterface are a single VLAN number, or "optional" or "any".  For the case of "optional", untagged traffic is accepted to the subinterface as well, and again this can result in a non-well defined VLAN association for the frame.  For the "any" value, that can be useful for carrying all VLANs, particularly for ISLs, but to carry a subset of all VLANs then a separate subinterface has to be defined for each tagged VLAN.
 
 ### Trunk ports
  Ports intended as "trunk" (tagged) only traffic are configured the same as the hybrid case above, except no untagged subinterface is defined.
@@ -38,7 +38,7 @@ running SR Linux 25.10.1.
 <br>
 <br>
 <br>
- Given all of the above, here is a typical case--this has ports 1/1 and 1/2 as untagged interfaces, ports 1/3 and 1/4 as hybrid interfaces, and ports 1/5 and 1/6 as trunk interfaces.  Ports 1/1 and 1/3 untagged traffic is routed to VLAN 101, ports 1/2 and 1/4 untagged traffic is routed to VLAN 102, and ports 1/3 and 1/4 tagged traffic is enabled for VLANs 103 and n109 (depending on the VLAN tag in the ingress frames).  Finally ports 1/5 and 1/6 are configured to carry VLANs 101, 102, 103 and n109, all tagged only:
+ Given all of the above, here is a typical case--this has ports 1/1 and 1/2 as untagged interfaces, ports 1/3 and 1/4 as hybrid interfaces, and ports 1/5 and 1/6 as trunk interfaces.  Ports 1/1 and 1/3 untagged traffic is routed to VLAN 101, ports 1/2 and 1/4 untagged traffic is routed to VLAN 102, and ports 1/3 and 1/4 tagged traffic is enabled for VLANs 103 and 109 (depending on the VLAN tag in the ingress frames).  Finally ports 1/5 and 1/6 are configured to carry VLANs 101, 102, 103 and 109, all tagged only:
 
  Note, using the subinterface name corresponding to the VLAN with which it would be associated isn't necessary, but is used as a useful convention in the example below.
 
@@ -153,7 +153,7 @@ set / interface lag1 lag member-speed 10G
 set / interface lag1 lag lacp admin-key 1
 ```
 
- Then then subinterfaces for the lag have to be defined as described above for Ethernet interfaces.  In this example VLANs 101, 102, 103 and 109 are all set as tagged:
+ Then the subinterfaces for the lag have to be defined as described above for Ethernet interfaces.  In this example VLANs 101, 102, 103 and 109 are all set as tagged:
 
 ```bash
 set / interface lag1 admin-state enable

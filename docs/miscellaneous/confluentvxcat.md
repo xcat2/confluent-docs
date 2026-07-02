@@ -113,9 +113,9 @@ In xCAT, diskless images require a special script to run to generate the diskles
 compressed image that is always downloaded and uncompressed into RAM. It is expected that the extracted form of the image persists in the `/install` directory.
 
 In confluent, more efforts are made to have the built image naturally regenerate its own initramfs, meaning rpm installs that naturally trigger initramfs updates no longer require
-the user to go back and specially generate.  The pack utilitiy leaves the entire image intact and creates a compressed image that is by default downloaded on demand into evictable cache.
+the user to go back and specially generate.  The pack utility leaves the entire image intact and creates a compressed image that is by default downloaded on demand into evictable cache.
 Further, the read-write layer of a diskless image is compressed to mitigate memory usage over time. Images may be booted `untethered`, but even then the image remains compressed in memory.
-The workflow is such that images can be unpacked from their packed form for updates and maintenance, removing requirements for retaining the extracted form in an particular location.  Further,
+The workflow is such that images can be unpacked from their packed form for updates and maintenance, removing requirements for retaining the extracted form in a particular location.  Further,
 an `imgutil exec` facility is provided to boot an extracted image in a container-like environment (dedicated mount and process namespaces with chroot).  Also, a diskless image retains
 initramfs access for root user of collective nodes after the main image has booted, to facilitate debug.
 

@@ -29,7 +29,7 @@ If you wish to use MySQL instead, then:
 zypper install perl-DBD-MySQL
 ```
 
-To verify that you have installed xCAT
+To verify that you have installed xCAT:
 
 ```bash
 service xcatd status

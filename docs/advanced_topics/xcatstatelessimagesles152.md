@@ -19,4 +19,4 @@ At this point, the genimage command can be rerun and should succeed.
 
 ### Note:
 
-Once the stateless image creation process is completed, the above file to be restored to its original name.
+Once the stateless image creation process is completed, the above file needs to be restored to its original name.

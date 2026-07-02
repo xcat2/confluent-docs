@@ -12,7 +12,7 @@ Once parameters have been [configured](../getting_started/configureconfluent.md)
 discovery can be performed to push that configuration from the confluent configuration into the actual configuration on the devices.
 
 Confluent is capable of fully automated onboarding of equipment based on either [ethernet switch](confluentswitchdisco.md) or [server enclosure](confluentenclosuredisco.md). However, sometimes
-this would require things that are either not applicable, not known, or not allowed. In such circumstancecs, there are manual
+this would require things that are either not applicable, not known, or not allowed. In such circumstances, there are manual
 methods to aid in simplified onboarding kicked off by manual data despite those devices still not yet having viable configuration.
 
 ## Showing currently known data

@@ -10,7 +10,7 @@ Using TLS in a private network configuration can be daunting. The usual approach
 
 ## Confluent TLS strategy
 
-Due to the challenges with relying upon and configuration of DNS, Confluent steers towards use of IP addresses as it goes.  In typical confluent environments, the IP addresses of the management nodes are fixed, and easy to programatically detect the correct one without user guidance.  Thus `osdeploy initialize -t` focuses on enabling IP addresses, for example, here is a typical SAN field for a confluent generated certificate:
+Due to the challenges with relying upon and configuration of DNS, Confluent steers towards use of IP addresses as it goes.  In typical confluent environments, the IP addresses of the management nodes are fixed, and easy to programmatically detect the correct one without user guidance.  Thus `osdeploy initialize -t` focuses on enabling IP addresses, for example, here is a typical SAN field for a confluent generated certificate:
 
 ```
 X509v3 Subject Alternative Name:
@@ -22,7 +22,7 @@ X509v3 Subject Alternative Name:
 
 ## The confluent TLS authority
 
-To allow easily updating the certificate to accommodate IP address changes, confluent tends to make it's own certificate authority:
+To allow easily updating the certificate to accommodate IP address changes, confluent tends to make its own certificate authority:
 ```
 /etc/confluent/tls/cakey.pem
 /etc/confluent/tls/cacert.pem
@@ -56,7 +56,7 @@ the confluent one to facilitate access by IP address. In this approach, use the 
 
 * **Using the custom CA to issue a confluent friendly certificate.**
 
-In addition to the names desired, you may wish to add the IP addresses as subject alternative names to the certificate.  If this is possible, then confluent should be able to proceed as nomal.  However, this may be onerous at best (having to redo the certificate process with your organization for an ip address change) or impossible at worst (a common policy is to forbid IP address based SAN entries).
+In addition to the names desired, you may wish to add the IP addresses as subject alternative names to the certificate.  If this is possible, then confluent should be able to proceed as normal.  However, this may be onerous at best (having to redo the certificate process with your organization for an ip address change) or impossible at worst (a common policy is to forbid IP address based SAN entries).
 
 
 

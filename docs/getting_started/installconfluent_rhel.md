@@ -57,7 +57,7 @@ firewall-cmd --permanent --zone=public --add-port=13001/tcp
 firewall-cmd --permanent --zone=public --add-port=1900/udp
 ```
 
-If doing HTTP boot with `deployment.useinsecureprotocols' set to firmware, you will need plain http (port 80):
+If doing HTTP boot with `deployment.useinsecureprotocols` set to firmware, you will need plain http (port 80):
 
 ```bash
 firewall-cmd --permanent --zone=public --add-service=http --permanent
