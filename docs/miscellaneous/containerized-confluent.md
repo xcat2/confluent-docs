@@ -2,7 +2,7 @@
 title: Containerized confluent run 
 ---
 
-## Synopsys
+## Synopsis
 
  Containerized confluent image with docker
 
@@ -10,7 +10,7 @@ title: Containerized confluent run
 
 To create a containerized confluent image with docker we need to edit the custom file "/confluent/container/Dockerfile 
 
-## Constrains:
+## Constraints:
 
 Container must be run privileged.
 Container must be run with the ' --net = host' flag.

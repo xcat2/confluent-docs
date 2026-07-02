@@ -39,7 +39,7 @@ the postscript shown above:
 
 ### confluent configuration
 
-xCAT does not understand how to collect addresses for InfiniBand.  Instead, enable confluent collection of the InfinBand addresses:
+xCAT does not understand how to collect addresses for InfiniBand.  Instead, enable confluent collection of the InfiniBand addresses:
 
     # nodegroupdefine ib net.ib.bootable=1 discovery.policy=permissive,pxe
 
@@ -47,7 +47,7 @@ xCAT does not understand how to collect addresses for InfiniBand.  Instead, enab
 
 When confluent is configured to do 'zero power' discovery, it can collect mac addresses for boot devices such as InfiniBand without having to describe the fabric topology. This document assumes familiarity with [Node discovery and autoconfiguration with confluent](../user_reference/confluentdiscovery.md) and that the management network discovery has been configured.
 
-Have the systems attempt to network boot over infiniBand.  For example:
+Have the systems attempt to network boot over InfiniBand.  For example:
 
     # nodeboot ib net
 

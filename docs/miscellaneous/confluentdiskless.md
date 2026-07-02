@@ -68,7 +68,7 @@ If at any point a modification or update is required, `imgutil` can unpack a pro
 
 At which point modifications using imgutil exec or otherwise modifying the directory tree can be done.  If wanting to pack a new 'version' of an image while preserving customizations to scripts, you can use an existing diskless image profile to base a copy on:
 
-    # imgutil pack -b alma-8.5-diskless /tmp/newscratchdir alma-8.5-disklesss-v2
+    # imgutil pack -b alma-8.5-diskless /tmp/newscratchdir alma-8.5-diskless-v2
 
 !!! note
     '-b' will not function correctly if the distribution and nature of the
@@ -84,7 +84,7 @@ The private portion usually contains an encryption key needed for the packed ima
 ## Login delays
 
 If accounts suffer a one-time delay after initial login, this is likely due to systemd user slice failing to actually function.
-To mitigate, it is possible to modify thte TimeoutStopSec value in /usr/lib/systemd/system/user@.service to a smaller value, like 10s
+To mitigate, it is possible to modify the TimeoutStopSec value in /usr/lib/systemd/system/user@.service to a smaller value, like 10s
 
 ## SELinux labelling issues
 
@@ -96,7 +96,7 @@ To fix the labeling, select an appropriate filesystem (e.g. the root filesystem 
 imgutil unpack image-name /tmp/scratchdir
 cd /tmp/scratchdir
 setfiles -r . /etc/selinux/targeted/contexts/files/file_contexts .
-imgputil pack /tmp/scratchdir -b image-name new-image-name
+imgutil pack /tmp/scratchdir -b image-name new-image-name
 ```
 
 ## Moving an image between confluent servers

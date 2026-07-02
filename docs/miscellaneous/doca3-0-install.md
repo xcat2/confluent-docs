@@ -9,7 +9,7 @@ The following procedure is for installing or upgrading the NVIDIA DOCA stack (do
  **NOTE** This is for a single-node install.  Scale with nodeshell and arguments to make these steps unattended as needed. 
 
 ### Uninstall previous version of DOCA
- If upgrading from a previous version of DOCA, make sure to uninstall the previous version first, using the followoing steps (the following is an example for uninstalling DOCA 2.10):
+ If upgrading from a previous version of DOCA, make sure to uninstall the previous version first, using the following steps (the following is an example for uninstalling DOCA 2.10):
 ```
 for f in $(rpm -qa | grep -i doca ) ; do yum -y remove $f; done
 ```
@@ -74,7 +74,7 @@ has been found to not work after running the "for f in $(rpm -qa | grep -i doca 
  ```
 
 ### Update kernel tools and kernel abi stablelists
- Note that this still will update the existing kernel tools packages, as multiple versions of these kernel tools on the system as the same time.
+ Note that this still will update the existing kernel tools packages, as multiple versions of these kernel tools will exist on the system at the same time.
  ```
  dnf install kernel-tools kernel-tools-libs kernel-abi-stablelists
  ```
@@ -140,7 +140,7 @@ EOF
  ```
 
 
-### Buid DOCA kernel packages errata kernel
+### Build DOCA kernel packages errata kernel
  ```
  /opt/mellanox/doca/tools/doca-kernel-support
  ```
@@ -192,7 +192,7 @@ EOF
  ```
 
 ### Restart the system
-Note, restarting the system after the DOCA install or upgrade has been found to be more reliable then just restarting the openibd service (particularly on upgrade as restarting the openibd service has been found to cause system hangs in some cases).
+Note, restarting the system after the DOCA install or upgrade has been found to be more reliable than just restarting the openibd service (particularly on upgrade as restarting the openibd service has been found to cause system hangs in some cases).
  ```
  reboot
  ```
@@ -219,7 +219,7 @@ For configurations where nvlsm was installed prior to upgrading DOCA, check to m
  ```
 
 ### Install the DOCA host repo package:
- Install the DOCA host repo packaage:
+ Install the DOCA host repo package:
  ```
  DEBIAN_FRONTEND=noninteractive dpkg -i <path to>/doca-host_3.0.0-058000-25.04-ubuntu2404_amd64.deb
  ```
@@ -265,13 +265,13 @@ For configurations where nvlsm was installed prior to upgrading DOCA, check to m
  ```
 
 ### Install xpmem
- Install the xpmem package (this would have normally been installed when the doca-ofed metapackage was installed, but since the doca-ofed-userspace package is used in this case, the xpmem package has to be isntalled separately):
+ Install the xpmem package (this would have normally been installed when the doca-ofed metapackage was installed, but since the doca-ofed-userspace package is used in this case, the xpmem package has to be installed separately):
  ```
  DEBIAN_FRONTEND=noninteractive apt-get install -y xpmem
  ```
 
 ### **OPTIONAL** Install mlnx-nvme-modules
- If the using NVMeoF, install the mlnx-nvme-modules package:
+ If using NVMeoF, install the mlnx-nvme-modules package:
  ```
  DEBIAN_FRONTEND=noninteractive apt-get install -y mlnx-nvme-modules
  ```
@@ -287,7 +287,7 @@ For configurations where nvlsm was installed prior to upgrading DOCA, check to m
  ```
 
  ## Restart the system
-Note, restarting the system after the DOCA install or upgrade has been found to be more reliable then just restarting the openibd service (particularly on upgrade as restarting the openibd service has been found to cause system hangs in some cases).
+Note, restarting the system after the DOCA install or upgrade has been found to be more reliable than just restarting the openibd service (particularly on upgrade as restarting the openibd service has been found to cause system hangs in some cases).
  ```
  reboot
  ```

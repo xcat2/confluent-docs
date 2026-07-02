@@ -14,7 +14,7 @@ The following procedure is for installing the out-of-box Broadcom NIC driver and
  ```
 
 ## Install the Broadcom netxtreme-peer-mem-dkms package
- Note that the Broadcom bnxt_en and bnxt_re dkms modules are included in the netxtreme-peer-mem-dkms package do they don't have to be installed separately (in fact, if they are, `dkms status` will complain about the built and installed versions of those modules not matching).
+ Note that the Broadcom bnxt_en and bnxt_re dkms modules are included in the netxtreme-peer-mem-dkms package so they don't have to be installed separately (in fact, if they are, `dkms status` will complain about the built and installed versions of those modules not matching).
  ```
  DEBIAN_FRONTEND=noninteractive apt-get install -V -y /cluster/drivers/bnxt_en/drum_40687/tmp/ubuntu/drivers_linux/peer_mem/dkms/netxtreme-peer-mem-dkms_232.0.155.5_all.deb
  ```

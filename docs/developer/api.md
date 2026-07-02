@@ -125,14 +125,14 @@ state change.
 The recognized states are:
 
 * **on** - Request system to be powered on.  Has no effect if system is already on.
-* **off** - Request system to be powered off, without waiting for OS to shutdown.  
+* **off** - Request system to be powered off, without waiting for OS to shut down.  
         This is an immediate power down.  Has no effect if system is already off.
 * **boot** - Request system to take appropriate action to immediately start booting.
          If a system is on, this is effectively 'reset'.  If a system is off, it
          has the same effect as 'on'
 * **reset** - Request a running system to immediately start booting without regard
           for current OS.  This has no effect with the system off.
-* **shutdown** - Send a request to the running OS to gracefully shutdown.  This
+* **shutdown** - Send a request to the running OS to gracefully shut down.  This
             returns asynchronously to notify that the request has been relayed,
             but has no guarantee that the OS will react or that the OS will
             react as desired (e.g. an OS could present a shutdown dialog on
@@ -186,7 +186,7 @@ empty value in such a case).
 The recognized states are:
 
 * **on** - The LED will be illuminated (in some implementations, it will blink)
-* **off** -The LED will be deactivated
+* **off** - The LED will be deactivated
 
 ### **Monitoring hardware: /nodes/[nodename]/sensors/hardware/[category]/**
 
@@ -230,8 +230,8 @@ Each sensor may return the following fields:
 * **states** - A list of textual descriptions of currently active states.  Examples
            include Present, Failed, Non-Redundant, and are intended to be
            self-explanatory and can be presented directly to an administrator
-           without processing.  Programatic understanding of the severity is
-           acheived through examining the 'health' field above.
+           without processing.  Programmatic understanding of the severity is
+           achieved through examining the 'health' field above.
 * **units** -  Optional indicator of the units to use when evaluating 'value' field
 * **value** - A numeric value representing the current reading of the sensors.  It
           is null when the sensor is a non-numeric sensor.
@@ -285,7 +285,7 @@ this provides the following mechanisms:
 #### **Managing alert destinations: /nodes/[nodename]/configuration/management_controller/alerts/destinations/**
 
 Manage the list of destinations that the management controller will *directly*
-send alerts to.  Alert information may be in turn propogated by
+send alerts to.  Alert information may be in turn propagated by
 the respective destination to more destinations and formats.  Each item contains   
 the following fields:
 
@@ -293,7 +293,7 @@ the following fields:
 * **retries** - If acknowledge is enabled, the number of attempts to perform before
             giving up
 * **acknowledge_timeout** - When waiting for an acknowledgement from the target,
-                        how long to wait before evaluating the need to retrytime
+                        how long to wait before evaluating the need to retry
 * **acknowledge** - Whether to expect an explicit acknowledgement.  For example, SNMP
                 traps do not have an SNMP mechanism to acknowledge receipt, so
                 this would be disabled for normal SNMP traps.  However, IPMI
@@ -339,7 +339,7 @@ that fits the RESTful models
 This is a non-RESTful interface.  It provides a mechanism for javascript
 code in a browser to present a terminal-in-a-browser proxying an HTTP based
 protocol to the appropriate console protocol for the node.  The console is the
-single, authoritatitve text based console of the node.  A node's console is
+single, authoritative text based console of the node.  A node's console is
 active independent of having any clients connected, and multiple clients
 connecting always share a single view and input.  Upon open, a console session
 may stream older data from log to client to help recreate the console.

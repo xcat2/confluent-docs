@@ -12,10 +12,10 @@ argument from all the other interfaces.
 
 <b>Troubleshooting Network config issues</b>
 
-Confluent server will setup up interface files in the `/etc/netplan` folder of the deployed node(s). In some cases the
+Confluent server will set up interface files in the `/etc/netplan` folder of the deployed node(s). In some cases the
 `00-installer-config.yaml` is set up in addition to the `{interface}-confluentcfg.yaml` files that Confluent sets up 
 when you deploy. Looking at the `00-installer-config.yaml` file, interfaces that are already defined by confluent will 
-also be defined in the installer conflig file. see example below: 
+also be defined in the installer config file. see example below: 
 
 ```
 root@n866:/etc/netplan# ls -l

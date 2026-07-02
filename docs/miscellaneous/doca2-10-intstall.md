@@ -41,7 +41,7 @@ The following procedure is for installing the NVIDIA DOCA stack (doca-ofed profi
  ```
 
 ## Update kernel tools and kernel abi stablelists
- Note that this still will update the existing kernel tools packages, as multiple versions of these kernel tools on the system as the same time.
+ Note that this still will update the existing kernel tools packages, as multiple versions of these kernel tools will exist on the system at the same time.
  ```
  dnf install kernel-tools kernel-tools-libs kernel-abi-stablelists
  ```
@@ -107,7 +107,7 @@ EOF
  ```
 
 
-## Buid DOCA kernel packages errata kernel
+## Build DOCA kernel packages errata kernel
  ```
  /opt/mellanox/doca/tools/doca-kernel-support
  ```

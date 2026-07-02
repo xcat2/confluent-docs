@@ -11,9 +11,9 @@ performance.
 ## Shared storage considerations
 
 For operating system deployment, it is expected that /var/lib/confluent be identical across all
-collective members.  This may through use of an NFS mount, clustered filesystem, or synchronized
+collective members.  This may be done through use of an NFS mount, clustered filesystem, or synchronized
 local filesystem content. Confluent has no particular requirements of how this is done, but does
-expect it to be identical if OS deploymennt features are used.
+expect it to be identical if OS deployment features are used.
 
 ## Creating a collective
 
@@ -77,7 +77,7 @@ run osdeploy initialize -k on all other hosts to trust the new collective member
 
 ## Managing the nodes' active manager
 
-Once in a collective, each managed system must have a designated manager.  This can be changed on the fly.  If unspecified and a node goes through the discovery process, the member that performs the discovery claims the node by default. Additionally, automatic assignment in event of the collective.manager failing
+Once in a collective, each managed system must have a designated manager.  This can be changed on the fly.  If unspecified and a node goes through the discovery process, the member that performs the discovery claims the node by default. Additionally, automatic assignment in the event of the collective.manager failing
 can be requested by setting `collective.managercandidates` which accepts a noderange of collective members to take over management in the case of
 the current manager going out.
 

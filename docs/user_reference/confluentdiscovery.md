@@ -23,7 +23,7 @@ at all.
 For optimal results, the confluent server should be on the same network as
 the management ports.  Additionally, it is more robust if IPv6 is enabled,
 though no IPv6 addresses need to be configured (it can use the fe80::
- addresseses that appear by default on network interfaces). Also, the general default
+ addresses that appear by default on network interfaces). Also, the general default
 configuration for Lenovo servers is to only have the dedicated management port
 enabled. As such, servers wired such that only the interface available to the OS
 is available will be unlikely to complete this procedure.
@@ -155,16 +155,16 @@ nodegroupattrib compute net.<name>.ipv4_gateway=<IP of gateway for xClarity Cont
 nodedefine n1-n42 groups=compute
 ```
 
-This will interactively prompt for username and password. This is the desired username and password not necessarily the current.
+This will interactively prompt for username and password. This is the desired username and password not necessarily the current one.
 If the devices are at factory default, then they will be changed automatically to the password and username given.
 
 If no value is provided for `bmc` it will not try to program IPv4 addresses, but will instead collect fe80:: ip addresses.  This is
 useful to have confluent commands work regardless of IPv4 misconfiguration, but may not be obvious to all users.  Setting net.<name>.
-ipv4_gateway setting is optional, but needs to be set for the IPV4 gateway setting of the xClarity Controller to be configured by confluent
+ipv4_gateway setting is optional, but needs to be set for the IPv4 gateway setting of the xClarity Controller to be configured by confluent
 on discovery of the xClarity Controller.  The <name> value is arbitrary, but it is useful to use the name of a network, e.g., "mgt" for
 a management network (IPv4 subnet).  The value of this IPv4 gateway address is determined not by this network name in confluent, but by
 whether it matches in the same IP subnet of the IPv4 addresses set for the "bmc" value.  Note that the subnet  is typically automatically
-determined based on the subnet of the interface on the management node for this network (the subnet mask of this inteface is leveraged to
+determined based on the subnet of the interface on the management node for this network (the subnet mask of this interface is leveraged to
 determine the subnet mask of the bmc.)
 If using xCAT's `makeconfluentcfg` and you want to mandate IPv4 configuration rather than configuring confluent directly, ensure that `ipmi.
 bmc` is set on nodes in xCAT.

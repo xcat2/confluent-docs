@@ -22,7 +22,7 @@ dracut -f
 
 Kernel command line configuration
 
-Change the profile.yaml file in the the OS profile to be deployed to add:
+Change the profile.yaml file in the OS profile to be deployed to add:
 
 ```bash
 # insmod="ib_ipoib"

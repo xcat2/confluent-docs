@@ -18,7 +18,7 @@ in a confluent collective, each collective member will generate their own.  When
 ## Certificate authority and role in host key trust
 
 In traditional ssh usage, each time the user connects to a new host, they are prompted and that specific key is added to ~/.ssh/known_hosts.  This may also be done in /etc/ssh/ssh_known_hosts, to provide that repository system-wide.
-A certificate authority being added to /etc/ssh/ssh_known_hosts extends it's trust over any matching host that has been vouched for by that authority. Here is an example where a 4 collective members get added, and the
+A certificate authority being added to /etc/ssh/ssh_known_hosts extends its trust over any matching host that has been vouched for by that authority. Here is an example where 4 collective members get added, and the
 authorities are configured to be allowed to vouch for any name or ip address at all:
 
 ```
@@ -55,7 +55,7 @@ HostbasedAuthentication yes
 HostbasedUsesNameFromPacketOnly yes 
 ```
 
-The latter permits the client to specify it's own name, rather than relying on reverse DNS.  This means that the client node will do the equivalent of `getent hosts <ip of client nic>` and that result will be the name seen by
+The latter permits the client to specify its own name, rather than relying on reverse DNS.  This means that the client node will do the equivalent of `getent hosts <ip of client nic>` and that result will be the name seen by
 the server.
 
 ## ssh client configuration changes for host based authentication

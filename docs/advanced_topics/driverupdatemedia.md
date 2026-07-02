@@ -4,7 +4,7 @@ title: Using driver update media for RedHat/CentOS
 
 Occasionally for network deployment of a RHEL or CentOS the modules included in the install initrd for the OS aren’t sufficient to work with the network device being installed over (for example, if the network device is very new and the driver support hasn’t been added to the OS yet).  In that scenario a driver update media package for that network device can be used to provide support for that network device during and after the OS installation.  In order to do that, the following should be done:
 
-1. The driver update media package will typically be provided as a `*.iso` file.  This need to be wrapped into a cpio file, which may be done as follows:
+1. The driver update media package will typically be provided as a `*.iso` file.  This needs to be wrapped into a cpio file, which may be done as follows:
 ```
     echo `<driver update media package filename>`.iso | cpio -H newc -o > `<driver update media package filename>`.cpio
 ```

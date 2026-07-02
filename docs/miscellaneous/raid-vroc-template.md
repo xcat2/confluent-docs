@@ -13,7 +13,7 @@ Confluent has a built-in feature to be able to load custom files in different pa
 After editing the sample file, place it in **` /var/lib/confluent/public/os/<<profile name>>/scripts/pre.d `.**
 
 
-For software RAID/md RAID instances please find below as a sample file may adapt for your needs:
+For software RAID/md RAID instances please find below a sample file you may adapt for your needs:
 
 ## Example file for software RAID/md RAID
 

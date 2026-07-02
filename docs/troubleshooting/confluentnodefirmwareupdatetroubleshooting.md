@@ -47,11 +47,11 @@ As in item 1. above, the problem can be worked around by extracting the *.uxz pa
     ```
 
 4. nodefirmware may report an error on BMU type update when there is no actual error.
-    To confirm if the error is actually valid or there is no error. Monitor the update (the boot to BMU and boot back to previous state after firmware update is complete) and check the firmware level after the update. If the firmware is updated then ignore the nodefirmware error message.
+    To confirm whether the error is real, monitor the update (the boot to BMU and boot back to previous state after firmware update is complete) and check the firmware level after the update. If the firmware is updated then ignore the nodefirmware error message.
 
-5. When doing a nodefirmware update on a BMU type update, nodefirmware will  return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied. 
+5. When doing a nodefirmware update on a BMU type update, nodefirmware will return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied. 
 
-6. When doing a nodefirmware update of LXUM firmware, nodefirmware will  return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied.
+6. When doing a nodefirmware update of LXUM firmware, nodefirmware will return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied.
 
 
 

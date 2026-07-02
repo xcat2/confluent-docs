@@ -25,7 +25,7 @@ More details, including firewall rules and enabling GUI login may be found in th
 ## Specifying some global behavior
 
 In confluent, most all configuration is node oriented and can be derived from a group. A default group
-called 'everything` is automatically added to every node. It provides a method to indicate global settings.
+called `everything` is automatically added to every node. It provides a method to indicate global settings.
 
 Attributes may all be specified on the command line, and an example set could be:
 
@@ -65,7 +65,7 @@ fe80::
 ## Defining nodes
 
 
-Nodes may contain any number of attributes. In this document, everything is defined at the group level, so we only need define the names. Here we
+Nodes may contain any number of attributes. In this document, everything is defined at the group level, so we only need to define the names. Here we
 will use a simple n[number] scheme, though any scheme may be used.
 
 ```bash
@@ -142,7 +142,7 @@ n4: off
 
 ## Preparing for OS deployment
 
-If desiring only to prepare for hardware management, then the guide has completed. However, confluent also optionally supports OS deployment.
+If desiring only to prepare for hardware management, then the guide is complete. However, confluent also optionally supports OS deployment.
 
 ## Preparing name resolution
 

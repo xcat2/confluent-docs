@@ -8,7 +8,7 @@ This document will describe the design of the confluent collective implementatio
 
 ## Collective contrasted with 'Hierarchical' mode
 
-In xCAT, the design point was generally is 'head' system and some number of 'service nodes'. If desiring HA in the 'head' role, it was up
+In xCAT, the design point was generally a 'head' system and some number of 'service nodes'. If desiring HA in the 'head' role, it was up
 to the user to provide an active-backup HA solution.  If the 'head' system is gone, this generally meant the 'service nodes' would no longer
 function (as the head node is conventionally also the shared database user).
 
@@ -32,7 +32,7 @@ It may be hierarchical with a node designated a head node by convention and dele
 &nbsp;
 &nbsp;
 
-It my be hierachical with pools of collective managers available to each segment:  
+It may be hierarchical with pools of collective managers available to each segment:  
 ![Redundant hierarchy](../assets/redundant_hierarchy.svg)  
 &nbsp;
 &nbsp;
