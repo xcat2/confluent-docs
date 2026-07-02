@@ -5,18 +5,22 @@ as scale out Linux installations in general.  This includes xCAT and confluent.
 
 ## Adding Repository for Red Hat Enterprise Linux / AlmaLinux / Rocky Linux
 
-Select the repository appropriate for the major version.
+Select the repository appropriate for the major version and architecture (x86_64 or arm64/aarch64).
 
 For Red Hat Enterprise Linux 10:
 
 ```bash
 rpm -ivh https://hpc.lenovo.com/yum/latest/el10/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+# or, on arm64 (aarch64):
+rpm -ivh https://hpc.lenovo.com/yum/latest/el10/aarch64/lenovo-hpc-yum-1-1.aarch64.rpm
 ```
 
 For Red Hat Enterprise Linux 9:
 
 ```bash
 rpm -ivh https://hpc.lenovo.com/yum/latest/el9/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+# or, on arm64 (aarch64):
+rpm -ivh https://hpc.lenovo.com/yum/latest/el9/aarch64/lenovo-hpc-yum-1-1.aarch64.rpm
 ```
 
 For Red Hat Enterprise Linux 8:
@@ -35,7 +39,7 @@ Download our gpg key:
 # wget -O /etc/apt/trusted.gpg.d/confluent.gpg https://hpc.lenovo.com/apt/latest/lenovo-hpc.key
 ```
 
-Create the following apt configuration (e.g. as a file like /etc/apt/sources.list.d/lenovo-hpc.sources) if running Ubuntu 24.04 (noble):
+Create the following apt configuration (e.g. as a file like /etc/apt/sources.list.d/lenovo-hpc.sources) if running Ubuntu 24.04 (noble). This repository serves both x86_64 and arm64 (aarch64) architectures from the same URI:
 
 
 ```bash

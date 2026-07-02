@@ -7,7 +7,8 @@ title: Home
 Confluent handles the essential bootstrap and day-to-day operation of scale-out
 server configurations. It deploys operating systems, controls hardware, manages
 consoles, gathers telemetry, and onboards new devices across clusters ranging
-from a handful of nodes to many thousands.
+from a handful of nodes to many thousands. Confluent supports both x86_64 and
+arm64 (aarch64) architectures.
 
 Confluent is the modern successor of [xCAT](https://github.com/xcat2/xcat-core).
 If you are coming from xCAT, see
