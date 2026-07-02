@@ -2,14 +2,14 @@
 
 [![Build Status](https://github.com/xcat2/confluent-docs/workflows/build/badge.svg)](https://github.com/xcat2/confluent-docs/actions) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/xcat2/confluent-docs/blob/master/LICENSE)
 
-The [confluent documentation](https://xcat2.github.io/confluent-docs/) is built using [MkDocs](https://www.mkdocs.org/). All **Markdown** files in the `docs` directory are automatically added to the documentation.  
+The [confluent documentation](https://xcat2.github.io/confluent-docs/) is built using [ProperDocs](https://properdocs.org/). All **Markdown** files in the `docs` directory are automatically added to the documentation.  
 Navigation can be customized using `.nav.yml` files located in each directory.
 
-Since Markdown is supported by most Git web hosting platforms, you can also view or edit the documentation online without using MkDocs.
+Since Markdown is supported by most Git web hosting platforms, you can also view or edit the documentation online without using ProperDocs.
 
 ## Prerequisites
 
-To generate the documentation you need the Python package [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) along with some additional plugins. To install the required dependencies, run:
+To generate the documentation you need the Python package [mkdocs-materialx](https://jaywhj.github.io/mkdocs-materialx/) along with some additional plugins. To install the required dependencies, run:
 
 ```bash
 pip3 install -r requirements.txt --user
@@ -24,7 +24,7 @@ Furthermore, you should have the [confluent repository](https://github.com/xcat2
 For development purposes, you can use the following command to start a local web server that watches the files in the `docs` directory and updates the documentation on changes:
 
 ```bash
-mkdocs serve
+properdocs serve
 ```
 
 Then, access the live documentation at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
@@ -36,7 +36,7 @@ To build static HTML pages, use either:
 ```bash
 ./makeattribdoc   # generate node_attributes.md from ../confluent
 ./makeman         # generate man pages from ../confluent
-mkdocs build      # build HTML pages
+properdocs build  # build HTML pages
 ```
 
 or
