@@ -29,8 +29,8 @@ jobs:
             mkdocs-material-
       - name: Install Material for MkDocs requirements
         run: pip install -r requirements.txt
-      - name: Install Ronn for man pages
-        run: sudo apt-get install -y --no-install-recommends --no-install-suggests ronn
+      - name: Install man pages and social cards requirements
+        run: sudo apt-get install -y --no-install-recommends --no-install-suggests ronn libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
       - name: Unlink confluent symlink
         run: unlink confluent
       - name: Checkout confluent repository for nodeattrib and man pages
@@ -43,4 +43,6 @@ jobs:
       - name: Make man pages
         run: bash makeman
       - name: Deploy to GitHub Pages
+        env:
+          SOCIAL_CARDS: true
         run: mkdocs gh-deploy --force
