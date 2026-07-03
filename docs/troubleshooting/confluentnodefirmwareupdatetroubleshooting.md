@@ -53,7 +53,4 @@ As in item 1. above, the problem can be worked around by extracting the *.uxz pa
 
 6. When doing a nodefirmware update of LXUM firmware, nodefirmware will return a pending status. This is actually the wrong state of the update as the update would be done and the firmware already applied. Reading the firmware should confirm that the update is already applied.
 
-
-
-
-    
+7. When performing out-of-band firmware updates through the XCC, particularly through the XCC web interface, sometimes the XCC will report in the browser view special actions to be taken after the firmware update. The confluent nodefirmware command does not report these special actions. To make sure the right post-firmware update actions are taken after the firmware update with nodefirmware, do a trial update (this only has to be done once per firmware package) on a system through the XCC web browser to get this information. The confluent nodefirmware command can then be used at scale for the rest of the systems and the recommended action from the trial XCC web interface run can be done at scale with other confluent commands (e.g., nodeshell reboot, or nodeshell poweroff, etc.).
