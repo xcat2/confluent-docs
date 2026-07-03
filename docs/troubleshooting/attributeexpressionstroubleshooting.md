@@ -8,6 +8,7 @@ When using nodeattrib substitution there might be the temptation to do substitut
 
 ### Example 
 when using noderun attribute expressions for bmcuser and bmcpass will not work, this is expected behavior. 
+
 ```
 noderun <nodename> ipmitool -I lanplus -U "{bmcuser}" -P {bmcpass} -H {bmc}
 ```

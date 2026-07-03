@@ -7,5 +7,6 @@ applied across master and service nodes concurrently may drive uncertainty as to
 xCAT server has credentials that can connect to a node booted into genesis using ssh.
 
 Two strategies are suggested:
+
 * Have all management nodes have the same keys in /root/.ssh/ so that they are consistent
 * Run rpm updates or `mknb x86_64` on the preferred management server.

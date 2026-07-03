@@ -5,6 +5,7 @@ title: Confluent nodeshell and apt-get command
 #### Running the `apt-get install` command can be interactive and so is not suited for running through Confluent `nodeshell` command. 
 
 Here is an example of a command that requires interaction and the failure output. 
+
 ```
 [root@n790 ~]# nodeshell bf3 "apt-get install net-tools" | collate
 n1812: debconf: unable to initialize frontend: Dialog

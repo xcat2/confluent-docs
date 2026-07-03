@@ -35,9 +35,7 @@ running SR Linux 25.10.1.
 ### MAC Network instances
  Note that for the subinterfaces to then be allowed to pass L2 traffic between each other, they have to be configured onto a common MAC network instance.
 
-<br>
-<br>
-<br>
+
  Given all of the above, here is a typical case--this has ports 1/1 and 1/2 as untagged interfaces, ports 1/3 and 1/4 as hybrid interfaces, and ports 1/5 and 1/6 as trunk interfaces.  Ports 1/1 and 1/3 untagged traffic is routed to VLAN 101, ports 1/2 and 1/4 untagged traffic is routed to VLAN 102, and ports 1/3 and 1/4 tagged traffic is enabled for VLANs 103 and 109 (depending on the VLAN tag in the ingress frames).  Finally ports 1/5 and 1/6 are configured to carry VLANs 101, 102, 103 and 109, all tagged only:
 
  Note, using the subinterface name corresponding to the VLAN with which it would be associated isn't necessary, but is used as a useful convention in the example below.

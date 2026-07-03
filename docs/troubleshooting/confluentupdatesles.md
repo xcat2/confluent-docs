@@ -8,11 +8,12 @@ title: Troubleshooting issue with updating confluent on SLES 15
 
     <i>There is an update candidate for 'confluent_client' from vendor 'Lenovo', while the current vendor is 'Jarrod Johnson <jjohnson2@lenovo.com>'.</i>
 
-- Solution:
+    - Solution:
 
-    Run the zypper up command with --allow-vendor-change option specified:
-    ```
-    # zypper up --allow-vendor-change
-    ```
+        Run the zypper up command with --allow-vendor-change option specified:
+
+        ```
+        # zypper up --allow-vendor-change
+        ```
 
 

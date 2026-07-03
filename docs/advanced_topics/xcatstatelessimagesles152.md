@@ -17,6 +17,5 @@ In the example where the SLES 15.2 distribution has been extracted (`via the xCA
 
 At this point, the genimage command can be rerun and should succeed.
 
-### Note:
-
-Once the stateless image creation process is completed, the above file needs to be restored to its original name.
+!!! note
+    Once the stateless image creation process is completed, the above file needs to be restored to its original name.

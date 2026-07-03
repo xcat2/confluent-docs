@@ -88,17 +88,17 @@ There are two options to address the problem:
 
 * Use a literal IP address for the node attribute in question:
 
-```
+    ```
     nodeattrib node1 hardwaremanagement.manager=10.19.67.83
     node1:  10.19.67.13
-```
+    ```
 
 * Switch to IPMI management:
 
-```
+    ```
     nodeattrib node1 hardwaremanagement.method=ipmi
     node1:  ipmi
-```
+    ```
 
 ## Redfish management method not supported on FPC, SMM or SMM2
 

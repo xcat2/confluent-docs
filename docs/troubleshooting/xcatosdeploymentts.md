@@ -39,18 +39,16 @@ Presuming that the image has been created in the `/imagebuild` directory on the 
                                                                 
         for i in dev sys proc; do umount /imagebuild/rootimg/$i ; done
 
-```bash
-`/dev` will occasionally report that it is busy. If this happens, do
+    ```bash
+    `/dev` will occasionally report that it is busy. If this happens, do
 
-    umount -l /imagebuild/rootimg/dev
-                                                            
-Confirm success by running the `mount` command and make sure nothing is mounted under `/imagebuild/rootimg`               
-```
+        umount -l /imagebuild/rootimg/dev
+
+    Confirm success by running the `mount` command and make sure nothing is mounted under `/imagebuild/rootimg`
+    ```
 
 6.  Proceed with the process step "Copy the local genimage output to the correct location on the Management Node:"    
 
-<br>
 Note, this is due to the xCAT genimage application failing to set the sshd service to start automatically during stateless image creation of SLES 15.2.  As a result, the image is not reachable via SSH after deployment.  
-<br>
-<br>                                                       
+
 Configuring the sshd service to start using the workaround procedure restores SSH access to the image on deployment.       

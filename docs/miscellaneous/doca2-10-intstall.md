@@ -4,7 +4,8 @@ title: DOCA 2.10 Installation on RHEL 9.5
 
 The following procedure is for installing the NVIDIA DOCA stack (doca-ofed profile) on RHEL 9.5. 
 
- **NOTE** This is for a single-node install.  Scale with nodeshell and arguments to make these steps unattended as needed. 
+!!! note
+    This is for a single-node install.  Scale with nodeshell and arguments to make these steps unattended as needed.
 
 ## Register and subscribe a RHEL system to the Red Hat Customer Portal using Red Hat Subscription-Manager
  This is required because some of the packages required are only available for registered systems. 
@@ -113,7 +114,8 @@ EOF
  ```
 
 ## Install DOCA kernel packages repo built against errata kernel
- **Note** The <temporary directory> name used in this step will be the one shown in the output of the previous step.
+!!! note
+    The <temporary directory> name used in this step will be the one shown in the output of the previous step.
  ```
  rpm -ivh /tmp/<temporary directory>/doca-kernel-repo-25.01.0.6.0.0-1.kver.5.14.0.503.26.1.el9.5.x86.64.x86_64.rpm
  ```
@@ -138,7 +140,8 @@ EOF
 
 
 ## Install the DOCA kmod-mlnx-nvme package specifically from DOCA kernel packages repo built against errata kernel
- **Note** This step is optional and is only needed if using NVMeoF storage.
+!!! note
+    This step is optional and is only needed if using NVMeoF storage.
  ```
  dnf install --disablerepo=doca kmod-mlnx-nvme
  ```

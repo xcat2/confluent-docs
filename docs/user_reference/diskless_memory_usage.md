@@ -49,6 +49,7 @@ Swap:              0           0           0
 ```
 
 So reading data causes memory consumption via cache, but that can be reclaimed.  But what if we write data to the filesystem?  We will start with creating a large file of random data, waiting some time, dropping cache, and looking at the result:
+
 ```
 # dd if=/dev/urandom of=/bigfile bs=1M count=1024
 1024+0 records in
@@ -64,6 +65,7 @@ Swap:              0           0           0
 
 Here we see that our used memory has gone up by about the full gigabyte of that file.  This memory usage is firmly established for
 the lifetime of the file. We can reclaim that memory usage by deleting the file and waiting:
+
 ```
 # rm /bigfile 
 rm: remove regular file '/bigfile'? y
@@ -104,6 +106,7 @@ Swap:              0           0           0
 ```
 
 We can see the rather large increase in 'used' memory to back the compressed ram-resident filesystem.  We will still incur an increase in evictable cache memory in addition to the used memory on a large operation:
+
 ```
 # find /usr -type f -exec cat {} + > /dev/null
 # free -m
@@ -113,6 +116,7 @@ Swap:              0           0           0
 ```
 
 Here we still incur the increase in used memory, but also carry the data mostly replicated in cache as well. Just as in `tethered`, that cache is evictable and can be reclaimed easily by the OS:
+
 ```
 # echo 3 > /proc/sys/vm/drop_caches 
 # free -m

@@ -188,6 +188,7 @@ Any time /etc/hosts is updated, restart dnsmasq to have it pick up changes.
 
 The osdeploy command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used
 to interactively prompt on the options that are available:
+
 ```
 # osdeploy initialize -i
 Add root user key to be authorized to log into nodes (-u)? (y/n): y

@@ -6,7 +6,8 @@ title: Broadcom NIC driver install on Ubuntu 24.04.2
 
 The following procedure is for installing the out-of-box Broadcom NIC driver and RoCE libraries on Ubuntu 24.04.2.
 
- **NOTE** This is for a single-node install. Scale with nodeshell.  Arguments to make these steps unattended have been included.
+!!! note
+    This is for a single-node install. Scale with nodeshell.  Arguments to make these steps unattended have been included.
 
 ## Install dependencies for using RoCE with Broadcom NICs
  ```

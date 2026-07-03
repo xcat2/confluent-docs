@@ -14,6 +14,7 @@ a generic linux based OS payload or an utterly generic payload that is not linux
 
 For a custom Linux payload that is too different from a stock profile to start from a copy, the following additional
 requirements should be considered to be compatible with `osdeploy updateboot`:
+
 * Add desired kernel command line arguments to profile.yaml, e.g. `kernelargs: quiet`
 * Place the kernel in boot/kernel
 * Place any initramfs content into boot/initramfs/ directory.
@@ -21,6 +22,7 @@ requirements should be considered to be compatible with `osdeploy updateboot`:
 * It is highly recommended to put an appropriate grub and optionally shim into boot/efi/boot/grubx64.efi and efi/boot/BOOTX64.efi
 
 
-For a more generic OS payload (e.g. Windows), osdeploy updateboot cannot be supported, and the following must be done for the image, 
+For a more generic OS payload (e.g. Windows), osdeploy updateboot cannot be supported, and the following must be done for the image,
+
 * Contains a boot.ipxe file that is a valid ipxe script if wanting to support PXE boot (for Windows PE, this would generally include wimboot and the wim file that you want to boot)
 * Contains a boot.img file if wanting to support HTTP/HTTPS boot that is a VFAT filesystem with efi/boot/BOOTx64.efi file in it.
