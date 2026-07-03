@@ -4,10 +4,12 @@ on:
     branches:
       - master
       - main
+  pull_request:
 permissions:
   contents: write
 jobs:
-  deploy:
+  build_and_deploy:
+    name: Build and Deploy Documentation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -42,7 +44,13 @@ jobs:
         run: python3 makeattribdoc
       - name: Make man pages
         run: bash makeman
-      - name: Deploy to GitHub Pages
+      - name: Build (PR validation)
+        if: github.event_name == 'pull_request'
         env:
           SOCIAL_CARDS: true
-        run: properdocs gh-deploy --force
+        run: properdocs build --strict
+      - name: Build and deploy to GitHub Pages
+        if: github.event_name == 'push'
+        env:
+          SOCIAL_CARDS: true
+        run: properdocs gh-deploy --force --strict
