@@ -9,12 +9,32 @@ confluent manages nodes through a few [node attributes](../user_reference/node_a
 
 The most critical attributes for this section are:
 
-* `hardwaremanagement.method` with the following options:
-  * `ipmi` (default) - Most widely implemented and quick, the plugin may use non-IPMI protocols as needed to get additional information.
-  * `redfish` - A newer standard that generally offers richer information, at the cost of generally being slower.
-  * `affluent` - Communicate with a network switch with the affluent agent (see [using a cumulus switch with confluent](confluentcumulus.md))
-  * `cnos` - Communicate with a Lenovo network switch running CNOS
-* `console.method` - currently only provides ipmi.  Leave blank to opt out of [`nodeconsole`](../manuals/nodeconsole.md) and console logging, or set to `ipmi` to opt into `ipmi` console.
+* `hardwaremanagement.method` - Must be actively set; if left unset, hardware management operations are not implemented for the node. Options:
+    * `null` - Explicitly disable hardware management for this device
+    * `ipmi` - Most widely implemented and quick, the plugin may use non-IPMI protocols as needed to get additional information.
+    * `redfish` - A newer standard that generally offers richer information, at the cost of generally being slower.
+    * `affluent` - Communicate with a network switch with the affluent agent (see [using a cumulus switch with confluent](confluentcumulus.md))
+    * `cnos` - Communicate with a Lenovo network switch running CNOS
+    * `enos` - Communicate with a Lenovo network switch running the older ENOS platform
+    * `nxos` - Communicate with a Cisco Nexus switch running NX-OS
+    * `srlinux` - Communicate with a Nokia switch running SR Linux (see [Confluent configuration notes for Nokia Ethernet switches](nokia-confignotes.md))
+    * `enclosure` - Delegate hardware management to the node's enclosure manager
+    * `proxmox` - Manage a VM hosted on a Proxmox VE hypervisor
+    * `vcenter` - Manage a VM hosted on VMware vCenter
+    * `pdu` - Generic/legacy PDU support
+    * `deltapdu` - Communicate with a Delta PDU
+    * `eatonpdu` - Communicate with an Eaton PDU
+    * `enlogic` - Communicate with an Enlogic PDU
+    * `geist` - Communicate with a Geist PDU
+    * `raritan` - Communicate with a Raritan PDU
+    * `cooltera` - Communicate with a Cooltera CDU (Coolant Distribution Unit)
+* `console.method` - The method used to access the console of the node. If not specified, [`nodeconsole`](../manuals/nodeconsole.md) and console logging are disabled. Options:
+    * `ipmi` - Should be specified for most systems if console is desired.
+    * `ssh` - Access console over SSH.
+    * `openbmc` - Access console via an OpenBMC-managed system.
+    * `tsmsol` - Access console via TSM Serial-over-LAN.
+    * `vcenter` - Access console of a VM hosted on VMware vCenter.
+    * `proxmox` - Access console of a VM hosted on a Proxmox VE hypervisor.
 * `hardwaremanagement.manager` - May alternatively be referred by alias `bmc`: The name or IP address of the xClarity Controller or equivalent associated with this node.
 * `enclosure.bay` - For systems that are installed into an enclosure, the bay the node is located (which can help with [`nodereseat`](../manuals/nodereseat.md) as well as discovery)
 * `enclosure.manager` - The resolvable name or ip address of the device managing the enclosure that would ultimately perform commands like [`nodereseat`](../manuals/nodereseat.md) on behalf of a node.)
