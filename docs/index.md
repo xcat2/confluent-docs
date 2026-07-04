@@ -39,9 +39,9 @@ If you are coming from xCAT, see
 
     [:octicons-arrow-right-24: Red Hat / Alma / Rocky](getting_started/installconfluent_rhel.md)
 
-    [:octicons-arrow-right-24: SUSE](getting_started/installconfluent_suse.md)
-
     [:octicons-arrow-right-24: Ubuntu](getting_started/installconfluent_ubuntu.md)
+
+    [:octicons-arrow-right-24: SUSE](getting_started/installconfluent_suse.md)
 
 -   :material-harddisk:{ .lg .middle } **Deploy operating systems**
 
@@ -61,6 +61,8 @@ If you are coming from xCAT, see
     The building blocks you use every day: node attributes, the noderange
     language, and attribute expressions.
 
+    [:octicons-arrow-right-24: Node attributes](user_reference/node_attributes.md)
+
     [:octicons-arrow-right-24: Noderange syntax](user_reference/noderange.md)
 
     [:octicons-arrow-right-24: Attribute expressions](user_reference/attributeexpressions.md)
@@ -69,19 +71,25 @@ If you are coming from xCAT, see
 
     ---
 
-    Detect generic PXE systems and Lenovo hardware managers, then onboard them
-    by serial number, MAC, or physical location.
-
+    Detect generic PXE systems or hardware managers, then onboard them
+    by serial number, MAC, switch port, or physical location.
+    
     [:octicons-arrow-right-24: Discovery](user_reference/confluentdiscovery.md)
 
--   :material-code-braces:{ .lg .middle } **Automate (API)**
+    [:octicons-arrow-right-24: PXE boot](advanced_topics/confluentswitchdisco.md)
+
+    [:octicons-arrow-right-24: Switch based](miscellaneous/confluentpxedisco.md)
+
+-   :material-code-braces:{ .lg .middle } **Automate**
 
     ---
 
-    Drive confluent from the REST API, the Python client library, or the
-    filesystem-like `confetty` browser.
+    Drive confluent from the REST API, the Python client library, the
+    filesystem-like `confetty` browser or backup and restore its database.
 
     [:octicons-arrow-right-24: API documentation](developer/api.md)
+
+    [:octicons-arrow-right-24: Backup and restore](miscellaneous/confluentbackup.md)
 
 </div>
 
@@ -134,7 +142,7 @@ See [TLS configuration](miscellaneous/tlsdesign.md),
 ## Ways to drive confluent
 
 - A collection of straightforward Linux commands (`nodepower`, `nodeconsole`,
-  `nodedeploy`, ...).
+  `nodedeploy`, `nodeattrib`, ...).
 - A command-line API browser, `confetty`, that works like browsing a filesystem.
 - A Python client library.
 - A REST API over HTTP.
@@ -145,7 +153,7 @@ There are two suggested approaches:
 
 - **Confluent directly** *(recommended)* — best for most users, especially
   those without an existing xCAT installation.
-- **xCAT and confluent together** — when you rely on an xCAT-exclusive feature
+- **xCAT and confluent together** — when you rely on an xCAT-exclusive features
   and want to use it alongside confluent. Start with the xCAT material under
   [Advanced topics](advanced_topics/xcatconfluentsetup.md).
 
