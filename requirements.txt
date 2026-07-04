@@ -4,6 +4,7 @@ mkdocs-awesome-nav
 mkdocs-minify-plugin>=0.7
 mkdocs-glightbox>=0.5
 mkdocs-rss-plugin
+mkdocs-redirects
 # Required by the "social" plugin (social cards), built in CI
 pillow>=10.2
 cairosvg>=2.6

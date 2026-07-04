@@ -37,11 +37,7 @@ If you are coming from xCAT, see
     Set up the confluent management server on your distribution of choice and
     open the required firewall ports.
 
-    [:octicons-arrow-right-24: Red Hat / Alma / Rocky](getting_started/installconfluent_rhel.md)
-
-    [:octicons-arrow-right-24: Ubuntu](getting_started/installconfluent_ubuntu.md)
-
-    [:octicons-arrow-right-24: SUSE](getting_started/installconfluent_suse.md)
+    [:octicons-arrow-right-24: Red Hat / Alma / Rocky, SUSE, or Ubuntu](getting_started/installconfluent.md)
 
 -   :material-harddisk:{ .lg .middle } **Deploy operating systems**
 

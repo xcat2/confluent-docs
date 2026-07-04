@@ -132,3 +132,15 @@ plugins:
       show_author: false
   - minify:
       minify_html: true
+  - redirects:
+      redirect_maps:
+        miscellaneous/doca2-10-intstall.md: miscellaneous/doca2-10-install.md
+        advanced_topics/rh8installib.md: advanced_topics/ibinstallxcat.md
+        advanced_topics/sle152ibinstall.md: advanced_topics/ibinstallxcat.md
+        miscellaneous/rhinstallib.md: advanced_topics/ibinstallxcat.md
+        miscellaneous/rhinstallopa.md: advanced_topics/ibinstallxcat.md
+        getting_started/ibinstallconfluentrhel8.md: getting_started/ibinstallconfluent.md
+        getting_started/ibinstallconfluentsle152.md: getting_started/ibinstallconfluent.md
+        getting_started/installconfluent_rhel.md: getting_started/installconfluent.md
+        getting_started/installconfluent_suse.md: getting_started/installconfluent.md
+        getting_started/installconfluent_ubuntu.md: getting_started/installconfluent.md

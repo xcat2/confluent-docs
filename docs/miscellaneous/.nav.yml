@@ -31,13 +31,11 @@ nav:
   - sd650sharednote.md
   - sles12deploy.md
   # Drivers and adapters
-  - doca2-10-intstall.md
+  - doca2-10-install.md
   - doca3-0-install.md
   - bf3-troubleshooting.md
   - nvidiagpudriverinstall.md
   - broadcom-nic-driver-install.md
-  - rhinstallib.md
-  - rhinstallopa.md
   - hpcxtroubleshooting.md
   # Switches
   - confluentcumulus.md
