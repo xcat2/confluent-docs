@@ -1,5 +1,5 @@
 ---
-title: Containerized confluent run 
+title: Containerized confluent run
 tags:
   - installation
 ---
@@ -10,7 +10,7 @@ tags:
 
 ## Solution
 
-To create a containerized confluent image with docker we need to edit the custom file "/confluent/container/Dockerfile 
+To create a containerized confluent image with docker we need to edit the custom file "/confluent/container/Dockerfile
 
 ## Constraints:
 
@@ -20,14 +20,15 @@ Container must be run with the ' --net = host' flag.
 ## Dockerfile customization
 
 ```bash
-1  FROM almalinux:8    
+1  FROM almalinux:8
 ```
 
 Modify above line with the desired OS.
 
-Please note that Lenovo does NOT HOST any OS. The OS will be taken from a repository outside of Lenovo control. 
+!!! warning
+    Lenovo does NOT host any OS. The OS will be taken from a repository outside of Lenovo control.
 
-The next lines can be edited with the specific package manager commands. 
+The next lines can be edited with the specific package manager commands.
 
 These will pull and install the dependencies needed to run confluent.
 

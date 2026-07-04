@@ -44,21 +44,51 @@ approach leverages the OS deployment automation supported natively by the provid
 | Debian              | Debian-Installer       |
 | VMware              | Kickstart (Weasel)     |
 
-The benefits of this approach are:
+The benefits and drawbacks of this approach are:
 
-| Benefits | Drawbacks |
-| ------ | -------- |
-|<ul><li>Most familiar mechanism for interacting with the distribution developers, support, and community</li><li>The process to transition from common, standard OS material to your bespoke setup remains clearly documented in post/firstboot automation | <ul><li>Indefinite term for local ad-hoc modifications to induce 'drift' in OS state if care is not taken</li><li>Generally slower to deploy than other approaches</li><li>Uses local disk</li></ul>
+<div class="grid cards" markdown>
+
+-   **Benefits**
+
+    ---
+
+    * Most familiar mechanism for interacting with the distribution developers, support, and community
+    * The process to transition from common, standard OS material to your bespoke setup remains clearly documented in post/firstboot automation
+
+-   **Drawbacks**
+
+    ---
+
+    * Indefinite term for local ad-hoc modifications to induce 'drift' in OS state if care is not taken
+    * Generally slower to deploy than other approaches
+    * Uses local disk
+
+</div>
 
 ## Image approach
 
-For many platforms, Confluent further supports an 'image' based approach governed by 'imgutil'.  This approach works with chroot-style directory trees or cloning to maintain an image.
+For many platforms, Confluent further supports an 'image' based approach governed by `imgutil`.  This approach works with chroot-style directory trees or cloning to maintain an image.
 
 Generally speaking, the benefits and drawbacks of an image based approach are:
 
-| Benefits | Drawbacks |
-| ------ | -------- |
-| <ul><li>Fastest time to deployment</li><li>Most straightforward way to amplify potential manual OS modification to scale out to arbitrarily many nodes without having to sort out an unattended procedure</li><li>Depending on deployment choice, may not need local disk</ul>| <ul><li>Ease of ad-hoc modification may result in operational confusion on how the image was built up, particularly when it comes time to rebase to a newer major version</li><li>Not immediately familiar to the OS developers or the broader OS community</li></ul>
+<div class="grid cards" markdown>
+
+-   **Benefits**
+
+    ---
+
+    * Fastest time to deployment
+    * Most straightforward way to amplify potential manual OS modification to scale out to arbitrarily many nodes without having to sort out an unattended procedure
+    * Depending on deployment choice, may not need local disk
+
+-   **Drawbacks**
+
+    ---
+
+    * Ease of ad-hoc modification may result in operational confusion on how the image was built up, particularly when it comes time to rebase to a newer major version
+    * Not immediately familiar to the OS developers or the broader OS community
+
+</div>
 
 ### Constructing and maintaining images
 
@@ -76,24 +106,67 @@ With an `imgutil` managed profile, there are three approaches to deployment, sel
 
 * `installtodisk` - This will write the image to hard disk similar to a scripted install and apply `post` and `firstboot` automation in a similar way. In addition to more trivial inclusion of third party content compared to a scripted install, this approach tends to be much quicker than scripted installers.
 
-| Benefits | Drawbacks |
-| ------ | -------- |
-| <ul><li>Can freely use root filesystem for scratch, logging, installs and updates without concern about memory consumption</li><li>Usually faster than scripted install</ul>|<ul><li>Requires local disk</li><li>Slower to deploy than diskless approaches.</ul>|
+<div class="grid cards" markdown>
+
+-   **Benefits**
+
+    ---
+
+    * Can freely use root filesystem for scratch, logging, installs and updates without concern about memory consumption
+    * Usually faster than scripted install
+
+-   **Drawbacks**
+
+    ---
+
+    * Requires local disk
+    * Slower to deploy than diskless approaches
+
+</div>
 
 #### tethered (statelite)
 
 * `confluent_image=tethered` - This will instruct the OS to boot with HTTPS-as-root approach.  This results in [memory consumption](diskless_memory_usage.md) similar to installing from disk, but without actually using local disk in the process. In a confluent collective architecture, this remote root filesystem is
 given multipath capabilities, allowing continued functionality if one confluent member goes down.  Benefits and drawbacks of this approach are:
 
-| Benefits | Drawbacks |
-| ------ | -------- |
-| <ul><li>No local disk required</li><li>Dramatically reduced memory requirements compared with traditional diskless approaches</li><li>Faster diskless boot compared with traditional diskless approaches</li><li>OS may contain arbitrarily large content without risking extra memory consumption</li></ul> | <ul><li>Nodes have an ongoing dependency on the confluent infrastructure and profile's existence on the servers. Mitigated by using a collective to provide HA capabilities.</li><li>Writing to the local filesystem (logging, scratch, updates, installs) will increase memory consumption
+<div class="grid cards" markdown>
+
+-   **Benefits**
+
+    ---
+
+    * No local disk required
+    * Dramatically reduced memory requirements compared with traditional diskless approaches
+    * Faster diskless boot compared with traditional diskless approaches
+    * OS may contain arbitrarily large content without risking extra memory consumption
+
+-   **Drawbacks**
+
+    ---
+
+    * Nodes have an ongoing dependency on the confluent infrastructure and profile's existence on the servers. Mitigated by using a collective to provide HA capabilities.
+    * Writing to the local filesystem (logging, scratch, updates, installs) will increase memory consumption
+
+</div>
 
 #### untethered (stateless/diskless)
 
 * `confluent_image=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand.  This results in increased [memory consumption](diskless_memory_usage.md).  Benefits and drawbacks:
 
-| Benefits | Drawbacks |
-| ------ | -------- |
-| Fastest performance as all content is RAM resident | Slower boot as full image must be downloaded at once |
-|Independent functioning from the deployment infrastructure after boot|Large memory consumption
+<div class="grid cards" markdown>
+
+-   **Benefits**
+
+    ---
+
+    * Fastest performance as all content is RAM resident
+    * Independent functioning from the deployment infrastructure after boot
+
+-   **Drawbacks**
+
+    ---
+
+    * Slower boot as full image must be downloaded at once
+    * Large memory consumption
+
+</div>

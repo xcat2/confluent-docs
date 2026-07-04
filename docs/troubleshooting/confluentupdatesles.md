@@ -4,18 +4,18 @@ tags:
   - troubleshooting
 ---
 
-## Known Issue: 
+## Known Issue
 
 1. Updating confluent version 3.5 or less to confluent version 3.6.2 on SLES 15 may fail and show a message such as below:
 
-    <i>There is an update candidate for 'confluent_client' from vendor 'Lenovo', while the current vendor is 'Jarrod Johnson <jjohnson2@lenovo.com>'.</i>
+    ```text
+    There is an update candidate for 'confluent_client' from vendor 'Lenovo', while the current vendor is 'Jarrod Johnson <jjohnson2@lenovo.com>'.
+    ```
 
     - Solution:
 
         Run the zypper up command with --allow-vendor-change option specified:
 
+        ```bash
+        zypper up --allow-vendor-change
         ```
-        # zypper up --allow-vendor-change
-        ```
-
-

@@ -15,44 +15,45 @@ Manual installation is well covered by Proxmox documentation, so this guide will
 For proxmox, start by creating a debian profile for confluent.  Grab the `mini.iso` for debian; for trixie, it is currently at
 [this url](https://deb.debian.org/debian/dists/trixie/main/installer-amd64/current/images/netboot/mini.iso)
 
-With this downloaded, import it using osdeploy:
+With this downloaded, import it using `osdeploy`:
 
-```bash
-# osdeploy import mini.iso 
+```console
+# osdeploy import mini.iso
 Importing from /tmp/debian/mini.iso to /var/lib/confluent/distributions/debian-13.4-x86_64
-complete: 100.00%    
+complete: 100.00%
 Deployment profile created: debian-13.4-x86_64-default
 ```
 
 It is suggested to make a copy of the profile to customize for proxmox:
 
 ```bash
-# cd /var/lib/confluent/public/os/
-# cp -a debian-13.4-x86_64-default/ debian-13.4-x86_64-proxmox
+cd /var/lib/confluent/public/os/
+cp -a debian-13.4-x86_64-default/ debian-13.4-x86_64-proxmox
 ```
 
 Enable the provided example proxmox scripts:
 
 ```bash
-# cd /var/lib/confluent/public/os/debian-13.4-x86_64-proxmox/
-# cp scripts/proxmox/proxmoxve.firstboot scripts/firstboot.d/
-# cp scripts/proxmox/proxmoxve.post scripts/post.d/
+cd /var/lib/confluent/public/os/debian-13.4-x86_64-proxmox/
+cp scripts/proxmox/proxmoxve.firstboot scripts/firstboot.d/
+cp scripts/proxmox/proxmoxve.post scripts/post.d/
 ```
 
 Now the profile is ready to be deployed, just like any other profile:
 
-```bash
-# nodedeploy pmx8 -n debian-13.4-x86_64-proxmox 
+```console
+# nodedeploy pmx8 -n debian-13.4-x86_64-proxmox
 pmx8: network
 pmx8: on
 ```
 
-Note that proxmox may lengthen the post and firstboot phases a bit, wait until you see:
+!!! note
+    Proxmox may lengthen the post and firstboot phases a bit, wait until you see:
 
-```bash
-# nodedeploy pmx8
-pmx8: completed: debian-13.4-x86_64-proxmox
-```
+    ```console
+    # nodedeploy pmx8
+    pmx8: completed: debian-13.4-x86_64-proxmox
+    ```
 
 ## Using proxmox virtual machines as nodes
 
@@ -132,40 +133,40 @@ tpmstate0: successfully created disk 'local:101/vm-101-disk-1.raw,size=4M,versio
 
 First, if it doesn't already exist as a confluent node, define a node using the name of the proxmox host:
 
-```bash
+```console
 # nodedefine pmx8
 pmx8: created
 ```
 
 Create a node as you normally would.  A terse example assuming existing general group settings and focusing solely on the proxmox facet:
 
-```bash
+```console
 # nodedefine pvm1 hardwaremanagement.method=proxmox bmcuser=root@pam hardwaremanagement.manager=pmx8
 pvm1: created
 # nodeattrib pvm1 -p bmcpass
-Enter value for bmcpass: 
-Confirm value for bmcpass: 
+Enter value for bmcpass:
+Confirm value for bmcpass:
 pvm1: secret.hardwaremanagementpassword: ********
 ```
 
 Here's an alternative including other node setup attributes explicitly rather than inheriting from `everything` as above:
 
-```bash
+```console
 # nodedefine pvm2 hardwaremanagement.method=proxmox bmcuser=root@pam hardwaremanagement.manager=pmx8 net.ipv4_address=172.30.84.{id.index%255} deployment.useinsecureprotocols=firmware dns.domain=devcluster.net dns.servers=172.30.193.20
 pvm2: created
 # nodeattrib pvm2 -p crypted.rootpassword bmcpass
-Enter value for crypted.rootpassword: 
-Confirm value for crypted.rootpassword: 
-Enter value for bmcpass: 
-Confirm value for bmcpass: 
+Enter value for crypted.rootpassword:
+Confirm value for crypted.rootpassword:
+Enter value for bmcpass:
+Confirm value for bmcpass:
 pvm2: ********
 pvm2: crypted.rootpassword: ********
 pvm2: secret.hardwaremanagementpassword: ********
 ```
 
-To push the ipv4 addresses from net attributes to /etc/hosts:
+To push the ipv4 addresses from net attributes to `/etc/hosts`:
 
-```bash
+```console
 # confluent2hosts -a pvm1,pvm2
 # getent hosts pvm2
 172.30.84.130   pvm2 pvm2.devcluster.net
@@ -174,12 +175,12 @@ To push the ipv4 addresses from net attributes to /etc/hosts:
 Next, have confluent gather needed information about the virtual machines, similar to a manually added BMC-managed node:
 
 ```bash
-# nodeinventory pvm[1,2] -s
+nodeinventory pvm[1,2] -s
 ```
 
 The node is now ready for use as a normal node, for example, to boot a diskless profile I have built:
 
-```bash
+```console
 # nodedeploy pvm[1,2] -n alma-9.7-x86_64-diskless
 
 pvm2: network
@@ -194,13 +195,13 @@ pvm2: pvm2
 
 ## Confluent commands to work with Proxmox VMs
 
-If you add a serial port to the VM, then you can use console.method=proxmox to have a SOL console in nodeconsole.  Other than that, the graphics console in proxmox VMs is supported in the confluent webui as well as nodeconsole:
+If you add a serial port to the VM, then you can use `console.method=proxmox` to have a SOL console in `nodeconsole`.  Other than that, the graphics console in proxmox VMs is supported in the confluent webui as well as `nodeconsole`:
 
 ![nodeconsole](../assets/Proxmox/nodeconsole.png)
 
 Nodeinventory also works:
 
-```bash
+```console
 # nodeinventory pvm[1,2]
 pvm2: System Product name: Proxmox qemu virtual machine
 pvm2: System Manufacturer: qemu
@@ -216,4 +217,4 @@ pvm1: Network adapter net0 Model: virtio
 pvm1: Network adapter net0 MAC Address 1: BC:24:11:FF:33:88
 ```
 
-As well as nodepower, nodesetboot, and by extension nodeboot. Other confluent commands are not supported at this time.
+As well as `nodepower`, `nodesetboot`, and by extension `nodeboot`. Other confluent commands are not supported at this time.
