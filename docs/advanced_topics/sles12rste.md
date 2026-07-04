@@ -7,7 +7,7 @@ tags:
 
 xCAT does not currently consider the RSTe array as a default
 install target.  To override the behavior and direct the OS
-to be installed to RSTe, first create a file called /install/custom/sles12rste.partitions containing the following:
+to be installed to RSTe, first create a file called `/install/custom/sles12rste.partitions` containing the following:
 
 ```bash
 <drive>
@@ -33,8 +33,7 @@ to be installed to RSTe, first create a file called /install/custom/sles12rste.p
 With this in place, modify the osimage to use this partition plan:
 
 ```bash
-chdef -t osimage sles12.3-x86_64-install-compute partitionfile=/install/custom/sles12rste.partitions 
+chdef -t osimage sles12.3-x86_64-install-compute partitionfile=/install/custom/sles12rste.partitions
 ```
 
-From that point forward invocations of the nodeset command will target the RSTe volume.
-
+From that point forward invocations of the `nodeset` command will target the RSTe volume.

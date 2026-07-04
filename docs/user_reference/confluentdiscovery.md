@@ -13,8 +13,8 @@ tags:
     networking as required. If you do adjust networking, user, and password
     through other means, then this portion may be skipped.
 
-While it is possible to use confluent by directly specifying the pre-configured 
-address, username, and password of a BMC, confluent also has the ability to 
+While it is possible to use confluent by directly specifying the pre-configured
+address, username, and password of a BMC, confluent also has the ability to
 automate the deployment of configuration of Integrated Management Module
 and xClarity Controller devices without knowing the addresses ahead of time.
 It is even possible to avoid ever provisioning a viable network configuration
@@ -22,7 +22,7 @@ at all.
 
 For optimal results, the confluent server should be on the same network as
 the management ports.  Additionally, it is more robust if IPv6 is enabled,
-though no IPv6 addresses need to be configured (it can use the fe80::
+though no IPv6 addresses need to be configured (it can use the `fe80::`
  addresses that appear by default on network interfaces). Also, the general default
 configuration for Lenovo servers is to only have the dedicated management port
 enabled. As such, servers wired such that only the interface available to the OS
@@ -40,9 +40,9 @@ servers to configure or replacing a server or system board.
 Discovery can be followed by examining `/var/log/confluent/events`, Using `tail -f` for example:
 
 ```bash
-May 25 16:28:25 {"info": "Discovered n1 (XCC)"} 
+May 25 16:28:25 {"info": "Discovered n1 (XCC)"}
 May 25 16:28:37 {"info": "Discovered n4 (XCC)"}
-May 25 16:28:38 {"info": "Discovered n2 (XCC)"} 
+May 25 16:28:38 {"info": "Discovered n2 (XCC)"}
 May 25 16:28:40 {"info": "Discovered n3 (XCC)"}
 ```
 
@@ -59,7 +59,7 @@ otherwise automatic, but locked down discovery configuration.
 The `nodediscover` command is intended to aid in exploring available endpoints
 that may be discovered:
 
-```
+```console
 # nodediscover  list
            Node|          Model|         Serial|                                UUID|      Mac Address|        Type|                            Current IP Addresses
 ---------------|---------------|---------------|------------------------------------|-----------------|------------|------------------------------------------------
@@ -71,7 +71,7 @@ that may be discovered:
                |     7X2104Z000|       DEV00003|cc099cf9-f9a5-11e6-84c7-db06face6280|08:94:ef:3f:e0:af|  lenovo-xcc|    172.30.254.193,fe80::a94:efff:fe3f:e0af%eth1
                |     7X2104Z000|       DEV00001|00b043c4-029b-11e7-ad41-c7027e3a94d2|08:94:ef:40:87:21|  lenovo-xcc|    172.30.254.251,fe80::a94:efff:fe40:8721%eth1
                |     7X2104Z000|       DEV00002|78b36a03-0356-11e7-9043-a5a2961a0e5c|08:94:ef:40:89:31|  lenovo-xcc|       172.30.34.2,fe80::a94:efff:fe40:8931%eth1
-               |     7X2104Z000|       DEV00001|00b043c4-029b-11e7-ad41-c7027e3a94d2|08:94:ef:40:8a:96|  pxe-client|                                                
+               |     7X2104Z000|       DEV00001|00b043c4-029b-11e7-ad41-c7027e3a94d2|08:94:ef:40:8a:96|  pxe-client|
                |     7X2104Z000|       DEV00004|58962b3d-088b-11e7-b8b8-9e59e5cf61db|08:94:ef:41:01:b5|  lenovo-xcc|        172.30.92.4,fe80::a94:efff:fe41:1b5%eth1
                |     7X18CTO1WW|       J30007Y4|4dce618a-82f5-11e7-badd-0a94ef4a132f|08:94:ef:4a:13:2d|  lenovo-xcc|       172.30.78.2,fe80::a94:efff:fe4a:132d%eth1
 ```
@@ -84,7 +84,7 @@ it recognizes the relationship between a pxe-client and the managing xcc.
 One common scenario is having a spreadsheet of desired configuration together with the serial number.  To do this, create a csv file with
 a header describing the available data followed by records to import.  For example:
 
-```
+```text
 node,serial,bmc,bmcuser,bmcpass
 r1,J30002HG,172.30.30.1,admin,Passw0rd12
 r2,J30007Y4,172.30.30.2,admin,Passw0rd12
@@ -92,8 +92,8 @@ r2,J30007Y4,172.30.30.2,admin,Passw0rd12
 
 Then use the `nodediscover assign` command to deploy the requested configuration:
 
-```
-# nodediscover assign -i serials.csv 
+```console
+# nodediscover assign -i serials.csv
 Defined r1
 Discovered r1
 Defined r2
@@ -102,7 +102,7 @@ Discovered r2
 
 At this point, the systems are ready for management:
 
-```
+```console
 # nodehealth everything|collate
 ====================================
 r1,r2
@@ -120,18 +120,18 @@ possiblenode=""
 mac: 40:f2:e9:b9:10:1d
 ports=[
  {
-  "switch": "r8e1", 
-  "macsonport": 1, 
+  "switch": "r8e1",
+  "macsonport": 1,
   "port": "Ethernet28"
  }
 ]
-/ -> 
+/ ->
 ```
 
 
 You may also use this to get the mac addresses from an ethernet port, if you do not know the mac address:
 
-```
+```text
 / -> show /networking/macs/by-switch/r8e1/by-port/Ethernet13/by-mac
 08-94-ef-41-01-f0
 ```
@@ -144,7 +144,7 @@ or to debug or help formulate a way to use [automatic discovery](#automatic-disc
 As a prelude for automatic discovery, first define the node using the values
 that it should be configured with at the end, regardless of current configuration.
 For example, we will define 42 nodes (`n1` through `n42`) that upon completion should have an
-xClarity Controller with the address '10.2.3.(node number)', and the username and 
+xClarity Controller with the address `10.2.3.(node number)`, and the username and
 password of your choice.  Here we will use a group to hold the patterns and just define the nodes
 with just the single group membership:
 
@@ -158,9 +158,9 @@ nodedefine n1-n42 groups=compute
 This will interactively prompt for username and password. This is the desired username and password not necessarily the current one.
 If the devices are at factory default, then they will be changed automatically to the password and username given.
 
-If no value is provided for `bmc` it will not try to program IPv4 addresses, but will instead collect fe80:: ip addresses.  This is
-useful to have confluent commands work regardless of IPv4 misconfiguration, but may not be obvious to all users.  Setting net.<name>.
-ipv4_gateway setting is optional, but needs to be set for the IPv4 gateway setting of the xClarity Controller to be configured by confluent
+If no value is provided for `bmc` it will not try to program IPv4 addresses, but will instead collect `fe80::` ip addresses.  This is
+useful to have confluent commands work regardless of IPv4 misconfiguration, but may not be obvious to all users.  Setting `net.<name>.ipv4_gateway`
+setting is optional, but needs to be set for the IPv4 gateway setting of the xClarity Controller to be configured by confluent
 on discovery of the xClarity Controller.  The <name> value is arbitrary, but it is useful to use the name of a network, e.g., "mgt" for
 a management network (IPv4 subnet).  The value of this IPv4 gateway address is determined not by this network name in confluent, but by
 whether it matches in the same IP subnet of the IPv4 addresses set for the "bmc" value.  Note that the subnet  is typically automatically
@@ -208,7 +208,7 @@ nodeattrib n3 discovery.policy=open
 
 ### Defining required attributes on the nodes, enclosure managers, and switches
 
-In this example, we have [4 ThinkSystem SD530 servers in a D2 enclosure](http://www3.lenovo.com/us/en/data-center/servers/high-density/Lenovo-ThinkSystem-SD530/p/77XX7DSSD53).  That enclosure 
+In this example, we have [4 ThinkSystem SD530 servers in a D2 enclosure](http://www3.lenovo.com/us/en/data-center/servers/high-density/Lenovo-ThinkSystem-SD530/p/77XX7DSSD53).  That enclosure
 has a management port plugged into a switch called `r8e1` on port 8.
 
 First we set the enclosure attributes on the nodes:
@@ -226,13 +226,13 @@ nodeattrib enc1 net.switchport=8 net.switch=r8e1
 
 By default, confluent will assume it can use SNMPv1/v2c, community string `public`
 to communicate with the switch.  To use a different SNMP community string, make
-sure the ethernet switch is defined as a node and set a value for secret.snmpcommunity:
+sure the ethernet switch is defined as a node and set a value for `secret.snmpcommunity`:
 
 ```bash
 nodedefine r8e1 secret.snmpcommunity=otherpublic
 ```
 
-Or for SNMPv3, use secret.hardwaremanagementuser and hardwaremanagementpassword:
+Or for SNMPv3, use `secret.hardwaremanagementuser` and `hardwaremanagementpassword`:
 
 ```bash
 nodedefine r8e1 secret.hardwaremanagementuser=snmpv3user secret.hardwaremanagementpassword=snmpv3password
@@ -255,7 +255,7 @@ the situation can be corrected by doing [manual discovery](#manual-discovery) or
 nodeattrib n1-n4 pubkeys.tls_hardwaremanager=
 ```
 
-This can be combined with a configuration change.  For example, if we decide that the previous scheme of 10.2.3.{n1} really should be 10.2.4.{n1}:
+This can be combined with a configuration change.  For example, if we decide that the previous scheme of `10.2.3.{n1}` really should be `10.2.4.{n1}`:
 
 ```bash
 nodeattrib n1-n42 hardwaremanagement.manager=10.2.4.{n1} pubkeys.tls_hardwaremanager=

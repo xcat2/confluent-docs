@@ -8,13 +8,13 @@ tags:
 
 When using hpcx for MPI jobs on RHEL 9.5, the following error message may be displayed:
 
-```
+```text
 "Failed to dlopen libnuma.so"
 ```
 
 To keep this issue from happening, install the following package:
 
-```
+```text
 numactl-devel-2.0.18-2.el9.x86_64
 ```
 
@@ -22,7 +22,7 @@ numactl-devel-2.0.18-2.el9.x86_64
 
 The following errors may be reported when running an MPI job with hpcx:
 
-```
+```text
 [LOG_CAT_MCAST] VMC Failed to join multicast, is_root 0. Unexpected event was received: event=13, str=RDMA_CM_EVENT_MULTICAST_ERROR, status=-22
 [LOG_CAT_MCAST] VMC Failed to join multicast, is_root 0. Unexpected event was received: event=13, str=RDMA_CM_EVENT_MULTICAST_ERROR, status=-22
 [LOG_CAT_MCAST] VMC Failed to join multicast, is_root 0. Unexpected event was received: event=13, str=RDMA_CM_EVENT_MULTICAST_ERROR, status=-22

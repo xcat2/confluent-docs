@@ -11,4 +11,3 @@ related software, you may instruct yum to do so by:
 ```bash
 yum --disablerepo=* --enablerepo=lenovo-hpc update
 ```
-

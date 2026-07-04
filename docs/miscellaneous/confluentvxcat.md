@@ -44,7 +44,7 @@ The default configuration of confluent protects sensitive data. Even after optin
 In xCAT, makedns is provided as an aid to generate ISC BIND configuration. However, it does not require this be used,
 and is content so long as forward and reverse lookup works exactly as expected.
 
-In confluent, no helper facility is provided for name configuration, documentation instead mentions how to use `/etc/hosts` with dnsmasq
+In confluent, no helper facility is provided for name configuration, documentation instead mentions how to use `/etc/hosts` with `dnsmasq`
 if no other name resolution is otherwise in use. It is strongly recommended for forward resolution to function, though
 not required, and reverse lookup no longer has an impact on identifying nodes and will not cause problem identifying
 nodes if missing or not particularly configured.
@@ -59,7 +59,7 @@ any discovery. The default behavior is to use static IP address. It may also be 
 to an external DHCP server or to do so only for the firmware phase (PXE/HTTP boot) but use static for the OS.
 
 Where xCAT provides `makedhcp` to maintain ISC dhcpd from its own tables, confluent instead provides
-[`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md), which generates a dnsmasq configuration of static reservations
+[`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md), which generates a `dnsmasq` configuration of static reservations
 directly from the confluent node `net.*` attribute database, for sites that want confluent to help manage a DHCP server
 rather than only interoperate with one.
 
@@ -79,7 +79,7 @@ In xCAT, deployment profiles  are comprised of content distributed
 across various directories combined and enhanced by data from various tables. This is powerful for having script content
 shared across images, but makes things complicated to follow and the implications of upgrading unclear.
 
-In Confluent, OS 'images' are simply the directories in /var/lib/confluent/public/os. All content is either a symbolic
+In Confluent, OS 'images' are simply the directories in `/var/lib/confluent/public/os`. All content is either a symbolic
 link or copy. If confluent is upgraded, no existing profiles will be altered in terms of kickstart, autoyast, autoinstall,
 or script content.  While it is encouraged to modify 'custom' files to keep it simple to pull in potential future enhancements,
 no content will be replaced automatically on upgrade unless it is a symbolic link.
@@ -89,7 +89,7 @@ specialization takes place on the target system rather than on the deployment se
 
 ## Postscripts
 
-In xCAT, postscripts are in /install/postscripts and referenced by either osimage or per node entries across the pertinent tables.
+In xCAT, postscripts are in `/install/postscripts` and referenced by either osimage or per node entries across the pertinent tables.
 
 In confluent, scripts are always in the OS image profile itself, and invoking them is a matter of modifying the appropriate script
 for the phase of boot. Most commonly, scripts/firstboot.custom, scripts/post.custom. Unlike xCAT, having distinct postscripts per
@@ -113,7 +113,7 @@ enable host-based authentication within a confluent cluster. This extends to bot
 
 ## Diskless
 
-In xCAT, diskless images require a special script to run to generate the diskless and statelite initramfs.  Once ready, packimage tries to trim 'superfluous' content and creates a
+In xCAT, diskless images require a special script to run to generate the diskless and statelite initramfs.  Once ready, `packimage` tries to trim 'superfluous' content and creates a
 compressed image that is always downloaded and uncompressed into RAM. It is expected that the extracted form of the image persists in the `/install` directory.
 
 In confluent, more efforts are made to have the built image naturally regenerate its own initramfs, meaning rpm installs that naturally trigger initramfs updates no longer require
@@ -122,4 +122,3 @@ Further, the read-write layer of a diskless image is compressed to mitigate memo
 The workflow is such that images can be unpacked from their packed form for updates and maintenance, removing requirements for retaining the extracted form in a particular location.  Further,
 an `imgutil exec` facility is provided to boot an extracted image in a container-like environment (dedicated mount and process namespaces with chroot).  Also, a diskless image retains
 initramfs access for root user of collective nodes after the main image has booted, to facilitate debug.
-

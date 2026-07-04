@@ -47,7 +47,7 @@ Some examples are provided here, see the list of [man pages](../manuals/index.md
 
 Hard resetting nodes:
 
-```bash
+```console
 # nodepower d3-d6 boot
 d3: on->reset
 d5: on->reset
@@ -57,7 +57,7 @@ d4: on->reset
 
 Forcing a boot into firmware configuration menu:
 
-```bash
+```console
 # nodeboot d3-d6 setup
 d3: setup
 d4: setup
@@ -72,12 +72,12 @@ d6: reset
 Accessing the console of a node:
 
 ```bash
-# nodeconsole d4
+nodeconsole d4
 ```
 
 Forcing a boot to network (e.g. to do a PXE or HTTP based deployment)
 
-```bash
+```console
 # nodeboot d3-d6 net
 d3: network
 d4: network
@@ -91,7 +91,7 @@ d6: reset
 
 Examining firmware on a system:
 
-```bash
+```console
 # nodefirmware d5
 d5: XCC: 4.00 (TEI3A4L 2020-07-13T23:58:08)
 d5: XCC Backup: 1.20 (TEI316A 2017-10-30T00:00:00)
@@ -111,15 +111,15 @@ d5: Disk 0 ST1000NX0423: LE43
 d5: Disk 1 ST1000NX0423: LE43
 d5: Disk 2 ST1000NX0423: LE43
 d5: Disk 3 ST1000NX0423: LE43
-d5: Disk M.2-1 LITEON CV3-8D128: T87RA31 
-d5: Disk M.2-2 LITEON CV3-8D128: T87RA31 
+d5: Disk M.2-1 LITEON CV3-8D128: T87RA31
+d5: Disk M.2-2 LITEON CV3-8D128: T87RA31
 ```
 
-Applying a single XCC update across nodes d4,d5, and d6
+Applying a single XCC update across nodes `d4`,`d5`, and `d6`
 
-```bash
-# nodefirmware d4-d6 update lnvgy_fw_xcc_tei3a4l-4.00_anyos_noarch.uxz 
-d4:upload:   5%       d5:upload:   5%       d6:upload:   6%       
+```console
+# nodefirmware d4-d6 update lnvgy_fw_xcc_tei3a4l-4.00_anyos_noarch.uxz
+d4:upload:   5%       d5:upload:   5%       d6:upload:   6%
 ...
 # nodebmcreset d4-d6
 d4: BMC Reset Successful
@@ -127,9 +127,9 @@ d6: BMC Reset Successful
 d5: BMC Reset Successful
 ```
 
-Checking firmware of XCC and using collate to check consistency:
+Checking firmware of XCC and using `collate` to check consistency:
 
-```bash
+```console
 # nodefirmware d3-d6 xcc |collate
 ====================================
 d4,d5,d6
@@ -142,9 +142,9 @@ d3
 XCC: 4.00 (TEI3A3L 2020-07-10T06:43:45)
 ```
 
-Using nodeconfig to view uefi settings and collate -d to find deviations:
+Using `nodeconfig` to view uefi settings and `collate` -d to find deviations:
 
-```bash
+```console
 # nodeconfig d3-d6 processors | grep -v Processors.Processors13to16coresactive | collate -d
 ====================================
 d3,d5,d6
@@ -205,9 +205,8 @@ d4
   Processors.C1EnhancedMode: Enable
 ```
 
-Using nodeconfig to change the configuration:
+Using `nodeconfig` to change the configuration:
 
 ```bash
-# nodeconfig d4 set Processors.CPUPstateControl=auto
+nodeconfig d4 set Processors.CPUPstateControl=auto
 ```
-

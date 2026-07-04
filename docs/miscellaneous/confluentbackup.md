@@ -4,7 +4,7 @@ tags:
   - reference
 ---
 
-Confluent maintains its database in /etc/confluent/cfg
+Confluent maintains its database in `/etc/confluent/cfg`
 
 For a plain text backup and restore capability, the `confluentdbutil` utility is provided.
 
@@ -20,7 +20,7 @@ This will encrypt the encryption keys used to protect passwords that may need
 to be retained using a password that will be required to restore. The backup
 consists of some .json files:
 
-```bash
+```console
 # ls /tmp/backup/
 collective.json  keys.json  main.json
 ```
@@ -29,27 +29,27 @@ As an interactive backup is incompatible with a regular backup scheme, once
 you have one backup as above with a password protected keys.json file, the -s
 option may be used to skip keys.json for an unattended backup:
 
-```bash
+```console
 # confluentdbutil -s dump /tmp/unattended/
 # ls /tmp/unattended/
 collective.json  main.json
 ```
 
 This backup is a full backup, but lacks a keys.json file to decrypt the content, and thus
-cannot be restored by itself.  
+cannot be restored by itself.
 
 ## Restoring from backup
 
-If following the example above, and desiring to restore from the '/tmp/unattended/' backup, first
+If following the example above, and desiring to restore from the `/tmp/unattended/` backup, first
 copy in a keys.json file from the interactive backup:
 
 ```bash
-# cp /tmp/backup/keys.json /tmp/unattended
+cp /tmp/backup/keys.json /tmp/unattended
 ```
 
-This will turn the backup in /tmp/unattended into a password protected backup that can be restored.
+This will turn the backup in `/tmp/unattended` into a password protected backup that can be restored.
 
-With this, /tmp/unattended may be restored:
+With this, `/tmp/unattended` may be restored:
 
 ```bash
 # confluentdbutil -p BackupPassw0rd restore /tmp/unattended
@@ -58,7 +58,7 @@ With this, /tmp/unattended may be restored:
 If running the restore as root, then you may need to change ownership back to confluent user:
 
 ```bash
-# chown confluent /etc/confluent/cfg/*
+chown confluent /etc/confluent/cfg/*
 ```
 
 
@@ -72,6 +72,3 @@ potentially sensitive material, if wanting to share for diagnostic purposes.
 ```
 
 See confluentdbutil [man page](../manuals/confluentdbutil.md) for more detail.
-
-
-

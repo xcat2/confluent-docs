@@ -7,7 +7,7 @@ tags:
 
 ## Directing xCAT to install to the RSTe array
 
-The disk to specify would be `/dev/md/Volume0_0`.  To do this in xCAT, create a file called  /install/custom/el7rste.partitions containing the following:
+The disk to specify would be `/dev/md/Volume0_0`.  To do this in xCAT, create a file called  `/install/custom/el7rste.partitions` containing the following:
 
 ```bash
 ignoredisk --only-use=/dev/md/Volume0_0
@@ -26,7 +26,7 @@ Modify the osimage to use this file, for example:
  chdef -t osimage centos7.5-x86_64-install-compute partitionfile=/install/custom/el7rste.partitions
 ```
 
-Future nodeset commands will target the RSTe volume.
+Future `nodeset` commands will target the RSTe volume.
 
 ## Adding support to 7.4 (not needed for 7.5 or newer)
 
@@ -36,19 +36,19 @@ EL 7.5 and newer include support, for 7.4 it is required to download the RSTe so
 Then, extract the archive to get the install iso:
 
 ```bash
-$ tar xf intc-lnvgy_dd_iastor_rste5.3-693_linux_x86_64.tgz
+tar xf intc-lnvgy_dd_iastor_rste5.3-693_linux_x86_64.tgz
 ```
 
 Then extract updates.img from the iso.  You could loop mount or use isoinfo to extract:
 
 ```bash
-$ isoinfo -i intc-lnvgy_dd_iastor_5.3-693_linux_x86_64/rste-5.3_rhel7.4.iso -R -x /updates.img > /install/rste.img
+isoinfo -i intc-lnvgy_dd_iastor_5.3-693_linux_x86_64/rste-5.3_rhel7.4.iso -R -x /updates.img > /install/rste.img
 ```
 
-Set bootparams.addkcmdline to pull in the given update:
+Set `bootparams.addkcmdline` to pull in the given update:
 
 ```bash
-$ nodegrpch rste bootparams.addkcmdline=" updates=http://<xcatmgt.name>/install/rste.img"
+nodegrpch rste bootparams.addkcmdline=" updates=http://<xcatmgt.name>/install/rste.img"
 ```
 
 From this point forward, any members of the rste group will pull in the RSTe software on install.
