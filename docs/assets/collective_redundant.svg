@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="590" viewBox="0 0 640 590" font-family="system-ui, sans-serif">
+  <!-- containers -->
+  <rect x="40" y="10" width="560" height="330" rx="6" fill="#fbe4e2" stroke="#c62828" stroke-width="1.5"/>
+  <text x="320" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#b71c1c">confluent collective</text>
+  <rect x="60" y="440" width="210" height="140" rx="6" fill="#e8eaed" stroke="#757575" stroke-width="1.5"/>
+  <text x="165" y="464" text-anchor="middle" font-size="15" fill="#424242">managed nodes</text>
+  <rect x="370" y="440" width="210" height="140" rx="6" fill="#e8eaed" stroke="#757575" stroke-width="1.5"/>
+  <text x="475" y="464" text-anchor="middle" font-size="15" fill="#424242">managed nodes</text>
+  <!-- links to managed nodes -->
+  <g stroke="#8a8a8a" stroke-width="2">
+    <line x1="130" y1="192" x2="140" y2="440"/>
+    <line x1="240" y1="287" x2="190" y2="440"/>
+    <line x1="400" y1="287" x2="450" y2="440"/>
+    <line x1="510" y1="192" x2="500" y2="440"/>
+  </g>
+  <!-- collective mesh (full) -->
+  <g stroke="#b71c1c" stroke-width="2">
+    <line x1="320" y1="77" x2="130" y2="192"/>
+    <line x1="320" y1="77" x2="240" y2="287"/>
+    <line x1="320" y1="77" x2="400" y2="287"/>
+    <line x1="320" y1="77" x2="510" y2="192"/>
+    <line x1="130" y1="192" x2="240" y2="287"/>
+    <line x1="130" y1="192" x2="400" y2="287"/>
+    <line x1="130" y1="192" x2="510" y2="192"/>
+    <line x1="240" y1="287" x2="400" y2="287"/>
+    <line x1="240" y1="287" x2="510" y2="192"/>
+    <line x1="400" y1="287" x2="510" y2="192"/>
+  </g>
+  <!-- management nodes -->
+  <g font-size="17" fill="#ffffff">
+    <rect x="260" y="55" width="120" height="44" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <text x="320" y="83" text-anchor="middle">head1</text>
+    <rect x="70" y="170" width="120" height="44" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <text x="130" y="198" text-anchor="middle">mgt1</text>
+    <rect x="450" y="170" width="120" height="44" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <text x="510" y="198" text-anchor="middle">mgt4</text>
+    <rect x="180" y="265" width="120" height="44" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <text x="240" y="293" text-anchor="middle">mgt2</text>
+    <rect x="340" y="265" width="120" height="44" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <text x="400" y="293" text-anchor="middle">mgt3</text>
+  </g>
+  <!-- managed node stacks -->
+  <g font-size="13" fill="#111111">
+    <rect x="100" y="476" width="110" height="46" fill="#bdbdbd" stroke="#424242"/>
+    <text x="108" y="492">node1</text>
+    <rect x="122" y="498" width="110" height="46" fill="#bdbdbd" stroke="#424242"/>
+    <text x="130" y="514">node2</text>
+    <rect x="144" y="520" width="110" height="46" fill="#bdbdbd" stroke="#424242"/>
+    <text x="152" y="536">node3</text>
+    <rect x="410" y="476" width="110" height="46" fill="#bdbdbd" stroke="#424242"/>
+    <text x="418" y="492">node4</text>
+    <rect x="432" y="498" width="110" height="46" fill="#bdbdbd" stroke="#424242"/>
+    <text x="440" y="514">node5</text>
+    <rect x="454" y="520" width="110" height="46" fill="#bdbdbd" stroke="#424242"/>
+    <text x="462" y="536">node6</text>
+  </g>
+</svg>

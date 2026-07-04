@@ -4,7 +4,7 @@ tags:
   - collective
 ---
 
-This document will describe the design of the confluent collective implementation.
+This document will describe the design of the confluent [collective](../advanced_topics/collective.md) implementation.
 
 ## Collective contrasted with 'Hierarchical' mode
 
@@ -22,17 +22,21 @@ will be that service nodes no longer care about the 'head' nodes going offline c
 As confluent does not have restrictions around the role of collective members, there is flexibility in how you may approach a
 collective.
 
-The collective may be flat, with all nodes equally bound to any collective member:  
-![Flat collective](../assets/flat.svg)  
+The collective may be flat, with all nodes equally bound to any collective member:
 
-It may be hierarchical with a node designated a head node by convention and delegating nodes to specific collective members:  
-![Hierarchical collective](../assets/hierarchy.svg)  
+![Flat collective](../assets/collective_flat.svg)
 
-It may be hierarchical with pools of collective managers available to each segment:  
-![Redundant hierarchy](../assets/redundant_hierarchy.svg)  
+It may be hierarchical with a node designated a head node by convention and delegating nodes to specific collective members:
 
-Or it may be a headless segmented collective, where the 'head' role is omitted:  
-![Segmented collective](../assets/segmented.svg)  
+![Hierarchical collective](../assets/collective_hierarchy.svg)
+
+It may be hierarchical with pools of collective managers available to each segment:
+
+![Redundant hierarchy](../assets/collective_redundant.svg)
+
+Or it may be a headless segmented collective, where the 'head' role is omitted:
+
+![Segmented collective](../assets/collective_segmented.svg)
 
 Any other number of mix and match of the above strategies may be used in a collective.
 
@@ -48,7 +52,7 @@ both parties that both certificates are valid with no intermediaries.
 
 The node attribute database is inherently replicated internally by confluent by collective members. This contrasts to xCAT in
 that no external database is required, and replication of the database is handled implicitly by joining the collective.  At every
-point, every active collective member has a full copy of the node attribute database and persists it locally to /etc/confluent/cfg. When
+point, every active collective member has a full copy of the node attribute database and persists it locally to `/etc/confluent/cfg`. When
 a collective member goes offline and later reconnects, the full node attribute database is replicated to the reconnecting member.
 
 ## Quorum
@@ -58,7 +62,7 @@ locks down functionality. At this time this includes all collective members with
 
 ## Shared storage consideration
 
-While the node attribute database is replicated automatically among collective members, the /var/lib/confluent storage used by OS deployment must be
+While the node attribute database is replicated automatically among collective members, the `/var/lib/confluent` storage used by OS deployment must be
 synchronized or shared at the user's discretion.  There is no particular requirement placed on the mechanism beyond that it be consistent when used
 by the collective members, so a number of storage synchronization or remote/clustered filesystem approaches are acceptable. In contrast to xCAT, where /install
 was expected to be partially consistent, partially unique to the service node, confluent expects the entirety of the directory to be consistent.
@@ -66,7 +70,7 @@ was expected to be partially consistent, partially unique to the service node, c
 ## Request routing
 
 A request/command may be issued to any member of the collective and will be internally distributed as appropriate among collective members according
-to nodes' respective collective.manager.
+to nodes' respective `collective.manager`.
 
 ## Failover of collective manager
 
@@ -74,7 +78,7 @@ When a collective member goes offline, nodes currently managed as indicated by `
 
 ## Restricting OS deployment to select collective members
 
-In addition to indicating candidates for automatic failover, collective.managercandidates also indicates collective members that are allowed to offer deployment services to
+In addition to indicating candidates for automatic failover, `collective.managercandidates` also indicates collective members that are allowed to offer deployment services to
 the respective node.
 
 ## Considerations for local services like DHCP/tftp
