@@ -120,6 +120,16 @@ If you are coming from xCAT, see
 
 </div>
 
+## Architecture
+
+Management nodes run the `confluentd` service; clients drive it via CLI, web UI, or REST API.
+Compute nodes are provisioned over the management network and controlled out-of-band over the
+BMC network, and collective mode adds scale-out and high availability.
+
+![Confluent architecture](assets/architecture.svg)
+
+See the [architecture overview](miscellaneous/architecture.md) for a tour of the components.
+
 ## Security by default
 
 Confluent is designed with secure default behaviors and explicit opt-in to
