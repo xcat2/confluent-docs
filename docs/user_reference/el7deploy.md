@@ -1,5 +1,7 @@
 ---
 title: OS Deployment Notes for RedHat Enterprise Linux 7
+tags:
+  - deployment
 ---
 
 If executing genimage multiple times, it may be required to delete the image between runs. This

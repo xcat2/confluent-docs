@@ -1,5 +1,7 @@
 ---
 title: Osdeployment sample postscripts and their usage
+tags:
+  - deployment
 ---
 
 Listed here are some sample post scripts that you might choose to use when deploying 

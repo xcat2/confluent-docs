@@ -1,5 +1,8 @@
 ---
 title: Troubleshooting issues with nodeattribute expressions. 
+tags:
+  - troubleshooting
+  - reference
 ---
 
 An expression will contain some directives wrapped in {} characters.

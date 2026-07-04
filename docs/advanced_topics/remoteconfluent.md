@@ -1,5 +1,7 @@
 ---
 title: Remote confluent
+tags:
+  - reference
 ---
 
 Note this method for xCAT usage is largely superseded by using a [collective](collective.md) instead,

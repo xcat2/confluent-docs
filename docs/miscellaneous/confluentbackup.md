@@ -1,5 +1,7 @@
 ---
 title: Confluent Database backup and restore
+tags:
+  - reference
 ---
 
 Confluent maintains its database in /etc/confluent/cfg

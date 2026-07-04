@@ -1,5 +1,8 @@
 ---
 title: Troubleshooting issues with confluent OS deployment
+tags:
+  - troubleshooting
+  - deployment
 ---
 
 ## IPv6 configuration

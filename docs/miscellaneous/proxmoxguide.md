@@ -1,5 +1,7 @@
 ---
 title: Proxmox Guide with Confluent
+tags:
+  - deployment
 ---
 
 # Proxmox Guide with Confluent

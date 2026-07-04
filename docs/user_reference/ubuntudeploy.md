@@ -1,5 +1,7 @@
 ---
 title: OS Deployment Notes for Ubuntu 
+tags:
+  - deployment
 ---
 
 <b>Troubleshooting name resolution issues</b>  

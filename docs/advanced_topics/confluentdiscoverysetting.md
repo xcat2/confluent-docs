@@ -1,5 +1,7 @@
 ---
 title: Confluent Discovery/Autosense setting
+tags:
+  - discovery
 ---
 
 Confluent has a setting called "discovery/autosense" which acts to enable or disable scanning network switches for MAC addresses, but also has the effect of enabling or disabling network booting of systems from Confluent. Having the setting disabled has the effect of preventing network booting of systems from Confluent (including for OS deployment), but will not affect systems booting from operating systems installed on local storage.

@@ -1,5 +1,8 @@
 ---
 title: Troubleshooting issues with upgrading BlueField-3 BFB using DOCA (host) 3.0
+tags:
+  - troubleshooting
+  - drivers
 ---
 
 # RHEL/Rocky Linux 9.5

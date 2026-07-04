@@ -1,5 +1,7 @@
 ---
 title: OS Deployment Notes for CentOS
+tags:
+  - deployment
 ---
 
 When deploying CentOS, the default behavior is to have the CentOS

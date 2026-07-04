@@ -1,5 +1,8 @@
 ---
 title: Confluent discovery of Enclosure based systems
+tags:
+  - discovery
+  - hardware
 ---
 
 When discovering SD530 servers with an SMM, the enclosure may be used as an indication

@@ -1,5 +1,7 @@
 ---
 title: Confluent configuration and troubleshooting notes for Nokia Ethernet switches
+tags:
+  - networking
 ---
 
 ## Applicable Nokia Ethernet switches and switch OS

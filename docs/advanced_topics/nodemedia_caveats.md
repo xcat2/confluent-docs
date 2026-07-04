@@ -1,5 +1,7 @@
 ---
 title: nodemedia caveats
+tags:
+  - hardware
 ---
 
 When using the "redfish" hardware management method, the nodemedia attach function

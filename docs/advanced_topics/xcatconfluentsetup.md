@@ -1,5 +1,8 @@
 ---
 title: Confluent setup in existing xCAT configuration
+tags:
+  - xcat
+  - installation
 ---
 
 In order to opt into using confluent as your console service, set the site table value for consoleservice:

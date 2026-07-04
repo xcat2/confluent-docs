@@ -1,5 +1,8 @@
 ---
 title: Template for RAID/VROC boot device 
+tags:
+  - deployment
+  - hardware
 ---
 
 ## Synopsis

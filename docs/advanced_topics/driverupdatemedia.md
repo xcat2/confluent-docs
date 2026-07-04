@@ -1,5 +1,8 @@
 ---
 title: Using driver update media for RedHat/CentOS
+tags:
+  - deployment
+  - drivers
 ---
 
 Occasionally for network deployment of a RHEL or CentOS the modules included in the install initrd for the OS aren’t sufficient to work with the network device being installed over (for example, if the network device is very new and the driver support hasn’t been added to the OS yet).  In that scenario a driver update media package for that network device can be used to provide support for that network device during and after the OS installation.  In order to do that, the following should be done:

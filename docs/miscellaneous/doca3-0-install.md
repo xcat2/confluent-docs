@@ -1,5 +1,7 @@
 ---
 title: DOCA 3 Installation/Upgrade on RHEL 9 and Ubuntu 24.04
+tags:
+  - drivers
 ---
 
 ## DOCA 3.2.0 Installation/Upgrade on RHEL 9

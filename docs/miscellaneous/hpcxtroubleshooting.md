@@ -1,5 +1,7 @@
 ---
 title: Troubleshooting issues with hpcx
+tags:
+  - troubleshooting
 ---
 
 ## libnuma Error

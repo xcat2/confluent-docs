@@ -1,5 +1,8 @@
 ---
 title: Using xCAT to install EL7 on Intel RSTe
+tags:
+  - xcat
+  - deployment
 ---
 
 ## Directing xCAT to install to the RSTe array

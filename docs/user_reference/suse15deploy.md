@@ -1,5 +1,7 @@
 ---
 title: OS Deployment Notes for SLE/SUSE 15
+tags:
+  - deployment
 ---
 
 !!! note

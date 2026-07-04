@@ -1,5 +1,8 @@
 ---
 title: Using xCAT service nodes with a shared tftpboot directory
+tags:
+  - xcat
+  - deployment
 ---
 
 When using a shared tftp directory, the Genesis image generated in an rpm update

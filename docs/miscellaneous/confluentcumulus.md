@@ -1,5 +1,7 @@
 ---
 title: Using a Cumulus switch with confluent
+tags:
+  - networking
 ---
 
 In order to use a Cumulus switch with confluent, it requires

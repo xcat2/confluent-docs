@@ -1,5 +1,7 @@
 ---
 title: Adding an installed node to confluent SSH setup
+tags:
+  - security
 ---
 
 This procedure will provide confluent SSH configuration to a node that was not installed by confluent.

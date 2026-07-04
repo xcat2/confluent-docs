@@ -1,5 +1,7 @@
 ---
 title: Containerized confluent run 
+tags:
+  - installation
 ---
 
 ## Synopsis

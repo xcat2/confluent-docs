@@ -1,5 +1,7 @@
 ---
 title: Confluent OS Deployment and Syslog
+tags:
+  - deployment
 ---
 
 Current and previous users of xCAT may be aware that xCAT configures syslog on deployed systems to do its logging on the xCAT management node instead of the default behavior of logging locally on each system.

@@ -1,5 +1,7 @@
 ---
 title: Preparing for Operating System Deployment
+tags:
+  - deployment
 ---
 
 If opting to use the confluent OS deployment mechanism, some additional preparation steps are suggested.

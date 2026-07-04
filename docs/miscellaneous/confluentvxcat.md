@@ -1,5 +1,8 @@
 ---
 title: xCAT and confluent comparison
+tags:
+  - xcat
+  - reference
 ---
 
 As of confluent 3.0, the scope of Confluent has increased to cover much of xCAT functionality. There will

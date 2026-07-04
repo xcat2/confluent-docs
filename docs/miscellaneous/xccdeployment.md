@@ -1,5 +1,8 @@
 ---
 title: Deploying servers using the xClarity Controller
+tags:
+  - deployment
+  - hardware
 ---
 
 This procedure will leverage the Virtual USB function on appropriately licensed

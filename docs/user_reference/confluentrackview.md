@@ -1,5 +1,7 @@
 ---
 title: Setting up the confluent rackview
+tags:
+  - hardware
 ---
 
 Confluent's web interface offers a rackview for rackmount and enclosure based systems. It can show where nodes are located in

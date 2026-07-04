@@ -1,5 +1,8 @@
 ---
 title: Troubleshooting issues with nodefirmware and firmware updates
+tags:
+  - troubleshooting
+  - hardware
 ---
 
 ## Known issues:

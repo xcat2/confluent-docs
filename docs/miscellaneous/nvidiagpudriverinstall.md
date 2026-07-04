@@ -1,5 +1,7 @@
 ---
 title: NVIDIA GPU Driver Install on RHEL 9 and Ubuntu 24.04
+tags:
+  - drivers
 ---
 
 ## NVIDIA GPU Driver Install on RHEL 9

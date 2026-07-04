@@ -1,5 +1,7 @@
 ---
 title: Energy histogram
+tags:
+  - hardware
 ---
 
 Lenovo servers capture power level over time and provide

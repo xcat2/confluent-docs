@@ -1,5 +1,7 @@
 ---
 title: Creating a scope-limited TLS certificate authority
+tags:
+  - security
 ---
 
 This will create a certificate authority that is identical, but constrained.

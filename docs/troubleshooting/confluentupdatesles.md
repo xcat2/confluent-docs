@@ -1,5 +1,7 @@
 ---
 title: Troubleshooting issue with updating confluent on SLES 15
+tags:
+  - troubleshooting
 ---
 
 ## Known Issue: 

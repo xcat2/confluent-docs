@@ -1,5 +1,7 @@
 ---
 title: Confluent Groups
+tags:
+  - reference
 ---
 
 In confluent, there is a concept of node groups to provide convenient shorthand for noderanges as well as 

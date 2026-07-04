@@ -1,5 +1,8 @@
 ---
 title: Deployment through a routed network
+tags:
+  - deployment
+  - networking
 ---
 
 While it is most straightforward to do OS deployment when on the same network, sometimes there is a need to deploy through

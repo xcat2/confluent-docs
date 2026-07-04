@@ -1,5 +1,7 @@
 ---
 title: Manual discovery with nodediscover assign
+tags:
+  - discovery
 ---
 
 !!! note

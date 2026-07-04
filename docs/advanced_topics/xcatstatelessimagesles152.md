@@ -1,5 +1,9 @@
 ---
 title: xCAT stateless image creation under SLES 15.2 fails
+tags:
+  - xcat
+  - diskless
+  - troubleshooting
 ---
 
 During the process of creating an `xCAT stateless image` under `SLES 15.2`, the xCAT genimage command may fail due to failure to locate the software packages in the distribution, even though the software repositories appear to be set up correctly.

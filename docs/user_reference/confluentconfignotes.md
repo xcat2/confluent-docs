@@ -1,5 +1,7 @@
 ---
 title: Confluent configuration and troubleshooting notes for Lenovo hardware
+tags:
+  - hardware
 ---
 
 ## SN2010 rack view

@@ -1,5 +1,8 @@
 ---
 title: Troubleshooting issues with xCAT OS deployment and diskless image creation/boot
+tags:
+  - troubleshooting
+  - xcat
 ---
 
 ## xCAT OS deployment or diskless image boot fails with message regarding ib=dhcp

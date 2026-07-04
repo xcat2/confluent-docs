@@ -1,5 +1,8 @@
 ---
 title: Creating a custom confluent OS image
+tags:
+  - deployment
+  - diskless
 ---
 
 Sometimes the options available for `osdeploy import` are too limited and an additional boot payload is

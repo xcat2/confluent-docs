@@ -1,5 +1,8 @@
 ---
 title: Using confluent discovery to feed xCAT configuration
+tags:
+  - discovery
+  - xcat
 ---
 
 While xCAT has its own discovery mechanism, in some scenarios confluent
