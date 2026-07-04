@@ -2,6 +2,104 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Migration-artifact cleanup and build validation
+
+A repo-wide pass removing the remaining formatting artifacts from the Jekyll
+migration, plus build validation so regressions are caught in CI.
+
+### Fixed
+- Replaced invalid ` ```xcat ` / ` ```confluent ` fence tags with ` ```bash `
+  (`user_reference/switchportattribs.md`).
+- Converted all remaining indented code blocks to fenced blocks (17 pages,
+  including release-notes posts), and tagged every remaining bare fence with a
+  language hint (`bash` for commands/console sessions, `text` for output and
+  config file content) - 133 fences across 34 files.
+- Fixed shell-prompt rendering in code blocks: with the `bash` lexer, a
+  leading `# ` root prompt made the whole command render as a comment.
+  Command-only blocks (101) had their prompts stripped so the copy button
+  yields runnable commands; transcript blocks mixing commands with output
+  (144) were retagged to ` ```console `, whose lexer understands prompts.
+  Genuine comment lines inside blocks were preserved.
+- Removed a leftover Liquid `{% raw %}...{% endraw %}` wrapper in
+  `user_reference/attributeexpressions.md`.
+- Replaced the Benefits/Drawbacks tables in `user_reference/osdeploy.md`
+  (which held broken `<ul>`/`<li>` HTML in their cells) with side-by-side
+  Material grid cards containing plain Markdown lists.
+- Rewrote three dead `taurus.labs.lenovo.com` links to the local
+  "Preparing for Operating System Deployment" page
+  (`advanced_topics/confluentosdeploy.md`).
+- Replaced raw `<b>`/`<i>` HTML with Markdown emphasis
+  (`user_reference/ubuntudeploy.md`, `troubleshooting/confluentupdatesles.md`).
+- Removed stray inline-code backticks inside fenced blocks in
+  `advanced_topics/driverupdatemedia.md`.
+- Stripped a one-space indent artifact from the DOCA/NVIDIA/BF3 guides; this
+  also fixed a heredoc in `nvidiagpudriverinstall.md` whose ` EOF` terminator
+  was indented and would not have worked when copy-pasted.
+- Trailing whitespace (91 files), tab indentation in code blocks, mis-indented
+  nested lists (`developer/api.md`) and 1-space-indented lists, curly quotes,
+  needless backslash escapes, and redundant `[url](url "url")` link syntax.
+
+### Changed
+- Wrapped inline code in backticks across all hand-written pages (~290 lines
+  in 89 files): commands (single and multi-word, e.g. `osdeploy initialize`),
+  file paths, IP addresses, attribute names (incl. `key=value` forms),
+  known attribute values, package/service/kernel-module names, and example
+  node/group names. Conservative pass - prose only, existing code spans,
+  links, and fences untouched.
+- Fenced the previously unfenced command and Apache-config lines in
+  `miscellaneous/makelimitedtls.md` (a missed migration artifact - its raw
+  `<VirtualHost>` lines were being swallowed as HTML).
+- `developer/api.md`: removed redundant `**bold**` wrappers inside headings.
+- `miscellaneous/doca2-10-intstall.md`: replaced 22 single-step H2 headings
+  with the bold lead-in + H3 phase-grouping structure used by its sibling
+  `doca3-0-install.md`, decluttering the page TOC.
+- Converted remaining standalone "Note that ..." paragraphs to `!!! note`
+  (and two to `!!! warning`) admonitions across 11 pages.
+- `downloads.md`: RHEL repo instructions now use content tabs
+  (RHEL 10/9/8); redundant link titles removed; front matter added.
+
+### Added
+- Targeted cross-references from discovery/collective/attribute-expression
+  sub-pages to their main reference pages (8 pages).
+- **Redrawn architecture diagrams**: the four collective topology diagrams in
+  `miscellaneous/collective_arch.md` (flat, hierarchy, redundant hierarchy,
+  segmented) were re-authored as clean hand-written SVGs
+  (`assets/collective_*.svg`), replacing the old Inkscape exports. They keep
+  the original arrangements (triangles, pentagon mesh, cascaded node stacks)
+  and add labeled "confluent collective" / "managed nodes" containers and
+  numbered nodes, styled in the site's Material red palette; text is readable
+  in both light and dark themes. (Mermaid was evaluated for these first but
+  its auto-layout cannot express this fixed geometry.)
+- **Merged install page**: `installconfluent_{rhel,suse,ubuntu}.md` are now a
+  single `getting_started/installconfluent.md` using content tabs for the
+  distro-specific steps (shared steps - service enablement, Web UI login,
+  discovery firewall rules - appear once). Old URLs keep working via
+  `mkdocs-redirects` (new dependency in `requirements.txt`); nav and inbound
+  links (landing page cards, xCAT install pages) updated.
+- **Merged IB/OPA install pages**: the four near-identical xCAT-based fabric
+  install walkthroughs (`rh8installib`, `sle152ibinstall`, `rhinstallib`,
+  `rhinstallopa` - previously split across `advanced_topics/` and
+  `miscellaneous/`) are now one tabbed page,
+  `advanced_topics/ibinstallxcat.md`; the two confluent-native pages
+  (`ibinstallconfluentrhel8`, `ibinstallconfluentsle152`) are now
+  `getting_started/ibinstallconfluent.md`, with its duplicated driver-update
+  procedure replaced by a link to the canonical
+  `advanced_topics/driverupdatemedia.md`. All six old URLs redirect.
+- **PR builds in CI**: the workflow now also triggers on `pull_request`,
+  running the strict build without deploying, so link/nav regressions are
+  caught before merge.
+- **Tags completed**: all hand-written pages now carry `tags:` front matter
+  (61 pages added; new tags `xcat`, `troubleshooting`, `drivers`).
+
+### Fixed (follow-up)
+- Renamed `miscellaneous/doca2-10-intstall.md` (filename typo) to
+  `doca2-10-install.md`, with a redirect from the old URL.
+- Removed a stray trailing period from the nodeattribute-expressions
+  troubleshooting page title.
+- `validation:` block in `properdocs.yml` (omitted files, absolute links,
+  unrecognized links, anchors all warn) and `--strict` on the CI
+  `gh-deploy`, so any new warning fails the build.
+
 ## Site feature modernization
 
 Enabled several Material for MkDocs capabilities.
