@@ -1,5 +1,7 @@
 ---
 title: OS Deployment Notes for CentOS
+tags:
+  - deployment
 ---
 
 When deploying CentOS, the default behavior is to have the CentOS
@@ -19,6 +21,6 @@ If yum-utils is not available, the repositories may instead be removed:
 rm /etc/yum.repos.d/CentOS-*repo
 ```
 
-If executing genimage multiple times, it may be required to delete the image between runs. This
-is due to certain assumptions that, among other things, could erase /etc/passwd without
+If executing `genimage` multiple times, it may be required to delete the image between runs. This
+is due to certain assumptions that, among other things, could erase `/etc/passwd` without
 recreating the pertinent accounts.

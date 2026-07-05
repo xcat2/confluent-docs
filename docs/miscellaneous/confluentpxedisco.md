@@ -4,7 +4,7 @@ tags:
   - discovery
 ---
 
-While the best experience is through discovering the xClarity Controller first and having full management
+While the best experience is through [discovering](../user_reference/confluentdiscovery.md) the xClarity Controller first and having full management
 prior to PXE booting, sometimes this is not feasible. Two such scenarios would be:
 
 * The management controller may not be a supported device for discovery (xClarity Controller, ThinkSystem Server Manager, and System Management Module are supported devices.
@@ -17,11 +17,15 @@ In such a scenario, doing discovery PXE first is a strategy to move forward.  No
 
 In confluent, the deployment may be directed before MAC addresses are yet known. For example to boot to Genesis (a provided diskless image for basic servicing and setup):
 
-    # nodedeploy n1 -n -p genesis-x86_64
+```bash
+nodedeploy n1 -n -p genesis-x86_64
+```
 
 Or to boot into the installer on first viable boot attempt:
 
-    # nodedeploy d4 -n -p rhel-8.2-x86_64-default 
+```bash
+nodedeploy d4 -n -p rhel-8.2-x86_64-default
+```
 
 Doing this in advance provides the earliest possible entry into a manageable operating system.
 
@@ -29,7 +33,9 @@ Doing this in advance provides the earliest possible entry into a manageable ope
 
 It is supported to use a well known mac address without going through the discovery process.  Simply do:
 
-    # nodedefine n1 net.hwaddr=00:01:02:03:04:05
+```bash
+nodedefine n1 net.hwaddr=00:01:02:03:04:05
+```
 
 To use it directly if mac address(es) are already known.
 
@@ -38,17 +44,19 @@ To use it directly if mac address(es) are already known.
 The relevant system(s) must attempt a network boot. Generally new servers will tend to do this by default, so this is
 likely a matter of pressing the power button once.
 
-Once attempted, nodediscover will list all detected mac addresses:
-```
+Once attempted, `nodediscover` will list all detected mac addresses:
+```console
 # nodediscover list -t pxe-client
  Node| Model| Serial|                                 UUID|       Mac Address|       Type| Current IP Addresses
 -----|------|-------|-------------------------------------|------------------|-----------|---------------------
-     |      |       | 58962b3d-088b-11e7-b8b8-9e59e5cf61db| 08:94:ef:41:01:f0| pxe-client|                     
+     |      |       | 58962b3d-088b-11e7-b8b8-9e59e5cf61db| 08:94:ef:41:01:f0| pxe-client|
 ```
 An entry can be associated with a node in the same fashion as [manual discovery](../advanced_topics/confluentnodeassign.md)
 
-    # nodediscover assign -e 08:94:ef:41:01:f0 -n n1
-    Assigned: n1
+```console
+# nodediscover assign -e 08:94:ef:41:01:f0 -n n1
+Assigned: n1
+```
 
 
 ## Automatic discovery of mac addresses
@@ -57,7 +65,9 @@ The same mechanisms that may be used for management controller and enclosure con
 
 One example to designate the system cabled to a switch named `r4e1` on port `34` as `n1` and enable fully automatic mac gathering would be:
 
-    # nodedefine n1 discovery.policy=permissive,pxe net.switch=r4e1 net.switchport=34
+```bash
+nodedefine n1 discovery.policy=permissive,pxe net.switch=r4e1 net.switchport=34
+```
 
 ## Using PXE driven discovery to locally configure BMCs
 
@@ -65,17 +75,22 @@ In this scenario it is generally desired to configure the BMC automatically, set
 use an OCP card to provide BMC access.
 
 
-    # nodeattrib n1 hardwaremanagement.port=lom
+```bash
+nodeattrib n1 hardwaremanagement.port=lom
+```
 
-There are systems that have two `lom` ports that are configurable for hardware management. In this case it is possible to choose which port to use by specifying either the port number or the connecter type. 
+There are systems that have two `lom` ports that are configurable for hardware management. In this case it is possible to choose which port to use by specifying either the port number or the connecter type.
 
-    # nodeattrib n1 hardwaremanagement.port=lom_1
-    # nodeattrib n3 hardwaremanagement.port=low_sfp28
+```bash
+nodeattrib n1 hardwaremanagement.port=lom_1
+nodeattrib n3 hardwaremanagement.port=low_sfp28
+```
 
 In order for this setting to be applied by the OS profile, the OS profile must invoke the configbmc script. For genesis, see `/var/lib/confluent/public/os/genesis-x86_64/scripts/onboot.sh` file for information on how to configure BMC locally, for OS install, see `/var/lib/confluent/public/os/<profilename>/scripts/pre.custom`
 
 
 After configbmc runs, then out of band discovery can pick up newly available management controllers and finish configuration as needed for ipmi or setting username or passwords. Do a rescan to induce discovery of the newly available devices:
 
-    # nodediscover rescan
-
+```bash
+nodediscover rescan
+```

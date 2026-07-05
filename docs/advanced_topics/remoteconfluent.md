@@ -1,9 +1,11 @@
 ---
 title: Remote confluent
+tags:
+  - reference
 ---
 
 Note this method for xCAT usage is largely superseded by using a [collective](collective.md) instead,
-and using nodeconsole rather than rcons. There remain scenarios however where remote access is expected.
+and using `nodeconsole` rather than rcons. There remain scenarios however where remote access is expected.
 
 Confluent CLI access is normally local, after using SSH to access a management node.
 However, it also supports remote access, and this is a key functionality when used
@@ -18,8 +20,8 @@ passwd demouser
 confetty create /users/demouser role=admin
 ```
 
-Additionally, a TLS certificate must be provided, with the private key in /etc/confluent/privkey.pem and
-the certificate in /etc/confluent/srvcert.pem.  You can generate such certificates using the collective command:
+Additionally, a TLS certificate must be provided, with the private key in `/etc/confluent/privkey.pem` and
+the certificate in `/etc/confluent/srvcert.pem`.  You can generate such certificates using the collective command:
 
 ```bash
 collective gencert
@@ -36,11 +38,10 @@ export CONFLUENT_USER CONFLUENT_PASSPHRASE
 ```
 
 Additionally, while rcons automatically connects to the relevant confluent server, other confluent commands
-currently do not get automatically routed.  If you want to run a confluent command such as nodepower explicitly
+currently do not get automatically routed.  If you want to run a confluent command such as `nodepower` explicitly
 against another host, this can be done by setting the CONFLUENT_HOST variable:
 
 ```bash
 CONFLUENT_HOST=10.1.0.1
 export CONFLUENT_HOST
 ```
-

@@ -1,5 +1,7 @@
 ---
 title: Switching from Apache to NGINX on RHEL
+tags:
+  - installation
 ---
 
 By default, confluent indicates use of apache configuration due to the way apache is packaged.  However, there are some benefits to switching to nginx:

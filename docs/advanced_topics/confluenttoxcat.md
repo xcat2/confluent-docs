@@ -1,5 +1,8 @@
 ---
 title: Using confluent discovery to feed xCAT configuration
+tags:
+  - discovery
+  - xcat
 ---
 
 While xCAT has its own discovery mechanism, in some scenarios confluent
@@ -13,7 +16,7 @@ enabling management and console access prior to turning on the system.
 In order to direct confluent to retain PXE mac addresses, simply set the `net.bootable` attribute to 1 and ensure that `discovery.policy` includes PXE:
 
 ```bash
-# nodegroupattrib everything discovery.policy=permissive,pxe net.bootable=1
+nodegroupattrib everything discovery.policy=permissive,pxe net.bootable=1
 ```
 
 ## Perform normal confluent discovery
@@ -30,16 +33,14 @@ procedures on a few strategies for discovery are:
 
 Confluent has a command called `confluent2xcat` to export confluent data to xCAT. It can generate one of two files.
 
-In order to generate a 'stanza' format file for mkdef (pulling in confluent group membership and other information):
+In order to generate a 'stanza' format file for `mkdef` (pulling in confluent group membership and other information):
 
 ```bash
-# confluent2xcat d1-d8 -o nodes.stanza
+confluent2xcat d1-d8 -o nodes.stanza
 ```
 
-In order to generate a CSV of node and mac addresses suitable for tabrestore mac:
+In order to generate a CSV of node and mac addresses suitable for `tabrestore mac`:
 
 ```bash
-# confluent2xcat d1-d8 -m mac.csv
+confluent2xcat d1-d8 -m mac.csv
 ```
-
-

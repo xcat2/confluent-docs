@@ -16,7 +16,7 @@ n1
 ```
 
 Nodes and groups may be used interchangeably.  The following may
-be used in any context where n1 would be accepted as a noderange:
+be used in any context where `n1` would be accepted as a noderange:
 
 ```bash
 rack1
@@ -95,6 +95,5 @@ how many nodes to display at a time, and < is used to indicate how many nodes to
 rack1>3<6
 ```
 
-The above would show the seventh through ninth nodes of the rack1 group.  Like all other noderange operations, this may be combined
+The above would show the seventh through ninth nodes of the `rack1` group.  Like all other noderange operations, this may be combined
 with any of the above, but must appear as the very last operation.  Ordering is done with a natural sort.
-

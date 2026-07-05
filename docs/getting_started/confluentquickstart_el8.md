@@ -14,10 +14,10 @@ documentation for more detail and alternative strategies for particular areas.
 To install confluent as well as optional requirements, after adding a yum repository according to [download page](../downloads.md):
 
 ```bash
-# yum install lenovo-confluent tftp-server
-# systemctl enable confluent --now
-# systemctl enable httpd --now # if wanting to deploy operating systems and/or the web gui
-# systemctl enable tftp.socket --now  # If wanting to support PXE install
+yum install lenovo-confluent tftp-server
+systemctl enable confluent --now
+systemctl enable httpd --now # if wanting to deploy operating systems and/or the web gui
+systemctl enable tftp.socket --now  # If wanting to support PXE install
 ```
 
 More details, including firewall rules and enabling GUI login may be found in the dedicated install page.
@@ -30,26 +30,26 @@ called `everything` is automatically added to every node. It provides a method t
 Attributes may all be specified on the command line, and an example set could be:
 
 ```bash
-# nodegroupattrib everything deployment.useinsecureprotocols=firmware console.method=ipmi dns.servers=172.30.0.254 dns.domain=mydomain.example net.ipv4_gateway=172.30.0.254
+nodegroupattrib everything deployment.useinsecureprotocols=firmware console.method=ipmi dns.servers=172.30.0.254 dns.domain=mydomain.example net.ipv4_gateway=172.30.0.254
 ```
 
 
-The deployment.useinsecureprotocols=firmware enables PXE support (HTTPS only mode is by default the only allowed mode), console.method=ipmi may be skipped but if specified instructs
+The `deployment.useinsecureprotocols=firmware` enables PXE support (HTTPS only mode is by default the only allowed mode), `console.method=ipmi` may be skipped but if specified instructs
 confluent to use IPMI to access the text console to enable the `nodeconsole` command.
 
 While passwords and similar may be specified the same way, it is recommended to use the '-p' argument to prompt for values, to keep them out of your command history. Note that if
 unspecified, default root password behavior is to disable password based login and for grub omitting the password will allow console to edit grub at boot without a password:
 
-```bash
+```console
 # nodegroupattrib everything -p bmcuser bmcpass crypted.rootpassword crypted.grubpassword
-Enter value for bmcuser: 
-Confirm value for bmcuser: 
-Enter value for bmcpass: 
-Confirm value for bmcpass: 
-Enter value for crypted.rootpassword: 
-Confirm value for crypted.rootpassword: 
-Enter value for crypted.grubpassword: 
-Confirm value for crypted.grubpassword: 
+Enter value for bmcuser:
+Confirm value for bmcuser:
+Enter value for bmcpass:
+Confirm value for bmcpass:
+Enter value for crypted.rootpassword:
+Confirm value for crypted.rootpassword:
+Enter value for crypted.grubpassword:
+Confirm value for crypted.grubpassword:
 everything: crypted.grubpassword: ********
 everything: crypted.rootpassword: ********
 everything: secret.hardwaremanagementpassword: ********
@@ -69,7 +69,7 @@ Nodes may contain any number of attributes. In this document, everything is defi
 will use a simple n[number] scheme, though any scheme may be used.
 
 ```bash
-# nodedefine n1-n4 
+nodedefine n1-n4
 ```
 
 
@@ -81,11 +81,11 @@ fully automatic discovery based on physical location.
 For this guide we will use the manual confluent discovery process, which works with xClarity controllers without having an ip address or username/password configured in advance.
 
 A command to examine what was detected:
-    
-```bash
+
+```console
 # nodediscover rescan
 Rescan complete
-# nodediscover list -t lenovo-xcc -f node,model,serial,mac -o model 
+# nodediscover list -t lenovo-xcc -f node,model,serial,mac -o model
  Node|      Model|   Serial|               Mac
 -----|-----------|---------|------------------
      | 7D2VCTO1WW| J301VETT| 08:94:ef:aa:93:b7
@@ -102,12 +102,12 @@ Rescan complete
 This can be used to create a .csv file for manual discovery input:
 
 ```bash
-# nodediscover list -t lenovo-xcc -f node,serial -c -o model > input.csv
+nodediscover list -t lenovo-xcc -f node,serial -c -o model > input.csv
 ```
 
 After manually editing in the desired names and deleting rows not of interest, input.csv looks like:
 
-```bash
+```console
 # cat input.csv
 Node,Serial
 n1,J100M79E
@@ -116,10 +116,10 @@ n3,J1001PNE
 n4,J1001PNG
 ```
 
-Which can then be passed to nodediscover assign:
+Which can then be passed to `nodediscover assign`:
 
-```bash
-# nodediscover assign -i input.csv 
+```console
+# nodediscover assign -i input.csv
 Defined n1
 Discovered n1
 Defined n2
@@ -132,7 +132,7 @@ Discovered n4
 
 At which point we can demonstrate power control through the everything group:
 
-```bash
+```console
 # nodepower everything
 n1: on
 n2: on
@@ -149,9 +149,9 @@ If desiring only to prepare for hardware management, then the guide is complete.
 !!! note
     No particular name resolution solution is required, but this document suggests a basic strategy if no strategy is already in place.
 
-We start by building /etc/hosts. This may be done manually, or noderun can be used to quickly generate lines for /etc/hosts. First a dry run to make sure it looks correct:
+We start by building `/etc/hosts`. This may be done manually, or `noderun` can be used to quickly generate lines for `/etc/hosts`. First a dry run to make sure it looks correct:
 
-```bash
+```console
 # noderun -n n1-n4 echo 172.30.0.{n1} {node} {node}.{dns.domain}
 172.30.0.1 n1 n1.mydomain.example
 172.30.0.2 n2 n2.mydomain.example
@@ -159,10 +159,10 @@ We start by building /etc/hosts. This may be done manually, or noderun can be us
 172.30.0.4 n4 n4.mydomain.example
 ```
 
-And then append to /etc/hosts when it looks correct:
+And then append to `/etc/hosts` when it looks correct:
 
 ```bash
-# noderun -n n1-n4 echo 172.30.0.{n1} {node} {node}.{dns.domain} >> /etc/hosts
+noderun -n n1-n4 echo 172.30.0.{n1} {node} {node}.{dns.domain} >> /etc/hosts
 ```
 
 !!! tip
@@ -170,26 +170,26 @@ And then append to /etc/hosts when it looks correct:
     attributes instead of using `noderun`, and can also derive entries from `net.*` interface attributes. See
     [Preparing for Operating System Deployment](../advanced_topics/confluentosdeploy.md) for examples.
 
-Finally, to quickly have a dns server, installing and starting dnsmasq can make /etc/hosts available through dns:
+Finally, to quickly have a dns server, installing and starting `dnsmasq` can make `/etc/hosts` available through dns:
 
 ```bash
-# yum install dnsmasq
-# systemctl enable dnsmasq --now
+yum install dnsmasq
+systemctl enable dnsmasq --now
 ```
 
-Any time /etc/hosts is updated, restart dnsmasq to have it pick up changes.
+Any time `/etc/hosts` is updated, restart `dnsmasq` to have it pick up changes.
 
 !!! tip
-    This same dnsmasq instance can also serve DHCP for the nodes: [`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md)
+    This same `dnsmasq` instance can also serve DHCP for the nodes: [`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md)
     generates a static reservation for each node straight from the node attribute database. See [Confluent and DHCP
     interaction](../miscellaneous/confluentdhcp.md) for more.
 
 ## Initializing confluent OS deployment.
 
-The osdeploy command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used
+The `osdeploy` command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used
 to interactively prompt on the options that are available:
 
-```
+```console
 # osdeploy initialize -i
 Add root user key to be authorized to log into nodes (-u)? (y/n): y
 Initialize a profile to boot Genesis on target systems (a small Linux environment for rescue and staging use)? (y/n): y
@@ -229,38 +229,38 @@ Site initramfs content packed successfully
 
 The iso of a supported OS may be imported by using the `osdeploy import` command, for example:
 
-```bash
-# osdeploy import RHEL-8.2.0-20200404.0-x86_64-dvd1.iso 
+```console
+# osdeploy import RHEL-8.2.0-20200404.0-x86_64-dvd1.iso
 Importing from /root/RHEL-8.2.0-20200404.0-x86_64-dvd1.iso to /var/lib/confluent/distributions/rhel-8.2-x86_64
-complete: 100.00%    
+complete: 100.00%
 Deployment profile created: rhel-8.2-x86_64-default
 ```
 
 !!! note
-    A new directory exists in /var/lib/confluent/public/os/rhel-8.2-x86_64-default. This is intended to be freely editable for customization
+    A new directory exists in `/var/lib/confluent/public/os/rhel-8.2-x86_64-default`. This is intended to be freely editable for customization
     as desired.
 
 ## Deploying a node
 
-To initiate network deployment of the profile above, the nodedeploy command may be used (TIP: the profile name like many other things may be tab completed when used interactively):
+To initiate network deployment of the profile above, the `nodedeploy` command may be used (TIP: the profile name like many other things may be tab completed when used interactively):
 
-```bash
-# nodedeploy n1-n2 -n rhel-8.2-x86_64-default 
+```console
+# nodedeploy n1-n2 -n rhel-8.2-x86_64-default
 n1: network
 n2: network
 n1: reset
 n2: reset
 ```
 
-At this point, the boot and install progress may be watched interactively through the video console or by the text console available via nodeconsole:
+At this point, the boot and install progress may be watched interactively through the video console or by the text console available via `nodeconsole`:
 
 ```bash
-# nodeconsole n1
+nodeconsole n1
 ```
 
 Also `nodedeploy` may be used to check the current status of a deployment:
 
-```bash
+```console
 # nodedeploy n1-n2
 n1: pending: centos-8.2-x86_64-default (node authentication armed)
 n2: pending: centos-8.2-x86_64-default (node authentication armed)
@@ -268,15 +268,15 @@ n2: pending: centos-8.2-x86_64-default (node authentication armed)
 
 When install is complete:
 
-```bash
-[root@mgt1 ~]# nodedeploy d3,d4
+```console
+# nodedeploy d3,d4
 n1: completed: centos-8.2-x86_64-default
 n2: completed: centos-8.2-x86_64-default
 ```
 
 Additionally, ssh to nodes will work:
 
-```bash
+```console
 # nodeshell n1,n2 echo test
 n1: test
 n2: test
@@ -284,10 +284,7 @@ n2: test
 
 As will ssh between nodes:
 
-```bash
+```console
 # ssh n1 ssh n2 echo test
 test
 ```
-
-
-

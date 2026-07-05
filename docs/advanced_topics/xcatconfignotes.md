@@ -1,5 +1,7 @@
 ---
 title: xCAT configuration notes
+tags:
+  - xcat
 ---
 
 * [Installing EL7 with RSTe support](el7rste.md)

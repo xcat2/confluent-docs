@@ -14,19 +14,19 @@ However, there are some considerations in various scenarios.
 
 The node attribute `net.ipv4_method` supports two possible modes for working with a DHCP server on the same network.
 
- * `firmwaredhcp` delegates address management to the external DHCP server during Network boot by firmware, but static addressing will be used in the OS
- * `dhcp` fully delegates address management to the external DHCP server
+* `firmwaredhcp` delegates address management to the external DHCP server during Network boot by firmware, but static addressing will be used in the OS
+* `dhcp` fully delegates address management to the external DHCP server
 
-In a mostly static environment with a need for dynamic addressing, it is possible to use firmwaredhcp and setting dnsmasq or similar to serve up a dynamic range
+In a mostly static environment with a need for dynamic addressing, it is possible to use `firmwaredhcp` and setting `dnsmasq` or similar to serve up a dynamic range
 without having to coordinate the configuration.
 
 ## Generating dnsmasq configuration with confluent2dnsmasq
 
-For sites that want dnsmasq to act as an actual DHCP server for confluent managed nodes (rather than relying purely on
+For sites that want `dnsmasq` to act as an actual DHCP server for confluent managed nodes (rather than relying purely on
 static addressing or `firmwaredhcp`), the [`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md) command generates a
-dnsmasq configuration fragment directly from the confluent node `net.*` attribute database. It emits static `dhcp-host`
+`dnsmasq` configuration fragment directly from the confluent node `net.*` attribute database. It emits static `dhcp-host`
 reservations for every network interface with a hardware address, along with the covering `dhcp-range` declarations
-dnsmasq requires to serve a subnet, and a `bind-dynamic` directive so dnsmasq and confluent can share the same network.
+`dnsmasq` requires to serve a subnet, and a `bind-dynamic` directive so `dnsmasq` and confluent can share the same network.
 Optional flags can also add gateway, DNS, domain, NTP, and MTU information from confluents `net.*` attributes per
 subnet. Because the configuration is generated from the same database confluent itself uses, there is no separate set of
 host records to keep in sync.
@@ -35,14 +35,13 @@ host records to keep in sync.
 
 With xCAT, the biggest potential for conflict is the dynamic range, where xCAT will offer any network boot device a boot payload and potentially conflict.  There are a few strategies:
 
- * Disabling the dynamic range.  Remove the dynamic ranges entirely from networks table, and either makedhcp -n to recreate dhcpd.conf, or manually comment out the range statements in dhcpd.conf
- * Having devices only do HTTP boot.  xCAT does not support HTTP boot, so nodes doing HTTP boot will not receive offers from xCAT
- * Removing the boot payload from dynamic offers.  In dhcpd.conf, comment/remove the gpxe.no-pxedhcp option as well as filename entries to make the xCAT dhcp server no longer offer boot direction to unknown systems
+* Disabling the dynamic range.  Remove the dynamic ranges entirely from networks table, and either `makedhcp` -n to recreate dhcpd.conf, or manually comment out the range statements in dhcpd.conf
+* Having devices only do HTTP boot.  xCAT does not support HTTP boot, so nodes doing HTTP boot will not receive offers from xCAT
+* Removing the boot payload from dynamic offers.  In dhcpd.conf, comment/remove the gpxe.no-pxedhcp option as well as filename entries to make the xCAT dhcp server no longer offer boot direction to unknown systems
 
 ## How confluent works without a dynamic range
 
 xCAT uses a dynamic range to boot linux on all unknown systems, and then in that linux environment work is done to try to discover the system.  In confluent, there are two discovery strategies:
 
- * BMC first discovery: Confluent can do discovery based on accessing/configuring BMCs first, allowing traditional discovery and configuration to be possible, even when the system off.  This can succeed even without IPv4 configuration by use of IPv6 link-local addressing.
- * IP-free PXE discovery: When doing PXE driven discovery when the BMC option is unavailable, confluent uses the contents of the DHCPDISCOVER packet to drive discovery, rather than a Linux payload.  This gathers UUID and MAC addresses, which is enough to drive discovery.
-
+* BMC first discovery: Confluent can do discovery based on accessing/configuring BMCs first, allowing traditional discovery and configuration to be possible, even when the system off.  This can succeed even without IPv4 configuration by use of IPv6 link-local addressing.
+* IP-free PXE discovery: When doing PXE driven discovery when the BMC option is unavailable, confluent uses the contents of the DHCPDISCOVER packet to drive discovery, rather than a Linux payload.  This gathers UUID and MAC addresses, which is enough to drive discovery.

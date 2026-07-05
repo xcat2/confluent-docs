@@ -11,13 +11,13 @@ An expression will contain some directives wrapped in '{}' characters.  Within {
 a number of potential substitute values and operations.
 
 The most common operation is to extract a number from the nodename.  These values are available
-as n1, n2, etc.  So for example attributes for a node named b1o2r3u4 would have {n1} as 1,
-{n2} as 2, {n3} as 3, and {n4} as 4.  Additionally, {n0} is special as representing the *last*
-number in a name, so in the b1o2r3u4 example, {n0} would be 4.
+as `n1`, `n2`, etc.  So for example attributes for a node named b1o2r3u4 would have `{n1}` as 1,
+`{n2}` as 2, `{n3}` as 3, and `{n4}` as 4.  Additionally, `{n0}` is special as representing the *last*
+number in a name, so in the b1o2r3u4 example, `{n0}` would be 4.
 
 Frequently a value derives from a number in the node name, but must undergo a transform to be
-useful.  As an example, if we have a scheme where nodes are numbered n1-n512, and they are arranged
-1-42 in rack1, 43-84 in rack2, and so forth, it is convenient to perform arithmetic on the extracted
+useful.  As an example, if we have a scheme where nodes are numbered `n1-n512`, and they are arranged
+1-42 in `rack1`, 43-84 in `rack2`, and so forth, it is convenient to perform arithmetic on the extracted
 number.  Here is an example of codifying the above scheme, and setting the u to the remainder:
 
 ```bash
@@ -64,14 +64,11 @@ submitting the following JSON:
 { 'location.rack': '{n1}' }
 ```
 
-Will auto-detect {n1} as an expression and assign it normally.  If wanting to set that value
+Will auto-detect `{n1}` as an expression and assign it normally.  If wanting to set that value
 verbatim, it can either be escaped by doubling the {} or by explicitly declaring it as a value:
 
 ```bash
-{ 'location.rack': '{% raw %}{{n1}}{% endraw %}' }
+{ 'location.rack': '{{n1}}' }
 
 { 'location.rack': { 'value': '{n1}' } }
 ```
-
-
-

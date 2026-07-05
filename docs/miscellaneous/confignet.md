@@ -25,7 +25,7 @@ e.g. `net.management.*` and `net.compute.*` describe two entirely separate inter
 It is recommended to pick a name that documents the interface's purpose, for example `ib1-io` for a second InfiniBand
 port dedicated to an "io" fabric. Here is a more complete example, setting up such an interface on a group of nodes:
 
-```bash
+```console
 # nodegroupattrib compute net.ib1-io.hostname='{node}-ib1-io' net.ib1-io.interface_names=ibp35s0 \
     net.ib1-io.ipv4_address='10.10.{201+(87+4*n1)/256}.{(87+4*n1)%256}/20' net.ib1-io.vlan_id=0x0001
 ```
@@ -33,7 +33,7 @@ port dedicated to an "io" fabric. Here is a more complete example, setting up su
 Listing the group afterwards shows the expressions as stored on the group (they are only evaluated per node, so the
 group listing shows them unevaluated):
 
-```
+```console
 # nodegroupattrib compute
 compute: net.ib1-io.hostname:  (will derive from expression {node}-ib1-io)
 compute: net.ib1-io.interface_names: ibp35s0
@@ -54,7 +54,7 @@ Breaking down what each attribute is doing:
 
 For node `n12`, `nodeattrib n12 --blame` would show the resolved values actually applied:
 
-```
+```console
 # nodeattrib n12 --blame
 n12: net.ib1-io.hostname: n12-ib1-io (inherited from group compute, derived from expression "{node}-ib1-io")
 n12: net.ib1-io.interface_names: ibp35s0 (inherited from group compute)
@@ -67,7 +67,7 @@ n12: net.ib1-io.vlan_id: 0x0001 (inherited from group compute)
 
 If a confluent deployment server is configured for a given subnet, the deploying server will autosense the correct IP
 subnet and match the group automatically.
-```
+```text
 net.deployment.ipv4_address=1.2.3.4/16
 ```
 
@@ -75,7 +75,7 @@ net.deployment.ipv4_address=1.2.3.4/16
 
 If autosense is not feasible or not desired, specify `net.name.interface_names` to indicate the interface to use with
 this network configuration.  For example:
-```
+```text
 net.infiniband.interface_names=ib0
 net.infiniband.ipv4_address=1.2.3.4/16
 ```
@@ -83,7 +83,7 @@ net.infiniband.ipv4_address=1.2.3.4/16
 
 ## Configuring a network interface bond/team
 
-confignet supports configuring bonded/teamed interfaces by specifying the mode via, for example,
+`confignet` supports configuring bonded/teamed interfaces by specifying the mode via, for example,
 `net.compute.team_mode=lacp`. The `team_mode` name is used regardless of whether the resulting OS configuration will be
 a Linux "bond" or a "team"; confluent picks the mechanism appropriate for the deployed OS. If the member interfaces are
 on the same subnet as a confluent deployment server, the members may be autodetected. If the member interfaces do not
@@ -91,14 +91,14 @@ share a subnet with a confluent server, then the member device names must be exp
 `net.*.interface_names`, e.g. `ib0,ib1`.
 
 Example of a bond/team that shares a network segment with a confluent server:
-```
+```text
 net.example.team_mode=lacp
 net.example.ipv4_address=1.2.3.4/16
 ```
 
 Example of a bond/team that does not share a network with a confluent server, explicitly naming its two member
 interfaces:
-```
+```text
 net.example.team_mode=lacp
 net.example.ipv4_address=4.3.2.1/16
 net.example.interface_names=eno1,eno2

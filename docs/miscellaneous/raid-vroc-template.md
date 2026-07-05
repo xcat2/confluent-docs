@@ -1,10 +1,13 @@
 ---
-title: Template for RAID/VROC boot device 
+title: Template for RAID/VROC boot device
+tags:
+  - deployment
+  - hardware
 ---
 
 ## Synopsis
 
-Add software RAID/md RAID for RHEL/Rocky Linux/Alma Linux, and VROC support for booting devices for RHEL/Rocky Linux/Alma Linux and SLES. 
+Add software RAID/md RAID for RHEL/Rocky Linux/Alma Linux, and VROC support for booting devices for RHEL/Rocky Linux/Alma Linux and SLES.
 
 ## Solution
 
@@ -39,7 +42,7 @@ readlink /dev/md/raid|sed -e 's/.*\///' > /tmp/installdisk
 ```
 
 
-Reference  <https://github.com/lenovo/confluent/blob/master/misc/swraid> 
+Reference  <https://github.com/lenovo/confluent/blob/master/misc/swraid>
 
 
 For VROC instances, please apply same principle as above (edit with needed info) :
@@ -66,6 +69,6 @@ mdadm --assemble --scan
 ```
 
 
-Reference <https://github.com/lenovo/confluent/blob/master/misc/vroc> 
+Reference <https://github.com/lenovo/confluent/blob/master/misc/vroc>
 
-Please **remember** to put the file for the corresponding system in **/var/lib/confluent/public/os/<<profile name>>/scripts/pre.d ** to run the script on the install of the profile. 
+Please **remember** to put the file for the corresponding system in `/var/lib/confluent/public/os/<profile name>/scripts/pre.d` to run the script on the install of the profile.

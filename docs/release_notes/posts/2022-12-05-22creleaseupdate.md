@@ -25,19 +25,19 @@ In order to use, update affluent on the switch and use `nodediscover subscribe <
 
 ## New `verified` discovery.policy
 
-When using the aforementioned switch driven discovery through `subscribe` on nodediscover, a new policy `verified` is available for discovery.policy.  This allows for a node replacement to be fully automated,
+When using the aforementioned switch driven discovery through `subscribe` on `nodediscover`, a new policy `verified` is available for `discovery.policy`.  This allows for a node replacement to be fully automated,
 if and only if the new node certificate is vetted by the directly attached ethernet switch running affluent.  This only works with Lenovo SMMv2 and Lenovo xClarity 2 based systems.
 
 ## Registration of remote subnets in discovery
 
 xClarity Controller devices may now be added by IP or Subnet to scan using `nodediscover register`.  This brings such
-devices into the nodediscover list for potential assignment.  This can take an IP address, subnet (address/prefix syntax), or
+devices into the `nodediscover list` for potential assignment.  This can take an IP address, subnet (address/prefix syntax), or
 range of IP addresses (address1-address2).
 
 ## The hardwaremanagement.manager now accepts CIDR syntax
 
 To facilitate remote setup with static addressing, the `hardwaremanagement.manager` attribute can now have CIDR to indicate
-the subnet prefix length (1.2.3.4/24).  This can be used with either the `register` or `subscribe` discovery targets.
+the subnet prefix length (`1.2.3.4/24`).  This can be used with either the `register` or `subscribe` discovery targets.
 
 ## Remote networks may now be used for operating system deployment
 
@@ -48,7 +48,7 @@ profile.yaml indicated kernel arguments.
 
 ## New attribute to automatically execute nodeconfig on discovery
 
-The new attribute `discovery.nodeconfig` allows specifying arguments to nodeconfig to automatically apply upon discovery
+The new attribute `discovery.nodeconfig` allows specifying arguments to `nodeconfig` to automatically apply upon discovery
 of a new or replaced system.
 
 ## New ipv4_method to suppress any PXE or HTTP boot offers
@@ -106,5 +106,3 @@ Point dnf to the configuration directory in /tmp/ to leverage the external repos
 
 Large numbers of poorly behaving SSDP implementations could induce memory pressure on confluent.  Improve confluent's SSDP
 snooping to perform better in such circumstances.
-
-

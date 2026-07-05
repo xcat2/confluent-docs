@@ -17,7 +17,7 @@ Discovery will now work even if the password on the endpoint is already set, but
 
 ## `nodeconsole` now has a `-l` option to replay logs
 
-The nodeconsole now has a flag to initiate a log replay of a node. Arrow keys can navigate the console and the titlebar is updated to show time of on-screen content.  Further, any screen clears force a pause in navigation to clearly show errors before they would normally be cleared from the screen.  Search is also supported.
+The `nodeconsole` now has a flag to initiate a log replay of a node. Arrow keys can navigate the console and the titlebar is updated to show time of on-screen content.  Further, any screen clears force a pause in navigation to clearly show errors before they would normally be cleared from the screen.  Search is also supported.
 
 ## Web UI now supports passwordless authentication using webathn
 
@@ -65,4 +65,3 @@ with a deployment image.
 ## Confluent expression can now slice a variable
 
 For example, a node named `node123` with {node[-4:]} would show `e123`
-

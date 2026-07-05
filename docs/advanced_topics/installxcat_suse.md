@@ -1,5 +1,8 @@
 ---
 title: xCAT Installation for SUSE Linux Enterprise
+tags:
+  - xcat
+  - installation
 ---
 
 !!! note
@@ -35,7 +38,7 @@ To verify that you have installed xCAT:
 service xcatd status
 ```
 
-At this point, source the script below for xCAT command line functionality or logout and log back in. 
+At this point, source the script below for xCAT command line functionality or logout and log back in.
 
 ```bash
 source /etc/profile.d/xcat.sh
@@ -45,7 +48,4 @@ For some notes on configuring certain Lenovo equipment in xCAT, see [xCAT config
 
 For more information on installing xCAT, go to [xCAT Install Guide](http://xcat-docs.readthedocs.io/en/stable/guides/install-guides/index.html)
 
-To continue to install confluent go to [install confluent](../getting_started/installconfluent_suse.md)
-
-
-
+To continue to install confluent go to [install confluent](../getting_started/installconfluent.md)

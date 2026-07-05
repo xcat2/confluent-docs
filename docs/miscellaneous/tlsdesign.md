@@ -12,7 +12,7 @@ Using TLS in a private network configuration can be daunting. The usual approach
 
 Due to the challenges with relying upon and configuration of DNS, Confluent steers towards use of IP addresses as it goes.  In typical confluent environments, the IP addresses of the management nodes are fixed, and easy to programmatically detect the correct one without user guidance.  Thus `osdeploy initialize -t` focuses on enabling IP addresses, for example, here is a typical SAN field for a confluent generated certificate:
 
-```
+```text
 X509v3 Subject Alternative Name:
     IP Address:172.30.1.5, IP Address:FDEC:46F7:9B7F:3001:0:0:2:5, IP Address:FE80:0:0:0:A94:EFFF:FE50:BEC2, DNS:172.30.1.5, DNS:fdec:46f7:9b7f:3001::2:5, DNS:fe80::a94:efff:fe50:bec2, DNS:d5
 ```
@@ -23,12 +23,12 @@ X509v3 Subject Alternative Name:
 ## The confluent TLS authority
 
 To allow easily updating the certificate to accommodate IP address changes, confluent tends to make its own certificate authority:
-```
+```text
 /etc/confluent/tls/cakey.pem
 /etc/confluent/tls/cacert.pem
 ```
 The public certificate of the CA is placed into the site deployment directory, using the server hostname as the filename.  In the case of a collective where each collective member provides an authority, they should all be present:
-```
+```console
 # ls -l /var/lib/confluent/public/site/tls/
 total 6
 lrwxrwxrwx. 1 root root   6 Mar 16 09:17 0e6578bf.0 -> d8.pem
@@ -47,7 +47,7 @@ Unfortunately, while this approach makes things easier for those that do not wis
 
 * **Automatically adding a custom CA certificate to your deployment**
 
-No matter the chosen approach, it is generally desirable to add your custom authority to the deployed systems. In addition to methods that you may be accustomed to being viable during post.d or onboot.d, you may also choose to add your organization's CA certificates to /var/lib/confluent/public/site/tls/.  While collective server certificates use the directory, any other .pem and .0 will be consumed as trusted CA certificates for deployment and beyond.  Note this will only add the authority as trusted, this is likely *not* to make things work, as the certificate will generally use DNS names, and the deployment will still use IP addresses.
+No matter the chosen approach, it is generally desirable to add your custom authority to the deployed systems. In addition to methods that you may be accustomed to being viable during post.d or onboot.d, you may also choose to add your organization's CA certificates to `/var/lib/confluent/public/site/tls/`.  While collective server certificates use the directory, any other .pem and .0 will be consumed as trusted CA certificates for deployment and beyond.  Note this will only add the authority as trusted, this is likely *not* to make things work, as the certificate will generally use DNS names, and the deployment will still use IP addresses.
 
 * **Use the custom CA alongside the confluent CA**
 
@@ -57,6 +57,3 @@ the confluent one to facilitate access by IP address. In this approach, use the 
 * **Using the custom CA to issue a confluent friendly certificate.**
 
 In addition to the names desired, you may wish to add the IP addresses as subject alternative names to the certificate.  If this is possible, then confluent should be able to proceed as normal.  However, this may be onerous at best (having to redo the certificate process with your organization for an ip address change) or impossible at worst (a common policy is to forbid IP address based SAN entries).
-
-
-

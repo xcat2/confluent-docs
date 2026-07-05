@@ -1,9 +1,6 @@
 nav:
   - confluentquickstart_el8.md
-  - installconfluent_rhel.md
-  - installconfluent_ubuntu.md
-  - installconfluent_suse.md
+  - installconfluent.md
   - configureconfluent.md
   - confluentgroups.md
-  - ibinstallconfluentrhel8.md
-  - ibinstallconfluentsle152.md
+  - ibinstallconfluent.md

@@ -1,5 +1,7 @@
 ---
 title: Applying software updates to RedHat/CentOS
+tags:
+  - installation
 ---
 
 After adding the correct repository as indicated in the [download page](../downloads.md), you can
@@ -9,4 +11,3 @@ related software, you may instruct yum to do so by:
 ```bash
 yum --disablerepo=* --enablerepo=lenovo-hpc update
 ```
-

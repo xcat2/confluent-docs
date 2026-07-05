@@ -4,11 +4,11 @@ tags:
   - discovery
 ---
 
-Confluent can identify unknown devices based on what network port they are connected to.
+As part of the [discovery process](../user_reference/confluentdiscovery.md), Confluent can identify unknown devices based on what network port they are connected to.
 
 ## SNMP
 For many industry switches, standard SNMP mibs are supported (QBRIDGE, BRIDGE, IF) to get the information.  If wanting to use SNMPv1/SNMPv2c, use the
-attribute 'secret.snmpcommunity' instead of `switchuser` and `switchpass` referenced below.
+attribute `secret.snmpcommunity` instead of `switchuser` and `switchpass` referenced below.
 
 ## Cumulus
 For cumulus switches, install the affluent agent as documented in ['Using a Cumulus switch with confluent'](../miscellaneous/confluentcumulus.md)
@@ -18,27 +18,27 @@ For cumulus switches, install the affluent agent as documented in ['Using a Cumu
 Adding an ethernet switch is done simply by adding the IP or a name that resolves to the switch:
 
 ```bash
-# nodedefine r4e1 type=switch
+nodedefine r4e1 type=switch
 ```
 
 If the username and password are not inherited from a group like everything, be sure to set the username and password:
 
 ```bash
-# nodeattrib r4e1 -p switchuser switchpass
+nodeattrib r4e1 -p switchuser switchpass
 ```
 
 With the switch added, run:
 
 ```bash
-# nodediscover rescan
+nodediscover rescan
 ```
 
 Watching `/var/log/confluent/events` should indicate any problems that may be encountered.
 
 With that, the `nodediscover` command now can present data about network connectivity:
 
-```bash
-# nodediscover list -f model,serial,type,mac,switch,port -o port | grep -v lenovo-switch| head 
+```console
+# nodediscover list -f model,serial,type,mac,switch,port -o port | grep -v lenovo-switch| head
       Model|     Serial|          Type|               Mac| Switch|       Port
 -----------|-----------|--------------|------------------|-------|-----------
     5466AC1|    DVJICDA|   lenovo-imm2| 40:f2:e9:75:1f:bd|   r4e1| Ethernet14
@@ -57,19 +57,19 @@ to execute a network boot (required for scenarios where the management controlle
 operating system). If using the network boot port, then discovery is delayed until PXE boot is attempted. For example,
 here is a node that has a TSM connected to switch port 29 of a switch:
 
-```bash
+```console
 # nodedefine example1 net.switch=r4e1 net.switchport=29 discovery.policy=permissive,pxe
 example1: created
 # nodediscover rescan
 Rescan complete
 ```
 
-When specifying switches and net.switch value, ensure the attribute values match. Do not use IP
+When specifying switches and `net.switch` value, ensure the attribute values match. Do not use IP
 in one place and a DNS name in the other, for example.
 
 Results can be seen by following `/var/log/confluent/events` or by watching `nodediscover list`:
 
-```bash
+```console
 # grep example1 /var/log/confluent/events
 Sep 02 13:53:51 {"info": "Discovered example1 (TSM)"}
 # nodediscover list -f node,model,serial,mac|egrep 'J100GZG5|Node|----'
@@ -80,7 +80,7 @@ Sep 02 13:53:51 {"info": "Discovered example1 (TSM)"}
 
 Once the node has reported as 'Discovered', commands may be run against the node:
 
-```bash
+```console
 # nodehealth example1
 example1: ok
 ```
@@ -88,7 +88,7 @@ example1: ok
 To scale out such a strategy to a structured environment easily, it makes sense to take advantage of the group inheritance
 and formulaic expansion.  In this example, we will have a name scheme of r{rack}u{u in rack} and we will plug u1 into port 1, u 2 in port 2, and so on:
 
-```bash
+```console
 # nodegroupdefine rackmount net.switch=r{n1}e1 net.switchport={n2}
 # nodedefine r4u29 groups=rackmount
 # nodeattrib r4u29 net.switch net.switchport --blame
@@ -98,15 +98,11 @@ r4u29: net.switchport: 29 (inherited from group rackmount, derived from expressi
 Rescan complete
 ```
 
-As above, after some time the node may be seen in nodediscover list or `/var/log/confluent/events`
+As above, after some time the node may be seen in `nodediscover list` or `/var/log/confluent/events`
 
-```bash
+```console
 # nodediscover list -f node,model,serial,mac|egrep 'J100GZG5|Node|----'
   Node|      Model|     Serial|               Mac
 ------|-----------|-----------|------------------
  r4u29| 7Z01CTO1WW|   J100GZG5| 3c:e1:a1:c7:ea:79
 ```
-
-
-
-

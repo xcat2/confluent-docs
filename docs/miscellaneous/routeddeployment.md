@@ -1,5 +1,8 @@
 ---
 title: Deployment through a routed network
+tags:
+  - deployment
+  - networking
 ---
 
 While it is most straightforward to do OS deployment when on the same network, sometimes there is a need to deploy through
@@ -29,7 +32,7 @@ To proceed:
 
 - Generate an identity image for the node.
 
-```
+```console
 # confetty set /noderange/rackmount/deployment/ident_image=create
 created: nodes/r3u21/deployment/ident_image
 created: nodes/r3u24/deployment/ident_image
@@ -40,7 +43,7 @@ created: nodes/r3u25/deployment/ident_image
 
 - Upload the identity images to the xClarity controllers:
 
-```
+```bash
 noderun rackmount nodemedia {node} upload /var/lib/confluent/private/identity_images/{node}.img
 ```
 
@@ -49,8 +52,8 @@ so it is advised to only use `upload`.
 
 - Attach or upload the `boot.img` file from the profile.
 
-```
-# nodemedia rackmount attach https://172.30.193.20/confluent-public/os/rocky-9.4-x86_64-default/boot.img
+```bash
+nodemedia rackmount attach https://172.30.193.20/confluent-public/os/rocky-9.4-x86_64-default/boot.img
 ```
 
 !!! note
@@ -99,7 +102,7 @@ Drawbacks:
 
 To proceed:
 
-- Ensure you have collected either node UUIDs (id.uuid) or mac addresses (net.*hwaddr), depending on your preference.
+- Ensure you have collected either node UUIDs (`id.uuid`) or mac addresses (`net.*hwaddr`), depending on your preference.
 - Set the remote network to be a trusted network for the node: `nodeattrib [nodes] trusted.subnets=172.20.0.0/24`
 - Modify the profile.yaml of the OS profile(s) and add `confluent=[ip.of.confluent.server]` to the kernel arguments
 - `osdeploy updateboot [osimagename]`
@@ -122,13 +125,13 @@ Drawbacks:
 
 To proceed:
 
-- Ensure you have collected either node UUIDs (id.uuid) or mac addresses (net.*hwaddr), depending on your preference.
+- Ensure you have collected either node UUIDs (`id.uuid`) or mac addresses (`net.*hwaddr`), depending on your preference.
 - Set the remote network to be a trusted network for the node: `nodeattrib [nodes] trusted.subnets=172.20.0.0/24`
 - Modify the profile.yaml of the OS profile(s) and add `confluent=[ip.of.confluent.server]` to the kernel arguments
 - `osdeploy updateboot [osimagename]`
 - Have the DHCP server send option 67 "PXEClient".  As an example, here is an excerpt from an ISC DHCP configuration file:
 
-```
+```text
 class "PXE" {
   match if substring(option vendor-class-identifier, 0, 9) ="PXEClient";
   option vendor-class-identifier "PXEClient";

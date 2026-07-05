@@ -1,5 +1,7 @@
 ---
 title: Projects using Confluent
+tags:
+  - reference
 ---
 
 Here are some projects that use Confluent and that can be useful depending on your setup.
