@@ -17,7 +17,8 @@ To install confluent as well as optional requirements, after adding a yum reposi
 yum install lenovo-confluent tftp-server
 systemctl enable confluent --now
 systemctl enable httpd --now # if wanting to deploy operating systems and/or the web gui
-systemctl enable tftp.socket --now  # If wanting to support PXE install
+systemctl enable tftp.socket --now # If wanting to support PXE install
+source /etc/profile.d/confluent_env.sh # or logout and log back in
 ```
 
 More details, including firewall rules and enabling GUI login may be found in the dedicated install page.
@@ -188,6 +189,9 @@ Any time `/etc/hosts` is updated, restart `dnsmasq` to have it pick up changes.
 
 The `osdeploy` command has an initialize subcommand to help set up requirements for OS deployment. Here the `-i` flag is used
 to interactively prompt on the options that are available:
+
+!!! note
+    Before running osdeploy, ensure an SSH key is configured.
 
 ```console
 # osdeploy initialize -i
