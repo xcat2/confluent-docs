@@ -191,7 +191,7 @@ The `osdeploy` command has an initialize subcommand to help set up requirements 
 to interactively prompt on the options that are available:
 
 !!! note
-    Before running osdeploy, ensure an SSH key is configured.
+    Before running `osdeploy`, ensure an SSH key is configured.
 
 ```console
 # osdeploy initialize -i
