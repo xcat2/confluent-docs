@@ -1,5 +1,6 @@
 nav:
   # Overview
+  - architecture.md
   - confluentvxcat.md
   - projects.md
   # Management and setup
