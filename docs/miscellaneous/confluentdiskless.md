@@ -106,6 +106,13 @@ interpreter /usr/bin/qemu-aarch64-static
 flags: F
 ```
 
+!!! tip
+    With `imgutil` foreign architecture building, package scriptlets and similar steps run
+    through `/usr/bin/qemu-<arch>-static`.
+    Emulated compilation can be around 25× slower than native, so building large components like
+    DOCA or DKMS modules may take a long time. Consider compiling these natively and
+    copying the results into the image afterwards.
+
 ## Customizing the root filesystem tree
 
 `imgutil` provides an `exec` facility to help customize an root filesystem tree.  It starts the tree specified using container technologies (namespaces and chroot).
