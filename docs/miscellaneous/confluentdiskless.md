@@ -30,6 +30,82 @@ imgutil build -s alma-8.5-x86_64 /tmp/scratchdir
 The `-s` argument is optional, but when used should refer to a distribution in `osdeploy list`.  Tab completion also will work to help
 see the applicable options.  The `/tmp/scratchdir` directory tree is now ready for customization.
 
+## Building images for a foreign architecture
+
+`imgutil build` can build an image for a different architecture than the build
+host (e.g. an aarch64 image on an x86_64 host) using qemu user-mode emulation.
+For EL, the target architecture is detected automatically when building from a
+`-s` source tree; it may also be requested explicitly:
+
+```bash
+imgutil build --arch aarch64 /tmp/scratchdir
+```
+
+Architecture names are `x86_64` and `aarch64`; for Ubuntu, the Debian-style
+names `amd64` and `arm64` are accepted as aliases. `imgutil exec` on a
+foreign-architecture tree uses the same emulation.
+
+This requires a statically linked qemu-user emulator registered in
+binfmt_misc with the F (fix-binary) flag, so that the emulator remains
+reachable inside the image chroot. `imgutil` verifies this up front and
+reports what is missing. To set it up (shown for an aarch64 target on an
+x86_64 host — swap architectures for the reverse):
+
+=== "Enterprise Linux"
+
+    EL and EPEL do not package the static emulator, but the Fedora package
+    installs directly on EL — it contains only the statically linked
+    emulator and its binfmt registration (with the F flag), and requires
+    nothing beyond `/bin/sh`. Install it from the Fedora 44 repository:
+
+    ```bash
+    dnf install --repofrompath=fedora,https://dl.fedoraproject.org/pub/fedora/linux/releases/44/Everything/x86_64/os/ --repo=fedora --nogpgcheck qemu-user-static-aarch64
+    systemctl restart systemd-binfmt.service
+    ```
+
+    !!! note
+        Newer Fedora releases might work as well; adjust the release number
+        in the repository URL.
+
+    For the reverse direction (x86_64 emulation on an aarch64 host), the
+    subpackage is named `qemu-user-static-x86` and the repository URL uses
+    `aarch64` in place of `x86_64`.
+
+=== "Ubuntu 24.04 and earlier"
+
+    The qemu-user-static package registers all emulators with the F flag:
+
+    ```bash
+    apt-get install qemu-user-static
+    ```
+
+    If a handler was disabled, re-enable it with
+    `update-binfmts --enable qemu-aarch64`.
+
+    !!! warning
+        When cross-building, the build host's repository URLs probably
+        cannot be used: archive.ubuntu.com only hosts x86 packages, all
+        other architectures are served from ports.ubuntu.com.
+
+=== "Ubuntu 26.04 and later"
+
+    qemu-user-static became a virtual package; the statically linked
+    emulators are provided by qemu-user-binfmt:
+
+    ```bash
+    apt-get install qemu-user-binfmt
+    ```
+
+Verify the registration — it must report `enabled` and the flags must
+include `F` (interpreter path and additional flags vary by distribution):
+
+```console
+# cat /proc/sys/fs/binfmt_misc/qemu-aarch64
+enabled
+interpreter /usr/bin/qemu-aarch64-static
+flags: F
+```
+
 ## Customizing the root filesystem tree
 
 `imgutil` provides an `exec` facility to help customize an root filesystem tree.  It starts the tree specified using container technologies (namespaces and chroot).
