@@ -1,6 +1,7 @@
 ---
-title: OS Deployment Notes for RedHat Enterprise Linux 7
+title: xCAT OS Deployment Notes for RedHat Enterprise Linux 7
 tags:
+  - xcat
   - deployment
 ---
 
