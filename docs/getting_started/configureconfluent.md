@@ -4,14 +4,7 @@ tags:
   - installation
 ---
 
-## When used in conjunction with xCAT
-
-If you wish to use xCAT to create the confluent configuration, see
-[Configuring confluent from xCAT](../archive/xcatconfluentsetup.md)
-The remainder of this document is mostly applicable to users working with confluent
-standalone directly rather than using xCAT to configure.
-
-## Using Confluent without xCAT
+## Using Confluent without xCAT (recommended)
 
 In confluent, configuration is organized as [attributes](../user_reference/node_attributes.md) on nodes.  The
 attributes may be directly configured on a node or inherited from a group.
@@ -62,3 +55,10 @@ At this point, there are a few alternative paths to proceed:
 * Discovery is intended to help when IP addresses, usernames, and/or passwords are not configured yet. If these activities are otherwise handled in the environment, it is suggested to skip discovery and read: [Managing hardware using confluent](../miscellaneous/manageconfluent.md)
 * If the IP addresses, usernames, and/or passwords need to be configured and it is desired to use physical location of equipment as the key, see: [Using switch based discovery for rackmount servers](../advanced_topics/confluentswitchdisco.md) or [Using enclosure based discovery for dense platforms](../advanced_topics/confluentenclosuredisco.md)
 * If the IP addresses, usernames, and/or passwords need to be configured and it is desired to either use serial numbers, mac addresses, or otherwise manually review the available data to proceed, see: [Using `nodediscover assign`](../advanced_topics/confluentnodeassign.md)
+
+## When used in conjunction with xCAT
+
+If you wish to use xCAT to create the confluent configuration, see
+[Configuring confluent from xCAT](../archive/xcatconfluentsetup.md)
+The remainder of this document is mostly applicable to users working with confluent
+standalone directly rather than using xCAT to configure.
