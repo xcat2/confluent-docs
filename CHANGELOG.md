@@ -2,6 +2,14 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Developer section merged into Miscellaneous
+
+### Changed
+- Moved `developer/api.md` to `miscellaneous/api.md` and removed the
+  now-empty Developer top-level section from the navigation. Internal links
+  (`index.md`, `user_reference/thermalpowerconfluent.md`) were updated and a
+  redirect from the old URL was added in `properdocs.yml`.
+
 ## Migration-artifact cleanup and build validation
 
 A repo-wide pass removing the remaining formatting artifacts from the Jekyll

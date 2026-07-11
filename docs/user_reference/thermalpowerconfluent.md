@@ -80,7 +80,7 @@ time,node,Ambient Temp (°C),CPU 1 OverTemp,CPU 2 OverTemp,CPU1 Temp (°C),CPU1 
 
 Live power and cooling data is available from confluent
 via the 'sensors' portion of the API.  See the
-[API reference](../developer/api.md)
+[API reference](../miscellaneous/api.md)
 for a general introduction to general usage of the API.
 
 Specifically, the sensors of interest are under the `/sensors/hardware/temperature` and `/sensors/hardware/power`

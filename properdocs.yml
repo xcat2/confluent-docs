@@ -134,6 +134,7 @@ plugins:
       minify_html: true
   - redirects:
       redirect_maps:
+        developer/api.md: miscellaneous/api.md
         miscellaneous/doca2-10-intstall.md: miscellaneous/doca2-10-install.md
         advanced_topics/rh8installib.md: advanced_topics/ibinstallxcat.md
         advanced_topics/sle152ibinstall.md: advanced_topics/ibinstallxcat.md

@@ -3,6 +3,7 @@ nav:
   - architecture.md
   - confluentvxcat.md
   - projects.md
+  - api.md
   # Management and setup
   - manageconfluent.md
   - confluentadoptnode.md

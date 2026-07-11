@@ -83,7 +83,7 @@ If you are coming from xCAT, see
     Drive confluent from the REST API, the Python client library, the
     filesystem-like `confetty` browser or backup and restore its database.
 
-    [:octicons-arrow-right-24: API documentation](developer/api.md)
+    [:octicons-arrow-right-24: API documentation](miscellaneous/api.md)
 
     [:octicons-arrow-right-24: Backup and restore](miscellaneous/confluentbackup.md)
 
