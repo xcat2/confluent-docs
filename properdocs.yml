@@ -134,11 +134,31 @@ plugins:
       minify_html: true
   - redirects:
       redirect_maps:
+        developer/api.md: miscellaneous/api.md
         miscellaneous/doca2-10-intstall.md: miscellaneous/doca2-10-install.md
-        advanced_topics/rh8installib.md: advanced_topics/ibinstallxcat.md
-        advanced_topics/sle152ibinstall.md: advanced_topics/ibinstallxcat.md
-        miscellaneous/rhinstallib.md: advanced_topics/ibinstallxcat.md
-        miscellaneous/rhinstallopa.md: advanced_topics/ibinstallxcat.md
+        advanced_topics/rh8installib.md: archive/ibinstallxcat.md
+        advanced_topics/sle152ibinstall.md: archive/ibinstallxcat.md
+        miscellaneous/rhinstallib.md: archive/ibinstallxcat.md
+        miscellaneous/rhinstallopa.md: archive/ibinstallxcat.md
+        advanced_topics/xcatconfluentsetup.md: archive/xcatconfluentsetup.md
+        advanced_topics/confluenttoxcat.md: archive/confluenttoxcat.md
+        advanced_topics/ibinstallxcat.md: archive/ibinstallxcat.md
+        advanced_topics/installxcat_rhel.md: archive/installxcat_rhel.md
+        advanced_topics/installxcat_suse.md: archive/installxcat_suse.md
+        advanced_topics/xcatconfignotes.md: archive/xcatconfignotes.md
+        advanced_topics/xcataddingsnmp.md: archive/xcataddingsnmp.md
+        advanced_topics/sharedinstallnotes.md: archive/sharedinstallnotes.md
+        advanced_topics/sharedtftpnotes.md: archive/sharedtftpnotes.md
+        advanced_topics/el7rste.md: archive/el7rste.md
+        advanced_topics/sles12rste.md: archive/sles12rste.md
+        advanced_topics/xcatramrootibboot.md: archive/xcatramrootibboot.md
+        advanced_topics/xcatstatelessimagesles152.md: archive/xcatstatelessimagesles152.md
+        troubleshooting/xcatosdeploymentts.md: archive/xcatosdeploymentts.md
+        miscellaneous/sd650sharednote.md: archive/sd650sharednote.md
+        miscellaneous/sles12deploy.md: archive/sles12deploy.md
+        user_reference/el7deploy.md: archive/el7deploy.md
+        user_reference/centosdeploy.md: archive/centosdeploy.md
+        user_reference/suse15deploy.md: archive/suse15deploy.md
         getting_started/ibinstallconfluentrhel8.md: getting_started/ibinstallconfluent.md
         getting_started/ibinstallconfluentsle152.md: getting_started/ibinstallconfluent.md
         getting_started/installconfluent_rhel.md: getting_started/installconfluent.md

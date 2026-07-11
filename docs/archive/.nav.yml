@@ -1,0 +1,26 @@
+nav:
+  # Confluent and xCAT interoperation
+  - xcatconfluentsetup.md
+  - confluenttoxcat.md
+  # xCAT installation and configuration
+  - installxcat_rhel.md
+  - installxcat_suse.md
+  - xcatconfignotes.md
+  - xcataddingsnmp.md
+  - sharedinstallnotes.md
+  - sharedtftpnotes.md
+  # xCAT OS deployment
+  - ibinstallxcat.md
+  - el7rste.md
+  - sles12rste.md
+  - sd650sharednote.md
+  # Legacy OS deployment notes
+  - el7deploy.md
+  - centosdeploy.md
+  - sles12deploy.md
+  - suse15deploy.md
+  # xCAT diskless
+  - xcatramrootibboot.md
+  - xcatstatelessimagesles152.md
+  # Troubleshooting
+  - xcatosdeploymentts.md

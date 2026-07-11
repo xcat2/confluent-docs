@@ -83,7 +83,7 @@ If you are coming from xCAT, see
     Drive confluent from the REST API, the Python client library, the
     filesystem-like `confetty` browser or backup and restore its database.
 
-    [:octicons-arrow-right-24: API documentation](developer/api.md)
+    [:octicons-arrow-right-24: API documentation](miscellaneous/api.md)
 
     [:octicons-arrow-right-24: Backup and restore](miscellaneous/confluentbackup.md)
 
@@ -161,7 +161,7 @@ There are two suggested approaches:
   those without an existing xCAT installation.
 - **xCAT and confluent together** — when you rely on an xCAT-exclusive features
   and want to use it alongside confluent. Start with the xCAT material under
-  [Advanced topics](advanced_topics/xcatconfluentsetup.md).
+  [Archive](archive/xcatconfluentsetup.md).
 
 !!! tip
     Looking for something specific? Use the search box at the top of the page.

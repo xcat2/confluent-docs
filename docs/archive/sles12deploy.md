@@ -1,6 +1,7 @@
 ---
-title: OS Deployment Notes for SLES 12.3
+title: xCAT OS Deployment Notes for SLES 12.3
 tags:
+  - xcat
   - deployment
 ---
 

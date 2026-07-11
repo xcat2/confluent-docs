@@ -2,11 +2,11 @@ nav:
   - Home: index.md
   - Getting Started: getting_started
   - User Reference: user_reference
-  - Troubleshooting: troubleshooting
   - Advanced Topics: advanced_topics
   - Miscellaneous: miscellaneous
   - Manuals: manuals
-  - Developer: developer
+  - Troubleshooting: troubleshooting
   - Downloads: downloads.md
   - Release Notes: release_notes
   - Tags: tags.md
+  - Archive: archive

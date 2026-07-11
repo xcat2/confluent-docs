@@ -1,6 +1,7 @@
 ---
-title: OS Deployment Notes for CentOS
+title: xCAT OS Deployment Notes for CentOS
 tags:
+  - xcat
   - deployment
 ---
 

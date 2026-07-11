@@ -2,6 +2,33 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## New Archive section for xCAT and legacy content
+
+### Changed
+- Collected the xCAT-specific and obsolete-OS pages into a new top-level
+  Archive section (`docs/archive/`): the twelve pages from the Advanced Topics
+  "xCAT interoperation and legacy topics" group plus `ibinstallxcat.md`,
+  `troubleshooting/xcatosdeploymentts.md`, `miscellaneous/sd650sharednote.md`
+  and `miscellaneous/sles12deploy.md`. The `confluentvxcat.md` comparison page
+  stays in Miscellaneous as current migration onboarding, and
+  `switchtonginx.md` (a current Confluent page misfiled in the xCAT group)
+  stays in Advanced Topics. Internal links were updated, redirects from all
+  old URLs added in `properdocs.yml`, and the four existing redirects
+  targeting `advanced_topics/ibinstallxcat.md` retargeted to its new home.
+- Also moved the version-pinned OS deployment notes for legacy or EOL
+  distributions from User Reference into the Archive: `el7deploy.md` (RHEL 7),
+  `centosdeploy.md` (classic CentOS Linux) and `suse15deploy.md`, grouped with
+  the SLES 12.3 notes under "Legacy OS deployment notes". Redirects from the
+  old `user_reference/` URLs were added.
+
+## Developer section merged into Miscellaneous
+
+### Changed
+- Moved `developer/api.md` to `miscellaneous/api.md` and removed the
+  now-empty Developer top-level section from the navigation. Internal links
+  (`index.md`, `user_reference/thermalpowerconfluent.md`) were updated and a
+  redirect from the old URL was added in `properdocs.yml`.
+
 ## Migration-artifact cleanup and build validation
 
 A repo-wide pass removing the remaining formatting artifacts from the Jekyll
