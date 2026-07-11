@@ -15,6 +15,11 @@ All notable changes to the confluent documentation are recorded here.
   stays in Advanced Topics. Internal links were updated, redirects from all
   old URLs added in `properdocs.yml`, and the four existing redirects
   targeting `advanced_topics/ibinstallxcat.md` retargeted to its new home.
+- Also moved the version-pinned OS deployment notes for legacy or EOL
+  distributions from User Reference into the Archive: `el7deploy.md` (RHEL 7),
+  `centosdeploy.md` (classic CentOS Linux) and `suse15deploy.md`, grouped with
+  the SLES 12.3 notes under "Legacy OS deployment notes". Redirects from the
+  old `user_reference/` URLs were added.
 
 ## Developer section merged into Miscellaneous
 

@@ -156,6 +156,9 @@ plugins:
         troubleshooting/xcatosdeploymentts.md: archive/xcatosdeploymentts.md
         miscellaneous/sd650sharednote.md: archive/sd650sharednote.md
         miscellaneous/sles12deploy.md: archive/sles12deploy.md
+        user_reference/el7deploy.md: archive/el7deploy.md
+        user_reference/centosdeploy.md: archive/centosdeploy.md
+        user_reference/suse15deploy.md: archive/suse15deploy.md
         getting_started/ibinstallconfluentrhel8.md: getting_started/ibinstallconfluent.md
         getting_started/ibinstallconfluentsle152.md: getting_started/ibinstallconfluent.md
         getting_started/installconfluent_rhel.md: getting_started/installconfluent.md
