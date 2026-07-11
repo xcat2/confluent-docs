@@ -30,8 +30,6 @@ nav:
   # Platform-specific deployment
   - proxmoxguide.md
   - xccdeployment.md
-  - sd650sharednote.md
-  - sles12deploy.md
   # Drivers and adapters
   - doca2-10-install.md
   - doca3-0-install.md

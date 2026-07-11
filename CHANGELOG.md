@@ -2,6 +2,20 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## New Archive section for xCAT and legacy content
+
+### Changed
+- Collected the xCAT-specific and obsolete-OS pages into a new top-level
+  Archive section (`docs/archive/`): the twelve pages from the Advanced Topics
+  "xCAT interoperation and legacy topics" group plus `ibinstallxcat.md`,
+  `troubleshooting/xcatosdeploymentts.md`, `miscellaneous/sd650sharednote.md`
+  and `miscellaneous/sles12deploy.md`. The `confluentvxcat.md` comparison page
+  stays in Miscellaneous as current migration onboarding, and
+  `switchtonginx.md` (a current Confluent page misfiled in the xCAT group)
+  stays in Advanced Topics. Internal links were updated, redirects from all
+  old URLs added in `properdocs.yml`, and the four existing redirects
+  targeting `advanced_topics/ibinstallxcat.md` retargeted to its new home.
+
 ## Developer section merged into Miscellaneous
 
 ### Changed

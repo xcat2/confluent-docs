@@ -7,7 +7,7 @@ tags:
 ## When used in conjunction with xCAT
 
 If you wish to use xCAT to create the confluent configuration, see
-[Configuring confluent from xCAT](../advanced_topics/xcatconfluentsetup.md)
+[Configuring confluent from xCAT](../archive/xcatconfluentsetup.md)
 The remainder of this document is mostly applicable to users working with confluent
 standalone directly rather than using xCAT to configure.
 
