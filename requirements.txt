@@ -1,4 +1,4 @@
-mkdocs-materialx==10.1.8
+mkdocs-materialx==10.2.0
 properdocs>=1.6.5
 mkdocs-awesome-nav
 mkdocs-minify-plugin>=0.7
