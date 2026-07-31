@@ -2,6 +2,45 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Firewall and network ports reference
+
+Addresses issue #1 ("Document all used network ports"). Firewall guidance previously existed only as five
+disconnected `firewall-cmd` blocks in the RHEL tab of `getting_started/installconfluent.md`.
+
+### Added
+- New `miscellaneous/firewall.md`, in the Networking group of the Miscellaneous nav. Lists every port confluent and
+  its neighbouring daemons use, inbound and outbound, and which of the external, deployment and BMC networks each
+  belongs to. Covers configuring `firewalld` and `ufw`, why hardware discovery needs the BMC interface trusted, Web
+  UI forwarding and the SELinux boolean.
+- Firewall guidance for SUSE and Ubuntu in `getting_started/installconfluent.md`, which previously had none.
+
+### Fixed
+- Corrected the port 80 guidance in `getting_started/installconfluent.md`. It stated that plain http was needed only
+  "if doing HTTP boot with `deployment.useinsecureprotocols` set to firmware". It is the reverse: PXE boot requires
+  the attribute to be `firmware` or `always` and then chainloads over plain http, while UEFI HTTP boot is the path
+  that can remain https only.
+- Added the missing `osdeploy initialize -t` step to the RHEL tab. The certificate the web server presents is issued
+  by the confluent CA, so the step is required there as it already was for SUSE and Ubuntu.
+- Removed the doubled `--permanent` flag from the two `--add-service=http` commands, and replaced the advice to stop
+  and disable `firewalld` outright for Web UI forwarding with a port range rule.
+- Anchored the `confluent` rule in `.gitignore` to `/confluent`. Unanchored, it silently excluded any file of that
+  name at any depth. The repo-root symlink it exists for is tracked, so the rule was never applying to it anyway.
+
+### Changed
+- Firewall rules in `miscellaneous/firewall.md` are scoped per interface: the external network carries only ssh, the
+  deployment network the confluent and web server ports, and the BMC network is trusted so discovery replies arrive.
+  The deployment network is deliberately not trusted, since every user with a shell on a node can send from it.
+  `getting_started/installconfluent.md` keeps its simpler configuration in the default `public` zone and points to
+  that page for the multi-zone setup.
+- Trusting the BMC interface is now the primary answer for hardware discovery. The ipset and direct-rule recipe
+  moved from `getting_started/installconfluent.md` to `miscellaneous/firewall.md` as the fallback for when that
+  interface cannot be trusted, with the reason it needs `FirewallBackend=iptables` corrected: direct rules load
+  under either backend, but with the `nftables` backend firewalld's own rules run after them, so their `ACCEPT` does
+  not stop the zone dropping the reply. Both the iptables backend and the direct interface are noted as deprecated.
+- Guidance is not to narrow SSDP to firewalld's built-in `ssdp` service. It restricts traffic to `239.255.255.250`
+  and `ff02::c`, but nodes also search via the subnet broadcast address and by unicast to the server, both of which
+  such a rule drops.
+
 ## New Archive section for xCAT and legacy content
 
 ### Changed
