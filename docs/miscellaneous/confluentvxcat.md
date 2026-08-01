@@ -12,7 +12,8 @@ remain some differences and some gaps.
 
 Confluent does not cover all functionality of xCAT. Some functions of xCAT that are currently not in confluent are:
 
-* Virtualization management
+* Virtualization management (creating and modifying virtual machines; existing VMs can be managed as nodes through the
+  `vcenter` and `proxmox` plugins)
 
 ## Interoperability
 
@@ -31,7 +32,8 @@ The default configuration of confluent protects sensitive data. Even after optin
 * Fully encrypted deployment over HTTPS is supported (Firmware configuration required)
 * tftp is now optional (Can use HTTP or HTTPS boot instead)
 * SecureBoot deployment is supported (HTTP or HTTPS boot only)
-* For RHEL/CentOS 8.2 or higher, encrypting the boot volume using the TPM is supported
+* Encrypting the boot volume using the TPM is supported (see the `deployment.encryptboot`
+  [node attribute](../user_reference/node_attributes.md#deploymentencryptboot))
 * For network deployments, a node api token is acquired by a node only once
 * All TLS communication is meaningfully validated against certificate authorities or stored fingerprints
 * System root password and grub passwords are stored only as non-recoverable hashes
@@ -44,19 +46,23 @@ The default configuration of confluent protects sensitive data. Even after optin
 In xCAT, makedns is provided as an aid to generate ISC BIND configuration. However, it does not require this be used,
 and is content so long as forward and reverse lookup works exactly as expected.
 
-In confluent, no helper facility is provided for name configuration, documentation instead mentions how to use `/etc/hosts` with `dnsmasq`
-if no other name resolution is otherwise in use. It is strongly recommended for forward resolution to function, though
-not required, and reverse lookup no longer has an impact on identifying nodes and will not cause problem identifying
-nodes if missing or not particularly configured.
+In confluent, the optional [`confluent2hosts`](../manuals/confluent2hosts.md) generates `/etc/hosts` entries from the
+node attribute database, which `dnsmasq` (optionally configured with
+[`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md)) can then serve over DNS; neither is required if name resolution
+is otherwise in use. It is strongly recommended for forward resolution to function, though not required, and reverse
+lookup no longer has an impact on identifying nodes and will not cause problem identifying nodes if missing or not
+particularly configured.
 
 ## DHCP
 
 In xCAT, control of DHCP is mandatory for discovery and deployment functionality. No other DHCP server may be running
 on a network that xCAT needs to do discovery or deployment on.
 
-In Confluent, DHCP is optional and even when present is not managed by Confluent. No dynamic range is required for
-any discovery. The default behavior is to use static IP address. It may also be configured to always defer IP configuration
-to an external DHCP server or to do so only for the firmware phase (PXE/HTTP boot) but use static for the OS.
+In Confluent, DHCP is optional. Confluent answers DHCP itself only to direct firmware through network boot, and an
+external DHCP server may still run on the same network without being managed by Confluent. No dynamic range is required
+for any discovery. The default behavior is to use static IP address. It may also be configured to always defer IP
+configuration to an external DHCP server or to do so only for the firmware phase (PXE/HTTP boot) but use static for the
+OS.
 
 Where xCAT provides `makedhcp` to maintain ISC dhcpd from its own tables, confluent instead provides
 [`confluent2dnsmasq`](../manuals/confluent2dnsmasq.md), which generates a `dnsmasq` configuration of static reservations
@@ -91,10 +97,11 @@ specialization takes place on the target system rather than on the deployment se
 
 In xCAT, postscripts are in `/install/postscripts` and referenced by either osimage or per node entries across the pertinent tables.
 
-In confluent, scripts are always in the OS image profile itself, and invoking them is a matter of modifying the appropriate script
-for the phase of boot. Most commonly, scripts/firstboot.custom, scripts/post.custom. Unlike xCAT, having distinct postscripts per
-node sharing a common OS profile is not supported, and delegating that complexity to a facility such as salt or ansible is
-recommended.
+In confluent, scripts are always in the OS image profile itself, and invoking them is a matter of dropping them into the
+directory for the phase of boot: `scripts/pre.d`, `scripts/post.d`, `scripts/firstboot.d`, and `scripts/onboot.d` for
+diskless. Ansible plays may be placed alongside them in `ansible/post.d` and `ansible/firstboot.d`, which the deployment
+server runs against the deploying node. Unlike xCAT, having distinct postscripts per node sharing a common OS profile is
+not supported, though `nodeapply -P` can re-run a given script against an arbitrary noderange afterwards.
 
 ## SSH Infrastructure
 
