@@ -123,14 +123,14 @@ port is opened with a built-in service where one matches it exactly, and by numb
     ```bash
     # external: administration only
     firewall-cmd --permanent --zone=public --change-interface=eno1
-    firewall-cmd --permanent --zone=public --add-service=ssh        # 22/tcp, administrative access
+    firewall-cmd --permanent --zone=public --add-service=ssh            # 22/tcp, administrative access
 
     # deployment: the ports confluent binds, plus the web server
     firewall-cmd --permanent --zone=internal --change-interface=eno2
-    firewall-cmd --permanent --zone=internal --add-port=13001/tcp   # confluent API and node credential handout
-    firewall-cmd --permanent --zone=internal --add-service=dhcp     # 67/udp, DHCPv4, for network boot
-    firewall-cmd --permanent --zone=internal --add-port=1900/udp    # SSDP, discovery and nodes finding the server
-    firewall-cmd --permanent --zone=internal --add-service=https    # 443/tcp, deployment payload and node API
+    firewall-cmd --permanent --zone=internal --add-port=13001/tcp       # confluent API and node credential handout
+    firewall-cmd --permanent --zone=internal --add-service=dhcp         # 67/udp, DHCPv4, for network boot
+    firewall-cmd --permanent --zone=internal --add-port=1900/udp        # SSDP, discovery and nodes finding the server
+    firewall-cmd --permanent --zone=internal --add-service=https        # 443/tcp, deployment payload and node API
 
     # BMC: trusted, see below
     firewall-cmd --permanent --zone=trusted --change-interface=eno3
@@ -141,10 +141,10 @@ port is opened with a built-in service where one matches it exactly, and by numb
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
     ```bash
-    firewall-cmd --permanent --zone=internal --add-service=http     # 80/tcp, PXE boot
-    firewall-cmd --permanent --zone=internal --add-service=tftp     # 69/udp, PXE boot
-    firewall-cmd --permanent --zone=internal --add-service=dhcpv6   # 547/udp, network boot over IPv6
-    firewall-cmd --permanent --zone=internal --add-port=4011/udp    # ProxyDHCP, with a separate DHCP server
+    firewall-cmd --permanent --zone=internal --add-service=http         # 80/tcp, PXE boot, HTTP boot without TLS
+    firewall-cmd --permanent --zone=internal --add-service=tftp         # 69/udp, PXE boot
+    firewall-cmd --permanent --zone=internal --add-service=dhcpv6       # 547/udp, network boot over IPv6
+    firewall-cmd --permanent --zone=internal --add-service=proxy-dhcp   # 4011/udp, ProxyDHCP, with a separate DHCP server
     firewall-cmd --reload
     ```
 
@@ -158,17 +158,17 @@ port is opened with a built-in service where one matches it exactly, and by numb
     the deployment zone:
 
     ```bash
-    firewall-cmd --permanent --zone=internal --add-service=dns      # 53, only if this server resolves for the cluster
-    firewall-cmd --permanent --zone=internal --add-service=ntp      # 123/udp, only if this server is the time source
+    firewall-cmd --permanent --zone=internal --add-service=dns          # 53, only if this server resolves for the cluster
+    firewall-cmd --permanent --zone=internal --add-service=ntp          # 123/udp, only if this server is the time source
     firewall-cmd --reload
     ```
 
     [Node log forwarding](#node-log-forwarding-optional) needs only the port of the transport actually in use:
 
     ```bash
-    firewall-cmd --permanent --zone=internal --add-port=514/tcp     # syslog, logging.method=rsyslog without TLS
-    firewall-cmd --permanent --zone=internal --add-port=6514/tcp    # syslog over TLS, rsyslog with logging.tls
-    firewall-cmd --permanent --zone=internal --add-port=19532/tcp   # logging.method=journal-remote
+    firewall-cmd --permanent --zone=internal --add-port=514/tcp         # syslog, logging.method=rsyslog without TLS
+    firewall-cmd --permanent --zone=internal --add-port=6514/tcp        # syslog over TLS, rsyslog with logging.tls
+    firewall-cmd --permanent --zone=internal --add-port=19532/tcp       # logging.method=journal-remote
     firewall-cmd --reload
     ```
 
@@ -209,7 +209,7 @@ port is opened with a built-in service where one matches it exactly, and by numb
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
     ```bash
-    ufw allow in on eno2 to any app 'Apache'          # 80/tcp, PXE boot
+    ufw allow in on eno2 to any app 'Apache'          # 80/tcp, PXE boot, HTTP boot without TLS
     ufw allow in on eno2 to any port 69 proto udp     # TFTP, PXE boot
     ufw allow in on eno2 to any port 547 proto udp    # DHCPv6, network boot over IPv6
     ufw allow in on eno2 to any port 4011 proto udp   # ProxyDHCP, with a separate DHCP server

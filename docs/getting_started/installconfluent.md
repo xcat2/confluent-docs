@@ -79,20 +79,20 @@ source /etc/profile.d/confluent_env.sh
     further ports. Open the ports confluent binds, alongside the web service:
 
     ```bash
-    firewall-cmd --permanent --zone=public --add-port=13001/tcp   # confluent API and node credential handout
-    firewall-cmd --permanent --zone=public --add-service=dhcp     # 67/udp, DHCPv4, for network boot
-    firewall-cmd --permanent --zone=public --add-port=1900/udp    # SSDP, discovery and nodes finding the server
-    firewall-cmd --permanent --zone=public --add-service=https    # 443/tcp, deployment payload, node API, web UI
+    firewall-cmd --permanent --zone=public --add-port=13001/tcp       # confluent API and node credential handout
+    firewall-cmd --permanent --zone=public --add-service=dhcp         # 67/udp, DHCPv4, for network boot
+    firewall-cmd --permanent --zone=public --add-port=1900/udp        # SSDP, discovery and nodes finding the server
+    firewall-cmd --permanent --zone=public --add-service=https        # 443/tcp, deployment payload, node API, web UI
     firewall-cmd --reload
     ```
 
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
     ```bash
-    firewall-cmd --permanent --zone=public --add-service=http     # 80/tcp, PXE boot
-    firewall-cmd --permanent --zone=public --add-service=tftp     # 69/udp, PXE boot
-    firewall-cmd --permanent --zone=public --add-service=dhcpv6   # 547/udp, network boot over IPv6
-    firewall-cmd --permanent --zone=public --add-port=4011/udp    # ProxyDHCP, with a separate DHCP server
+    firewall-cmd --permanent --zone=public --add-service=http         # 80/tcp, PXE boot, HTTP boot without TLS
+    firewall-cmd --permanent --zone=public --add-service=tftp         # 69/udp, PXE boot
+    firewall-cmd --permanent --zone=public --add-service=dhcpv6       # 547/udp, network boot over IPv6
+    firewall-cmd --permanent --zone=public --add-service=proxy-dhcp   # 4011/udp, ProxyDHCP, with a separate DHCP server
     firewall-cmd --reload
     ```
 
@@ -129,20 +129,20 @@ source /etc/profile.d/confluent_env.sh
     If `firewalld` is active, open the ports confluent binds, along with the web service:
 
     ```bash
-    firewall-cmd --permanent --zone=public --add-port=13001/tcp   # confluent API and node credential handout
-    firewall-cmd --permanent --zone=public --add-service=dhcp     # 67/udp, DHCPv4, for network boot
-    firewall-cmd --permanent --zone=public --add-port=1900/udp    # SSDP, discovery and nodes finding the server
-    firewall-cmd --permanent --zone=public --add-service=https    # 443/tcp, deployment payload, node API, web UI
+    firewall-cmd --permanent --zone=public --add-port=13001/tcp       # confluent API and node credential handout
+    firewall-cmd --permanent --zone=public --add-service=dhcp         # 67/udp, DHCPv4, for network boot
+    firewall-cmd --permanent --zone=public --add-port=1900/udp        # SSDP, discovery and nodes finding the server
+    firewall-cmd --permanent --zone=public --add-service=https        # 443/tcp, deployment payload, node API, web UI
     firewall-cmd --reload
     ```
 
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
     ```bash
-    firewall-cmd --permanent --zone=public --add-service=http     # 80/tcp, PXE boot
-    firewall-cmd --permanent --zone=public --add-service=tftp     # 69/udp, PXE boot
-    firewall-cmd --permanent --zone=public --add-service=dhcpv6   # 547/udp, network boot over IPv6
-    firewall-cmd --permanent --zone=public --add-port=4011/udp    # ProxyDHCP, with a separate DHCP server
+    firewall-cmd --permanent --zone=public --add-service=http         # 80/tcp, PXE boot, HTTP boot without TLS
+    firewall-cmd --permanent --zone=public --add-service=tftp         # 69/udp, PXE boot
+    firewall-cmd --permanent --zone=public --add-service=dhcpv6       # 547/udp, network boot over IPv6
+    firewall-cmd --permanent --zone=public --add-service=proxy-dhcp   # 4011/udp, ProxyDHCP, with a separate DHCP server
     firewall-cmd --reload
     ```
 
@@ -194,7 +194,7 @@ source /etc/profile.d/confluent_env.sh
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
     ```bash
-    ufw allow 'Apache'         # 80/tcp, PXE boot
+    ufw allow 'Apache'         # 80/tcp, PXE boot, HTTP boot without TLS
     ufw allow 69/udp           # TFTP, PXE boot
     ufw allow 547/udp          # DHCPv6, network boot over IPv6
     ufw allow 4011/udp         # ProxyDHCP, with a separate DHCP server
