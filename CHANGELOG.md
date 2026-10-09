@@ -2,6 +2,12 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Proxmox guide: nodesetboot and one-time boot
+
+### Changed
+- `miscellaneous/proxmoxguide.md`: `nodesetboot` device classes and one-time
+  boot with the `confluent-boot-oneshot.pl` hookscript.
+
 ## New Archive section for xCAT and legacy content
 
 ### Changed
