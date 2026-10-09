@@ -32,7 +32,7 @@ jobs:
       - name: Install MaterialX requirements
         run: pip install -r requirements.txt
       - name: Install man pages and social cards requirements
-        run: sudo apt-get install -y --no-install-recommends --no-install-suggests ronn libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends --no-install-suggests ronn libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
       - name: Unlink confluent symlink
         run: unlink confluent
       - name: Checkout confluent repository for nodeattrib and man pages
