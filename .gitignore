@@ -4,5 +4,7 @@
 _site
 docs/user_reference/node_attributes.md
 docs/manuals/*.md
-confluent
+# the sibling source checkout symlinked at the repo root; anchored so it does
+# not also swallow content files named "confluent" anywhere under docs/
+/confluent
 .venv/
