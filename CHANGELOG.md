@@ -2,6 +2,13 @@
 
 All notable changes to the confluent documentation are recorded here.
 
+## Proxmox guide updated for the expanded plugin
+
+### Changed
+- `miscellaneous/proxmoxguide.md`: logins other than `root@pam`, the base
+  Proxmox role confluent needs, API token logins and where the manager's
+  certificate is pinned.
+
 ## New Archive section for xCAT and legacy content
 
 ### Changed

@@ -164,6 +164,20 @@ pvm2: crypted.rootpassword: ********
 pvm2: secret.hardwaremanagementpassword: ********
 ```
 
+### Logins, API tokens and certificates
+
+`bmcuser` and `bmcpass` can be any Proxmox login, not only `root@pam`. A dedicated user with a role on the VMs is the better choice. The base role confluent needs, granted on a pool holding the VMs or on `/vms`:
+
+```console
+# pveum role add Confluent --privs VM.Audit,VM.PowerMgmt,VM.Config.Options,VM.Config.Disk,VM.Console
+# pveum user add confluent@pve --password
+# pveum acl modify /vms --roles Confluent --users confluent@pve
+```
+
+A Proxmox API token works as the login too: the token ID (`user@realm!tokenid`) as `bmcuser` and the token secret as `bmcpass`. A token cannot open the graphical console, as the Proxmox VNC proxy only accepts a password login's ticket; everything else works. Users with two-factor authentication cannot be used.
+
+confluent pins the certificate of `hardwaremanagement.manager` on first use. When the manager is a confluent node, as `pmx8` above, the pin is kept on it (`pubkeys.tls`); otherwise it is kept on each VM's node (`pubkeys.tls_hardwaremanager`).
+
 To push the ipv4 addresses from net attributes to `/etc/hosts`:
 
 ```console
