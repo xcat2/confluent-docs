@@ -16,7 +16,8 @@ invalid_link_anchors = true
 [project.theme]
 variant = "modern"
 language = "en"
-favicon = "assets/icon.png"
+favicon = "assets/icon.svg"
+logo = "assets/icon.svg"
 features = [
   "content.action.copy",
   "content.action.edit",
