@@ -1,5 +1,7 @@
 #!/bin/bash
-cd `dirname $0`
+set -euo pipefail
+
+cd "$(dirname "$0")"
 mkdir -p docs/manuals
 cat << EOF > docs/manuals/index.md
 # Confluent command man pages
@@ -8,22 +10,23 @@ EOF
 cd confluent/confluent_client/
 python3 addattribs.py
 cd -
-#cd confluent/confluent_client/doc/man/
-#./buildindex.sh
-#cd -
+
+pids=()
 for page in confluent/confluent_client/doc/man/*.ronn; do
-    cmdname=$(basename $page)
+    cmdname=$(basename "$page")
     cmdname=${cmdname%.ronn}
     echo "* [$cmdname](${cmdname}.md)" >> docs/manuals/index.md
-    cat << EOF > docs/manuals/${cmdname}.md
+    cat << EOF > "docs/manuals/${cmdname}.md"
 ---
 title: $cmdname
 ---
 
 EOF
-    ronn --pipe --markdown $page >> docs/manuals/${cmdname}.md &
+    pandoc --from=markdown-smart --to=gfm --wrap=none "$page" \
+        >> "docs/manuals/${cmdname}.md" &
+    pids+=("$!")
 done
-wait
 
-    
-
+for pid in "${pids[@]}"; do
+    wait "$pid"
+done
