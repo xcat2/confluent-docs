@@ -22,17 +22,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v5
-        with:
-          key: mkdocs-materialx-${{ env.cache_id }}
-          path: ~/.cache
-          restore-keys: |
-            mkdocs-materialx-
-      - name: Install MaterialX requirements
+      - name: Install Zensical requirements
         run: pip install -r requirements.txt
-      - name: Install man pages and social cards requirements
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends --no-install-suggests pandoc libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+      - name: Install man-page renderer
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends --no-install-suggests pandoc
       - name: Unlink confluent symlink
         run: unlink confluent
       - name: Checkout confluent repository for nodeattrib and man pages
@@ -44,13 +37,10 @@ jobs:
         run: python3 makeattribdoc
       - name: Make man pages
         run: bash makeman
-      - name: Build (PR validation)
-        if: github.event_name == 'pull_request'
+      - name: Build documentation
         env:
           SOCIAL_CARDS: true
-        run: properdocs build --strict
-      - name: Build and deploy to GitHub Pages
+        run: zensical build --clean --strict
+      - name: Deploy to GitHub Pages
         if: github.event_name == 'push'
-        env:
-          SOCIAL_CARDS: true
-        run: properdocs gh-deploy --force --strict
+        run: ghp-import --no-jekyll --push --force --branch gh-pages _site

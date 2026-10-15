@@ -19,7 +19,7 @@ validation:
   anchors: warn
 
 theme:
-  name: materialx
+  variant: classic
   language: en
   favicon: assets/icon.png
   #logo:
@@ -89,8 +89,8 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:zensical.extensions.emoji.twemoji
+      emoji_generator: !!python/name:zensical.extensions.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
@@ -118,18 +118,11 @@ plugins:
       match_path: release_notes/posts/.*
       date_from_meta:
         as_creation: date
-  # Social cards are dormant by default. To enable, install the Cairo system
-  # libraries (e.g. libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev
-  # libpng-dev) in the build environment and set the SOCIAL_CARDS env var.
+  # Social cards are generated natively. Enable them with SOCIAL_CARDS=true.
   - social:
       enabled: !ENV [SOCIAL_CARDS, false]
-  - privacy
   - glightbox
   - awesome-nav
-  - document-dates:
-      type: timeago
-      position: bottom
-      show_author: false
   - minify:
       minify_html: true
   - redirects:
