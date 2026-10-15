@@ -12,14 +12,14 @@ jobs:
     name: Build and Deploy Documentation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: 3.x
       - name: Install Zensical requirements
@@ -29,7 +29,7 @@ jobs:
       - name: Unlink confluent symlink
         run: unlink confluent
       - name: Checkout confluent repository for nodeattrib and man pages
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: xcat2/confluent
           path: confluent
