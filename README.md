@@ -1,6 +1,9 @@
 # Confluent documentation
 
-[![Build Status](https://github.com/xcat2/confluent-docs/workflows/build/badge.svg)](https://github.com/xcat2/confluent-docs/actions) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/xcat2/confluent-docs/blob/master/LICENSE)
+[![Build Status](https://github.com/xcat2/confluent-docs/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/xcat2/confluent-docs/actions/workflows/build.yml)
+[![Docs](https://img.shields.io/website?url=https%3A%2F%2Fxcat2.github.io%2Fconfluent-docs%2F&label=docs)](https://xcat2.github.io/confluent-docs/)
+[![Confluent release](https://img.shields.io/github/v/release/xcat2/confluent?label=confluent)](https://github.com/xcat2/confluent/releases)
+[![License](https://img.shields.io/github/license/xcat2/confluent-docs)](https://github.com/xcat2/confluent-docs/blob/master/LICENSE)
 
 The [confluent documentation](https://xcat2.github.io/confluent-docs/) is built using [Zensical](https://zensical.org/). All **Markdown** files in the `docs` directory are automatically added to the documentation.
 Site settings are in `zensical.toml`. Navigation can be customized using `.nav.yml` files located in each directory.
