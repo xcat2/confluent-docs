@@ -1,29 +1,42 @@
 #!/bin/bash
-cd `dirname $0`
-mkdir -p docs/manuals
-cat << EOF > docs/manuals/index.md
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+# Generate into a temporary directory so a failed run keeps the previous pages.
+tmpdir=$(mktemp -d)
+trap 'rm -rf "$tmpdir"' EXIT
+
+cat << EOF > "$tmpdir/index.md"
 # Confluent command man pages
 
 EOF
 cd confluent/confluent_client/
 python3 addattribs.py
 cd -
-#cd confluent/confluent_client/doc/man/
-#./buildindex.sh
-#cd -
+
+pids=()
 for page in confluent/confluent_client/doc/man/*.ronn; do
-    cmdname=$(basename $page)
+    cmdname=$(basename "$page")
     cmdname=${cmdname%.ronn}
-    echo "* [$cmdname](${cmdname}.md)" >> docs/manuals/index.md
-    cat << EOF > docs/manuals/${cmdname}.md
+    echo "* [$cmdname](${cmdname}.md)" >> "$tmpdir/index.md"
+    cat << EOF > "$tmpdir/${cmdname}.md"
 ---
 title: $cmdname
 ---
 
 EOF
-    ronn --pipe --markdown $page >> docs/manuals/${cmdname}.md &
+    (pandoc --from=markdown-smart --to=gfm --wrap=none "$page" \
+        | sed -E '1s/^(# [^ ]+\([0-9]+\)) -{2,3} /\1 - /') \
+        >> "$tmpdir/${cmdname}.md" &
+    pids+=("$!")
 done
-wait
 
-    
+for pid in "${pids[@]}"; do
+    wait "$pid"
+done
 
+# Replace the old pages only after every page was generated.
+mkdir -p docs/manuals
+rm -f docs/manuals/*.md
+mv "$tmpdir"/*.md docs/manuals/

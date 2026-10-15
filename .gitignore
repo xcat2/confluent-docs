@@ -2,6 +2,7 @@
 .cache
 .sass-cache
 _site
+site
 docs/user_reference/node_attributes.md
 docs/manuals/*.md
 confluent
