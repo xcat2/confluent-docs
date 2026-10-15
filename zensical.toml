@@ -1,0 +1,182 @@
+[project]
+site_name = "Confluent"
+site_author = "Confluent Community"
+site_url = "https://xcat2.github.io/confluent-docs/"
+site_description = "Confluent documentation"
+repo_name = "xcat2/confluent-docs"
+repo_url = "https://github.com/xcat2/confluent-docs"
+edit_uri = "edit/master/docs/"
+copyright = "Copyright &copy; Confluent Community"
+site_dir = "_site"
+
+[project.validation]
+invalid_links = true
+invalid_link_anchors = true
+
+[project.theme]
+variant = "modern"
+language = "en"
+favicon = "assets/icon.png"
+features = [
+  "content.action.edit",
+  "content.action.view",
+  "content.code.copy",
+  "content.tooltips",
+  "navigation.instant",
+  "navigation.tracking",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.sections",
+  "navigation.indexes",
+  "navigation.top",
+  "navigation.footer",
+  "search.highlight",
+  "search.share",
+  "search.suggest",
+  "toc.follow",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+primary = "red"
+accent = "red"
+
+[project.theme.palette.toggle]
+icon = "material/brightness-auto"
+name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "red"
+accent = "red"
+
+[project.theme.palette.toggle]
+icon = "material/brightness-7"
+name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "red"
+accent = "red"
+
+[project.theme.palette.toggle]
+icon = "material/brightness-4"
+name = "Switch to system preference"
+
+[project.markdown_extensions.abbr]
+
+[project.markdown_extensions.admonition]
+
+[project.markdown_extensions.attr_list]
+
+[project.markdown_extensions.def_list]
+
+[project.markdown_extensions.footnotes]
+
+[project.markdown_extensions.md_in_html]
+
+[project.markdown_extensions.toc]
+permalink = true
+
+[project.markdown_extensions.tables]
+
+[project.markdown_extensions."pymdownx.betterem"]
+smart_enable = "all"
+
+[project.markdown_extensions."pymdownx.blocks.caption"]
+
+[project.markdown_extensions."pymdownx.caret"]
+
+[project.markdown_extensions."pymdownx.details"]
+
+[project.markdown_extensions."pymdownx.emoji"]
+emoji_index = "zensical.extensions.emoji.twemoji"
+emoji_generator = "zensical.extensions.emoji.to_svg"
+
+[project.markdown_extensions."pymdownx.highlight"]
+
+[project.markdown_extensions."pymdownx.inlinehilite"]
+
+[project.markdown_extensions."pymdownx.keys"]
+
+[project.markdown_extensions."pymdownx.mark"]
+
+[project.markdown_extensions."pymdownx.smartsymbols"]
+
+[project.markdown_extensions."pymdownx.snippets"]
+
+[project.markdown_extensions."pymdownx.superfences"]
+custom_fences = [{ name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }]
+
+[project.markdown_extensions."pymdownx.tabbed"]
+alternate_style = true
+
+[project.markdown_extensions."pymdownx.tasklist"]
+custom_checkbox = true
+
+[project.markdown_extensions."pymdownx.tilde"]
+
+# Unsupported plugins:
+# privacy: external assets are not downloaded and hosted locally.
+# Fonts currently load from Google Fonts.
+# document-dates: page creation/update dates are omitted.
+# Revisit support: https://zensical.org/docs/compatibility/mkdocs/plugins/
+[project.plugins]
+
+[project.plugins.search]
+
+[project.plugins.tags]
+
+[project.plugins.blog]
+blog_dir = "release_notes"
+blog_toc = true
+
+[project.plugins.rss]
+match_path = "release_notes/posts/.*"
+
+[project.plugins.rss.date_from_meta]
+as_creation = "date"
+
+[project.plugins.social]
+enabled = true
+
+[project.plugins.glightbox]
+
+[project.plugins.awesome-nav]
+
+[project.plugins.minify]
+minify_html = true
+
+[project.plugins.redirects.redirect_maps]
+"developer/api.md" = "miscellaneous/api.md"
+"miscellaneous/doca2-10-intstall.md" = "miscellaneous/doca2-10-install.md"
+"advanced_topics/rh8installib.md" = "archive/ibinstallxcat.md"
+"advanced_topics/sle152ibinstall.md" = "archive/ibinstallxcat.md"
+"miscellaneous/rhinstallib.md" = "archive/ibinstallxcat.md"
+"miscellaneous/rhinstallopa.md" = "archive/ibinstallxcat.md"
+"advanced_topics/xcatconfluentsetup.md" = "archive/xcatconfluentsetup.md"
+"advanced_topics/confluenttoxcat.md" = "archive/confluenttoxcat.md"
+"advanced_topics/ibinstallxcat.md" = "archive/ibinstallxcat.md"
+"advanced_topics/installxcat_rhel.md" = "archive/installxcat_rhel.md"
+"advanced_topics/installxcat_suse.md" = "archive/installxcat_suse.md"
+"advanced_topics/xcatconfignotes.md" = "archive/xcatconfignotes.md"
+"advanced_topics/xcataddingsnmp.md" = "archive/xcataddingsnmp.md"
+"advanced_topics/sharedinstallnotes.md" = "archive/sharedinstallnotes.md"
+"advanced_topics/sharedtftpnotes.md" = "archive/sharedtftpnotes.md"
+"advanced_topics/el7rste.md" = "archive/el7rste.md"
+"advanced_topics/sles12rste.md" = "archive/sles12rste.md"
+"advanced_topics/xcatramrootibboot.md" = "archive/xcatramrootibboot.md"
+"advanced_topics/xcatstatelessimagesles152.md" = "archive/xcatstatelessimagesles152.md"
+"troubleshooting/xcatosdeploymentts.md" = "archive/xcatosdeploymentts.md"
+"miscellaneous/sd650sharednote.md" = "archive/sd650sharednote.md"
+"miscellaneous/sles12deploy.md" = "archive/sles12deploy.md"
+"user_reference/el7deploy.md" = "archive/el7deploy.md"
+"user_reference/centosdeploy.md" = "archive/centosdeploy.md"
+"user_reference/suse15deploy.md" = "archive/suse15deploy.md"
+"getting_started/ibinstallconfluentrhel8.md" = "getting_started/ibinstallconfluent.md"
+"getting_started/ibinstallconfluentsle152.md" = "getting_started/ibinstallconfluent.md"
+"getting_started/installconfluent_rhel.md" = "getting_started/installconfluent.md"
+"getting_started/installconfluent_suse.md" = "getting_started/installconfluent.md"
+"getting_started/installconfluent_ubuntu.md" = "getting_started/installconfluent.md"

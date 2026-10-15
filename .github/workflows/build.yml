@@ -38,8 +38,6 @@ jobs:
       - name: Make man pages
         run: bash makeman
       - name: Build documentation
-        env:
-          SOCIAL_CARDS: true
         run: zensical build --clean --strict
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push'
