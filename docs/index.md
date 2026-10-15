@@ -122,7 +122,10 @@ Management nodes run the `confluentd` service; clients drive it via CLI, web UI,
 Compute nodes are provisioned over the management network and controlled out-of-band over the
 BMC network, and collective mode adds scale-out and high availability.
 
-![Confluent architecture](assets/architecture.svg)
+<figure>
+--8<-- "docs/assets/architecture.svg"
+<figcaption>Confluent architecture</figcaption>
+</figure>
 
 See the [architecture overview](miscellaneous/architecture.md) for a tour of the components.
 

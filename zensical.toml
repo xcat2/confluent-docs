@@ -8,6 +8,7 @@ repo_url = "https://github.com/xcat2/confluent-docs"
 edit_uri = "edit/master/docs/"
 copyright = "Copyright &copy; Confluent Community"
 site_dir = "_site"
+extra_css = ["stylesheets/diagrams.css"]
 
 [project.validation]
 invalid_links = true
@@ -46,8 +47,8 @@ features = [
 
 [[project.theme.palette]]
 media = "(prefers-color-scheme)"
-primary = "red"
-accent = "red"
+primary = "blue"
+accent = "blue"
 
 [project.theme.palette.toggle]
 icon = "material/brightness-auto"
@@ -56,8 +57,8 @@ name = "Switch to light mode"
 [[project.theme.palette]]
 media = "(prefers-color-scheme: light)"
 scheme = "default"
-primary = "red"
-accent = "red"
+primary = "blue"
+accent = "blue"
 
 [project.theme.palette.toggle]
 icon = "material/brightness-7"
@@ -66,8 +67,8 @@ name = "Switch to dark mode"
 [[project.theme.palette]]
 media = "(prefers-color-scheme: dark)"
 scheme = "slate"
-primary = "red"
-accent = "red"
+primary = "blue"
+accent = "blue"
 
 [project.theme.palette.toggle]
 icon = "material/brightness-4"

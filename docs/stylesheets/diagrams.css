@@ -1,0 +1,23 @@
+/* Diagram SVGs in docs/assets/ are inlined with snippets so they can follow the theme's
+   primary color. Each themed element carries a cf-f-<role> (fill) or cf-s-<role> (stroke)
+   class, and its fill/stroke attribute is the fallback when the SVG is viewed on its own. */
+.cf-diagram {
+  --cf-tint: color-mix(in srgb, var(--md-primary-fg-color) 12%, white);
+  --cf-main: color-mix(in srgb, var(--md-primary-fg-color) 90%, black);
+  --cf-line: var(--md-primary-fg-color--dark);
+  --cf-border: color-mix(in srgb, var(--md-primary-fg-color) 70%, black);
+  --cf-dark: color-mix(in srgb, var(--md-primary-fg-color) 55%, black);
+  --cf-darker: color-mix(in srgb, var(--md-primary-fg-color) 40%, black);
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.cf-diagram .cf-f-tint { fill: var(--cf-tint); }
+.cf-diagram .cf-f-main { fill: var(--cf-main); }
+.cf-diagram .cf-f-line { fill: var(--cf-line); }
+.cf-diagram .cf-f-dark { fill: var(--cf-dark); }
+.cf-diagram .cf-s-border { stroke: var(--cf-border); }
+.cf-diagram .cf-s-line { stroke: var(--cf-line); }
+.cf-diagram .cf-s-dark { stroke: var(--cf-dark); }
+.cf-diagram .cf-s-darker { stroke: var(--cf-darker); }

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="460" viewBox="0 0 680 460" font-family="system-ui, sans-serif">
+<svg class="cf-diagram" role="img" aria-label="Segmented collective" xmlns="http://www.w3.org/2000/svg" width="680" height="460" viewBox="0 0 680 460" font-family="system-ui, sans-serif">
   <!-- containers -->
-  <rect x="60" y="10" width="560" height="220" rx="6" fill="#fbe4e2" stroke="#c62828" stroke-width="1.5"/>
-  <text x="340" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#b71c1c">confluent collective</text>
+  <rect class="cf-f-tint cf-s-border" x="60" y="10" width="560" height="220" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text class="cf-f-dark" x="340" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d47a1">confluent collective</text>
   <rect x="20" y="300" width="200" height="140" rx="6" fill="#e8eaed" stroke="#757575" stroke-width="1.5"/>
   <text x="120" y="324" text-anchor="middle" font-size="15" fill="#424242">managed nodes</text>
   <rect x="240" y="300" width="200" height="140" rx="6" fill="#e8eaed" stroke="#757575" stroke-width="1.5"/>
@@ -15,18 +15,18 @@
     <line x1="500" y1="84" x2="560" y2="300"/>
   </g>
   <!-- collective mesh -->
-  <g stroke="#b71c1c" stroke-width="2">
+  <g class="cf-s-dark" stroke="#0d47a1" stroke-width="2">
     <line x1="180" y1="84" x2="500" y2="84"/>
     <line x1="180" y1="84" x2="340" y2="174"/>
     <line x1="500" y1="84" x2="340" y2="174"/>
   </g>
   <!-- management nodes -->
   <g font-size="17" fill="#ffffff">
-    <rect x="120" y="60" width="120" height="48" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <rect class="cf-f-main cf-s-dark" x="120" y="60" width="120" height="48" rx="3" fill="#1e88e5" stroke="#0d47a1" stroke-width="1.5"/>
     <text x="180" y="90" text-anchor="middle">mgt1</text>
-    <rect x="440" y="60" width="120" height="48" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <rect class="cf-f-main cf-s-dark" x="440" y="60" width="120" height="48" rx="3" fill="#1e88e5" stroke="#0d47a1" stroke-width="1.5"/>
     <text x="500" y="90" text-anchor="middle">mgt3</text>
-    <rect x="280" y="150" width="120" height="48" rx="3" fill="#ef5350" stroke="#b71c1c" stroke-width="1.5"/>
+    <rect class="cf-f-main cf-s-dark" x="280" y="150" width="120" height="48" rx="3" fill="#1e88e5" stroke="#0d47a1" stroke-width="1.5"/>
     <text x="340" y="180" text-anchor="middle">mgt2</text>
   </g>
   <!-- managed node stacks -->

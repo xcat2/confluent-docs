@@ -24,19 +24,31 @@ collective.
 
 The collective may be flat, with all nodes equally bound to any collective member:
 
-![Flat collective](../assets/collective_flat.svg)
+<figure>
+--8<-- "docs/assets/collective_flat.svg"
+<figcaption>Flat collective</figcaption>
+</figure>
 
 It may be hierarchical with a node designated a head node by convention and delegating nodes to specific collective members:
 
-![Hierarchical collective](../assets/collective_hierarchy.svg)
+<figure>
+--8<-- "docs/assets/collective_hierarchy.svg"
+<figcaption>Hierarchical collective</figcaption>
+</figure>
 
 It may be hierarchical with pools of collective managers available to each segment:
 
-![Redundant hierarchy](../assets/collective_redundant.svg)
+<figure>
+--8<-- "docs/assets/collective_redundant.svg"
+<figcaption>Redundant hierarchy</figcaption>
+</figure>
 
 Or it may be a headless segmented collective, where the 'head' role is omitted:
 
-![Segmented collective](../assets/collective_segmented.svg)
+<figure>
+--8<-- "docs/assets/collective_segmented.svg"
+<figcaption>Segmented collective</figcaption>
+</figure>
 
 Any other number of mix and match of the above strategies may be used in a collective.
 

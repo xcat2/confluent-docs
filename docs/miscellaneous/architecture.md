@@ -15,7 +15,10 @@ configured to provide both scalability and fault tolerance.
 
 The diagram below illustrates the architectural design of confluent:
 
-![Confluent architecture](../assets/architecture.svg)
+<figure>
+--8<-- "docs/assets/architecture.svg"
+<figcaption>Confluent architecture</figcaption>
+</figure>
 
 A confluent deployment consists of four fundamental components:
 
