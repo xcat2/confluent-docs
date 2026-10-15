@@ -16,7 +16,9 @@ configured to provide both scalability and fault tolerance.
 The diagram below illustrates the architectural design of confluent:
 
 <figure>
+<a class="glightbox" data-href="#cf-architecture" data-type="inline">
 --8<-- "docs/assets/architecture.svg"
+</a>
 <figcaption>Confluent architecture</figcaption>
 </figure>
 

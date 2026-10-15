@@ -25,28 +25,36 @@ collective.
 The collective may be flat, with all nodes equally bound to any collective member:
 
 <figure>
+<a class="glightbox" data-href="#cf-collective-flat" data-type="inline">
 --8<-- "docs/assets/collective_flat.svg"
+</a>
 <figcaption>Flat collective</figcaption>
 </figure>
 
 It may be hierarchical with a node designated a head node by convention and delegating nodes to specific collective members:
 
 <figure>
+<a class="glightbox" data-href="#cf-collective-hierarchy" data-type="inline">
 --8<-- "docs/assets/collective_hierarchy.svg"
+</a>
 <figcaption>Hierarchical collective</figcaption>
 </figure>
 
 It may be hierarchical with pools of collective managers available to each segment:
 
 <figure>
+<a class="glightbox" data-href="#cf-collective-redundant" data-type="inline">
 --8<-- "docs/assets/collective_redundant.svg"
+</a>
 <figcaption>Redundant hierarchy</figcaption>
 </figure>
 
 Or it may be a headless segmented collective, where the 'head' role is omitted:
 
 <figure>
+<a class="glightbox" data-href="#cf-collective-segmented" data-type="inline">
 --8<-- "docs/assets/collective_segmented.svg"
+</a>
 <figcaption>Segmented collective</figcaption>
 </figure>
 

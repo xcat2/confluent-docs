@@ -1,4 +1,4 @@
-<svg class="cf-diagram" role="img" aria-label="Confluent architecture" xmlns="http://www.w3.org/2000/svg" width="1040" height="900" viewBox="0 0 1040 900" font-family="system-ui, sans-serif">
+<svg style="--cf-aspect: 1.1556" id="cf-architecture" class="cf-diagram" role="img" aria-label="Confluent architecture" xmlns="http://www.w3.org/2000/svg" width="1040" height="900" viewBox="0 0 1040 900" font-family="system-ui, sans-serif">
   <!-- ===== clients (above confluent node) ===== -->
   <g stroke="#8e8e8e" stroke-width="1.5">
     <line x1="170" y1="58" x2="170" y2="80"/>

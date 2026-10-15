@@ -123,7 +123,9 @@ Compute nodes are provisioned over the management network and controlled out-of-
 BMC network, and collective mode adds scale-out and high availability.
 
 <figure>
+<a class="glightbox" data-href="#cf-architecture" data-type="inline">
 --8<-- "docs/assets/architecture.svg"
+</a>
 <figcaption>Confluent architecture</figcaption>
 </figure>
 

@@ -21,3 +21,23 @@
 .cf-diagram .cf-s-line { stroke: var(--cf-line); }
 .cf-diagram .cf-s-dark { stroke: var(--cf-dark); }
 .cf-diagram .cf-s-darker { stroke: var(--cf-darker); }
+
+/* The lightbox link uses data-href instead of href so opening it doesn't add a URL hash,
+   which also drops the link cursor. */
+.glightbox > .cf-diagram {
+  cursor: zoom-in;
+}
+
+/* Lightbox view: GLightbox sizes inline content as a fixed 16:9 box, so let the diagram
+   keep its own aspect ratio (--cf-aspect, set on each SVG) and fill the viewport instead. */
+.gslide-inline:has(> .cf-diagram) {
+  width: auto !important;
+  height: auto !important;
+  max-height: none;
+}
+
+.ginlined-content.cf-diagram {
+  width: min(95vw, calc(90vh * var(--cf-aspect))) !important;
+  max-width: none !important;
+  height: auto !important;
+}

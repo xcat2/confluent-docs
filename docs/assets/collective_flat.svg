@@ -1,4 +1,4 @@
-<svg class="cf-diagram" role="img" aria-label="Flat collective" xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="system-ui, sans-serif">
+<svg style="--cf-aspect: 1.4545" id="cf-collective-flat" class="cf-diagram" role="img" aria-label="Flat collective" xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="system-ui, sans-serif">
   <!-- containers -->
   <rect class="cf-f-tint cf-s-border" x="40" y="10" width="560" height="220" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
   <text class="cf-f-dark" x="320" y="36" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d47a1">confluent collective</text>
