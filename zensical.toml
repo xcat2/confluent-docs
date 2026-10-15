@@ -18,21 +18,28 @@ variant = "modern"
 language = "en"
 favicon = "assets/icon.png"
 features = [
+  "content.action.copy",
   "content.action.edit",
   "content.action.view",
   "content.code.copy",
+  "content.footnote.tooltips",
+  "content.tabs.link",
   "content.tooltips",
   "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.instant.progress",
   "navigation.tracking",
   "navigation.tabs",
   "navigation.tabs.sticky",
   "navigation.sections",
   "navigation.indexes",
+  "navigation.path",
+  # Smaller HTML (about 40%), but other sections become plain links in the mobile menu.
+  # "navigation.prune",
   "navigation.top",
   "navigation.footer",
   "search.highlight",
   "search.share",
-  "search.suggest",
   "toc.follow",
 ]
 
@@ -64,6 +71,11 @@ accent = "red"
 [project.theme.palette.toggle]
 icon = "material/brightness-4"
 name = "Switch to system preference"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/xcat2/confluent"
+name = "Confluent on GitHub"
 
 [project.markdown_extensions.abbr]
 
@@ -148,6 +160,18 @@ enabled = true
 
 [project.plugins.minify]
 minify_html = true
+
+[project.plugins.llmstxt]
+full_output = "llms-full.txt"
+
+[project.plugins.llmstxt.sections]
+"Home" = ["index.md", "downloads.md"]
+"Getting Started" = ["getting_started/*.md"]
+"User Reference" = ["user_reference/*.md"]
+"Advanced Topics" = ["advanced_topics/*.md"]
+"Miscellaneous" = ["miscellaneous/*.md"]
+"Manuals" = ["manuals/*.md"]
+"Troubleshooting" = ["troubleshooting/*.md"]
 
 [project.plugins.redirects.redirect_maps]
 "developer/api.md" = "miscellaneous/api.md"
