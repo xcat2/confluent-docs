@@ -12,17 +12,17 @@ Select the repository appropriate for the major version and architecture (x86_64
 === "RHEL 10"
 
     ```bash
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el10/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+    rpm -ivh https://hpc.lenovo.com/yum/four/el10/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
     # or, on aarch64:
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el10/aarch64/lenovo-hpc-yum-1-1.aarch64.rpm
+    rpm -ivh https://hpc.lenovo.com/yum/four/el10/aarch64/lenovo-hpc-yum-1-1.aarch64.rpm
     ```
 
 === "RHEL 9"
 
     ```bash
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el9/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
+    rpm -ivh https://hpc.lenovo.com/yum/four/el9/x86_64/lenovo-hpc-yum-1-1.x86_64.rpm
     # or, on aarch64:
-    rpm -ivh https://hpc.lenovo.com/yum/latest/el9/aarch64/lenovo-hpc-yum-1-1.aarch64.rpm
+    rpm -ivh https://hpc.lenovo.com/yum/four/el9/aarch64/lenovo-hpc-yum-1-1.aarch64.rpm
     ```
 
 === "RHEL 8"
@@ -45,7 +45,7 @@ Create the following apt configuration (e.g. as a file like `/etc/apt/sources.li
 
 ```text
 Types: deb
-URIs: https://hpc.lenovo.com/apt/latest/noble
+URIs: https://hpc.lenovo.com/apt/four/noble
 Suites: noble
 Components: main
 Signed-By: /etc/apt/trusted.gpg.d/confluent.gpg
