@@ -118,6 +118,7 @@ emoji_generator = "zensical.extensions.emoji.to_svg"
 [project.markdown_extensions."pymdownx.mark"]
 
 [project.markdown_extensions."pymdownx.smartsymbols"]
+fractions = false
 
 [project.markdown_extensions."pymdownx.snippets"]
 
