@@ -52,7 +52,7 @@ The generated HTML pages will be placed in the `_site` directory. You can copy t
 
 ## Publishing
 
-Pull requests run a clean strict build, including social cards. Pushes to `master` or `main` also publish `_site` to the existing `gh-pages` branch using `ghp-import`.
+Pull requests run a clean strict build, including social cards. Pushes to `master` or `main` also deploy `_site` to GitHub Pages with the official `actions/upload-pages-artifact` and `actions/deploy-pages` actions, so the repository's Pages source must be set to GitHub Actions.
 
 Social cards are enabled for every build. Their first generation downloads fonts. To run a clean build, use:
 

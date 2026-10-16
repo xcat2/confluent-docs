@@ -6,19 +6,16 @@ on:
       - main
   pull_request:
 permissions:
-  contents: write
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
-  build_and_deploy:
-    name: Build and Deploy Documentation
+  build:
+    name: Build Documentation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: actions/setup-python@v7
         with:
           python-version: 3.x
@@ -39,6 +36,23 @@ jobs:
         run: bash makeman
       - name: Build documentation
         run: zensical build --clean --strict
-      - name: Deploy to GitHub Pages
+      - name: Upload Pages artifact
         if: github.event_name == 'push'
-        run: ghp-import --no-jekyll --push --force --branch gh-pages _site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v6
+      - uses: actions/deploy-pages@v5
+        id: deployment

@@ -1,3 +1,1 @@
 zensical==0.0.70
-# Publish the generated site to the existing gh-pages branch in CI.
-ghp-import==2.1.0
