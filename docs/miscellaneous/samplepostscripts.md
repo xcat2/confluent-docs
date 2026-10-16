@@ -8,6 +8,9 @@ Listed here are some sample post scripts that you might choose to use when deplo
 confluent supported operating systems. These scripts are located in the initialized
 profiles scripts directory, `/var/lib/confluent/public/os/<profile>/scripts/sample`.
 
+!!! note
+    The `consoleredirect` sample postscript is unnecessary as of Confluent 3.13. System firmware console redirection and GRUB serial console access are handled automatically from that version onward.
+
 1. **Post script to comment out the terminal and serial lines in the grub.conf after install on el9 or suse15**
     - location `/var/lib/confluent/public/os/<profile>/scripts/sample/consoleredirect`
     - When serial console redirect is enabled after POST in the UEFI settings and in grub this might result in double text
