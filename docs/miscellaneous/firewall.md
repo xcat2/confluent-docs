@@ -123,60 +123,37 @@ port is opened with a built-in service where one matches it exactly, and by numb
 
 === "firewalld"
 
-    Assign each interface to a zone and add the rules there. Without an explicit `--zone`, `firewall-cmd` writes to
-    the default zone, which would open the deployment ports on your external interface too. The zone is set on the
-    NetworkManager connection profile, which takes effect immediately and is what NetworkManager hands to firewalld
-    whenever the connection comes up. Substitute your own profile names, which `nmcli connection show` lists alongside
-    their devices:
+    Each interface gets a zone of its own. Without an explicit `--zone`, `firewall-cmd` writes to the default zone,
+    which would open the deployment ports on your external interface too. Fill the zones with rules first and assign
+    the interfaces last, as shown at the end of this section, so no interface ever sits in a zone that is still
+    missing rules:
 
     ```bash
     # external: administration only
-    nmcli connection modify eno1 connection.zone public
     firewall-cmd --permanent --zone=public --add-service=ssh              # 22/tcp, administrative access
 
     # deployment: a new, empty zone for the ports confluent binds, plus the web server
     firewall-cmd --permanent --new-zone=deployment
-    firewall-cmd --reload                                                 # load the new zone before assigning it
-    nmcli connection modify eno2 connection.zone deployment
     firewall-cmd --permanent --zone=deployment --add-port=13001/tcp       # confluent API and node credential handout
     firewall-cmd --permanent --zone=deployment --add-service=dhcp         # 67/udp, DHCPv4, for network boot
     firewall-cmd --permanent --zone=deployment --add-port=1900/udp        # SSDP, discovery and nodes finding the server
     firewall-cmd --permanent --zone=deployment --add-service=https        # 443/tcp, deployment payload and node API
-
-    # BMC: trusted, see below
-    nmcli connection modify eno3 connection.zone trusted
-
-    firewall-cmd --reload
     ```
 
-    !!! note
-        On systems where NetworkManager does not manage the interfaces, such as SUSE using wicked, assign them with
-        firewalld itself instead, for example `firewall-cmd --permanent --zone=deployment --change-interface=eno2`.
+    If the nodes were set up with `osdeploy initialize -l`, they log in to this server over SSH, so allow that on the
+    deployment network as well. Leaving the `public` zone takes SSH away from them otherwise:
 
-    If you use the [native TLS API](#native-tls-api-optional) externally, add this optional rule before removing legacy
-    rules. Replace `10.1.0.50/32` with the client address or subnet. For IPv6 clients, use `family="ipv6"` and an IPv6
-    address or subnet in a separate rule:
+    ```bash
+    firewall-cmd --permanent --zone=deployment --add-service=ssh          # 22/tcp, node to server login
+    ```
+
+    If you use the [native TLS API](#native-tls-api-optional) externally, add this optional rule. Replace
+    `10.1.0.50/32` with the client address or subnet. For IPv6 clients, use `family="ipv6"` and an IPv6 address or
+    subnet in a separate rule:
 
     ```bash
     firewall-cmd --permanent --zone=public --add-rich-rule='rule family="ipv4" source address="10.1.0.50/32" port port="13001" protocol="tcp" accept'
-    firewall-cmd --reload
     ```
-
-    !!! warning
-        If you opened ports in `public` while following
-        [Confluent Installation](../getting_started/installconfluent.md), they stay open on the external interface
-        until you remove them. Remove both service rules and legacy numeric port rules. Keep `https` there only if
-        you use the web interface. The source-restricted native TLS API rule above stays in place:
-
-        ```bash
-        for svc in https http dhcp dhcpv6 proxy-dhcp tftp; do
-            firewall-cmd --permanent --zone=public --remove-service=$svc
-        done
-        for port in 13001/tcp 1900/udp 427/udp 67/udp 69/udp 4011/udp 547/udp; do
-            firewall-cmd --permanent --zone=public --remove-port=$port
-        done
-        firewall-cmd --reload
-        ```
 
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
@@ -185,7 +162,6 @@ port is opened with a built-in service where one matches it exactly, and by numb
     firewall-cmd --permanent --zone=deployment --add-service=tftp         # 69/udp, PXE boot
     firewall-cmd --permanent --zone=deployment --add-service=dhcpv6       # 547/udp, network boot over IPv6
     firewall-cmd --permanent --zone=deployment --add-service=proxy-dhcp   # 4011/udp, ProxyDHCP, with a separate DHCP server
-    firewall-cmd --reload
     ```
 
     Port 1900 is opened by number rather than with the built-in `ssdp` service, and the BMC interface is trusted so
@@ -198,8 +174,6 @@ port is opened with a built-in service where one matches it exactly, and by numb
     ```bash
     firewall-cmd --permanent --zone=deployment --add-service=dns          # 53, only if this server resolves for the cluster
     firewall-cmd --permanent --zone=deployment --add-service=ntp          # 123/udp, only if this server is the time source
-    # firewall-cmd --permanent --zone=deployment --add-service=ssh        # 22/tcp, only if osdeploy initialize -l was used
-    firewall-cmd --reload
     ```
 
     [Node log forwarding](#node-log-forwarding-optional) needs only the port of the transport actually in use:
@@ -208,7 +182,6 @@ port is opened with a built-in service where one matches it exactly, and by numb
     firewall-cmd --permanent --zone=deployment --add-port=514/tcp         # syslog, logging.method=rsyslog without TLS
     firewall-cmd --permanent --zone=deployment --add-port=6514/tcp        # syslog over TLS, rsyslog with logging.tls
     firewall-cmd --permanent --zone=deployment --add-port=19532/tcp       # logging.method=journal-remote
-    firewall-cmd --reload
     ```
 
     The built-in `syslog` and `syslog-tls` services do not fit these: `syslog` opens 514/udp while the receiver
@@ -224,6 +197,35 @@ port is opened with a built-in service where one matches it exactly, and by numb
         firewall-cmd --permanent --policy=deploy-out --add-ingress-zone=deployment
         firewall-cmd --permanent --policy=deploy-out --add-egress-zone=public
         firewall-cmd --permanent --policy=deploy-out --set-target=ACCEPT
+        ```
+
+    Once the zones hold every rule you need, load them and assign the interfaces. Where NetworkManager manages an
+    interface, `firewall-cmd` stores the zone in its connection profile and the change takes effect at once.
+    Elsewhere, such as on SUSE with wicked, firewalld keeps the assignment itself and applies it on the next reload.
+    Substitute your own interface names:
+
+    ```bash
+    firewall-cmd --reload                                                 # load the rules before assigning interfaces
+    firewall-cmd --permanent --zone=public --change-interface=eno1        # external
+    firewall-cmd --permanent --zone=deployment --change-interface=eno2    # deployment
+    firewall-cmd --permanent --zone=trusted --change-interface=eno3       # BMC, trusted, see below
+    firewall-cmd --reload                                                 # apply where NetworkManager is not in use
+    ```
+
+    !!! warning
+        If you opened ports in `public` while following
+        [Confluent Installation](../getting_started/installconfluent.md), they stay open on the external interface
+        until you remove them. Do this only after the interfaces have moved, since until then the deployment
+        interface still relies on those rules. Remove both service rules and legacy numeric port rules. Keep `https`
+        there only if you use the web interface. The source-restricted native TLS API rule above stays in place:
+
+        ```bash
+        for svc in https http dhcp dhcpv6 proxy-dhcp tftp; do
+            firewall-cmd --permanent --zone=public --remove-service=$svc
+        done
+        for port in 13001/tcp 1900/udp 427/udp 67/udp 69/udp 4011/udp 547/udp; do
+            firewall-cmd --permanent --zone=public --remove-port=$port
+        done
         firewall-cmd --reload
         ```
 
@@ -253,6 +255,13 @@ port is opened with a built-in service where one matches it exactly, and by numb
     ufw enable
     ```
 
+    If the nodes were set up with `osdeploy initialize -l`, they log in to this server over SSH, so allow that on the
+    deployment interface as well. The cleanup below removes the rule they relied on otherwise:
+
+    ```bash
+    ufw allow in on eno2 to any port 22 proto tcp     # SSH, node to server login
+    ```
+
     If you use the [native TLS API](#native-tls-api-optional) externally, add this optional rule before removing legacy
     rules. Replace `10.1.0.50/32` with the client address or subnet, and add a separate rule for any IPv6 clients:
 
@@ -263,11 +272,14 @@ port is opened with a built-in service where one matches it exactly, and by numb
     !!! warning
         If you added rules while following [Confluent Installation](../getting_started/installconfluent.md), they apply
         to every interface, external included, until you delete them. Run this after the scoped rules above, so SSH
-        and any native TLS API clients stay reachable on `eno1`:
+        and any native TLS API clients stay reachable on `eno1`, and nodes set up with `osdeploy initialize -l` can
+        still log in over `eno2`. Earlier versions of that guide used the `OpenSSH`,
+        `Apache Secure` and `Apache` application profiles, so the loop removes those as well. `ufw` reports and
+        skips any rule that does not exist:
 
         ```bash
-        for rule in 22/tcp 443/tcp 80/tcp 13001/tcp 67/udp 1900/udp 69/udp 547/udp 4011/udp; do
-            ufw delete allow $rule
+        for rule in 22/tcp 443/tcp 80/tcp 13001/tcp 67/udp 1900/udp 69/udp 547/udp 4011/udp OpenSSH 'Apache Secure' Apache; do
+            ufw delete allow "$rule"
         done
         ```
 
@@ -287,7 +299,6 @@ port is opened with a built-in service where one matches it exactly, and by numb
     ```bash
     ufw allow in on eno2 to any port 53               # DNS, only if this server resolves for the cluster
     ufw allow in on eno2 to any port 123 proto udp    # NTP, only if this server is the cluster time source
-    # ufw allow in on eno2 to any port 22 proto tcp   # SSH, only if osdeploy initialize -l was used
     ```
 
     [Node log forwarding](#node-log-forwarding-optional) needs only the port of the transport actually in use:
@@ -344,13 +355,14 @@ additional rule is needed. If you cannot trust it, see
 
     It does not need trusting anyway: traffic arriving there is node-initiated, so a deploying node's SSDP search and
     the server's reply are part of one exchange that connection tracking already permits.
-    [PXE driven discovery](confluentpxedisco.md) is passive too: confluent waits for the node's boot attempt rather
-    than scanning for it.
 
     The exception is a BMC that shares a physical port with the node's operating system NIC (a shared LOM or NC-SI
     port) and therefore sits on the deployment network rather than on a separate BMC network. Confluent's active
-    scans then have to reach it there, and their replies are dropped just as on an untrusted BMC network. Exempt only
-    the addresses the BMCs use rather than the whole interface, which is easiest when they have a range of their own:
+    scans then have to reach it there, and their replies are dropped just as on an untrusted BMC network.
+    [PXE driven discovery](confluentpxedisco.md) commonly ends up here: the boot attempt itself is node-initiated,
+    but it then moves each BMC onto the `lom` port and finds it with `nodediscover rescan`, which is an active scan.
+    Exempt only the addresses the BMCs use rather than the whole interface, which is easiest when they have a range
+    of their own:
 
     === "firewalld"
 
@@ -385,22 +397,23 @@ they power on, but replies to confluent's active scans are dropped:
 
     ```bash
     firewall-cmd --permanent --new-zone=bmc
-    firewall-cmd --reload                                      # load the new zone before assigning it
-    nmcli connection modify eno3 connection.zone bmc
     firewall-cmd --permanent --zone=bmc --add-port=427/udp     # SLP, BMC discovery
     firewall-cmd --permanent --zone=bmc --add-port=1900/udp    # SSDP, BMC discovery
-    firewall-cmd --reload
+    firewall-cmd --reload                                      # load the zone and rules before assigning it
+    firewall-cmd --permanent --zone=bmc --change-interface=eno3
+    firewall-cmd --reload                                      # apply where NetworkManager is not in use
     ```
 
 === "ufw"
 
     ```bash
-    ufw delete allow in on eno3                       # replaces the wholesale rule
     ufw allow in on eno3 to any port 427 proto udp    # SLP, BMC discovery
     ufw allow in on eno3 to any port 1900 proto udp   # SSDP, BMC discovery
+    ufw delete allow in on eno3                       # then remove the wholesale rule
     ```
 
-To receive the scan replies as well, match them with an ipset as described next.
+With `firewalld`, you can receive the scan replies as well by matching them with an ipset, as described next.
+`ufw` has no equivalent, so there the replies stay dropped.
 
 ### Matching scan replies with an ipset
 
