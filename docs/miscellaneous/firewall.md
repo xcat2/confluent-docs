@@ -220,7 +220,7 @@ port is opened with a built-in service where one matches it exactly, and by numb
         there only if you use the web interface. The source-restricted native TLS API rule above stays in place:
 
         ```bash
-        for svc in https http dhcp dhcpv6 proxy-dhcp tftp; do
+        for svc in https http dhcp dhcpv6 proxy-dhcp tftp; do   # leave out https if you use the web interface
             firewall-cmd --permanent --zone=public --remove-service=$svc
         done
         for port in 13001/tcp 1900/udp 427/udp 67/udp 69/udp 4011/udp 547/udp; do
@@ -262,26 +262,12 @@ port is opened with a built-in service where one matches it exactly, and by numb
     ufw allow in on eno2 to any port 22 proto tcp     # SSH, node to server login
     ```
 
-    If you use the [native TLS API](#native-tls-api-optional) externally, add this optional rule before removing legacy
-    rules. Replace `10.1.0.50/32` with the client address or subnet, and add a separate rule for any IPv6 clients:
+    If you use the [native TLS API](#native-tls-api-optional) externally, add this optional rule. Replace
+    `10.1.0.50/32` with the client address or subnet, and add a separate rule for any IPv6 clients:
 
     ```bash
     ufw allow in on eno1 from 10.1.0.50/32 to any port 13001 proto tcp
     ```
-
-    !!! warning
-        If you added rules while following [Confluent Installation](../getting_started/installconfluent.md), they apply
-        to every interface, external included, until you delete them. Run this after the scoped rules above, so SSH
-        and any native TLS API clients stay reachable on `eno1`, and nodes set up with `osdeploy initialize -l` can
-        still log in over `eno2`. Earlier versions of that guide used the `OpenSSH`,
-        `Apache Secure` and `Apache` application profiles, so the loop removes those as well. `ufw` reports and
-        skips any rule that does not exist:
-
-        ```bash
-        for rule in 22/tcp 443/tcp 80/tcp 13001/tcp 67/udp 1900/udp 69/udp 547/udp 4011/udp OpenSSH 'Apache Secure' Apache; do
-            ufw delete allow "$rule"
-        done
-        ```
 
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
@@ -292,9 +278,15 @@ port is opened with a built-in service where one matches it exactly, and by numb
     ufw allow in on eno2 to any port 4011 proto udp   # ProxyDHCP, with a separate DHCP server
     ```
 
-    Allow port 443 on `eno1` as well if you use the web interface. The BMC interface is allowed wholesale so that
-    discovery works, see [Discovery needs more than open ports](#discovery-needs-more-than-open-ports). Optional
-    cluster services belong on the deployment interface:
+    If you use the web interface, allow HTTPS on the external interface as well:
+
+    ```bash
+    ufw allow in on eno1 to any port 443 proto tcp    # HTTPS, web interface
+    ```
+
+    The BMC interface is allowed wholesale so that discovery works, see
+    [Discovery needs more than open ports](#discovery-needs-more-than-open-ports). Optional cluster services belong
+    on the deployment interface:
 
     ```bash
     ufw allow in on eno2 to any port 53               # DNS, only if this server resolves for the cluster
@@ -315,6 +307,20 @@ port is opened with a built-in service where one matches it exactly, and by numb
 
         ```bash
         ufw route allow in on eno2 out on eno1
+        ```
+
+    !!! warning
+        If you added rules while following [Confluent Installation](../getting_started/installconfluent.md), they apply
+        to every interface, external included, until you delete them. Delete them only once every scoped rule you
+        need is in place, so SSH, the web interface and any native TLS API clients stay reachable on `eno1`, and
+        network boot, deployment and SSH from nodes set up with `osdeploy initialize -l` keep working on `eno2`.
+        Earlier versions of that guide used the `OpenSSH`, `Apache Secure` and `Apache` application profiles, so the
+        loop removes those as well. `ufw` reports and skips any rule that does not exist:
+
+        ```bash
+        for rule in 22/tcp 443/tcp 80/tcp 13001/tcp 67/udp 1900/udp 69/udp 547/udp 4011/udp OpenSSH 'Apache Secure' Apache; do
+            ufw delete allow "$rule"
+        done
         ```
 
 ## Discovery needs more than open ports
