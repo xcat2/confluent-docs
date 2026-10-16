@@ -143,6 +143,8 @@ custom_checkbox = true
 
 [project.plugins.tags]
 
+[project.plugins.meta]
+
 [project.plugins.blog]
 blog_dir = "release_notes"
 blog_toc = true
