@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # The RSS plugin takes post update dates from Git history.
+          fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
           python-version: 3.x
