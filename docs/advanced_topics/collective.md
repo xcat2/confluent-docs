@@ -104,3 +104,17 @@ At any point, the invite process can be repeated for a member as if it were join
     collective member.
 
 Also note that all members of a collective must be running the same version of confluent and pyghmi.
+
+## Quorum status after removing an unreachable member
+
+If an unreachable member causes the collective to lose quorum, deleting that member with `collective delete` on the
+leader may restore quorum on the leader while non-leader members still report `Quorum: False`.
+
+To work around this issue, restart the Confluent service on each non-leader member that still reports stale quorum
+status:
+
+```bash
+systemctl restart confluent
+```
+
+Then run `collective show` on each member to confirm that all members report `Quorum: True`.
