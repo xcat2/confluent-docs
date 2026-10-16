@@ -6,6 +6,7 @@ nav:
   - api.md
   # Management and setup
   - manageconfluent.md
+  - confluentupgrade.md
   - confluentadoptnode.md
   - containerized-confluent.md
   - confluentbackup.md

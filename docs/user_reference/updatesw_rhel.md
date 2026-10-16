@@ -11,3 +11,6 @@ related software, you may instruct yum to do so by:
 ```bash
 yum --disablerepo=* --enablerepo=lenovo-hpc update
 ```
+
+See [Updating Confluent](../miscellaneous/confluentupgrade.md) for repository stream changes, offline updates, and
+restarting the service after an update.

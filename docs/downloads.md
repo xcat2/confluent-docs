@@ -95,6 +95,8 @@ cd /mnt/local_repo/lenovo-hpc-suse15/
 
 ## Further information
 
+See [Updating Confluent](miscellaneous/confluentupgrade.md) for applying updates from online or offline repositories.
+
 See the [documentation](index.md) for information on how to install and configure software provided in these repositories.
 
 Sources are available at <https://hpc.lenovo.com/downloads/sources/>.
