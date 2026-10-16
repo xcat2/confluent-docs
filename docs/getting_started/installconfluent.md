@@ -183,26 +183,26 @@ source /etc/profile.d/confluent_env.sh
     allow SSH, the ports confluent binds and the web server:
 
     ```bash
-    ufw allow OpenSSH          # 22/tcp, administrative access
+    ufw allow 22/tcp           # SSH, administrative access
     ufw allow 13001/tcp        # confluent API and node credential handout
     ufw allow 67/udp           # DHCPv4, for network boot
     ufw allow 1900/udp         # SSDP, discovery and nodes finding the server
-    ufw allow 'Apache Secure'  # 443/tcp, deployment payload, node API, web UI
+    ufw allow 443/tcp          # HTTPS, deployment payload, node API, web UI
     ufw enable
     ```
 
     The remaining boot ports depend on how the nodes boot. Add whichever apply:
 
     ```bash
-    ufw allow 'Apache'         # 80/tcp, PXE boot, HTTP boot without TLS
+    ufw allow 80/tcp           # HTTP, PXE boot, HTTP boot without TLS
     ufw allow 69/udp           # TFTP, PXE boot
     ufw allow 547/udp          # DHCPv6, network boot over IPv6
     ufw allow 4011/udp         # ProxyDHCP, with a separate DHCP server
     ```
 
     !!! warning
-        Allow `OpenSSH` before enabling `ufw`, or you will lose your session. Note also that `ufw` denies routed
-        traffic by default, which stops this server routing for its deployment network.
+        Allow SSH before enabling `ufw`, or it will refuse new SSH connections, including your next login. Note also
+        that `ufw` denies routed traffic by default, which stops this server routing for its deployment network.
 
     !!! note
         A bare `ufw allow` applies to every interface, including the external one.
@@ -222,9 +222,8 @@ log forwarding services.
 
 The WebUI offers dynamic port forwarding, which relays a node's BMC web interface and remote console through the
 confluent server. Port 3900 relays KVM video, and one further port starting at 3901 is allocated per concurrent BMC
-session, so open a range sized to the number of sessions you expect:
-
-These ports face the browser rather than the nodes:
+session, so open a range sized to the number of sessions you expect. These ports face the browser rather than the
+nodes:
 
 ```bash
 firewall-cmd --permanent --zone=public --add-port=3900-3999/tcp   # KVM video plus one port per BMC session
@@ -275,8 +274,8 @@ network and needs no further rules. See
 [Discovery needs more than open ports](../miscellaneous/firewall.md#discovery-needs-more-than-open-ports), which
 also explains why the deployment interface must not be given the same treatment.
 
-Where trusting that interface is not acceptable, an ipset and direct rules can match the replies instead. See
-[Matching scan replies with an ipset](../miscellaneous/firewall.md#matching-scan-replies-with-an-ipset).
+Where trusting that interface is not acceptable, see
+[If you cannot trust the BMC interface](../miscellaneous/firewall.md#if-you-cannot-trust-the-bmc-interface).
 
 ## Getting ready to use confluent
 
