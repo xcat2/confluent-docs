@@ -12,6 +12,9 @@ First, have an OS profile available in confluent that roughly matches the distri
 For example, if the target is running any version or variant of Red Hat Enterprise Linux 7, then select
 a confluent profile based on an 'el7' distribution.
 
+!!! note
+    The profile must contain `setupssh`, which was added in Confluent 3.7.1. If the profile was imported before that version, you may need to reimport it before adopting the node.
+
 Download three scripts to the confluent deployment server:
 ```text
 https://raw.githubusercontent.com/xcat2/confluent/refs/heads/master/misc/adoptnode.sh
@@ -20,7 +23,11 @@ https://raw.githubusercontent.com/xcat2/confluent/refs/heads/master/misc/prepado
 ```
 
 
+!!! warning
+    Adoption clears a node-level `deployment.useinsecureprotocols` setting to reduce the risk of accidentally deploying a full OS during onboarding. If you later deploy a full OS to the node, you may need to restore that setting unless it is inherited from a group.
+
 Invoke the adoptnode.sh script as follows:
+
 ```bash
 sh adoptnode.sh <nodename> <profilename>
 ```
