@@ -134,13 +134,13 @@ custom_checkbox = true
 [project.markdown_extensions."pymdownx.tilde"]
 
 # Unsupported plugins:
-# privacy: external assets are not downloaded and hosted locally.
-# Fonts currently load from Google Fonts.
 # document-dates: page creation/update dates are omitted.
 # Revisit support: https://zensical.org/docs/compatibility/mkdocs/plugins/
 [project.plugins]
 
 [project.plugins.search]
+
+[project.plugins.privacy]
 
 [project.plugins.tags]
 
