@@ -53,4 +53,4 @@ You can now watch as nodeconsole navigates the menu to complete MOK enrollment.
 
 ## Removing a key from MOK
 
-The process is the same as above, except mokutil needs to do --delete and the script is `deletetemok.nca` to remove a key.
+The process is the same as above, except mokutil needs to do --delete and the script is `deletemok.nca` to remove a key.
