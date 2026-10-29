@@ -96,7 +96,6 @@ Benefits:
 Drawbacks:
 
 - Requires the most DHCP configuration to be sorted out in the DHCP configuration
-- It does not support direct UEFI HTTP boot, and thus currently is incompatible with confluent SecureBoot support
 - Requires the administrator to modify an OS image profile to indicate the location of the confluent server
 - Requires the administrator to designate remote network as "trusted"
 
@@ -120,7 +119,6 @@ Drawbacks:
 
 - Still requires some DHCP configuration
 - Requires the administrator to modify an OS image profile to indicate the location of the confluent server
-- It only supports PXE boot, and thus currently is incompatible with confluent SecureBoot support
 - Requires the administrator to designate remote network as "trusted"
 
 To proceed:
