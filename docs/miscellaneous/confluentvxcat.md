@@ -31,7 +31,7 @@ The default configuration of confluent protects sensitive data. Even after optin
 
 * Fully encrypted deployment over HTTPS is supported (Firmware configuration required)
 * tftp is now optional (Can use HTTP or HTTPS boot instead)
-* SecureBoot deployment is supported (HTTP or HTTPS boot only)
+* SecureBoot deployment is supported
 * Encrypting the boot volume using the TPM is supported (see the `deployment.encryptboot`
   [node attribute](../user_reference/node_attributes.md#deploymentencryptboot))
 * For network deployments, a node api token is acquired by a node only once
