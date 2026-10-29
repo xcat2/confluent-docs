@@ -35,6 +35,7 @@ nav:
   # Drivers and adapters
   - doca2-10-install.md
   - doca3-0-install.md
+  - kernel-update-with-doca-installed.md
   - bf3-troubleshooting.md
   - nvidiagpudriverinstall.md
   - broadcom-nic-driver-install.md
