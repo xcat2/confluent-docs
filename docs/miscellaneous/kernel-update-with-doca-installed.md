@@ -4,6 +4,8 @@ tags:
   - drivers
 ---
 
+## Upgrading kernel (RHEL or Ubuntu) with DOCA installed
+
 When upgrading the kernel (on RHEL or Ubuntu) with DOCA installed (using the dkms kernel module packages), the following should be run before the kernel update to prevent the build of the iser, isert, or mlnx-nvme dkms modules from failing, which occurs if those builds happen before the mlnx-ofed-kernel dkms module is built.  These settings will force the mlnx-ofed-kernel dkms module to be build first, avoiding this issue:
 
 ```
