@@ -121,8 +121,8 @@ the package `confluent-genesis-x86_64` if a genesis profile is desired.
 
 ## Preparing for TFTP (optional)
 
-Note that confluent now supports both PXE and HTTP Boot. If using purely HTTP boot, then you do not need a tftp server at all. Additionally,
-Secureboot is only fully supported with HTTP Boot. To support
+Note that confluent now supports both PXE and HTTP Boot. If using purely HTTP boot, then you do not need a tftp server at all. 
+To support
 clients that are PXE booting, ensure that tftp is installed.  Note that xCAT may have already installed and configured tftp. Otherwise an example of installing tftp for RedHat or CentOS would be:
 
 ```bash
