@@ -32,7 +32,8 @@ consumption is still mitigated by leaving the filesystem compressed.
 
 The uncompressed image method works like untethered, but the filesystem is extracted into a plain tmpfs rather than compressed ram. This
 avoids the CPU cost of compression at the expense of even larger memory consumption. It is supported by EL9, EL10 and Ubuntu diskless.
-Other diskless profiles boot tethered instead.
+Other diskless profiles boot tethered instead. SELinux labels of the image do not survive on tmpfs, so an image with SELinux enforcing needs
+`selinux=0` in this mode.
 
 ## Writing to root filesystem in diskless mode
 

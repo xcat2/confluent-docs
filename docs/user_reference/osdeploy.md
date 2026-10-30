@@ -190,5 +190,6 @@ given multipath capabilities, allowing continued functionality if one confluent 
 
     * Slower boot as full image must be downloaded at once
     * Largest memory consumption, as the full uncompressed image and anything written to the root filesystem are held in RAM
+    * Not usable with SELinux enforcing: the tmpfs root loses the SELinux labels of the image, so boot with `selinux=0` or use another method
 
 </div>
