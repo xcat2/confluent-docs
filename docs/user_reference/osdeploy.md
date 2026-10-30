@@ -100,7 +100,7 @@ Within the scope of image based OS deployment, there are two ways of constructin
 
 ### Image deployment methods
 
-With an `imgutil` managed profile, there are three approaches to deployment, selected by editing the `profile.yaml` file in `/var/lib/confluent/public/os/{profile}` and modifying the kernelargs:
+With an `imgutil` managed profile, there are four approaches to deployment, selected by editing the `profile.yaml` file in `/var/lib/confluent/public/os/{profile}` and modifying the kernelargs:
 
 #### installtodisk (stateful/diskful)
 
@@ -126,7 +126,7 @@ With an `imgutil` managed profile, there are three approaches to deployment, sel
 
 #### tethered (statelite)
 
-* `confluent_image=tethered` - This will instruct the OS to boot with HTTPS-as-root approach.  This results in [memory consumption](diskless_memory_usage.md) similar to installing from disk, but without actually using local disk in the process. In a confluent collective architecture, this remote root filesystem is
+* `confluent_imagemethod=tethered` - This is the default when `confluent_imagemethod` is not specified.  This will instruct the OS to boot with HTTPS-as-root approach.  This results in [memory consumption](diskless_memory_usage.md) similar to installing from disk, but without actually using local disk in the process. In a confluent collective architecture, this remote root filesystem is
 given multipath capabilities, allowing continued functionality if one confluent member goes down.  Benefits and drawbacks of this approach are:
 
 <div class="grid cards" markdown>
@@ -151,7 +151,7 @@ given multipath capabilities, allowing continued functionality if one confluent 
 
 #### untethered (stateless/diskless)
 
-* `confluent_image=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand.  This results in increased [memory consumption](diskless_memory_usage.md).  Benefits and drawbacks:
+* `confluent_imagemethod=untethered` - This will instruct the OS to download the image up front and run out of compressed RAM instead of disk or fetching on-demand.  This results in increased [memory consumption](diskless_memory_usage.md).  Benefits and drawbacks:
 
 <div class="grid cards" markdown>
 
@@ -168,5 +168,27 @@ given multipath capabilities, allowing continued functionality if one confluent 
 
     * Slower boot as full image must be downloaded at once
     * Large memory consumption
+
+</div>
+
+#### uncompressed (stateless/diskless)
+
+* `confluent_imagemethod=uncompressed` - This behaves like `untethered`, but the image is extracted into a plain tmpfs instead of compressed RAM, trading even more [memory consumption](diskless_memory_usage.md) for less CPU usage.  This is supported by EL9, EL10 and Ubuntu diskless profiles. Other diskless profiles ignore it and boot tethered.  Benefits and drawbacks:
+
+<div class="grid cards" markdown>
+
+-   **Benefits**
+
+    ---
+
+    * No CPU overhead for compressing and decompressing the root filesystem
+    * Independent functioning from the deployment infrastructure after boot
+
+-   **Drawbacks**
+
+    ---
+
+    * Slower boot as full image must be downloaded at once
+    * Largest memory consumption, as the full uncompressed image and anything written to the root filesystem are held in RAM
 
 </div>

@@ -28,10 +28,17 @@ If wanting to uncouple from the filesystem, changing profile.yaml to untethered 
 the filesystem will be entirely downloaded to ram up-front. This will result in slower boot and larger memory consumption, but the memory
 consumption is still mitigated by leaving the filesystem compressed.
 
+## Uncompressed diskless
+
+The uncompressed image method works like untethered, but the filesystem is extracted into a plain tmpfs rather than compressed ram. This
+avoids the CPU cost of compression at the expense of even larger memory consumption. It is supported by EL9, EL10 and Ubuntu diskless.
+Other diskless profiles boot tethered instead.
+
 ## Writing to root filesystem in diskless mode
 
 The root filesystem is combined through overlay with a compressed ram xfs filesystem, with discard enabled. This means writes are compressed
-to mitigate memory cost and memory may be reclaimed through deleting written files. All data written in this manner will be lost on reboot.
+to mitigate memory cost and memory may be reclaimed through deleting written files. With the uncompressed image method, writes are instead
+held uncompressed in tmpfs. All data written in this manner will be lost on reboot.
 As of this writing, selective persistence of writable files to a remote filesystem is up to the user to implement.
 
 ## Sensitive information in diskless images and encryption

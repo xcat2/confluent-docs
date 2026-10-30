@@ -140,3 +140,7 @@ Swap:              0           0           0
 Mem:            7935         983        7029          37         150        6952
 Swap:              0           0           0
 ```
+
+## uncompressed (stateless/diskless)
+
+The `uncompressed` method behaves like `untethered`, except the image is extracted into a plain tmpfs instead of compressed ram. Memory consumption therefore includes the full uncompressed size of the image, and writes to the root filesystem are not compressed either. In exchange, no CPU time is spent on compression. As with `untethered`, deleting parts of the image after boot frees the corresponding memory.
