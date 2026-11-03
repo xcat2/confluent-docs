@@ -223,6 +223,41 @@ For diskless installs, scripts/onboot.d is available.  Note that content under `
 
 Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
 
+### Node attributes in ansible plays
+
+Ansible plays go in ansible/post.d, ansible/firstboot.d, or ansible/onboot.d of the profile. When the deployment server runs them, the
+attributes of the target node are available in the host variable `confluent`, nested at each dot of the attribute name, the same way
+a dictionary would be written in an Ansible `host_vars` file. Group inheritance and attribute expressions are already applied.
+Attributes without a value and secrets (`secret.`, `crypted.` and `custom.nodesecret.`) are left out.
+
+For example, a node with `location.rack=r3`, `net.ib0.ipv4_address=10.10.0.17` and `custom.slurm.partition=gpu` gets:
+
+```yaml
+confluent:
+  groups: [everything, compute]
+  location:
+    rack: r3
+  net:
+    ib0:
+      ipv4_address: 10.10.0.17
+  custom:
+    slurm:
+      partition: gpu
+```
+
+A template in the play can then use it:
+
+```
+# rack {{ confluent['location']['rack'] }}
+address {{ confluent['net']['ib0']['ipv4_address'] }}
+PartitionName={{ confluent['custom']['slurm']['partition'] | default('batch') }}
+```
+
+As in Ansible generally, bracket notation is recommended, because dot notation fails for keys such as `items` or `keys`.
+If an attribute name is also the prefix of other attribute names (for example `custom.slurm` and `custom.slurm.partition` both set),
+its value is available as `confluent['custom']['slurm']['_value']` and the play output shows a warning.
+A `confluent` variable in a `host_vars` file of the Ansible configuration on the deployment server takes precedence over these values.
+
 ## Handling xClarity Controller or TSM on shared ports (on board network or OCP)
 
 If wanting to move the xClarity Controller or TSM to be accessed over a port shared with the operating system, see either `pre.custom` of an install profile or `onboot.sh` of the genesis profile for examples of how to
