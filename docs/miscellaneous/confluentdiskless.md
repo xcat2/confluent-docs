@@ -185,18 +185,25 @@ The private portion usually contains an encryption key needed for the packed ima
 If accounts suffer a one-time delay after initial login, this is likely due to systemd user slice failing to actually function.
 To mitigate, it is possible to modify the TimeoutStopSec value in `/usr/lib/systemd/system/user@.service` to a smaller value, like 10s
 
-## SELinux labelling issues
+## SELinux
 
-If errors arise during booting suggesting that, for example, sshd_config is not writable, it may be due to a mislabeled image. By default,
-the image should be labeled correctly, but if the scratch filesystem use did not support proper labelling, this can be a problem.
-To fix the labeling, select an appropriate filesystem (e.g. the root filesystem generally is well equipped) and do:
+By default, `imgutil build` disables SELinux in the image. On EL8 and newer, `--selinux` installs the targeted policy instead,
+leaves SELinux enforcing and labels the image with its own policy:
 
 ```bash
-imgutil unpack image-name /tmp/scratchdir
-cd /tmp/scratchdir
-setfiles -r . /etc/selinux/targeted/contexts/files/file_contexts .
-imgutil pack /tmp/scratchdir -b image-name new-image-name
+imgutil build --selinux -s alma-8.5-x86_64 /tmp/scratchdir
 ```
+
+`imgutil pack` labels the scratch directory again whenever `/etc/selinux/config` of the image enables SELinux, so files added
+with `imgutil exec` or by hand get correct labels. Captured images keep the SELinux setting of the source node. If labeling
+fails, for example because the build host enforces an older policy, build and pack fail instead of producing a mislabeled
+image. At boot, the diskless initramfs labels the files it writes before the policy is loaded.
+
+The labels are stored as extended attributes in the scratch directory, so keep it on a filesystem that supports SELinux
+labels. The root filesystem of the build host generally is well equipped.
+
+!!! note
+    The `uncompressed` image method cannot keep SELinux labels, see [uncompressed diskless](confluentdiskless_arch.md#uncompressed-diskless).
 
 ## Moving an image between confluent servers
 
