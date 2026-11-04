@@ -131,6 +131,13 @@ imgutil exec /tmp/scratchdir -- yum -y install perl
 imgutil exec -v /root:- /tmp/scratchdir -- /root/MLNX_OFED_LINUX-5.4-3.1.0.0-rhel8.5-x86_64/mlnxofedinstall --distro rhel8.5
 ```
 
+`imgutil build` removes the downloaded packages and repository metadata from the image to keep it small. dnf fetches the
+metadata again by itself when installing more packages. On Ubuntu, run `apt-get update` first:
+
+```bash
+imgutil exec /tmp/scratchdir -- apt-get update
+```
+
 ## Packing the image for boot
 
 Once the tree has been prepared, it needs to be packed to a profile name of your chosing, e.g.:
