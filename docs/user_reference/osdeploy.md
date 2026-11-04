@@ -131,6 +131,8 @@ With an `imgutil` managed profile, there are four approaches to deployment, sele
 
 * `installtodisk` - This will write the image to hard disk similar to a scripted install and apply `post` and `firstboot` automation in a similar way. In addition to more trivial inclusion of third party content compared to a scripted install, this approach tends to be much quicker than scripted installers.
 
+On EL9, EL10 and Ubuntu, `installtodisk` works with any `confluent_imagemethod`: writing the image to disk always reads it tethered. A profile can therefore switch between a diskless method and installing to disk by only adding or removing `installtodisk`.
+
 <div class="grid cards" markdown>
 
 -   **Benefits**
