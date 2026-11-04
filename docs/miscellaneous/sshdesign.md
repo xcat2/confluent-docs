@@ -71,7 +71,7 @@ Host *
 
 ## Specifying permitted peer nodes
 
-Confluent provides an attribute called `ssh.trustnodes` to designate which managed nodes are allowed to authenticate.  If unspecified, all nodes are assumed to be trusted.  The specified noderange will be expanded during deployment or, as of confluent 3.7.1, refresh of the ssh configuration using `run_remote setupssh`.  The expanded set will be placed into two files, `/etc/ssh/shosts.equiv` to enable users other than root, and `/root/.shosts` to enable node to node ssh as root.  The contents of those two files are the only things effected by this attribute.
+Confluent provides an attribute called `ssh.trustnodes` to designate which managed nodes are allowed to authenticate.  If unspecified, all nodes are assumed to be trusted.  To have a node trust no other node, set it to an empty node group, for example `nodegroupdefine notrust` followed by `nodeattrib [nodes] ssh.trustnodes=notrust`.  The specified noderange will be expanded during deployment or, as of confluent 3.7.1, refresh of the ssh configuration using `run_remote setupssh`.  The expanded set will be placed into two files, `/etc/ssh/shosts.equiv` to enable users other than root, and `/root/.shosts` to enable node to node ssh as root.  The contents of those two files are the only things effected by this attribute.
 
 ## User based authentication for root
 

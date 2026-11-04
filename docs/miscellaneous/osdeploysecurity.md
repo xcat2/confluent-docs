@@ -13,6 +13,7 @@ facility may be customized by setting `ssh.trustnodes` to limit the generated ho
 if wanting to limit members of the group `storage` to only trust fellow members of `storage`, then set `ssh.trustnodes` to `storage`.
 Conversely if a compute node has `ssh.trustnodes` set to `compute,storage`, then nodes would trust either group, allowing `storage` to
 ssh to `compute`, but not the other way around.
+To disable node to node trust entirely, set `ssh.trustnodes` to an empty node group.
 
 As a result of node to node authentication being enabled from host based authentication, it is frequently possible to forgo managing user ssh keys
 within a confluent install (e.g. skipping setting up `~/.ssh/authorized_keys` and `~/.ssh/id_*` files).
