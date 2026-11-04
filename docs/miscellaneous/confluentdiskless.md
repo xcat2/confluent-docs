@@ -214,20 +214,27 @@ labels. The root filesystem of the build host generally is well equipped.
 
 ## Moving an image between confluent servers
 
-A diskless image is comprised of private and public directories in `/var/lib/confluent`. To archive an image for moving between different confluent instances, tar will suffice:
+A diskless or captured image consists of a public and a private directory in `/var/lib/confluent`. `osdeploy export`
+packs both into one tar file:
+
 ```bash
-cd /var/lib/confluent/
-tar cf stream-image.tar public/os/stream86-diskless private/os/stream86-diskless
+osdeploy export alma-10-diskless /root/alma-10-diskless.tar
 ```
 
-On the server importing:
-```bash
-tar f stream-image.tar
-osdeploy updateboot stream86-diskless
+On the receiving server, `osdeploy import` recognizes such a file and recreates the profile, optionally under another
+name with `-n`. Then update its boot files:
 
+```bash
+osdeploy import /root/alma-10-diskless.tar
+osdeploy updateboot alma-10-diskless
 ```
 
-This will preserve permissions and owner as well as leave symbolic links in a state to pick up the new confluent server addons and site specific content.
+The import fails if a profile of that name already exists. Symbolic links in the profile are kept, so it picks up
+the addons and site specific content of the new server.
+
+!!! warning
+    The file contains the private key needed to boot the image and any sensitive data in the image, so handle it
+    like the image itself.
 
 ## Using another host to build diskless images
 
