@@ -45,3 +45,13 @@ against another host, this can be done by setting the CONFLUENT_HOST variable:
 CONFLUENT_HOST=10.1.0.1
 export CONFLUENT_HOST
 ```
+
+## Using confluent commands over ssh
+
+Alternatively, `CONFLUENT_HOST` can be an `ssh://` URL. The commands then reach the server through an ssh tunnel and act
+as the ssh user on that server, without a confluent user, password or certificate:
+
+```bash
+CONFLUENT_HOST=ssh://root@mgt1
+export CONFLUENT_HOST
+```
