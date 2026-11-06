@@ -30,6 +30,73 @@ imgutil build -s alma-8.5-x86_64 /tmp/scratchdir
 The `-s` argument is optional, but when used should refer to a distribution in `osdeploy list`.  Tab completion also will work to help
 see the applicable options.  The `/tmp/scratchdir` directory tree is now ready for customization.
 
+## Building from a container image
+
+`imgutil build -s` also accepts a container image made elsewhere, for example in CI. The source can be:
+
+- a SIF file, as built by Apptainer or SingularityCE
+- an OCI or Docker archive file, as written by `podman save`
+- an OCI layout directory with its `oci-layout` file
+- a podman reference with its transport, such as `docker://registry.example.com/hpc/compute:latest`, or
+  `containers-storage:localhost/compute` for a local image
+
+```bash
+imgutil build -s docker://registry.example.com/hpc/compute:latest /var/lib/confluent/scratch/compute
+imgutil pack /var/lib/confluent/scratch/compute compute
+```
+
+Files and directories are recognized by their content, anything else is a distribution as before. The image is extracted
+into the scratch directory, which must be empty or not exist, and is completed the way `imgutil build` completes its own
+images: the confluent initramfs configuration, the default package list and an initramfs for every kernel. The result works
+with `imgutil exec` and `imgutil pack` like any other scratch directory.
+
+- Missing packages of the package list are installed from the repositories of the image. If the image already contains
+  every package, the package manager is skipped and the build needs no network access. A package list entry with a version,
+  such as `curl=8.5.0-2ubuntu10`, always runs the package manager.
+- Units that container base images mask are unmasked, and `/usr/sbin/policy-rc.d` is removed, so the image boots like an
+  installed system. Package manager settings of the image are kept, for example base images leaving out documentation.
+- The architecture is detected from the image. With `--arch`, the matching variant of an image for several architectures is
+  used, and a conflicting `--arch` is refused before extracting.
+- `-r` is not supported, as the image brings its own repositories.
+- `--selinux` labels every file from the policy of the image, see [SELinux](#selinux).
+- EL9, Ubuntu 24.04 and SUSE 16 or later images are supported.
+
+Local `containers-storage:` images are looked up in the podman storage of the user running `imgutil`, normally root. Any
+other image is pulled or loaded into a temporary podman storage next to the scratch directory, which is removed afterwards,
+so the images and tags of the system stay as they are. podman cannot read a path that contains a colon. A SIF file does not
+need podman, but it needs `unsquashfs` from squashfs-tools 4.4 or newer.
+
+### Generating a Containerfile
+
+`imgutil build --containerfile` writes a Containerfile that installs exactly the packages `imgutil build` checks for, so
+building from the resulting image needs no network access. Add site specific content to it and build it, for example in CI:
+
+```bash
+imgutil build --containerfile Containerfile
+# add site specific content to the Containerfile
+podman build -t localhost/compute .
+podman save -o compute.tar localhost/compute
+imgutil build -s compute.tar /var/lib/confluent/scratch/compute
+imgutil pack /var/lib/confluent/scratch/compute compute
+```
+
+With `--apptainer`, an Apptainer definition file is written instead. Site specific content goes into its `%post` section:
+
+```bash
+imgutil build --containerfile --apptainer -s alma-10.0-x86_64 compute.def
+# add site specific content to the %post section
+apptainer build compute.sif compute.def
+imgutil build -s compute.sif /var/lib/confluent/scratch/compute
+imgutil pack /var/lib/confluent/scratch/compute compute
+```
+
+The OS is that of the `-s` distribution or of the build system, as for a normal build. The default base image is AlmaLinux
+for EL, the official Ubuntu image for Ubuntu and openSUSE Leap for SUSE. `--from` replaces it, for example with a base
+image from a local registry. `-p`, `-a` and `--selinux` change the packages as for a normal build. Pass the same options to
+`imgutil build -s` later, as the command at the end of the generated file shows. `--arch` sets the platform of the image,
+so it can be built on another architecture with emulation. `-` as file name writes to standard output. See the
+[`imgutil` man page](../manuals/imgutil.md) for all options.
+
 ## Building images for a foreign architecture
 
 `imgutil build` can build an image for a different architecture than the build
