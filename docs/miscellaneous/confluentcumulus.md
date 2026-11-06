@@ -10,7 +10,7 @@ from `/opt/confluent/share/affluent/` onto the switch:
 
 ```bash
 scp /opt/confluent/share/affluent/*.deb cumulus@r4c1:~
-ssh -t cumulus@r4c1 sudo apt install ~cumulus/affluent_*.deb
+ssh -t cumulus@r4c1 sudo apt install ~cumulus/*affluent_*.deb
 ```
 
 
