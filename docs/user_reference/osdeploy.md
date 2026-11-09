@@ -98,6 +98,31 @@ Within the scope of image based OS deployment, there are two ways of constructin
 
 * `imgutil capture` - This uses an existing node as a golden reference and creates an image from it.  This permits the greatest ability to model the full scope of a node install on real hardware including behavior of drivers with the real hardware and partitioning, but is more complicated and time consuming to modify compared to the `build` approach above.
 
+#### Capturing an image from a node
+
+`imgutil capture <node> <profilename>` copies the local filesystems of a running EL8, EL9, EL10 or Ubuntu node into a new
+profile. It first checks the node for packages that the capture and the deployment initramfs need, such as `squashfs-tools`
+and, on EL, `openssl`. If any are missing, it stops and prints the `dnf install` or `apt install` command that adds them.
+LVM is not required on the node.
+
+Every node deployed from the profile would otherwise inherit leftovers of the source, so capture leaves out:
+
+* Secrets of the source: password hashes, SSH host keys, root's SSH keys, TLS private keys and the confluent API key
+* The contents of scratch, crash dump, journal, mail spool, sssd cache and package cache directories, such as `/tmp`,
+  `/var/tmp`, `/var/crash` and `/var/log/journal`. The directories themselves stay, with their mode, owner and SELinux
+  label. Under `/var/log` and `/var/cache/apt` only the files are dropped and the directory tree stays.
+* Root's shell history, the systemd random seed, DHCP leases and the per host DHCPv6 DUID and IPv6 secrets of dhcpcd and
+  NetworkManager
+* The hostname, netplan files, and NetworkManager profiles or ifcfg files with static addresses. Deployment writes the
+  network configuration of each node from its `net.*` attributes. Profiles without addresses, for example bonds, MTU or
+  InfiniBand mode settings, are kept.
+
+A diskless boot of a captured profile only gets the `kernelargs` of its `profile.yaml`, not the kernel arguments of the
+source node. Add the ones the nodes rely on, then run `osdeploy updateboot <profilename>`.
+
+Each diskless or installed node gets its own `/etc/machine-id`, derived from its node name and DMI UUID, so nodes booting the
+same image do not share it and a diskless node keeps the same one across reboots.
+
 ### Image deployment methods
 
 With an `imgutil` managed profile, there are four approaches to deployment, selected by editing the `profile.yaml` file in `/var/lib/confluent/public/os/{profile}` and modifying the kernelargs:
@@ -105,6 +130,8 @@ With an `imgutil` managed profile, there are four approaches to deployment, sele
 #### installtodisk (stateful/diskful)
 
 * `installtodisk` - This will write the image to hard disk similar to a scripted install and apply `post` and `firstboot` automation in a similar way. In addition to more trivial inclusion of third party content compared to a scripted install, this approach tends to be much quicker than scripted installers.
+
+On EL9, EL10 and Ubuntu, `installtodisk` works with any `confluent_imagemethod`: writing the image to disk always reads it tethered. A profile can therefore switch between a diskless method and installing to disk by only adding or removing `installtodisk`.
 
 <div class="grid cards" markdown>
 
