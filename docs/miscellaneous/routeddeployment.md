@@ -83,7 +83,8 @@ To proceed:
 - Set the remote network to be a trusted network for the node: `nodeattrib [nodes] trusted.subnets=172.20.0.0/24`
 - Modify the profile.yaml of the OS profile(s) and add `confluent=[ip.of.confluent.server]` to the kernel arguments
 - `osdeploy updateboot [osimagename]`
-- Since confluent cannot autodetect network configuration for networks it is not directly attached to, explicitly specify the subnet mask on the net attributes of all such networks, e.g. `nodeattrib [nodes] net.ipv4_address=172.20.0.5/24`
+- Since confluent cannot autodetect network configuration for networks it is not directly attached to, explicitly specify the subnet mask and gateway on the net attributes of all such networks, e.g. `nodeattrib [nodes] net.ipv4_address=172.20.0.5/24 net.ipv4_gateway=172.20.0.1`
+- If the relay also forwards to another DHCP server, that server must not send PXE options (vendor class "PXEClient", next-server) to these nodes, otherwise iPXE may follow its offer instead of confluent's.
 
 ## URL driven remote boot using iPXE
 
@@ -127,14 +128,53 @@ To proceed:
 - Set the remote network to be a trusted network for the node: `nodeattrib [nodes] trusted.subnets=172.20.0.0/24`
 - Modify the profile.yaml of the OS profile(s) and add `confluent=[ip.of.confluent.server]` to the kernel arguments
 - `osdeploy updateboot [osimagename]`
-- Have the DHCP server send option 67 "PXEClient".  As an example, here is an excerpt from an ISC DHCP configuration file:
+- Have the DHCP server send option 60 "PXEClient" to PXE clients, with the confluent server as both next-server and DHCP server identifier (option 54). The firmware asks next-server for its boot file, but iPXE asks the server identifier and stops with "Nothing to boot" if that is not confluent. As an example, here is an excerpt from an ISC DHCP configuration file:
 
 ```text
 class "PXE" {
-  match if substring(option vendor-class-identifier, 0, 9) ="PXEClient";
+  match if substring(option vendor-class-identifier, 0, 9) = "PXEClient";
   option vendor-class-identifier "PXEClient";
-  vendor-option-space PXE;
+  option dhcp-server-identifier 172.26.129.213;
   next-server 172.26.129.213;
-  filename = "";
+  filename "";
+}
+```
+
+The same for Kea, in the `client-classes` list of `Dhcp4`:
+
+```json
+{
+  "name": "PXE",
+  "test": "substring(option[60].hex, 0, 9) == 'PXEClient'",
+  "next-server": "172.26.129.213",
+  "option-data": [
+    { "name": "vendor-class-identifier", "data": "PXEClient", "always-send": true },
+    { "name": "dhcp-server-identifier", "data": "172.26.129.213" }
+  ]
+}
+```
+
+Kea cannot clear a boot file name per class, so do not set `boot-file-name` globally or on the subnet that the nodes boot from.
+
+- For UEFI HTTP boot, have the DHCP server send option 60 "HTTPClient" and confluent's iPXE shim as the boot file. iPXE then asks confluent as above, so the URL is the same for every profile, and a node only installs when a profile is pending. For ISC DHCP:
+
+```text
+class "HTTP" {
+  match if substring(option vendor-class-identifier, 0, 10) = "HTTPClient";
+  option vendor-class-identifier "HTTPClient";
+  filename "http://172.26.129.213/confluent-public/ipxe/x86_64/ipxe-shim.efi";
+}
+```
+
+For Kea:
+
+```json
+{
+  "name": "HTTP",
+  "test": "substring(option[60].hex, 0, 10) == 'HTTPClient'",
+  "boot-file-name": "http://172.26.129.213/confluent-public/ipxe/x86_64/ipxe-shim.efi",
+  "option-data": [
+    { "name": "vendor-class-identifier", "data": "HTTPClient", "always-send": true }
+  ]
 }
 ```
