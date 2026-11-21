@@ -133,9 +133,6 @@ custom_checkbox = true
 
 [project.markdown_extensions."pymdownx.tilde"]
 
-# Unsupported plugins:
-# document-dates: page creation/update dates are omitted.
-# Revisit support: https://zensical.org/docs/compatibility/mkdocs/plugins/
 [project.plugins]
 
 [project.plugins.search]
@@ -148,6 +145,12 @@ custom_checkbox = true
 
 [project.plugins.meta-descriptions]
 trim = true
+
+[project.plugins.git-revision-date-localized]
+type = "timeago"
+enable_creation_date = true
+# Generated pages are not in Git.
+exclude = ["manuals/*", "user_reference/node_attributes.md"]
 
 [project.plugins.blog]
 blog_dir = "release_notes"
