@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          # The RSS plugin takes post update dates from Git history.
+          # Page dates and RSS post update dates come from Git history.
           fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
