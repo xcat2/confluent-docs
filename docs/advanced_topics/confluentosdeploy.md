@@ -139,6 +139,14 @@ If wanting to use HTTP Boot instead, here is an example to configure Lenovo syst
 nodeconfig d3-d6 NetworkStackSettings.IPv4PXESupport=disable NetworkStackSettings.IPv4HTTPSupport=enable
 ```
 
+Confluent serves UEFI HTTP and HTTPS boot over IPv4 and IPv6 through its signed iPXE shim, which `osdeploy initialize`
+installs. For HTTPS boot on supported platforms, enroll the CA certificate into the nodes' UEFI firmware with
+[`nodecertutil`](../manuals/nodecertutil.md):
+
+```bash
+nodecertutil d3-d6 installueficacert /etc/confluent/tls/cacert.pem
+```
+
 
 ## Initializing OS deployment configuration
 

@@ -27,5 +27,5 @@ requirements should be considered to be compatible with `osdeploy updateboot`:
 
 For a more generic OS payload (e.g. Windows), `osdeploy updateboot` cannot be supported, and the following must be done for the image,
 
-* Contains a boot.ipxe file that is a valid ipxe script if wanting to support PXE boot (for Windows PE, this would generally include wimboot and the wim file that you want to boot)
-* Contains a boot.img file if wanting to support HTTP/HTTPS boot that is a VFAT filesystem with efi/boot/BOOTx64.efi file in it.
+* Contains a `boot.ipxe` file that is a valid iPXE script for PXE boot, and a `boot.ipxe.shim` file for Secure Boot and UEFI HTTP/HTTPS boot (for Windows PE, this generally includes wimboot and the wim file that you want to boot).
+* Contains a `boot.img` file if wanting to support virtual media boot or UEFI HTTP boot without the iPXE shim, as a VFAT filesystem with `efi/boot/BOOTx64.efi` in it.

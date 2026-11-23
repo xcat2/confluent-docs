@@ -478,9 +478,12 @@ commands, which are the most convenient way to explore them.
 * **configuration/storage/** - Hardware storage controller configuration:
   `all`, `arrays`, `disks`, and `volumes` for creating and managing RAID arrays
   and drive usage (see the `nodestorage` command).
-* **configuration/management_controller/licenses** and **.../certificate** -
-  Management controller license installation and TLS certificate signing,
-  CSR generation, and installation (see the `nodelicense` and `nodecertutil`
+* **configuration/management_controller/licenses**,
+  **configuration/management_controller/certificate**,
+  **configuration/management_controller/certificate_authorities**, and
+  **configuration/system/certificate_authorities** - Management controller
+  license installation, TLS certificate signing and installation, and BMC or
+  UEFI CA certificate management (see the `nodelicense` and `nodecertutil`
   commands).
 * **inventory/firmware/[category]** - In addition to `all`, firmware is broken
   out into `core`, `adapters`, `disks`, and `misc` categories.
