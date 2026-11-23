@@ -12,6 +12,8 @@ Some [node attributes](../user_reference/node_attributes.md) that may be particu
 * `crypted.rootpassword` - By default, password based login as root is disabled in deployed operating systems. Set this to a desired value to enable password login. If this is not set, then
 there will be no way to log into the console of the target system by default. Note that some OSes default to blocking password from root on ssh by default, and confluent by default honors the OS choice on this matter.  See 'PermitRootLogin' in sshd_config.
 * `deployment.encryptboot` - Only supported for RHEL or CentOS 8.2 or higher with TPM 2.0. This will cause the boot volume to be encrypted. If the system board is replaced or the TPM2 is otherwise unavailable or cleared, then the contents of the disk will be lost.
+* `deployment.installedargs` - Additional kernel command line arguments for the installed OS, appended after the `installedargs` of `profile.yaml` at install time.
+* `deployment.kernelargs` - Additional kernel command line arguments for network boot, appended after the `kernelargs` of `profile.yaml`.
 * `deployment.useinsecureprotocols` - To support PXE boot or HTTP boot without HTTPS, set this to `firmware`.
 * `dns.domain` - Set this to the appropriate DNS domain for search path. It may in some scenarios be omitted, but it is highly recommended to have a domain.
 * `dns.servers` - Set to IP addresses that will provide name resolution services, separated by commas if more than one specified.
@@ -185,6 +187,11 @@ Labels and kernel arguments are in the profile.yaml file in the directory.  If m
 ```bash
 osdeploy updateboot rhel-8.2-x86_64-custom
 ```
+
+To add kernel arguments for individual nodes or groups without copying a profile, set `deployment.kernelargs` for
+network boot arguments and `deployment.installedargs` for the installed OS bootloader. Both are appended after the
+`kernelargs` and `installedargs` of `profile.yaml`. `deployment.installedargs` is written at install time and does
+not change systems that are already installed.
 
 A profile by default will use symbolic links for some content, but most smaller configuration and script files are simply copied and may be freely edited. Updates to confluent will
 not automatically replace any kickstart, autoyast, autoinstall, or script content in existing profiles without manual intervention.  It is recommended to examine
