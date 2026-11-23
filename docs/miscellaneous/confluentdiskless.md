@@ -205,6 +205,11 @@ metadata again by itself when installing more packages. On Ubuntu, run `apt-get 
 imgutil exec /tmp/scratchdir -- apt-get update
 ```
 
+`imgutil exec` and `imgutil build` make `uname` and `/proc` report the newest kernel installed in the image rather than
+the kernel of the build host. Tools such as DKMS then build modules for the image kernel by default. Pass `-k <version>`
+to pick another kernel version, or `-k host` to report the build host kernel, for example when `dnf` refuses to remove
+the newest kernel of the image as the running kernel.
+
 ## Packing the image for boot
 
 Once the tree has been prepared, it needs to be packed to a profile name of your chosing, e.g.:
