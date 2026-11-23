@@ -117,8 +117,8 @@ Every node deployed from the profile would otherwise inherit leftovers of the so
   network configuration of each node from its `net.*` attributes. Profiles without addresses, for example bonds, MTU or
   InfiniBand mode settings, are kept.
 
-A diskless boot of a captured profile only gets the `kernelargs` of its `profile.yaml`, not the kernel arguments of the
-source node. Add the ones the nodes rely on, then run `osdeploy updateboot <profilename>`.
+A diskless boot of a captured profile only gets the `kernelargs` of its `profile.yaml` and `deployment.kernelargs`, not the kernel arguments of the
+source node. Add the ones all nodes rely on to `profile.yaml`, then run `osdeploy updateboot <profilename>`.
 
 Each diskless or installed node gets its own `/etc/machine-id`, derived from its node name and DMI UUID, so nodes booting the
 same image do not share it and a diskless node keeps the same one across reboots.
@@ -132,6 +132,8 @@ With an `imgutil` managed profile, there are four approaches to deployment, sele
 * `installtodisk` - This will write the image to hard disk similar to a scripted install and apply `post` and `firstboot` automation in a similar way. In addition to more trivial inclusion of third party content compared to a scripted install, this approach tends to be much quicker than scripted installers.
 
 On EL9, EL10 and Ubuntu, `installtodisk` works with any `confluent_imagemethod`: writing the image to disk always reads it tethered. A profile can therefore switch between a diskless method and installing to disk by only adding or removing `installtodisk`.
+
+`installtodisk` writes `installedargs` from `profile.yaml` and `deployment.installedargs` from the node attributes to the installed bootloader configuration.
 
 <div class="grid cards" markdown>
 
