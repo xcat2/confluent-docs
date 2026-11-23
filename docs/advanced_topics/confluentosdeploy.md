@@ -223,6 +223,23 @@ For diskless installs, scripts/onboot.d is available.  Note that content under `
 
 Additionally check files like kickstart.custom in the top level directory for some suggested alterations.
 
+### Node attributes in scripts
+
+As of confluent 4.1.0, `/etc/confluent/functions` has a `confluent_attrib` helper that prints one attribute of the node
+running the script. It prints lists such as `groups` comma separated. It returns 1 if the attribute is unset, and 2 if it
+cannot retrieve the attributes from the deployment server.
+
+```bash
+#!/bin/bash
+. /etc/confluent/functions
+if role=$(confluent_attrib custom.role); then
+    echo "Configuring this node as $role"
+fi
+```
+
+Scripts in other languages can run `bash /etc/confluent/functions confluent_attrib custom.role`. Profiles created before
+4.1.0 do not have the helper until you update them with `osdeploy rebase`.
+
 ### Node attributes in ansible plays
 
 Ansible plays go in ansible/post.d, ansible/firstboot.d, or ansible/onboot.d of the profile. When the deployment server runs them, the
