@@ -41,6 +41,8 @@ Keep in mind that the OS being deployed may prohibit ssh password login by root 
 
 Deployment interfaces must have IPv6 enabled, with at least an automatic fe80:: address.  Generally this is default network interface configuration.  IPv6 need only be enabled, it need not be given any address manually, by DHCP, or by route advertisements, the automatic fe80:: addresses suffice.  Full IPv6 and IPv6 exclusive deployment is supported if desired, but even a "pure" IPv4 network will leverage the automatic IPv6 fe80:: for some key features.
 
+OS deployment still requires a non-link-local IP address on both the deployment server and the nodes, using IPv4 or IPv6. For IPv6-only deployment, assign a real IPv6 subnet such as a ULA prefix, for example `fd00::/64`, to the deployment server and nodes. Link-local `fe80::` addresses alone cannot be used for UEFI network boot.
+
 ## Name resolution (optional)
 
 An existing or otherwise manually configured DNS solution is fine for a confluent managed cluster. If such a solution is unavailable, this section provides a strategy to quickly generate IP addresses and use
